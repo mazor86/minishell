@@ -6,7 +6,7 @@
 #    By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/25 12:40:08 by jlyessa           #+#    #+#              #
-#    Updated: 2020/10/25 13:35:05 by jlyessa          ###   ########.fr        #
+#    Updated: 2020/10/25 15:58:04 by jlyessa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,15 +26,15 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@gcc $(FLAGS) $(OBJ) -o $(NAME)
-	@printf "[minishell] Compiled\n"
+	@echo "[minishell] Compiled\n"
 
 clean:
 	@/bin/rm -f $(OBJ)
-	@printf "[minishell] Removed object files\n"
+	@echo "[minishell] Removed object files\n"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@printf "[minishell] Removed minishell\n"
+	@echo "[minishell] Removed minishell\n"
 
 re: fclean all
 
