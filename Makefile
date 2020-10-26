@@ -6,21 +6,20 @@
 #    By: jlyessa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/25 12:40:08 by jlyessa           #+#    #+#              #
-#    Updated: 2020/10/26 13:06:41 by jlyessa          ###   ########.fr        #
+#    Updated: 2020/10/26 13:09:02 by jlyessa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 HEADERS = includes/minishell.h
-INC = includes/
 
 SRCS = srcs/main.c
 OBJ = ${SRCS:.c=.o}
 
 MY_LIBFT = libft
 
-FLAGS = -Wall -Wextra -Werror -I $(INC)
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
