@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jlyessa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/10/25 14:26:24 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/10/26 12:16:24 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/minishel.h"
 
 int		main(int args, char **argv, char **env)
 {

@@ -6,7 +6,7 @@
 /*   By: jlyessa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2020/10/26 11:46:09 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/10/26 12:23:22 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 
 # include "../libft/libft.h"
 # include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
+# include <fcntl.h>
+# include <sys/wait.h>
+# include <signal.h>
+# include <sys/stat.h>
+# include <dirent.h>
+# include <sys/errno.h>
 
 # define BUFFER_SIZE 1024
 
