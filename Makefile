@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: jlyessa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/25 12:40:08 by jlyessa           #+#    #+#              #
-#    Updated: 2020/10/25 23:24:44 by tisabel          ###   ########.fr        #
+#    Updated: 2020/10/26 12:04:25 by jlyessa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,20 +27,20 @@ all: $(NAME)
 	@gcc $(FLAGS) $< -o $@
 
 $(NAME): $(OBJ) $(MY_LIBFT)
-	@echo "compile libft"
+	@echo "[minishell] Compile libft"
 	@make bonus -C $(MY_LIBFT)
 	@gcc $(FLAGS) $(OBJ) -o $(NAME)
-	@echo "[minishell] Compiled\n"
+	@echo "[minishell] Compiled"
 
 clean:
 	@make clean -C $(MY_LIBFT)
 	@/bin/rm -f $(OBJ)
-	@echo "[minishell] Removed object files\n"
+	@echo "[minishell] Removed object files"
 
 fclean: clean
 	@make fclean -C $(MY_LIBFT)
 	@/bin/rm -f $(NAME)
-	@echo "[minishell] Removed minishell\n"
+	@echo "[minishell] Removed minishell"
 
 re: fclean all
 
