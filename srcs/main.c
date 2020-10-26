@@ -6,7 +6,7 @@
 /*   By: jlyessa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/10/26 13:16:10 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/10/26 13:17:39 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int		main(int args, char **argv, char **env)
 	
 	(void)args;
 	(void)argv;
+	for (size_t i = 0; env[i]; i++)
+	{
+		printf("%s\n", env[i]);
+	}
+	
 	while ((ret = read(0, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
