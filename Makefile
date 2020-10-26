@@ -6,12 +6,13 @@
 #    By: jlyessa <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/25 12:40:08 by jlyessa           #+#    #+#              #
-#    Updated: 2020/10/26 12:04:25 by jlyessa          ###   ########.fr        #
+#    Updated: 2020/10/26 13:06:41 by jlyessa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
+HEADERS = includes/minishell.h
 INC = includes/
 
 SRCS = srcs/main.c
@@ -23,8 +24,8 @@ FLAGS = -Wall -Wextra -Werror -I $(INC)
 
 all: $(NAME)
 
-%.o: %.c
-	@gcc $(FLAGS) $< -o $@
+%.o: %.c $(HEADERS) $(SRCS)
+	@gcc $(FLAGS) -с $< -o $@
 
 $(NAME): $(OBJ) $(MY_LIBFT)
 	@echo "[minishell] Compile libft"
