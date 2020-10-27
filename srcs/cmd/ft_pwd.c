@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishel.h                                         :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2020/10/27 14:25:20 by jlyessa          ###   ########.fr       */
+/*   Created: 2020/10/27 14:22:12 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/10/27 14:37:48 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHEL_H
-# define MINISHEL_H
+#include "../../includes/minishel.h"
 
-# include "../libft/libft.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <signal.h>
-# include <sys/stat.h>
-# include <dirent.h>
-# include <sys/errno.h>
-
-# define BUFFER_SIZE 1024
-
-typedef struct	s_all
+int		ft_pwd(t_all *all)
 {
 	
-}				t_all;
-
-
-int	get_next_line(int fd, char **line);
-
-#endif
+	return (1);
+}

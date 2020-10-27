@@ -6,7 +6,7 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/10/27 14:04:50 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/10/27 14:37:29 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		main(int args, char **argv, char **env)
 {
+	t_all	all;
 	char	*line;
 	
 	(void)args;
