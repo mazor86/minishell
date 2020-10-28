@@ -1,3 +1,6 @@
-.DS_Store
-*.o
 minishell
+.DS_Store
+main*
+test.c
+*.o
+libft.a
