@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 08:19:53 by tisabel           #+#    #+#             */
-/*   Updated: 2020/10/27 17:18:56 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/07 16:48:34 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int					ft_max(int one, int two);
 int					ft_min(int one, int two);
 char				*ft_strstr(const char *haystack, const char *needle);
 int					ft_strfind(const char *s, char c);
+int					ft_strcmp(const char *s1, const char *s2);
 
 #endif
