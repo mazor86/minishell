@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 08:19:53 by tisabel           #+#    #+#             */
-/*   Updated: 2020/11/07 16:48:34 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/08 19:30:13 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-
-typedef struct		s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
 
 /*
 ** part one functions prototypes

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 14:22:12 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/10/27 14:37:48 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/11/08 19:31:52 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishel.h"
+#include "../../includes/minishell.h"
 
 int		ft_pwd(t_all *all)
 {
