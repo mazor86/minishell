@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2020/11/08 20:37:12 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/08 20:54:07 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ typedef struct		s_data
 	char			*tail;
 }					t_data;
 
+/*
 typedef struct		s_list
 {
 	t_data			*content;
 	struct s_list	*next;
-}					t_list;
+}					t_list;*/
 	
 /*
 ** Basic functions
@@ -78,5 +79,7 @@ int				ft_parce_d_quotes(char *line, t_data *data, char **my_env);
 */
 
 void    		ft_wrong_command(t_list **command, char **my_env);
+
+int				start_cmd(t_list *lst);
 
 #endif

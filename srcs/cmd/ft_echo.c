@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jlyessa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 19:43:41 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/11/08 20:45:14 by tisabel          ###   ########.fr       */
+/*   Created: 2020/11/08 19:39:07 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/11/08 20:10:02 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		ft_pwd(t_data *data)
+int		ft_echo(t_data *data)
 {
+	if (ft_strncmp(data->flag, "-n", 3))
+		ft_putstr_fd(data->argum, 1);
+	else
+		ft_putendl_fd(data->argum, 1);
 	return (0);
 }
