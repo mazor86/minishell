@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 08:19:53 by tisabel           #+#    #+#             */
-/*   Updated: 2020/10/27 17:18:56 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/09 15:18:49 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-
-typedef struct		s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+# include "../includes/struct.h"
 
 /*
 ** part one functions prototypes
@@ -80,7 +75,7 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-t_list				*ft_lstnew(void *content);
+t_list				*ft_lstnew(t_data *content);
 int					ft_lstsize(t_list *lst);
 
 /*
@@ -91,5 +86,6 @@ int					ft_max(int one, int two);
 int					ft_min(int one, int two);
 char				*ft_strstr(const char *haystack, const char *needle);
 int					ft_strfind(const char *s, char c);
+int					ft_strcmp(const char *s1, const char *s2);
 
 #endif

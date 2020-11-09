@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+         #
+#    By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/25 12:40:08 by jlyessa           #+#    #+#              #
-#    Updated: 2020/10/27 14:00:51 by jlyessa          ###   ########.fr        #
+#    Updated: 2020/11/09 13:37:52 by tisabel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ NAME = minishell
 
 HEADERS = includes/minishell.h
 
-SRCS = srcs/main.c srcs/get_next_line.c
+SRCS = srcs/main.c srcs/get_next_line.c srcs/exit.c srcs/ft_strcut.c\
+		srcs/parser/copy_array.c srcs/parser/new_arg.c srcs/parser/parce_data.c\
+		srcs/cmd/ft_cd.c srcs/cmd/ft_echo.c srcs/cmd/ft_env.c srcs/cmd/ft_exit.c\
+		srcs/cmd/ft_export.c srcs/cmd/ft_pwd.c srcs/cmd/ft_unset.c
 OBJ = ${SRCS:.c=.o}
 
 LIBFT_DIR = libft
@@ -25,7 +28,7 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 %.o: %.c $(HEADERS) $(SRCS)
-	@gcc $(FLAGS) -с $< -o $@
+	@gcc $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIBFT_DIR)
 	@echo "[minishell] Compile libft"

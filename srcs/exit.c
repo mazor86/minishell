@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 19:39:07 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/11/09 15:17:48 by tisabel          ###   ########.fr       */
+/*   Created: 2020/11/07 17:00:08 by tisabel           #+#    #+#             */
+/*   Updated: 2020/11/09 13:48:17 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
-int		ft_echo(t_data *data, char **my_env)
+void    ft_wrong_command(t_list **command, char **my_env)
 {
-	data = NULL; //
-	my_env = NULL; //
-	/*if (ft_strncmp(data->flag, "-n", 3))
-		ft_putstr_fd(data->argum, 1); // Нужно написать циклом, так как может быть много аргументов. 
-	else
-		ft_putendl_fd(data->argum, 1);*/
-	return (0);
+    free_array(&my_env);
+    free_array(&((*command)->content->argum));
+    free((*command)->content->name);
+    free((*command)->content->flag);
+    free((*command)->content->tail);
+    ft_putstr_fd("Error\n Wrong command", 2);
+    exit (1);
 }
