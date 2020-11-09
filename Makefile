@@ -6,7 +6,7 @@
 #    By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/25 12:40:08 by jlyessa           #+#    #+#              #
-#    Updated: 2020/11/09 17:37:26 by tisabel          ###   ########.fr        #
+#    Updated: 2020/11/09 22:16:13 by tisabel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS = srcs/main.c srcs/get_next_line.c srcs/exit.c srcs/ft_strcut.c\
 		srcs/parser/copy_array.c srcs/parser/new_arg.c srcs/parser/parce_data.c\
 		srcs/cmd/ft_cd.c srcs/cmd/ft_echo.c srcs/cmd/ft_env.c srcs/cmd/ft_exit.c\
 		srcs/cmd/ft_export.c srcs/cmd/ft_pwd.c srcs/cmd/ft_unset.c\
-		srcs/parser/check_function.c
+		srcs/parser/check_function.c srcs/variables.c\
+		srcs/parser/exec_pipe_semic.c srcs/parser/parce_quotes.c
 OBJ = ${SRCS:.c=.o}
 
 LIBFT_DIR = libft

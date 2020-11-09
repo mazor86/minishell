@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2020/11/09 20:01:01 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/09 21:32:14 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,17 @@ char            **copy_array(char **array);
 ** Parser functions
 */
 
-int				parce_command(t_list **command, char *line, char ***my_env);
-void			parce_line(t_list **command, char *line, char ***my_env);
-void			check_name(t_list **command, char ***my_env);
+int				parce_command(t_data *data, char *line, char ***my_env);
+void			parce_line(t_data *data, char *line, char ***my_env);
+void			check_name(t_data *data, char ***my_env);
 int				parce_s_quotes(char *line, t_data *data, char ***my_env);
 int				parce_d_quotes(char *line, t_data *data, char ***my_env);
 int             set_var(char *line, t_data *data, char ***my_env);
 int             get_var(char *line, t_data *data, char ***my_env);
+int             get_ecran(char *line, t_data *data, char ***my_env);
+int             get_arg(char *line, t_data *data, char ***my_env);
+int             exec_pipe(char *line, t_data *data, char ***my_env);
+int             exec_semicolon(char *line, t_data *data, char ***my_env);
 
 /*
 ** Remaked functions
@@ -66,7 +70,7 @@ int				ft_unset(t_data *data, char ***my_env);
 ** Exit, error and free functions
 */
 
-void    		wrong_command(t_list **command, char ***my_env);
+void    		wrong_command(t_data *data, char ***my_env);
 void	        free_struct(t_data *data);
 
 int				start_cmd(t_list *lst);
