@@ -6,13 +6,13 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 16:57:00 by tisabel           #+#    #+#             */
-/*   Updated: 2020/11/09 13:16:09 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/09 18:30:57 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	init_funcs_array(int (**function)(t_list **command, char **my_env))
+static void	init_funcs_array(int (**function)(t_data *data, char ***my_env))
 {
 	function[0] = ft_echo;
 	function[1] = ft_cd;
@@ -23,16 +23,17 @@ static void	init_funcs_array(int (**function)(t_list **command, char **my_env))
 	function[6] = ft_exit;
 }
 
-void	serch_extern(command, my_env)
+void	serch_extern(t_list **command, char ***my_env)
 {
-	
+	(void)command;
+	(void)my_env;
 }
 
-void	check_name(t_list **command, char **my_env)
+void	check_name(t_list **command, char ***my_env)
 {
 	int			i;
 	int			flag;
-	void		(*f[7])(t_list **command, char **my_env);
+	int			(*f[7])(t_data *data, char ***my_env);
 	static char	*func[7] = {"echo", "cd", "pwd", "export", "unset", "env", "exit"};
 
 	i = 0;
@@ -42,7 +43,7 @@ void	check_name(t_list **command, char **my_env)
 	{
 		if (ft_strcmp(func[i], (*command)->content->name) == 0)
 		{
-			f[i](command, my_env);
+			f[i]((*command)->content, my_env);
 			flag = 1;
 		}
 		i++;

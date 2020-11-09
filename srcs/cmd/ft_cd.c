@@ -6,13 +6,13 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:45:35 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/11/09 15:15:56 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/09 17:23:43 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		ft_cd(t_data *data, char **my_env)
+int		ft_cd(t_data *data, char ***my_env)
 {
 	data = NULL; //
 	my_env = NULL; //

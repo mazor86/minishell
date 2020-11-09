@@ -6,30 +6,31 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:14:00 by tisabel           #+#    #+#             */
-/*   Updated: 2020/11/09 13:31:23 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/09 17:14:50 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char    **copy_array(char **env_orig)
+char    **copy_array(char **array)
 {
     unsigned int	i;
 	unsigned int	j;
-	char			**my_env;
+	char			**new_array;
 
 	i = 0;
 	j = 0;
-    while (env_orig[j] != NULL)
+    while (array[j] != NULL)
         j++;
-	if (!env_orig || !(my_env = (char**)malloc(sizeof(char*) * (j + 1))))
+	if (!array || !(new_array = (char**)malloc(sizeof(char*) * (j + 1))))
 		return (NULL);
-	while (env_orig[i] != NULL)
+	while (array[i] != NULL)
 	{
-		my_env[i] = ft_strdup(env_orig[i]);
-		if (my_env[i] == NULL)
-            free_array(&my_env);
+		new_array[i] = ft_strdup(array[i]);
+		if (new_array[i] == NULL)
+            free_array(&new_array);
+			i++;
 	}
-	my_env[i] = NULL;
-	return (my_env);
+	new_array[i] = NULL;
+	return (new_array);
 }
