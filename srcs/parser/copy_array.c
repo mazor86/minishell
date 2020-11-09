@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   copy_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 19:39:07 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/11/09 15:17:48 by tisabel          ###   ########.fr       */
+/*   Created: 2020/11/09 13:14:00 by tisabel           #+#    #+#             */
+/*   Updated: 2020/11/09 13:31:23 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		ft_echo(t_data *data, char **my_env)
+char    **copy_array(char **env_orig)
 {
-	data = NULL; //
-	my_env = NULL; //
-	/*if (ft_strncmp(data->flag, "-n", 3))
-		ft_putstr_fd(data->argum, 1); // Нужно написать циклом, так как может быть много аргументов. 
-	else
-		ft_putendl_fd(data->argum, 1);*/
-	return (0);
+    unsigned int	i;
+	unsigned int	j;
+	char			**my_env;
+
+	i = 0;
+	j = 0;
+    while (env_orig[j] != NULL)
+        j++;
+	if (!env_orig || !(my_env = (char**)malloc(sizeof(char*) * (j + 1))))
+		return (NULL);
+	while (env_orig[i] != NULL)
+	{
+		my_env[i] = ft_strdup(env_orig[i]);
+		if (my_env[i] == NULL)
+            free_array(&my_env);
+	}
+	my_env[i] = NULL;
+	return (my_env);
 }

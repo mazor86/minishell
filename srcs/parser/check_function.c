@@ -6,24 +6,29 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 16:57:00 by tisabel           #+#    #+#             */
-/*   Updated: 2020/11/08 19:28:32 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/09 13:16:09 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 static void	init_funcs_array(int (**function)(t_list **command, char **my_env))
 {
-	//function[0] = echo;
-	//function[1] = cd;
-	//function[2] = pwd;
-	//function[3] = export;
-	//function[4] = unset;
-	//function[5] = env;
-	//function[6] = exit;
+	function[0] = ft_echo;
+	function[1] = ft_cd;
+	function[2] = ft_pwd;
+	function[3] = ft_export;
+	function[4] = ft_unset;
+	function[5] = ft_env;
+	function[6] = ft_exit;
 }
 
-void	ft_check_name(t_list **command, char **my_env)
+void	serch_extern(command, my_env)
+{
+	
+}
+
+void	check_name(t_list **command, char **my_env)
 {
 	int			i;
 	int			flag;
@@ -43,8 +48,8 @@ void	ft_check_name(t_list **command, char **my_env)
 		i++;
 	}
 	if (flag == 0)
-		ft_serch_extern(command, my_env);
+		serch_extern(command, my_env);
 	else
 		// write a func, that links to the shell commands.
-		ft_wrong_command(command, my_env);
+		wrong_command(command, my_env);
 }

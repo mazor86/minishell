@@ -6,11 +6,16 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 20:00:28 by tisabel           #+#    #+#             */
-/*   Updated: 2020/11/08 20:36:49 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/09 13:30:13 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
+
+/*
+** The function frees all elements of an array and then
+** sets the pointer to NULL.
+*/
 
 void    free_array(char ***array)
 {
