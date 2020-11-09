@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:39:07 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/11/09 18:27:10 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/10 00:14:53 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,24 @@
 
 int		ft_echo(t_data *data, char ***my_env)
 {
-	data = NULL; //
-	my_env = NULL; //
-	/*if (ft_strncmp(data->flag, "-n", 3))
-		ft_putstr_fd(data->argum, 1); // Нужно написать циклом, так как может быть много аргументов. 
-	else
-		ft_putendl_fd(data->argum, 1);*/
+	int		i;
+	char	is_n;
+
+	i = -1;
+	is_n = 0;
+	(void)my_env;
+	while (data->argum[++i])
+	{
+		if (ft_strncmp(data->argum[i], "-n", 3))
+			is_n = 1;
+		else
+		{
+			if (is_n)
+				ft_putstr_fd(data->argum[i], 1);
+			else
+				ft_putendl_fd(data->argum[i], 1);
+			ft_putchar_fd(' ', 1);
+		}
+	}
 	return (0);
 }
