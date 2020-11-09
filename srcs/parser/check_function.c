@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 16:57:00 by tisabel           #+#    #+#             */
-/*   Updated: 2020/11/09 13:16:09 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/09 15:40:58 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	init_funcs_array(int (**function)(t_list **command, char **my_env))
 	function[6] = ft_exit;
 }
 
-void	serch_extern(command, my_env)
+void	serch_extern(t_list **command, char **my_env)
 {
 	
 }
