@@ -20,10 +20,10 @@ int		ft_exit(t_data *data, char ***my_env)
     while (data->argum[n] != NULL)
         n++;
     ft_putstr_fd("exit\n", 1);
-    if (n > 1 || ft_isdigit(data->argum[0]) != 1)
+    if (n > 1 || check_digit(data->argum[0]) != 1)
     {
         ft_putstr_fd("bash: exit:", 2);
-        if (ft_isdigit(data->argum[0]) != 1)
+        if (check_digit(data->argum[0]) != 1)
         {
             ft_putstr_fd(data->argum[0], 2);
             ft_putstr_fd(": numeric argument required", 2);

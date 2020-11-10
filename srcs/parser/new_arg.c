@@ -43,11 +43,14 @@ int     new_arg(char ***array, char *new_arg)
 
     num = 0;
     i = 0;
-    if (!array || !(*array))
+    if (!array)
         return (-1);
     while ((*array)[num] != NULL)
         num++;
-    if (!(new_array = (char**)malloc(sizeof(char*) * (num + 2))))
+    num++;
+    if (*array == NULL)
+        num = 0;
+    if (!(new_array = (char**)malloc(sizeof(char*) * (num + 1))))
         return (-1);
     while (i < num)
     {

@@ -39,6 +39,7 @@ void			init_data(t_data *data);
 int 			new_arg(char ***array, char *new_arg);
 void    		free_array(char ***array);
 char            **copy_array(char **array);
+int             check_digit(char *str);
 
 /*
 ** Parser functions
