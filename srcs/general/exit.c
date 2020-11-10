@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   variables.c                                        :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 21:53:07 by tisabel           #+#    #+#             */
-/*   Updated: 2020/11/09 21:53:33 by tisabel          ###   ########.fr       */
+/*   Created: 2020/11/07 17:00:08 by tisabel           #+#    #+#             */
+/*   Updated: 2020/11/09 21:30:31 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "includes/minishell.h"
 
-int	set_var(char *line, t_data *data, char ***my_env)
+void	free_struct(t_data *data)
 {
-	(void)data;
-	(void)my_env;
-	(void)line;
-	return (0);
+	free_array(&data->argum);
+    free(data->name);
+    free(data->tail);
+    data->pipe = 0;
+    data->semicolon = 0;
 }
 
-int	get_var(char *line, t_data *data, char ***my_env)
+void    wrong_command(t_data *data, char ***my_env)
 {
-	(void)data;
-	(void)my_env;
-	(void)line;
-	return (0);
+    free_array(my_env);
+    free_struct(data);
+    ft_putstr_fd("Error\n Wrong command", 2);
+    exit (1);
 }
