@@ -23,10 +23,16 @@ static void	init_funcs_array(int (**function)(t_data *data, char ***my_env))
 	function[6] = ft_exit;
 }
 
-void	serch_extern(t_data *data, char ***my_env)
+int	serch_extern(t_data *data, char ***my_env)
 {
 	(void)data;
 	(void)my_env;
+	if (ft_strcmp(data->name, "cat") != 0 || ft_strcmp(data->name, "ls") != 0)
+	{
+        printf("%s is an extern function\n", data->name); //
+        return (1);
+    }
+    return (0);
 }
 
 void	check_name(t_data *data, char ***my_env)
@@ -49,8 +55,8 @@ void	check_name(t_data *data, char ***my_env)
 		i++;
 	}
 	if (flag == 0)
-		serch_extern(data, my_env);
-	else
-		// write a func, that links to the shell commands.
+        if (serch_extern(data, my_env) == 1)
+            flag = 1;
+    if (flag == 0)
 		wrong_command(data, my_env);
 }

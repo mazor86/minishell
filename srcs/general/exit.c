@@ -15,8 +15,16 @@
 void	free_struct(t_data *data)
 {
 	free_array(&data->argum);
-    free(data->name);
-    free(data->tail);
+	if(data->name != NULL)
+    {
+        free(data->name);
+        data->name = NULL;
+    }
+	if (data->tail != NULL)
+    {
+        free(data->tail);
+        NULL;
+    }
     data->pipe = 0;
     data->semicolon = 0;
 }

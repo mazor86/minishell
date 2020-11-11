@@ -14,7 +14,7 @@ NAME = minishell
 
 HEADERS = includes/minishell.h includes/struct.h
 
-SRCS = srcs/general/main.c srcs/general/get_next_line.c srcs/general/exit.c\
+SRCS = srcs/main.c srcs/general/get_next_line.c srcs/general/exit.c\
         srcs/general/ft_strcut.c srcs/general/variables.c\
 		srcs/parser/copy_array.c srcs/parser/new_arg.c srcs/parser/parce_data.c\
 		srcs/cmd/ft_cd.c srcs/cmd/ft_echo.c srcs/cmd/ft_env.c srcs/cmd/ft_exit.c\
