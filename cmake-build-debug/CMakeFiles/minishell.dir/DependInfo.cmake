@@ -64,6 +64,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/tisabel/Documents/minishell/srcs/general/get_next_line.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o"
   "/Users/tisabel/Documents/minishell/srcs/general/variables.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/general/variables.c.o"
   "/Users/tisabel/Documents/minishell/srcs/main.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/main.c.o"
+  "/Users/tisabel/Documents/minishell/srcs/parser/check_digit.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o"
   "/Users/tisabel/Documents/minishell/srcs/parser/check_function.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/check_function.c.o"
   "/Users/tisabel/Documents/minishell/srcs/parser/copy_array.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/copy_array.c.o"
   "/Users/tisabel/Documents/minishell/srcs/parser/exec_pipe_semic.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.o"

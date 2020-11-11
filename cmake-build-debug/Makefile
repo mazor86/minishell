@@ -1763,6 +1763,33 @@ srcs/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/main.c.s
 .PHONY : srcs/main.c.s
 
+srcs/parser/check_digit.o: srcs/parser/check_digit.c.o
+
+.PHONY : srcs/parser/check_digit.o
+
+# target to build an object file
+srcs/parser/check_digit.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o
+.PHONY : srcs/parser/check_digit.c.o
+
+srcs/parser/check_digit.i: srcs/parser/check_digit.c.i
+
+.PHONY : srcs/parser/check_digit.i
+
+# target to preprocess a source file
+srcs/parser/check_digit.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/check_digit.c.i
+.PHONY : srcs/parser/check_digit.c.i
+
+srcs/parser/check_digit.s: srcs/parser/check_digit.c.s
+
+.PHONY : srcs/parser/check_digit.s
+
+# target to generate assembly for a file
+srcs/parser/check_digit.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/check_digit.c.s
+.PHONY : srcs/parser/check_digit.c.s
+
 srcs/parser/check_function.o: srcs/parser/check_function.c.o
 
 .PHONY : srcs/parser/check_function.o
@@ -2114,6 +2141,9 @@ help:
 	@echo "... srcs/main.o"
 	@echo "... srcs/main.i"
 	@echo "... srcs/main.s"
+	@echo "... srcs/parser/check_digit.o"
+	@echo "... srcs/parser/check_digit.i"
+	@echo "... srcs/parser/check_digit.s"
 	@echo "... srcs/parser/check_function.o"
 	@echo "... srcs/parser/check_function.i"
 	@echo "... srcs/parser/check_function.s"

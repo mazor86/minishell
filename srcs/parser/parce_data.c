@@ -40,6 +40,8 @@ int	get_arg(char *line, t_data *data, char ***my_env)
 	i = 0;
 	if (!my_env)
 		return (0);
+	while (line[i] != ' ' && line[i] != '\0')
+	    i++;
 	if (data->name == NULL)
 		data->name = ft_strcut(line, ' ');
 	else
@@ -60,10 +62,18 @@ int		parce_command(t_data *data, char *line, char ***my_env)
 	init_parce_funcs_array(f);
 	while (line[i] != '|' && line[i] != '\0')
 	{
-		while ((n = ft_strfind(str, line[i])) != 0 && line[i] != '\0')
+		while ((n = ft_strfind(str, line[i])) == 0 && line[i] != '\0')
 			i++;
 		if (ft_strfind(str, line[i]) != 0)
-			i += f[n](&line[i + 1], data, my_env) + 1; // create set_var
+        {
+            j += f[n - 1](&line[j], data, my_env) + 1; // create set_var
+            i = j;
+        }
+		else
+        {
+            j += f[3](&line[i + 1], data, my_env) + 1;
+            i = j;
+        }
 	}
 	return (i);
 }

@@ -805,9 +805,22 @@ CMakeFiles/minishell.dir/srcs/cmd/ft_unset.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/srcs/cmd/ft_unset.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/tisabel/Documents/minishell/srcs/cmd/ft_unset.c -o CMakeFiles/minishell.dir/srcs/cmd/ft_unset.c.s
 
+CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o: CMakeFiles/minishell.dir/flags.make
+CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o: ../srcs/parser/check_digit.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o   -c /Users/tisabel/Documents/minishell/srcs/parser/check_digit.c
+
+CMakeFiles/minishell.dir/srcs/parser/check_digit.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell.dir/srcs/parser/check_digit.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/tisabel/Documents/minishell/srcs/parser/check_digit.c > CMakeFiles/minishell.dir/srcs/parser/check_digit.c.i
+
+CMakeFiles/minishell.dir/srcs/parser/check_digit.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/srcs/parser/check_digit.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/tisabel/Documents/minishell/srcs/parser/check_digit.c -o CMakeFiles/minishell.dir/srcs/parser/check_digit.c.s
+
 CMakeFiles/minishell.dir/srcs/parser/check_function.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/parser/check_function.c.o: ../srcs/parser/check_function.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/minishell.dir/srcs/parser/check_function.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/minishell.dir/srcs/parser/check_function.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/parser/check_function.c.o   -c /Users/tisabel/Documents/minishell/srcs/parser/check_function.c
 
 CMakeFiles/minishell.dir/srcs/parser/check_function.c.i: cmake_force
@@ -820,7 +833,7 @@ CMakeFiles/minishell.dir/srcs/parser/check_function.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/parser/copy_array.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/parser/copy_array.c.o: ../srcs/parser/copy_array.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/minishell.dir/srcs/parser/copy_array.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/minishell.dir/srcs/parser/copy_array.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/parser/copy_array.c.o   -c /Users/tisabel/Documents/minishell/srcs/parser/copy_array.c
 
 CMakeFiles/minishell.dir/srcs/parser/copy_array.c.i: cmake_force
@@ -833,7 +846,7 @@ CMakeFiles/minishell.dir/srcs/parser/copy_array.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.o: ../srcs/parser/exec_pipe_semic.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.o   -c /Users/tisabel/Documents/minishell/srcs/parser/exec_pipe_semic.c
 
 CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.i: cmake_force
@@ -846,7 +859,7 @@ CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/parser/new_arg.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/parser/new_arg.c.o: ../srcs/parser/new_arg.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/minishell.dir/srcs/parser/new_arg.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/minishell.dir/srcs/parser/new_arg.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/parser/new_arg.c.o   -c /Users/tisabel/Documents/minishell/srcs/parser/new_arg.c
 
 CMakeFiles/minishell.dir/srcs/parser/new_arg.c.i: cmake_force
@@ -859,7 +872,7 @@ CMakeFiles/minishell.dir/srcs/parser/new_arg.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/parser/parce_data.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/parser/parce_data.c.o: ../srcs/parser/parce_data.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/minishell.dir/srcs/parser/parce_data.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/minishell.dir/srcs/parser/parce_data.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/parser/parce_data.c.o   -c /Users/tisabel/Documents/minishell/srcs/parser/parce_data.c
 
 CMakeFiles/minishell.dir/srcs/parser/parce_data.c.i: cmake_force
@@ -872,7 +885,7 @@ CMakeFiles/minishell.dir/srcs/parser/parce_data.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.o: ../srcs/parser/parce_quotes.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.o   -c /Users/tisabel/Documents/minishell/srcs/parser/parce_quotes.c
 
 CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.i: cmake_force
@@ -885,7 +898,7 @@ CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/general/exit.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/general/exit.c.o: ../srcs/general/exit.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/minishell.dir/srcs/general/exit.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/minishell.dir/srcs/general/exit.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/general/exit.c.o   -c /Users/tisabel/Documents/minishell/srcs/general/exit.c
 
 CMakeFiles/minishell.dir/srcs/general/exit.c.i: cmake_force
@@ -898,7 +911,7 @@ CMakeFiles/minishell.dir/srcs/general/exit.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/general/ft_strcut.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/general/ft_strcut.c.o: ../srcs/general/ft_strcut.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/minishell.dir/srcs/general/ft_strcut.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/minishell.dir/srcs/general/ft_strcut.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/general/ft_strcut.c.o   -c /Users/tisabel/Documents/minishell/srcs/general/ft_strcut.c
 
 CMakeFiles/minishell.dir/srcs/general/ft_strcut.c.i: cmake_force
@@ -911,7 +924,7 @@ CMakeFiles/minishell.dir/srcs/general/ft_strcut.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o: ../srcs/general/get_next_line.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o   -c /Users/tisabel/Documents/minishell/srcs/general/get_next_line.c
 
 CMakeFiles/minishell.dir/srcs/general/get_next_line.c.i: cmake_force
@@ -924,7 +937,7 @@ CMakeFiles/minishell.dir/srcs/general/get_next_line.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/general/variables.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/general/variables.c.o: ../srcs/general/variables.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/minishell.dir/srcs/general/variables.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/minishell.dir/srcs/general/variables.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/general/variables.c.o   -c /Users/tisabel/Documents/minishell/srcs/general/variables.c
 
 CMakeFiles/minishell.dir/srcs/general/variables.c.i: cmake_force
@@ -993,6 +1006,7 @@ minishell_OBJECTS = \
 "CMakeFiles/minishell.dir/srcs/cmd/ft_export.c.o" \
 "CMakeFiles/minishell.dir/srcs/cmd/ft_pwd.c.o" \
 "CMakeFiles/minishell.dir/srcs/cmd/ft_unset.c.o" \
+"CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o" \
 "CMakeFiles/minishell.dir/srcs/parser/check_function.c.o" \
 "CMakeFiles/minishell.dir/srcs/parser/copy_array.c.o" \
 "CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.o" \
@@ -1007,79 +1021,80 @@ minishell_OBJECTS = \
 # External object files for target minishell
 minishell_EXTERNAL_OBJECTS =
 
-minishell: CMakeFiles/minishell.dir/srcs/main.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_atoi.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_bzero.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_calloc.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_isalnum.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_isalpha.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_isascii.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_isdigit.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_isprint.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_itoa.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_lstadd_back.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_lstadd_front.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_lstclear.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_lstdelone.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_lstiter.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_lstlast.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_lstmap.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_lstnew.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_lstsize.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_max_bonus.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_memccpy.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_memchr.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_memcmp.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_memcpy.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_memmove.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_memset.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_min_bonus.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_putchar_fd.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_putendl_fd.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_putnbr_fd.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_putstr_fd.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_split.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strchr.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strcmp_bonus.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strdup.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strfind_bonus.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strjoin.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strlcat.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strlcpy.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strlen.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strmapi.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strncmp.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strnstr.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strrchr.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strstr_bonus.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_strtrim.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_substr.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_tolower.c.o
-minishell: CMakeFiles/minishell.dir/libft/ft_toupper.c.o
-minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_cd.c.o
-minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_echo.c.o
-minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_env.c.o
-minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_exit.c.o
-minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_export.c.o
-minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_pwd.c.o
-minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_unset.c.o
-minishell: CMakeFiles/minishell.dir/srcs/parser/check_function.c.o
-minishell: CMakeFiles/minishell.dir/srcs/parser/copy_array.c.o
-minishell: CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.o
-minishell: CMakeFiles/minishell.dir/srcs/parser/new_arg.c.o
-minishell: CMakeFiles/minishell.dir/srcs/parser/parce_data.c.o
-minishell: CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.o
-minishell: CMakeFiles/minishell.dir/srcs/general/exit.c.o
-minishell: CMakeFiles/minishell.dir/srcs/general/ft_strcut.c.o
-minishell: CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o
-minishell: CMakeFiles/minishell.dir/srcs/general/variables.c.o
-minishell: CMakeFiles/minishell.dir/build.make
-minishell: CMakeFiles/minishell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Linking C executable minishell"
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/main.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_atoi.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_bzero.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_calloc.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_isalnum.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_isalpha.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_isascii.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_isdigit.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_isprint.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_itoa.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_lstadd_back.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_lstadd_front.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_lstclear.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_lstdelone.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_lstiter.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_lstlast.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_lstmap.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_lstnew.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_lstsize.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_max_bonus.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_memccpy.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_memchr.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_memcmp.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_memcpy.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_memmove.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_memset.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_min_bonus.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_putchar_fd.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_putendl_fd.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_putnbr_fd.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_putstr_fd.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_split.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strchr.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strcmp_bonus.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strdup.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strfind_bonus.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strjoin.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strlcat.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strlcpy.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strlen.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strmapi.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strncmp.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strnstr.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strrchr.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strstr_bonus.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_strtrim.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_substr.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_tolower.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/libft/ft_toupper.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_cd.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_echo.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_env.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_exit.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_export.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_pwd.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/cmd/ft_unset.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/parser/check_function.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/parser/copy_array.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/parser/new_arg.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/parser/parce_data.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/general/exit.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/general/ft_strcut.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/srcs/general/variables.c.o
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/build.make
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell: CMakeFiles/minishell.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Linking C executable ======minishell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/minishell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/minishell.dir/build: minishell
+CMakeFiles/minishell.dir/build: $(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)minishell
 
 .PHONY : CMakeFiles/minishell.dir/build
 

@@ -42,6 +42,8 @@ string.h
 ../includes/struct.h
 ../includes/struct.h
 
+<<<<<<< HEAD
+=======
 /Users/tisabel/Documents/minishell/includes/struct.h
 
 /Users/tisabel/Documents/minishell/libft/ft_atoi.c
@@ -302,10 +304,13 @@ minishell.h
 minishell.h
 /Users/tisabel/Documents/minishell/srcs/parser/minishell.h
 
+>>>>>>> master
 /Users/tisabel/Documents/minishell/srcs/parser/new_arg.c
 minishell.h
 /Users/tisabel/Documents/minishell/srcs/parser/minishell.h
 
+<<<<<<< HEAD
+=======
 /Users/tisabel/Documents/minishell/srcs/parser/parce_data.c
 minishell.h
 /Users/tisabel/Documents/minishell/srcs/parser/minishell.h
@@ -314,3 +319,4 @@ minishell.h
 minishell.h
 /Users/tisabel/Documents/minishell/srcs/parser/minishell.h
 
+>>>>>>> master

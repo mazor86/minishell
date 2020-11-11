@@ -20,7 +20,7 @@ SRCS = srcs/general/main.c srcs/general/get_next_line.c srcs/general/exit.c\
 		srcs/cmd/ft_cd.c srcs/cmd/ft_echo.c srcs/cmd/ft_env.c srcs/cmd/ft_exit.c\
 		srcs/cmd/ft_export.c srcs/cmd/ft_pwd.c srcs/cmd/ft_unset.c\
 		srcs/parser/check_function.c srcs/parser/exec_pipe_semic.c\
-		srcs/parser/parce_quotes.c
+		srcs/parser/parce_quotes.c srcs/parser/check_digit.c
 OBJ = ${SRCS:.c=.o}
 
 LIBFT_DIR = libft

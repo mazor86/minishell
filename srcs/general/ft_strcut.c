@@ -34,7 +34,7 @@ char	*ft_strcut(char *str, char c)
 		return (str);
 	if (!(new = (char*)malloc(sizeof(char) * (len + 2))))
 		return (NULL);
-	while (i <= len)
+	while (i < len)
 	{
 		new[i] = str[i];
 		i++;
