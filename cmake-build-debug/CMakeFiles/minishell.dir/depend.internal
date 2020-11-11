@@ -239,21 +239,32 @@ CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o
  ../includes/struct.h
  ../libft/libft.h
  /Users/tisabel/Documents/minishell/srcs/general/get_next_line.c
+<<<<<<< HEAD
 CMakeFiles/minishell.dir/srcs/general/main.c.o
  ../includes/minishell.h
  ../includes/struct.h
  ../libft/libft.h
  /Users/tisabel/Documents/minishell/srcs/general/main.c
+=======
+>>>>>>> master
 CMakeFiles/minishell.dir/srcs/general/variables.c.o
  ../includes/minishell.h
  ../includes/struct.h
  ../libft/libft.h
  /Users/tisabel/Documents/minishell/srcs/general/variables.c
+<<<<<<< HEAD
 CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o
  ../includes/minishell.h
  ../includes/struct.h
  ../libft/libft.h
  /Users/tisabel/Documents/minishell/srcs/parser/check_digit.c
+=======
+CMakeFiles/minishell.dir/srcs/main.c.o
+ ../includes/minishell.h
+ ../includes/struct.h
+ ../libft/libft.h
+ /Users/tisabel/Documents/minishell/srcs/main.c
+>>>>>>> master
 CMakeFiles/minishell.dir/srcs/parser/check_function.c.o
  ../includes/minishell.h
  ../includes/struct.h

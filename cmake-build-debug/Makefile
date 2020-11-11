@@ -1709,6 +1709,7 @@ srcs/general/get_next_line.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/general/get_next_line.c.s
 .PHONY : srcs/general/get_next_line.c.s
 
+<<<<<<< HEAD
 srcs/general/main.o: srcs/general/main.c.o
 
 .PHONY : srcs/general/main.o
@@ -1736,6 +1737,8 @@ srcs/general/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/general/main.c.s
 .PHONY : srcs/general/main.c.s
 
+=======
+>>>>>>> master
 srcs/general/variables.o: srcs/general/variables.c.o
 
 .PHONY : srcs/general/variables.o
@@ -1763,6 +1766,7 @@ srcs/general/variables.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/general/variables.c.s
 .PHONY : srcs/general/variables.c.s
 
+<<<<<<< HEAD
 srcs/parser/check_digit.o: srcs/parser/check_digit.c.o
 
 .PHONY : srcs/parser/check_digit.o
@@ -1789,6 +1793,34 @@ srcs/parser/check_digit.s: srcs/parser/check_digit.c.s
 srcs/parser/check_digit.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/check_digit.c.s
 .PHONY : srcs/parser/check_digit.c.s
+=======
+srcs/main.o: srcs/main.c.o
+
+.PHONY : srcs/main.o
+
+# target to build an object file
+srcs/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/main.c.o
+.PHONY : srcs/main.c.o
+
+srcs/main.i: srcs/main.c.i
+
+.PHONY : srcs/main.i
+
+# target to preprocess a source file
+srcs/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/main.c.i
+.PHONY : srcs/main.c.i
+
+srcs/main.s: srcs/main.c.s
+
+.PHONY : srcs/main.s
+
+# target to generate assembly for a file
+srcs/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/main.c.s
+.PHONY : srcs/main.c.s
+>>>>>>> master
 
 srcs/parser/check_function.o: srcs/parser/check_function.c.o
 
@@ -2135,6 +2167,7 @@ help:
 	@echo "... srcs/general/get_next_line.o"
 	@echo "... srcs/general/get_next_line.i"
 	@echo "... srcs/general/get_next_line.s"
+<<<<<<< HEAD
 	@echo "... srcs/general/main.o"
 	@echo "... srcs/general/main.i"
 	@echo "... srcs/general/main.s"
@@ -2144,6 +2177,14 @@ help:
 	@echo "... srcs/parser/check_digit.o"
 	@echo "... srcs/parser/check_digit.i"
 	@echo "... srcs/parser/check_digit.s"
+=======
+	@echo "... srcs/general/variables.o"
+	@echo "... srcs/general/variables.i"
+	@echo "... srcs/general/variables.s"
+	@echo "... srcs/main.o"
+	@echo "... srcs/main.i"
+	@echo "... srcs/main.s"
+>>>>>>> master
 	@echo "... srcs/parser/check_function.o"
 	@echo "... srcs/parser/check_function.i"
 	@echo "... srcs/parser/check_function.s"
