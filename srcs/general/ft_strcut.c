@@ -30,8 +30,8 @@ char	*ft_strcut(char *str, char c)
 	i = 0;
 	while (str[len] != c && str[len] != '\0')
 		len++;
-	if (str[len] == '\0')
-		return (str);
+	//if (str[len] == '\0')
+	//	return (str);
 	if (!(new = (char*)malloc(sizeof(char) * (len + 2))))
 		return (NULL);
 	while (i < len)

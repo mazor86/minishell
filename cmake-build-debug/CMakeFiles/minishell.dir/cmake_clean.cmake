@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "======minishell"
-  "======minishell.pdb"
   "CMakeFiles/minishell.dir/libft/ft_atoi.c.o"
   "CMakeFiles/minishell.dir/libft/ft_bzero.c.o"
   "CMakeFiles/minishell.dir/libft/ft_calloc.c.o"
@@ -68,6 +66,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/srcs/parser/new_arg.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/parce_data.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.o"
+  "minishell"
+  "minishell.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
