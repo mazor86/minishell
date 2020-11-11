@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "======minishell"
+  "======minishell.pdb"
   "CMakeFiles/minishell.dir/libft/ft_atoi.c.o"
   "CMakeFiles/minishell.dir/libft/ft_bzero.c.o"
   "CMakeFiles/minishell.dir/libft/ft_calloc.c.o"
@@ -57,22 +59,15 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/srcs/general/exit.c.o"
   "CMakeFiles/minishell.dir/srcs/general/ft_strcut.c.o"
   "CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o"
-<<<<<<< HEAD
-  "CMakeFiles/minishell.dir/srcs/general/main.c.o"
-  "CMakeFiles/minishell.dir/srcs/general/variables.c.o"
-  "CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o"
-=======
   "CMakeFiles/minishell.dir/srcs/general/variables.c.o"
   "CMakeFiles/minishell.dir/srcs/main.c.o"
->>>>>>> master
+  "CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/check_function.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/copy_array.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/exec_pipe_semic.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/new_arg.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/parce_data.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/parce_quotes.c.o"
-  "minishell"
-  "minishell.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

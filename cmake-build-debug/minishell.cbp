@@ -38,7 +38,7 @@
 				</MakeCommands>
 			</Target>
 			<Target title="minishell">
-				<Option output="/Users/tisabel/Documents/minishell/cmake-build-debug/minishell" prefix_auto="0" extension_auto="0"/>
+				<Option output="/Users/tisabel/Documents/minishell/cmake-build-debug/======minishell" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/tisabel/Documents/minishell/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -48,10 +48,7 @@
 					<Add directory="/Users/tisabel/Documents/minishell/includes"/>
 					<Add directory="/Users/tisabel/Documents/minishell/libft"/>
 					<Add directory="/Users/tisabel/Documents/minishell/srcs"/>
-<<<<<<< HEAD
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
-=======
->>>>>>> master
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -66,7 +63,7 @@
 				</MakeCommands>
 			</Target>
 			<Target title="minishell/fast">
-				<Option output="/Users/tisabel/Documents/minishell/cmake-build-debug/minishell" prefix_auto="0" extension_auto="0"/>
+				<Option output="/Users/tisabel/Documents/minishell/cmake-build-debug/======minishell" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/tisabel/Documents/minishell/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -76,10 +73,7 @@
 					<Add directory="/Users/tisabel/Documents/minishell/includes"/>
 					<Add directory="/Users/tisabel/Documents/minishell/libft"/>
 					<Add directory="/Users/tisabel/Documents/minishell/srcs"/>
-<<<<<<< HEAD
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
-=======
->>>>>>> master
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -268,20 +262,13 @@
 		<Unit filename="/Users/tisabel/Documents/minishell/srcs/general/get_next_line.c">
 			<Option target="minishell"/>
 		</Unit>
-<<<<<<< HEAD
-		<Unit filename="/Users/tisabel/Documents/minishell/srcs/general/main.c">
-			<Option target="minishell"/>
-		</Unit>
-		<Unit filename="/Users/tisabel/Documents/minishell/srcs/general/variables.c">
-			<Option target="minishell"/>
-		</Unit>
-		<Unit filename="/Users/tisabel/Documents/minishell/srcs/parser/check_digit.c">
-=======
 		<Unit filename="/Users/tisabel/Documents/minishell/srcs/general/variables.c">
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/Users/tisabel/Documents/minishell/srcs/main.c">
->>>>>>> master
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/tisabel/Documents/minishell/srcs/parser/check_digit.c">
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/Users/tisabel/Documents/minishell/srcs/parser/check_function.c">
