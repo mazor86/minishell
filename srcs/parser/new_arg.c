@@ -22,12 +22,16 @@ void    free_array(char ***array)
     int	i;
 
 	i = 0;
-	while ((*array)[i] != NULL)
-	{
-		free((*array)[i]);
-		i++;
-	}
-	free(*array);
+	if (*array != NULL)
+    {
+        while ((*array)[i] != NULL)
+        {
+            free((*array)[i]);
+            (*array)[i] = NULL;
+            i++;
+        }
+        *array = NULL;
+    }
 }
 
 /*
@@ -45,11 +49,14 @@ int     new_arg(char ***array, char *new_arg)
     i = 0;
     if (!array)
         return (-1);
-    while ((*array)[num] != NULL)
-        num++;
-    num++;
     if (*array == NULL)
         num = 0;
+    else
+    {
+        while ((*array)[num] != NULL)
+            num++;
+        num++;
+    }
     if (!(new_array = (char**)malloc(sizeof(char*) * (num + 1))))
         return (-1);
     while (i < num)

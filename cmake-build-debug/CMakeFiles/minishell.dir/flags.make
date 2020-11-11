@@ -6,5 +6,5 @@ C_FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacO
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/tisabel/Documents/minishell/. -I/Users/tisabel/Documents/minishell/includes -I/Users/tisabel/Documents/minishell/libft -I/Users/tisabel/Documents/minishell/srcs 
+C_INCLUDES = -I/Users/tisabel/Desktop/minishell/. -I/Users/tisabel/Desktop/minishell/includes -I/Users/tisabel/Desktop/minishell/libft 
 

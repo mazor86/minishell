@@ -239,30 +239,20 @@ CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o: ../includes/struct.h
 CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o: ../srcs/general/get_next_line.c
 
-<<<<<<< HEAD
-CMakeFiles/minishell.dir/srcs/general/main.c.o: ../includes/minishell.h
-CMakeFiles/minishell.dir/srcs/general/main.c.o: ../includes/struct.h
-CMakeFiles/minishell.dir/srcs/general/main.c.o: ../libft/libft.h
-CMakeFiles/minishell.dir/srcs/general/main.c.o: ../srcs/general/main.c
-
-=======
->>>>>>> master
 CMakeFiles/minishell.dir/srcs/general/variables.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/general/variables.c.o: ../includes/struct.h
 CMakeFiles/minishell.dir/srcs/general/variables.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/general/variables.c.o: ../srcs/general/variables.c
 
-<<<<<<< HEAD
-CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o: ../includes/minishell.h
-CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o: ../includes/struct.h
-CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o: ../libft/libft.h
-CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o: ../srcs/parser/check_digit.c
-=======
 CMakeFiles/minishell.dir/srcs/main.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/main.c.o: ../includes/struct.h
 CMakeFiles/minishell.dir/srcs/main.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/main.c.o: ../srcs/main.c
->>>>>>> master
+
+CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o: ../includes/minishell.h
+CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o: ../includes/struct.h
+CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/parser/check_digit.c.o: ../srcs/parser/check_digit.c
 
 CMakeFiles/minishell.dir/srcs/parser/check_function.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/parser/check_function.c.o: ../includes/struct.h

@@ -71,7 +71,7 @@ int		parce_command(t_data *data, char *line, char ***my_env)
         }
 		else
         {
-            j += f[3](&line[i + 1], data, my_env) + 1;
+            j += f[3](&line[j], data, my_env) + 1;
             i = j;
         }
 	}
