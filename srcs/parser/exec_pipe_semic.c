@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   exec_pipe_semic.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 19:43:41 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/11/09 17:24:04 by tisabel          ###   ########.fr       */
+/*   Created: 2020/11/09 21:54:00 by tisabel           #+#    #+#             */
+/*   Updated: 2020/11/09 22:14:51 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_pwd(t_data *data, char ***my_env)
+int	exec_semicolon(char *line, t_data *data, char ***my_env)
 {
-	data = NULL; //
-	my_env = NULL; //
+	(void)data;
+	(void)my_env;
+	(void)line;
+	data->semicolon = 1;
+	new_arg(&(data->argum), ft_strcut(line, ';'));
+	free_struct(data);
+	return (0);
+}
+
+int	exec_pipe(char *line, t_data *data, char ***my_env)
+{
+	(void)data;
+	(void)my_env;
+	(void)line;
+	data->pipe = 1;
+	new_arg(&(data->argum), ft_strcut(line, '|'));
 	return (0);
 }

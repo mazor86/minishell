@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 21:41:23 by tisabel           #+#    #+#             */
-/*   Updated: 2020/10/27 17:30:32 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/07 18:27:20 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishel.h"
+#include "minishell.h"
 
 /*
 ** Frees the pointers.

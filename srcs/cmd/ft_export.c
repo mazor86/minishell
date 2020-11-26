@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/25 13:35:15 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/10/27 14:37:29 by jlyessa          ###   ########.fr       */
+/*   Created: 2020/11/08 19:46:57 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/11/09 17:23:59 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishel.h"
+#include "minishell.h"
 
-int		main(int args, char **argv, char **env)
+int		ft_export(t_data *data, char ***my_env)
 {
-	t_all	all;
-	char	*line;
-	
-	(void)args;
-	(void)argv;
-	line = NULL;
-	while (get_next_line(0, &line) > 0)
-	{
-		printf("%s\n", line);
-		free(line);
-		line = NULL;
-	}
+	data = NULL; //
+	my_env = NULL; //
 	return (0);
 }

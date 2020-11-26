@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcut.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 19:18:45 by tisabel           #+#    #+#             */
-/*   Updated: 2020/10/28 19:32:35 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/11/07 18:18:32 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishel.h"
+#include "minishell.h"
 
 /*
 ** The function cuts the string str by the character, cpecified in c.
@@ -30,11 +30,11 @@ char	*ft_strcut(char *str, char c)
 	i = 0;
 	while (str[len] != c && str[len] != '\0')
 		len++;
-	if (str[len] == '\0')
-		return (str);
+	//if (str[len] == '\0')
+	//	return (str);
 	if (!(new = (char*)malloc(sizeof(char) * (len + 2))))
 		return (NULL);
-	while (i <= len)
+	while (i < len)
 	{
 		new[i] = str[i];
 		i++;

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   check_digit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 19:43:41 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/11/09 17:24:04 by tisabel          ###   ########.fr       */
+/*   Created: 2020/11/10 21:08:42 by tisabel           #+#    #+#             */
+/*   Updated: 2020/11/10 21:08:44 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_pwd(t_data *data, char ***my_env)
+/*
+** The function checks if there are only digits in the string;
+*/
+
+int     check_digit(char *str)
 {
-	data = NULL; //
-	my_env = NULL; //
-	return (0);
+    int i;
+
+    i = 0;
+    while (str[i] != '\0')
+    {
+        if(ft_isdigit(str[i]) != 1)
+            return (0);
+        i++;
+    }
+    return (1);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+         #
+#    By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/08 10:08:33 by tisabel           #+#    #+#              #
-#    Updated: 2020/10/27 17:18:19 by tisabel          ###   ########.fr        #
+#    Updated: 2020/11/07 16:49:27 by tisabel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ ft_strmapi.c ft_substr.c
 OBJECTS = $(SRCS:.c=.o)
 
 SRCS_BONUS = ft_lstadd_back.c ft_lstdelone.c ft_lstmap.c\
-ft_lstadd_front.c ft_lstiter.c ft_lstnew.c\
-ft_lstclear.c ft_lstlast.c ft_lstsize.c ft_min_bonus.c\
-ft_max_bonus.c ft_strstr_bonus.c ft_strfind_bonus.c
+ft_lstadd_front.c ft_lstiter.c ft_lstnew.c ft_lstclear.c\
+ft_lstlast.c ft_lstsize.c ft_min_bonus.c ft_max_bonus.c\
+ft_strstr_bonus.c ft_strfind_bonus.c ft_strcmp_bonus.c
 
 OBJECTS_BONUS = $(SRCS_BONUS:.c=.o)
 
