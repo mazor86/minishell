@@ -1,6 +1,6 @@
 minishell
 .DS_Store
-main*
 test.c
 *.o
 libft.a
+.vscode

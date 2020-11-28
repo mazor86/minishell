@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+         #
+#    By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/25 12:40:08 by jlyessa           #+#    #+#              #
-#    Updated: 2020/11/09 22:16:13 by tisabel          ###   ########.fr        #
+#    Updated: 2020/11/11 17:35:51 by jlyessa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJ = ${SRCS:.c=.o}
 LIBFT_DIR = libft
 LIBFT = libft.a
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -g #-Werror
 
 all: $(NAME)
 
