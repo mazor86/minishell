@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:39:07 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/11/11 20:46:04 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/05 23:36:45 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_echo(t_data *data, char ***my_env)
+int		ft_echo(t_data *data, t_var **my_env)
 {
 	int		i;
 	char	is_n;

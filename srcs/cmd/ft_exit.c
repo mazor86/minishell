@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:49:48 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/11/09 17:23:56 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/12/05 23:37:02 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_exit(t_data *data, char ***my_env)
+int		ft_exit(t_data *data, t_var **my_env)
 {
     int n;
 

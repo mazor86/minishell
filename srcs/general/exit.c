@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 17:00:08 by tisabel           #+#    #+#             */
-/*   Updated: 2020/11/09 21:30:31 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/12/05 23:37:35 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	free_struct(t_data *data)
     data->semicolon = 0;
 }
 
-void    wrong_command(t_data *data, char ***my_env)
+void    wrong_command(t_data *data, t_var **my_env)
 {
     free_array(my_env);
     free_struct(data);
