@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   conv_envp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 19:39:07 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/08 20:09:48 by tisabel          ###   ########.fr       */
+/*   Created: 2020/12/08 17:21:32 by tisabel           #+#    #+#             */
+/*   Updated: 2020/12/08 17:22:11 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_echo(t_data *data)
+void	convert_envp(t_var **envp_var, char **envp)
 {
-	int		i;
-	char	is_n;
+	int i;
+	int j;
+	int len_envp;
 
-	i = -1;
-	is_n = 0;
-	while (data->argum[++i])
+	i = 0;
+	len_envp = 0;
+	while (envp[len_envp])
+		len_envp++;
+	if (!(*envp_var = (t_var*)malloc(sizeof(t_var) * (len_envp + 1))))
+		exit (1);
+	while (envp[i] != NULL)
 	{
-		if (!ft_strncmp(data->argum[i], "-n", 3) && !i)
-			is_n = 1;
-		else
-		{
-			ft_putstr_fd(data->argum[i], 1);
-			if (data->argum[i + 1])
-				ft_putchar_fd(' ', 1);
-			else if (!data->argum[i + 1] && !is_n)
-				ft_putchar_fd('\n', 1);
-		}
+		j = 0;
+		(*envp_var)[i].name = ft_strcut(envp[i], '=');
+		while (envp[i][j] != '=')
+			j++;
+		(*envp_var)[i].value = ft_strdup(&envp[i][j + 1]);
+		i++;
 	}
-	return (0);
+	(*envp_var)[i].name = NULL;
 }

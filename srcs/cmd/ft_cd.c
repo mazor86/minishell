@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:45:35 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/05 23:36:37 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/12/08 22:21:56 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,19 @@
 
 int		ft_cd(t_data *data, t_var **my_env)
 {
-	data = NULL; //
-	my_env = NULL; //
+	int i;
+
+	i = 0;
+	while (data->argum[0][i] != '\0')
+	{
+		if (data->argum[0][i] != '.')
+		{
+			if(data->argum[0][i + 1] != '.')
+			{
+				
+			}
+		}
+		i++;
+	}
 	return (0);
 }

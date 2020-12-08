@@ -6,14 +6,14 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 18:03:38 by tisabel           #+#    #+#             */
-/*   Updated: 2020/12/05 22:23:49 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/12/08 20:02:03 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static void	init_parce_funcs_array(int (**function)(char *line, t_data *data,
-		char ***my_env))
+		t_var **my_env))
 {
 	function[0] = set_var;
 	function[1] = parce_d_quotes;
@@ -25,7 +25,7 @@ static void	init_parce_funcs_array(int (**function)(char *line, t_data *data,
 	function[7] = exec_semicolon;
 }
 
-int	get_ecran(char *line, t_data *data, char ***my_env)
+int	get_ecran(char *line, t_data *data, t_var **my_env)
 {
 	(void)data;
 	(void)my_env;
@@ -33,7 +33,7 @@ int	get_ecran(char *line, t_data *data, char ***my_env)
 	return (0);
 }
 
-int	get_arg(char *line, t_data *data, char ***my_env)
+int	get_arg(char *line, t_data *data, t_var **my_env)
 {
 	int i;
 
@@ -49,13 +49,13 @@ int	get_arg(char *line, t_data *data, char ***my_env)
 	return (i);
 }
 
-int		parce_command(t_data *data, char *line, char ***my_env)
+int		parce_command(t_data *data, char *line, t_var **my_env)
 {
 	int			i;
 	int			n;
 	int			j;
 	static char str[8] = "=\"\\ $'|;";
-	int			(*f[8])(char *line, t_data *data, char ***my_env);
+	int			(*f[8])(char *line, t_data *data, t_var **my_env);
 
 	i = 0;
 	j = 0;

@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2020/12/05 23:47:28 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/12/08 19:33:59 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int 			new_arg(char ***array, char *new_arg);
 void    		free_array(char ***array);
 char            **copy_array(char **array);
 int             check_digit(char *str);
+void			convert_envp(t_var **envp_var, char **envp);
 
 /*
 ** Remaked functions
@@ -65,6 +66,7 @@ int				start_cmd(t_list *lst);
 ** Parser functions
 */
 
+void    		exec_commands(t_data *data, char *line, t_var **my_env);
 int				parce_command(t_data *data, char *line, t_var **my_env);
 void			parce_line(t_data *data, char *line, t_var **my_env);
 void			check_name(t_data *data, char ***my_env);

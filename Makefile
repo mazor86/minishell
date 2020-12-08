@@ -6,7 +6,7 @@
 #    By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/25 12:40:08 by jlyessa           #+#    #+#              #
-#    Updated: 2020/12/05 22:24:07 by tisabel          ###   ########.fr        #
+#    Updated: 2020/12/08 17:23:14 by tisabel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,12 @@ NAME = minishell
 HEADERS = includes/minishell.h includes/struct.h
 
 SRCS = srcs/main.c srcs/general/get_next_line.c srcs/general/exit.c\
-        srcs/general/ft_strcut.c srcs/general/variables.c\
+        srcs/general/ft_strcut.c srcs/general/variables.c srcs/general/conv_envp.c\
 		srcs/parser/copy_array.c srcs/parser/new_arg.c srcs/parser/parce_data.c\
 		srcs/cmd/ft_cd.c srcs/cmd/ft_echo.c srcs/cmd/ft_env.c srcs/cmd/ft_exit.c\
 		srcs/cmd/ft_export.c srcs/cmd/ft_pwd.c srcs/cmd/ft_unset.c\
 		srcs/parser/check_function.c srcs/parser/exec_pipe_semic.c\
-		srcs/parser/parce_quotes.c srcs/parser/check_digit.c
+		srcs/parser/parce_quotes.c srcs/parser/check_digit.c 
 OBJ = ${SRCS:.c=.o}
 
 LIBFT_DIR = libft
