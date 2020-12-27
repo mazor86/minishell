@@ -3,38 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/14 16:46:35 by tisabel           #+#    #+#             */
-/*   Updated: 2020/07/27 05:10:35 by tisabel          ###   ########.fr       */
+/*   Created: 2020/05/01 13:44:48 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/03 21:28:32 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Allocates memory and copies the string
-** to the new place.
-*/
-
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
-	unsigned int	length;
-	unsigned int	i;
-	char			*copy;
+	char	*res;
+	int		i;
 
 	i = 0;
-	length = 0;
-	while (s1[length] != '\0')
-		length++;
-	copy = (char *)malloc(length + 1);
-	if (!copy)
+	while (s[i])
+		i++;
+	if (!(res = malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	while (i < length)
+	i = 0;
+	while (s[i])
 	{
-		copy[i] = s1[i];
+		res[i] = s[i];
 		i++;
 	}
-	copy[i] = '\0';
-	return (copy);
+	res[i] = '\0';
+	return (res);
 }

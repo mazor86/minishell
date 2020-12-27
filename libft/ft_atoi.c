@@ -3,63 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/03 12:35:56 by tisabel           #+#    #+#             */
-/*   Updated: 2020/07/13 18:36:15 by tisabel          ###   ########.fr       */
+/*   Created: 2020/05/01 12:21:44 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/05/12 16:43:02 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-/*
-** Converts a string into an int.
-*/
-
-static int	ft_cut(char *str)
+long long int	ft_atoi(const char *str)
 {
-	int	i;
+	unsigned long long	res;
+	int					sign;
 
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v'
-			|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	return (i);
-}
-
-static int	ft_check_sighn(char *str)
-{
-	int				sighn;
-	unsigned int	i;
-
-	sighn = 1;
-	i = ft_cut(str);
-	if (str[i] == '-')
-		sighn = -1;
-	return (sighn);
-}
-
-int			ft_atoi(char *str)
-{
-	int					i;
-	unsigned long long	num;
-	int					sighn;
-
-	i = ft_cut(str);
-	num = 0;
-	sighn = ft_check_sighn(str);
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	res = 0;
+	sign = 1;
+	while (*str == ' ' || *str == '\n' || *str == '\t' ||
+		*str == '\v' || *str == '\f' || *str == '\r')
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str && *str >= '0' && *str <= '9')
 	{
-		num = num * 10 + (str[i] - '0');
-		if (num == 922337203685477580 && str[i] == '8')
-			return ((num * 10 + (str[i + 1] - '0')) * sighn);
-		i++;
+		res = res * 10 + (*str - '0');
+		str++;
 	}
-	if (num > 9223372036854775807 && sighn == 1)
+	if (res > 9223372036854775807 && sign == 1)
 		return (-1);
-	if (num > 9223372036854775807 && sighn == -1)
+	if (res > 9223372036854775807 && sign == -1)
 		return (0);
-	return (num * sighn);
+	return (res * sign);
 }

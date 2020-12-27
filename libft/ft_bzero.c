@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/19 15:19:12 by tisabel           #+#    #+#             */
-/*   Updated: 2020/05/22 08:56:49 by tisabel          ###   ########.fr       */
+/*   Created: 2020/04/29 20:44:57 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/03 21:21:13 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned int	i;
-	unsigned char	*ptr_s;
+	unsigned char	*res;
 
-	ptr_s = (unsigned char*)s;
-	i = 0;
-	if (n == 0)
-		return ;
-	while (i < n)
+	res = s;
+	while (n > 0)
 	{
-		ptr_s[i] = '\0';
-		i++;
+		res[n - 1] = '\0';
+		n--;
 	}
 }

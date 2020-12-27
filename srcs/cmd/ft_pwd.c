@@ -3,18 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 19:43:41 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/05 23:37:16 by tisabel          ###   ########.fr       */
+/*   Created: 2020/12/20 23:18:30 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/25 16:35:04 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
-int		ft_pwd(t_data *data, t_var **my_env)
+int		ft_pwd(t_all *all, t_cmd *cmd)
 {
-	data = NULL; //
-	my_env = NULL; //
+	char	*pwd;
+
+	(void)cmd;
+	if (!(pwd = getcwd(NULL, 0)))
+		return (-1);
+	ft_putstr_fd(pwd, 1);
+	ft_putchar_fd('\n', 1);
+	free(pwd);
+	all->res = 0;
 	return (0);
 }

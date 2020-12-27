@@ -3,81 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/25 13:35:15 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/05 23:34:53 by tisabel          ###   ########.fr       */
+/*   Created: 2020/12/03 21:08:51 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/27 20:49:07 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
-int g_exit_status;
-
-static void init_struct(t_data *data)
+static void	clear(t_all *all)
 {
-	data->name = NULL;
-	data->argum = NULL;
-	data->pipe = 0;
-	data->semicolon = 0;
+	all->env = NULL;
+	all->cmd = NULL;
+	all->line = NULL;
+	all->pos = 0;
+	all->res = 1;
 }
 
-void	convert_envp(t_var **envp_var, char **envp)
+static void	update_main(t_all *all)
 {
-	int i;
-	int j;
-	int len_envp;
-
-	i = 0;
-	len_envp = 0;
-	while (envp[len_envp])
-		len_envp++;
-	if (!(*envp_var = (t_var*)malloc(sizeof(t_var) * (len_envp + 1))))
-		exit (1);
-	while (envp[i] != NULL)
-	{
-		j = 0;
-		(*envp_var)[i].name = ft_strcut(envp[i], '=');
-		while (envp[i][j] != '=')
-			j++;
-		(*envp_var)[i].value = ft_strdup(&envp[i][j + 1]);
-		i++;
-	}
-	(*envp_var)[i].name = NULL;
+	clear_cmd(&all->cmd);
+	free(all->line);
+	all->line = NULL;
+	all->pos = 0;
 }
 
-void    exec_commands(t_data *data, char *line, t_var **my_env)
+int			main(int args, char **argv, char **env)
 {
-	if (line[0] == '\0')
-		{
-			g_exit_status = 0;
-			return ;
-		}
-    parce_command(data, line, my_env);
-    check_name(data, my_env);
-}
+	t_all	all;
 
-int		main(int args, char **argv, char **envp)
-{
-	char	*line;
-	t_data	data;
-	t_var	*envp_var;
-	
 	(void)args;
 	(void)argv;
-	line = NULL;
-	g_exit_status = 0;
-	data.tail = NULL;
-	convert_envp(&envp_var, envp);
-	ft_putstr_fd("bash-3.2$ ", 0);
-	while (get_next_line(0, &line))
+	clear(&all);
+	parser_env(&all, env);
+	ft_putstr_fd("bash-3.2$ ", 1);
+	while (get_next_line(1, &all.line))
 	{
-		printf("Input line: %s$\n", line);
-		init_struct(&data);
-		ft_putstr_fd("bash-3.2$ ", 0);
-		exec_commands(&data, line, &envp_var);
-		free(line);
-		line = NULL;
+		if (all.line)
+		{
+			if (parser_string(&all) == -1)
+				return (clear_all(&all));
+			if (parser_cmd(&all) == -1)
+				return (clear_all(&all));
+			update_main(&all);
+		}
+		ft_putstr_fd("bash-3.2$ ", 1);
 	}
 	return (0);
 }

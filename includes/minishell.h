@@ -3,78 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2020/12/05 23:47:28 by tisabel          ###   ########.fr       */
+/*   Created: 2020/12/03 21:05:41 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/27 21:45:33 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "../libft/libft.h"
-# include <unistd.h>
-# include <stdio.h> //
-# include <stdlib.h>
-# include <fcntl.h>
+# include <stdio.h>
+# include <sys/types.h>
 # include <sys/wait.h>
-# include <signal.h>
-# include <sys/stat.h>
 # include <dirent.h>
-# include <sys/errno.h>
-# include "struct.h"
+# include "../libft/libft.h"
 
-# define BUFFER_SIZE 1024
+typedef struct	s_env
+{
+	char	*name;
+	char	*par;
+}				t_env;
 
-extern int g_exit_status;
+typedef struct	s_cmd
+{
+	char	*name;
+	char	**argv;
+	char	pipe_start;
+	char	pipe_end;
+}				t_cmd;
 
-/*
-** Basic functions
-*/
+typedef struct	s_all
+{
+	t_list	*env;
+	t_list	*cmd;
+	char	*line;
+	int		pos;
+	int		res;
+}				t_all;
 
-int				get_next_line(int fd, char **line);
-char			*ft_strcut(char *str, char c);
-void			init_data(t_data *data);
-int 			new_arg(char ***array, char *new_arg);
-void    		free_array(char ***array);
-char            **copy_array(char **array);
-int             check_digit(char *str);
+int				parser_env(t_all *all, char **env);
+t_env			*get_env(t_all *all, char *name);
+char			*get_name_env(char *env);
+char			*get_param_env(char *env);
+int				add_env(t_all *all, char *name, char *par);
+int				update_env(t_all *all, char *name, char *txt, char is_created);
+t_list			*sort_env(t_list *lst);
+int				free_env(t_env **tmp, t_list **lst);
+void			clear_env(t_list **lst);
+int				clear_all(t_all *all);
+char			**convert_env(t_all *all);
+char			**convert_argv(t_list *lst);
+char			*get_full_cmd_name(t_all *all, t_list *lst);
 
-/*
-** Remaked functions
-*/
+int				parser_string(t_all *all);
+int				get_shielding(t_all *all, char **text);
+int				get_variables(t_all *all, char **text);
+int				get_strong_quotes(t_all *all, char **text);
+int				get_quotes(t_all *all, char **text);
+int				parser_cmd(t_all *all);
 
-int				ft_cd(t_data *data, t_var **my_env);
-int				ft_echo(t_data *data, t_var **my_env);
-int				ft_env(t_data *data, t_var **my_env);
-int				ft_exit(t_data *data, t_var **my_env);
-int				ft_export(t_data *data, t_var **my_env);
-int				ft_pwd(t_data *data, t_var **my_env);
-int				ft_unset(t_data *data, t_var **my_env);
+int				ft_echo(t_all *all, t_cmd *cmd);
+int				ft_pwd(t_all *all, t_cmd *cmd);
+int				ft_export(t_all *all, t_cmd *cmd);
+int				ft_env(t_all *all, t_cmd *cmd);
+int				ft_unset(t_all *all, t_cmd *cmd);
+int				ft_cd(t_all *all, t_cmd *cmd);
+int				ft_exit(t_all *all, t_cmd *cmd);
 
-/*
-** Exit, error and free functions
-*/
+t_list			*init_cmd(void);
+void			clear_cmd(t_list **lst);
 
-void    		wrong_command(t_data *data, t_var **my_env);
-void	        free_struct(t_data *data);
-int				start_cmd(t_list *lst);
+int				join_char(char **text, char c);
+int				join_str(char **text, char *s);
+void			trim_space(t_all *all);
+char			**remalloc_args(char **args);
+int				add_remalloc_argv(t_all *all, const char *spec, int *i);
+void			*free_split(char **text);
 
-/*
-** Parser functions
-*/
-
-int				parce_command(t_data *data, char *line, t_var **my_env);
-void			parce_line(t_data *data, char *line, t_var **my_env);
-void			check_name(t_data *data, char ***my_env);
-int				parce_s_quotes(char *line, t_data *data, t_var **my_env);
-int				parce_d_quotes(char *line, t_data *data, t_var **my_env);
-int             set_var(char *line, t_var **my_env);
-int             get_var(char *line, t_data *data, t_var **my_env);
-int             get_ecran(char *line, t_data *data, t_var **my_env);
-int             get_arg(char *line, t_data *data, t_var **my_env);
-int             exec_pipe(char *line, t_data *data, t_var **my_env);
-int             exec_semicolon(char *line, t_data *data, t_var **my_env);
+int				ft_error(char *name, char *text, int ret);
 
 #endif

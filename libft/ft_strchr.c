@@ -3,35 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/12 16:29:56 by tisabel           #+#    #+#             */
-/*   Updated: 2020/07/27 05:10:22 by tisabel          ###   ########.fr       */
+/*   Created: 2020/05/01 10:48:53 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/03 21:28:22 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** Searches for the char in the string,
-** if found returns pointer to this char.
-*/
-
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!s)
 		return (NULL);
-	while (s[i] != '\0')
+	while (s[i])
 	{
 		if (s[i] == c)
-			return ((char*)&s[i]);
+			return ((char *)&s[i]);
 		i++;
 	}
-	if (c != 0)
-		return (NULL);
-	else
-		return ((char*)&s[i]);
+	if (s[i] == '\0' && c == '\0')
+		return ((char *)&s[i]);
+	return (NULL);
 }

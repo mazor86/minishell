@@ -3,100 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 12:56:34 by tisabel           #+#    #+#             */
-/*   Updated: 2020/08/16 01:57:02 by tisabel          ###   ########.fr       */
+/*   Created: 2020/05/06 10:07:05 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/03 21:27:54 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	ft_count(char const *str, char c)
+static int	num_worlds(char const *s, char c)
 {
-	unsigned int	i;
-	unsigned int	nb;
+	int	i;
+	int	res;
 
 	i = 0;
-	nb = 0;
-	while (str[i] != '\0')
+	res = 0;
+	while (*s)
 	{
-		while (str[i] == c)
-			i++;
-		if (str[i] != c && str[i] != '\0')
+		if (*s == c)
+			i = 0;
+		else if (i == 0)
 		{
-			nb++;
-			while (str[i] != c && str[i] != '\0')
-				i++;
+			i = 1;
+			res++;
 		}
+		s++;
 	}
-	return (nb);
+	return (res);
 }
 
-static void			ft_free_mem(char **res, unsigned int num)
+static int	num_world(char const *s, char c, int i)
 {
-	unsigned int	i;
+	int	res;
 
-	i = 0;
-	while (i <= num)
+	res = 0;
+	while (s[i] != c && s[i])
 	{
-		free(res[i]);
+		res++;
 		i++;
+	}
+	return (res);
+}
+
+static char	**err(char **res, int j)
+{
+	while (j)
+	{
+		j--;
+		free((void *)res[j]);
 	}
 	free(res);
+	return (NULL);
 }
 
-static char			*ft_write_words(char const *s, char *word, char c,
-									unsigned int i)
+static char	**set_worlds(char **res, char const *s, char c, int l)
 {
-	unsigned int	j;
-	unsigned int	nb;
-
-	j = i;
-	nb = 0;
-	while (s[j] != c && s[j] != '\0')
-	{
-		nb++;
-		j++;
-	}
-	word = (char*)malloc(sizeof(char) * (nb + 1));
-	if (!word)
-		return (NULL);
-	j = 0;
-	while (s[i] != c && s[i] != '\0')
-	{
-		word[j] = s[i];
-		j++;
-		i++;
-	}
-	word[j] = '\0';
-	return (word);
-}
-
-char				**ft_split(char const *s, char c)
-{
-	unsigned int	i;
-	unsigned int	j;
-	char			**result;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	j = 0;
-	if (!s || !(result = (char**)malloc(sizeof(char*) * (ft_count(s, c) + 1))))
-		return (NULL);
-	while (s[i] != '\0')
+	while (s[i] && l > j)
 	{
-		while (s[i] == c && s[i] != '\0')
+		k = 0;
+		while (s[i] == c)
 			i++;
-		if (s[i] != c && s[i] != '\0')
-		{
-			result[j] = ft_write_words(s, result[j], c, i);
-			if (result[j] == NULL)
-				ft_free_mem(result, j);
-			while (s[i] != c && s[i] != '\0')
-				i++;
-			j++;
-		}
+		if (!(res[j] = ft_calloc(num_world(s, c, i) + 1, sizeof(char))))
+			return (err(res, j));
+		while (s[i] && s[i] != c)
+			res[j][k++] = s[i++];
+		res[j][k] = '\0';
+		j++;
 	}
-	result[j] = NULL;
-	return (result);
+	res[j] = 0;
+	return (res);
+}
+
+char		**ft_split(char const *s, char c)
+{
+	int		i;
+	char	**res;
+
+	if (!s)
+		return (NULL);
+	i = num_worlds(s, c);
+	if (!(res = ft_calloc(i + 1, sizeof(char*))))
+		return (NULL);
+	return (set_worlds(res, s, c, i));
 }

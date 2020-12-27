@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/08 14:36:47 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/03 21:27:22 by jlyessa          ###   ########.fr       */
+/*   Created: 2020/12/19 19:38:32 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/22 10:27:37 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-void	ft_putnbr_fd(int n, int fd)
+t_list	*init_cmd(void)
 {
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
-	else
-	{
-		if (n < 0)
-		{
-			ft_putchar_fd('-', fd);
-			n *= -1;
-		}
-		if (n > 9)
-			ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd((n % 10) + '0', fd);
-	}
+	t_cmd	*cmd;
+	t_list	*res;
+
+	if (!(cmd = malloc(sizeof(t_cmd))))
+		return (NULL);
+	cmd->name = ft_strdup("");
+	if (!(cmd->argv = ft_calloc(2, sizeof(char*))) ||
+		!(cmd->argv[0] = ft_strdup("")))
+		return (NULL);
+	cmd->argv[1] = 0;
+	cmd->pipe_start = 0;
+	cmd->pipe_end = 0;
+	if (!(res = ft_lstnew(cmd)))
+		free(cmd);
+	return (res);
 }

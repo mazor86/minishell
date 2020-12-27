@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 19:39:07 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/05 23:36:45 by tisabel          ###   ########.fr       */
+/*   Created: 2020/12/19 21:08:06 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/23 19:03:08 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
-int		ft_echo(t_data *data, t_var **my_env)
+int		ft_echo(t_all *all, t_cmd *cmd)
 {
 	int		i;
-	char	is_n;
+	char	flag;
 
 	i = -1;
-	is_n = 0;
-	(void)my_env;
-	while (data->argum[++i])
+	flag = 0;
+	while (cmd->argv[++i])
 	{
-		if (!ft_strncmp(data->argum[i], "-n", 3) && !i)
-			is_n = 1;
+		if (i == 0 && !ft_strncmp(cmd->argv[i], "-n", 3))
+			flag = 1;
 		else
 		{
-			ft_putstr_fd(data->argum[i], 1);
-			if (data->argum[i + 1])
+			ft_putstr_fd(cmd->argv[i], 1);
+			if (cmd->argv[i + 1])
 				ft_putchar_fd(' ', 1);
-			else if (!data->argum[i + 1] && !is_n)
-				ft_putchar_fd('\n', 1);
 		}
 	}
+	if (!flag)
+		ft_putchar_fd('\n', 1);
+	all->res = 0;
 	return (0);
 }

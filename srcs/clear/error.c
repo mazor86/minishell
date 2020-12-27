@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/08 14:36:47 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/03 21:27:22 by jlyessa          ###   ########.fr       */
+/*   Created: 2020/12/27 21:42:38 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/27 21:44:55 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int		ft_error(char *name, char *text, int ret)
 {
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
-	else
-	{
-		if (n < 0)
-		{
-			ft_putchar_fd('-', fd);
-			n *= -1;
-		}
-		if (n > 9)
-			ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd((n % 10) + '0', fd);
-	}
+	if (name)
+		ft_putstr_fd(name, 2);
+	ft_putendl_fd(text, 2);
+	return (ret);
 }

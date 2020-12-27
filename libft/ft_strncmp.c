@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/12 15:24:53 by tisabel           #+#    #+#             */
-/*   Updated: 2020/10/16 21:22:46 by tisabel          ###   ########.fr       */
+/*   Created: 2020/05/01 12:13:56 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/03 21:29:38 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*res;
+	unsigned char	*res1;
 
 	i = 0;
-	if (!s1 && s2 != NULL)
-		return ((unsigned char)s2[i]);
-	if (!s2 && s1 != NULL)
-		return ((unsigned char)s1[i]);
-	if (!s1 && !s2)
-		return (0);
-	if (n == 0)
-		return (0);
-	while (s1[i] == s2[i] && (i < n - 1) && (s1[i] != '\0' || s2[i] != '\0'))
+	res = (unsigned char *)s1;
+	res1 = (unsigned char *)s2;
+	while ((res[i] || res1[i]) && n > i)
+	{
+		if (res[i] != res1[i])
+			return (res[i] - res1[i]);
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+	return (0);
 }

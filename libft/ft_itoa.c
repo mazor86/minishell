@@ -3,50 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/19 17:09:36 by tisabel           #+#    #+#             */
-/*   Updated: 2020/05/26 01:01:47 by tisabel          ###   ########.fr       */
+/*   Created: 2020/05/06 16:40:08 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/03 21:21:48 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_number_of_digits(long num)
+static int		len(int n)
 {
-	if (num < 0)
-		return (1 + ft_number_of_digits(num * -1));
-	if (num < 10)
+	int		res;
+
+	res = 0;
+	if (n == 0)
 		return (1);
-	else
-		return (1 + ft_number_of_digits(num / 10));
+	if (n < 0)
+	{
+		n *= -1;
+		res++;
+	}
+	while (n != 0)
+	{
+		res++;
+		n /= 10;
+	}
+	return (res);
 }
 
-char		*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char	*str;
-	int		len;
-	long	number;
 	int		i;
+	char	*res;
 
-	number = n;
-	len = ft_number_of_digits(number);
-	i = len - 1;
-	str = (char*)malloc(sizeof(char) * (len + 1));
-	if (str == NULL)
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	i = len(n);
+	if (!(res = ft_calloc(i + 1, sizeof(char))))
 		return (NULL);
-	if (number < 0)
+	res[i--] = '\0';
+	if (n == 0)
+		res[0] = '0';
+	else
 	{
-		str[0] = '-';
-		number = number * -1;
+		if (n < 0)
+		{
+			res[0] = '-';
+			n *= -1;
+		}
+		while (n != 0)
+		{
+			res[i--] = (n % 10) + '0';
+			n /= 10;
+		}
 	}
-	else if (number == 0)
-		str[i] = '0';
-	while (number > 0)
-	{
-		str[i--] = '0' + number % 10;
-		number = number / 10;
-	}
-	str[len] = '\0';
-	return (str);
+	return (res);
 }

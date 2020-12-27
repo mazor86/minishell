@@ -1,32 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/06 17:20:25 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/03 21:29:26 by jlyessa          ###   ########.fr       */
+/*   Created: 2020/05/16 14:01:03 by jlyessa           #+#    #+#             */
+/*   Updated: 2020/12/26 11:20:44 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+static int		set_read(int fd, char **line)
 {
-	size_t	i;
 	char	*res;
+	char	buf[2];
 
-	i = 0;
-	if (!s || !f)
-		return (NULL);
-	if (!(res = ft_calloc(ft_strlen(s) + 1, sizeof(char))))
-		return (NULL);
-	while (s[i])
+	while (read(fd, buf, 1) > 0)
 	{
-		res[i] = f(i, s[i]);
-		i++;
+		buf[1] = 0;
+		if (buf[0] == '\n')
+			break ;
+		if (!*line)
+		{
+			if (!(*line = ft_strdup("")))
+				return (-1);
+		}
+		res = *line;
+		if (!(*line = ft_strjoin(res, buf)))
+			return (-1);
+		free(res);
 	}
-	res[i] = '\0';
-	return (res);
+	return (0);
+}
+
+int				get_next_line(int fd, char **line)
+{
+	if (fd < 0 || !line)
+		return (-1);
+	if (set_read(fd, line) == -1)
+		return (-1);
+	return (1);
 }
