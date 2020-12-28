@@ -6,7 +6,7 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 19:49:01 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/25 18:28:43 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/28 09:13:47 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			update_env(t_all *all, char *name, char *txt, char is_created)
 	}
 	if (is_created == 1)
 	{
-		if (add_env(all, name, ft_strdup(txt)) == -1)
+		if (add_env(all, ft_strdup(name), ft_strdup(txt)) == -1)
 			return (-1);
 		all->env = sort_env(all->env);
 	}

@@ -6,7 +6,7 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:49:31 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/25 18:22:30 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/28 09:15:18 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,17 @@ int		add_env(t_all *all, char *name, char *par)
 	lst = NULL;
 	if (!(tmp = malloc(sizeof(t_env))) ||
 		!(tmp->name = name))
+	{
+		if (name)
+			free(name);
 		return (free_env(&tmp, &lst));
+	}
 	tmp->par = par;
 	if (!(lst = ft_lstnew(tmp)))
+	{
+		free(name);
 		return (free_env(&tmp, &lst));
+	}
 	ft_lstadd_back(&all->env, lst);
 	return (0);
 }
