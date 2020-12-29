@@ -6,11 +6,17 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:20:05 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/27 22:12:54 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 17:55:38 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** function pointers initialization
+**
+** @param **f a pointer to an array of functions
+*/
 
 static void	init_f(int (**f)(t_all*, t_cmd*))
 {
@@ -22,6 +28,14 @@ static void	init_f(int (**f)(t_all*, t_cmd*))
 	f[5] = ft_cd;
 	f[6] = ft_exit;
 }
+
+/*
+** launching its functions
+**
+** @param *all general structure
+** @param *lst command pointer
+** @return 1 if the command is executed, 0 if not executed, the error is -1
+*/
 
 static int	start_cmd(t_all *all, t_list *lst)
 {
@@ -46,6 +60,16 @@ static int	start_cmd(t_all *all, t_list *lst)
 	return (0);
 }
 
+/*
+** clears strings
+**
+** @param **split array of strings
+** @param **split2 array of strings
+** @param **text pointer to string
+** @param ret return
+** @return ret
+*/
+
 static int	free_local(char **split, char **split2, char **text, int ret)
 {
 	if (split)
@@ -56,6 +80,16 @@ static int	free_local(char **split, char **split2, char **text, int ret)
 		free(*text);
 	return (ret);
 }
+
+/*
+** execute the execve command
+**
+** @param *all general structure
+** @param *lst command pointer
+** @param **envp array of environment variables strings
+** @param **argv array of argument strings
+** @return 0 if good, otherwise -1
+*/
 
 static int	start_execve(t_all *all, t_list *lst, char **envp, char **argv)
 {
@@ -84,6 +118,13 @@ static int	start_execve(t_all *all, t_list *lst, char **envp, char **argv)
 	return (free_local(envp, argv, &fullname, 0));
 }
 
+/*
+** execute the command
+**
+** @param *all general structure
+** @return 0 if good, otherwise -1
+*/
+
 int			parser_cmd(t_all *all)
 {
 	t_list	*lst;
@@ -94,14 +135,19 @@ int			parser_cmd(t_all *all)
 	lst = all->cmd;
 	envp = NULL;
 	argv = NULL;
+	if (parser_syntax_errors(all) == 1)
+		return (0);
 	while (lst)
 	{
-		if ((res_cmd = start_cmd(all, lst)) == -1)
-			return (-1);
-		if (!res_cmd)
+		if (!is_null_cmd(lst))
 		{
-			if (start_execve(all, lst, envp, argv) == -1)
+			if ((res_cmd = start_cmd(all, lst)) == -1)
 				return (-1);
+			if (!res_cmd)
+			{
+				if (start_execve(all, lst, envp, argv) == -1)
+					return (-1);
+			}
 		}
 		lst = lst->next;
 	}

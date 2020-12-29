@@ -6,11 +6,18 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 10:29:09 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/25 11:41:18 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:53:33 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** removes the environment variable
+**
+** @param *all general structure
+** @param *s unset function argument
+*/
 
 static void	delete_env(t_all *all, char *s)
 {
@@ -40,6 +47,14 @@ static void	delete_env(t_all *all, char *s)
 		}
 	}
 }
+
+/*
+** executes the unset command
+**
+** @param *all general structure
+** @param *cmd command structure
+** @return 0
+*/
 
 int			ft_unset(t_all *all, t_cmd *cmd)
 {

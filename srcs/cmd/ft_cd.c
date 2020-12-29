@@ -6,11 +6,19 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 14:48:06 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/25 18:26:07 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:35:25 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** clears all lines
+**
+** @param **text pointer to array of strings
+** @param **text1 pointer to array of strings
+** @return -1
+*/
 
 static int	free_local(char **text, char **text1)
 {
@@ -20,6 +28,14 @@ static int	free_local(char **text, char **text1)
 		free(*text1);
 	return (-1);
 }
+
+/*
+** goes to directory and updates environment variables
+**
+** @param *all general structure
+** @param *arg environment variable value
+** @return 0 if good, otherwise -1
+*/
 
 static int	cd_to_path(t_all *all, char *arg)
 {
@@ -46,6 +62,15 @@ static int	cd_to_path(t_all *all, char *arg)
 	return (0);
 }
 
+/*
+** makes a check that there is an environment variable name, if there is,
+** go ahead, otherwise we display an error
+**
+** @param *all general structure
+** @param *name environment variable name
+** @return 0 if good, otherwise -1
+*/
+
 static int	cd_to(t_all *all, char *name)
 {
 	t_env	*env;
@@ -64,6 +89,14 @@ static int	cd_to(t_all *all, char *name)
 	}
 	return (0);
 }
+
+/*
+** executes the cd command
+**
+** @param *all general structure
+** @param *cmd command structure
+** @return 0 if good, otherwise -1
+*/
 
 int			ft_cd(t_all *all, t_cmd *cmd)
 {

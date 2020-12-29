@@ -6,11 +6,19 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 12:33:48 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/20 13:32:27 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:12:02 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** gets a string inside strong quotes
+**
+** @param *all general structure
+** @param **text pointer to the string to which the result is written
+** @return 0 if good, otherwise -1
+*/
 
 int		get_strong_quotes(t_all *all, char **text)
 {
@@ -25,6 +33,14 @@ int		get_strong_quotes(t_all *all, char **text)
 		all->pos++;
 	return (0);
 }
+
+/*
+** gets the string inside the loose quotes
+**
+** @param *all general structure
+** @param **text pointer to the string to which the result is written
+** @return 0 if good, otherwise -1
+*/
 
 int		get_quotes(t_all *all, char **text)
 {

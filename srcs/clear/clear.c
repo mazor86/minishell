@@ -6,11 +6,17 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 19:39:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/26 13:52:14 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:07:34 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** Clears the entire t_cmd structure
+**
+** @param **lst Pointer to sheet of structure t_cmd
+*/
 
 void	clear_cmd(t_list **lst)
 {
@@ -33,6 +39,12 @@ void	clear_cmd(t_list **lst)
 	ft_lstclear(lst, free);
 }
 
+/*
+** Clears the entire t_all structure
+**
+** @param *all general structure
+*/
+
 int		clear_all(t_all *all)
 {
 	clear_cmd(&all->cmd);
@@ -40,6 +52,12 @@ int		clear_all(t_all *all)
 	free(all->line);
 	return (-1);
 }
+
+/*
+** Clears an array of strings
+**
+** @param **text Pointer to array of strings
+*/
 
 void	*free_split(char **text)
 {

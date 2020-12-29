@@ -6,11 +6,19 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:00:54 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/27 21:46:10 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:07:41 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** looks for a file in a directory
+**
+** @param *path path to directory
+** @param *name file name
+** @return 1 if the file is found, otherwise 0
+*/
 
 static int	get_cd_local(char *path, char *name)
 {
@@ -30,6 +38,15 @@ static int	get_cd_local(char *path, char *name)
 	closedir(dir);
 	return (0);
 }
+
+/*
+** get full command path
+**
+** @param **split an array of path strings for the PATH variable
+** @param *all general structure
+** @param *lst command pointer
+** @return full file path, otherwise NULL
+*/
 
 static char	*parse_split_local(char **split, t_all *all, t_list *lst)
 {
@@ -56,6 +73,14 @@ static char	*parse_split_local(char **split, t_all *all, t_list *lst)
 	all->res = 127;
 	return (NULL);
 }
+
+/*
+** get full command path
+**
+** @param *all general structure
+** @param *lst command pointer
+** @return full file path, otherwise NULL
+*/
 
 char		*get_full_cmd_name(t_all *all, t_list *lst)
 {

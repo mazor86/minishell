@@ -6,11 +6,19 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 10:13:05 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/25 10:25:46 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:37:09 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** executes the env command
+**
+** @param *all general structure
+** @param *cmd command structure
+** @return 0
+*/
 
 int		ft_env(t_all *all, t_cmd *cmd)
 {

@@ -6,11 +6,17 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:08:51 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/27 20:49:07 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:00:41 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+/*
+** Zeroes all parameters in the structure t_all
+**
+** @param *all general structure
+*/
 
 static void	clear(t_all *all)
 {
@@ -21,6 +27,13 @@ static void	clear(t_all *all)
 	all->res = 1;
 }
 
+/*
+** Updates all parameters of the t_all structure to the standard
+** ones to get a new line from the user
+**
+** @param *all general structure
+*/
+
 static void	update_main(t_all *all)
 {
 	clear_cmd(&all->cmd);
@@ -28,6 +41,15 @@ static void	update_main(t_all *all)
 	all->line = NULL;
 	all->pos = 0;
 }
+
+/*
+** Main function
+**
+** @param args number of arguments
+** @param **argv arguments
+** @param **env environment variables
+** @return 0 if good, otherwise -1
+*/
 
 int			main(int args, char **argv, char **env)
 {

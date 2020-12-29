@@ -6,11 +6,19 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:08:06 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/23 19:03:08 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:36:26 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** executes the echo command
+**
+** @param *all general structure
+** @param *cmd command structure
+** @return 0
+*/
 
 int		ft_echo(t_all *all, t_cmd *cmd)
 {

@@ -6,7 +6,7 @@
 #    By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/03 21:04:29 by jlyessa           #+#    #+#              #
-#    Updated: 2020/12/27 21:45:11 by jlyessa          ###   ########.fr        #
+#    Updated: 2020/12/29 12:37:46 by jlyessa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS = srcs/main.c \
 		srcs/parser/parser_quotes.c \
 		srcs/parser/parser_cmd.c \
 		srcs/parser/parser_path.c \
+		srcs/parser/parser_errors.c \
 		srcs/parser/utils.c \
 		srcs/parser/convert.c \
 		srcs/init/init.c \

@@ -6,11 +6,19 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 13:10:12 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/18 16:00:12 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:12:52 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** Produces shielding
+**
+** @param *all general structure
+** @param **text pointer to the string to which the result is written
+** @return 0 if good, otherwise -1
+*/
 
 int		get_shielding(t_all *all, char **text)
 {

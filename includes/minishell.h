@@ -6,7 +6,7 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:05:41 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/27 21:45:33 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 14:00:51 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ typedef struct	s_cmd
 {
 	char	*name;
 	char	**argv;
-	char	pipe_start;
-	char	pipe_end;
+	char	pipe;
 }				t_cmd;
 
 typedef struct	s_all
@@ -62,6 +61,7 @@ int				get_variables(t_all *all, char **text);
 int				get_strong_quotes(t_all *all, char **text);
 int				get_quotes(t_all *all, char **text);
 int				parser_cmd(t_all *all);
+int				parser_syntax_errors(t_all *all);
 
 int				ft_echo(t_all *all, t_cmd *cmd);
 int				ft_pwd(t_all *all, t_cmd *cmd);
@@ -72,6 +72,7 @@ int				ft_cd(t_all *all, t_cmd *cmd);
 int				ft_exit(t_all *all, t_cmd *cmd);
 
 t_list			*init_cmd(void);
+int				is_null_cmd(t_list *lst);
 void			clear_cmd(t_list **lst);
 
 int				join_char(char **text, char c);

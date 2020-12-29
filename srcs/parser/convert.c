@@ -6,11 +6,18 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 13:00:31 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/27 17:25:26 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 17:45:52 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** gets command name from full path
+**
+** @param *lst command pointer
+** @return pointer to the command name, otherwise NULL
+*/
 
 static char	*get_filename(t_list *lst)
 {
@@ -21,6 +28,14 @@ static char	*get_filename(t_list *lst)
 	return (ft_strdup(++res));
 }
 
+/*
+** clears strings
+**
+** @param **split array of strings
+** @param **name pointer to string
+** @return NULL
+*/
+
 static void	*free_argv_local(char **split, char **name)
 {
 	free_split(split);
@@ -28,6 +43,13 @@ static void	*free_argv_local(char **split, char **name)
 		free(*name);
 	return (NULL);
 }
+
+/*
+** converts a list of environment variables to an array of strings
+**
+** @param *all general structure
+** @return pointer to an array of strings, otherwise NULL
+*/
 
 char		**convert_env(t_all *all)
 {
@@ -57,6 +79,13 @@ char		**convert_env(t_all *all)
 	}
 	return (res);
 }
+
+/*
+** converts command arguments to an array of strings
+**
+** @param *lst argument list
+** @return pointer to an array of strings, otherwise NULL
+*/
 
 char		**convert_argv(t_list *lst)
 {

@@ -6,11 +6,17 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 10:35:39 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/25 15:55:02 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:49:19 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** displays a complete list of all environment variables
+**
+** @param *all general structure
+*/
 
 static void	show_all_env(t_all *all)
 {
@@ -31,6 +37,14 @@ static void	show_all_env(t_all *all)
 		lst = lst->next;
 	}
 }
+
+/*
+** re-updates the value of an environment variable
+**
+** @param *all general structure
+** @param *text export command argument
+** @return 0 if good, otherwise -1
+*/
 
 static int	update_env_local(t_all *all, char *text)
 {
@@ -54,6 +68,13 @@ static int	update_env_local(t_all *all, char *text)
 	return (0);
 }
 
+/*
+** makes a check that the name of the environment variable is valid
+**
+** @param *text export command argument
+** @return 1 is valid, otherwise 0
+*/
+
 static int	is_valid_argv(char *text)
 {
 	if ((text[0] >= 'a' && text[0] <= 'z') || (text[0] >= 'A' && text[0] <= 'Z')
@@ -65,6 +86,14 @@ static int	is_valid_argv(char *text)
 	ft_putchar_fd('\n', 2);
 	return (0);
 }
+
+/*
+** executes the export command
+**
+** @param *all general structure
+** @param *cmd command structure
+** @return 0 if good, otherwise -1
+*/
 
 int			ft_export(t_all *all, t_cmd *cmd)
 {

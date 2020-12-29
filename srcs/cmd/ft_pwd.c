@@ -6,11 +6,19 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/20 23:18:30 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/25 16:35:04 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 16:49:55 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** executes the pwd command
+**
+** @param *all general structure
+** @param *cmd command structure
+** @return 0 if good, otherwise -1
+*/
 
 int		ft_pwd(t_all *all, t_cmd *cmd)
 {

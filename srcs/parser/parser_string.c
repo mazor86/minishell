@@ -6,19 +6,19 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:03:16 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/22 01:14:42 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:17:56 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static void	init_f(int (**f)(t_all*, char**))
-{
-	f[0] = get_shielding;
-	f[1] = get_variables;
-	f[2] = get_strong_quotes;
-	f[3] = get_quotes;
-}
+/*
+** gets strings when encountering special characters
+**
+** @param *all general structure
+** @param **text pointer to the string to which the result is written
+** @return 1 if a special character is encountered, 0 if not, -1 error
+*/
 
 static int	get_spec(t_all *all, char **text)
 {
@@ -27,7 +27,10 @@ static int	get_spec(t_all *all, char **text)
 	int			i;
 
 	i = -1;
-	init_f(f);
+	f[0] = get_shielding;
+	f[1] = get_variables;
+	f[2] = get_strong_quotes;
+	f[3] = get_quotes;
 	while (++i < (int)ft_strlen(spec))
 	{
 		if (all->line[all->pos] == spec[i])
@@ -39,6 +42,13 @@ static int	get_spec(t_all *all, char **text)
 	}
 	return (0);
 }
+
+/*
+** gets the name of the command entered by the user
+**
+** @param *all general structure
+** @return 0 if good, otherwise -1
+*/
 
 static int	get_name(t_all *all)
 {
@@ -56,6 +66,13 @@ static int	get_name(t_all *all)
 	}
 	return (0);
 }
+
+/*
+** gets all the arguments entered by the user
+**
+** @param *all general structure
+** @return 0 if good, otherwise -1
+*/
 
 static int	get_arg(t_all *all)
 {
@@ -85,10 +102,16 @@ static int	get_arg(t_all *all)
 	return (0);
 }
 
+/*
+** Parses the string entered by the user
+**
+** @param *all general structure
+** @return 0 if good, otherwise -1
+*/
+
 int			parser_string(t_all *all)
 {
 	t_list		*lst;
-	const char	spec[3] = "|;";
 
 	while (all->line[all->pos])
 	{
@@ -96,12 +119,6 @@ int			parser_string(t_all *all)
 			return (-1);
 		ft_lstadd_back(&all->cmd, lst);
 		trim_space(all);
-		if (ft_strchr(spec, all->line[all->pos]))
-		{
-			if (all->line[all->pos] == '|')
-				((t_cmd*)ft_lstlast(all->cmd)->content)->pipe_start = 1;
-			all->pos++;
-		}
 		trim_space(all);
 		if (get_name(all) == -1)
 			return (-1);
@@ -109,7 +126,8 @@ int			parser_string(t_all *all)
 		if (get_arg(all) == -1)
 			return (-1);
 		if (all->line[all->pos] == '|')
-			((t_cmd*)ft_lstlast(all->cmd)->content)->pipe_end = 1;
+			((t_cmd*)ft_lstlast(all->cmd)->content)->pipe = 1;
+		all->pos++;
 	}
 	return (0);
 }

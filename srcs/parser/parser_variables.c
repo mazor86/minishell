@@ -6,11 +6,19 @@
 /*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 00:04:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/19 22:12:12 by jlyessa          ###   ########.fr       */
+/*   Updated: 2020/12/29 18:24:34 by jlyessa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** display the result of the last operation
+**
+** @param *all general structure
+** @param **text pointer to the string to which the result is written
+** @return 1 if there was $?, If not 0, error -1
+*/
 
 static int	get_result(t_all *all, char **text)
 {
@@ -29,6 +37,15 @@ static int	get_result(t_all *all, char **text)
 	return (0);
 }
 
+/*
+** Replaces text with the value of an environment variable
+**
+** @param *all general structure
+** @param **text pointer to the string to which the result is written
+** @param *var environment variable name
+** @return 0 if good, otherwise -1
+*/
+
 static int	set_env(t_all *all, char **text, char *var)
 {
 	t_list		*lst;
@@ -46,6 +63,14 @@ static int	set_env(t_all *all, char **text, char *var)
 	}
 	return (0);
 }
+
+/*
+** Replaces text with the value of an environment variable
+**
+** @param *all general structure
+** @param **text pointer to the string to which the result is written
+** @return 0 if good, otherwise -1
+*/
 
 int			get_variables(t_all *all, char **text)
 {
