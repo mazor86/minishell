@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:43:41 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/08 22:17:00 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/12/31 02:50:16 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_pwd(t_data *data, t_var **my_env)
 	}
 	else
 	{
-		while (ft_strncmp((*my_env)[i].name, "PWD") != 0)
+		while (ft_strncmp((*my_env)[i].name, "PWD", ft_strlen((*my_env)[i].name)) != 0)
 			i++;
 		write(1, (*my_env)[i].value, ft_strlen((*my_env)[i].value));
 		write(1, "\n", 1);

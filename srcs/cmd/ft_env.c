@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:48:51 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/08 21:48:09 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/12/31 02:52:14 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ int		ft_env(t_data *data, t_var **my_env)
 			exit(g_exit_status);
 		}
 	else
-	{
 		while ((*my_env)[i].name != NULL)
 		{
-			write(1, (*my_env)[i].name, ft_strlen((*my_env)[i].name));
-			write(1, "=", 1);
-			write(1, (*my_env)[i].value, ft_strlen((*my_env)[i].value));
-			write(1, "\n", 1);
-			i++;
+			if ((*my_env)[i].standard == 1)
+			{
+				write(1, (*my_env)[i].name, ft_strlen((*my_env)[i].name));
+				write(1, "=", 1);
+				write(1, (*my_env)[i].value, ft_strlen((*my_env)[i].value));
+				write(1, "\n", 1);
+			}
+		i++;
 		}
-	}
 	return (0);
 }

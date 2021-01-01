@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:45:35 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/08 22:21:56 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/01 17:05:15 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 int		ft_cd(t_data *data, t_var **my_env)
 {
 	int i;
+	int n;
+	char *path;
 
 	i = 0;
-	while (data->argum[0][i] != '\0')
+	path = data->argum[0] == NULL ? get_home(my_env) : data->argum[0];
+	if (chdir(path) < 0)
 	{
-		if (data->argum[0][i] != '.')
-		{
-			if(data->argum[0][i + 1] != '.')
-			{
-				
-			}
-		}
-		i++;
+		write (1, "error", 5);
+		exit (2); // set error path not found or other
 	}
+	change_var("OLD_PWD", get_var(my_env, "PWD"));
+	change_var("PWD", getcwd(NULL, _PC_PATH_MAX));
 	return (0);
 }

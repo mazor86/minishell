@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2020/12/08 19:33:59 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/01 16:32:34 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int				ft_unset(t_data *data, t_var **my_env);
 
 void    		wrong_command(t_data *data, t_var **my_env);
 void	        free_struct(t_data *data);
+void			free_t_var(t_var **my_env);
 int				start_cmd(t_list *lst);
 
 /*
@@ -72,8 +73,8 @@ void			parce_line(t_data *data, char *line, t_var **my_env);
 void			check_name(t_data *data, char ***my_env);
 int				parce_s_quotes(char *line, t_data *data, t_var **my_env);
 int				parce_d_quotes(char *line, t_data *data, t_var **my_env);
-int             set_var(char *line, t_var **my_env);
-int             get_var(char *line, t_data *data, t_var **my_env);
+void            set_var(char *line, t_var **my_env);
+int             get_var(t_var **my_env, char *var_name);
 int             get_ecran(char *line, t_data *data, t_var **my_env);
 int             get_arg(char *line, t_data *data, t_var **my_env);
 int             exec_pipe(char *line, t_data *data, t_var **my_env);
