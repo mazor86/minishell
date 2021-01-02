@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/02 13:09:18 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/02 13:20:25 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,9 @@ int				ft_unset(t_all *all, t_cmd *cmd);
 int				ft_cd(t_all *all, t_cmd *cmd);
 int				ft_exit(t_all *all, t_cmd *cmd);
 
-t_list			*init_cmd(void);
+t_cmd			*init_cmd(void);
 int				is_null_cmd(t_list *lst);
-void			clear_cmd(t_list **lst);
-void    		wrong_command(t_data *data, t_var **my_env);
-void	        free_struct(t_data *data);
+void			clear_cmd(t_cmd **cmd_lst);
 void			free_t_var(t_var **my_env);
 int				start_cmd(t_list *lst);
 

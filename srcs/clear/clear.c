@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 19:39:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 16:07:34 by jlyessa          ###   ########.fr       */
+/*   Updated: 2021/01/02 13:18:17 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 ** @param **lst Pointer to sheet of structure t_cmd
 */
 
-void	clear_cmd(t_list **lst)
+void	clear_cmd(t_cmd **cmd_lst)
 {
 	t_list	*tmp;
 	int		i;
 
-	tmp = *lst;
+	tmp = *cmd_lst;
 	while (tmp)
 	{
 		i = -1;
@@ -36,7 +36,7 @@ void	clear_cmd(t_list **lst)
 		free(((t_cmd*)tmp->content)->argv);
 		tmp = tmp->next;
 	}
-	ft_lstclear(lst, free);
+	ft_lstclear(cmd_lst, free);
 }
 
 /*
@@ -48,7 +48,7 @@ void	clear_cmd(t_list **lst)
 int		clear_all(t_all *all)
 {
 	clear_cmd(&all->cmd);
-	clear_env(&all->env);
+	clear_env(&all->my_env);
 	free(all->line);
 	return (-1);
 }
