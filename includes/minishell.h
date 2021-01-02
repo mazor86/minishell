@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/02 13:20:25 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/02 13:36:26 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <dirent.h>
 # include "../libft/libft.h"
 # include "struct.h"
+
+int				g_exit_status = 0;
 
 int				get_next_line(int fd, char **line);
 char			*ft_strcut(char *str, char c);

@@ -3,15 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2020/12/25 10:13:05 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 16:37:09 by jlyessa          ###   ########.fr       */
-=======
 /*   Created: 2020/11/08 19:48:51 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/31 02:52:14 by tisabel          ###   ########.fr       */
->>>>>>> tisabel
+/*   Updated: 2021/01/02 13:34:36 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +22,6 @@
 
 int		ft_env(t_all *all, t_cmd *cmd)
 {
-<<<<<<< HEAD
-	t_list	*lst;
-
-	(void)cmd;
-	lst = all->env;
-	while (lst)
-	{
-		if (((t_env*)lst->content)->par)
-		{
-			ft_putstr_fd(((t_env*)lst->content)->name, 1);
-			ft_putstr_fd("=", 1);
-			ft_putstr_fd(((t_env*)lst->content)->par, 1);
-			ft_putstr_fd("\n", 1);
-		}
-		lst = lst->next;
-	}
-	all->res = 0;
-=======
 	int i;
 
 	i = 0;
@@ -66,6 +43,5 @@ int		ft_env(t_all *all, t_cmd *cmd)
 			}
 		i++;
 		}
->>>>>>> tisabel
 	return (0);
 }
