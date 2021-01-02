@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/25 14:48:06 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 16:35:25 by jlyessa          ###   ########.fr       */
+/*   Created: 2020/11/08 19:45:35 by jlyessa           #+#    #+#             */
+/*   Updated: 2021/01/02 12:54:11 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,22 +100,18 @@ static int	cd_to(t_all *all, char *name)
 
 int			ft_cd(t_all *all, t_cmd *cmd)
 {
-	all->res = 0;
-	if (!ft_strncmp(cmd->argv[0], "", 1))
-		return (cd_to(all, "HOME"));
-	else
+	int i;
+	int n;
+	char *path;
+
+	i = 0;
+	path = data->argum[0] == NULL ? get_home(my_env) : data->argum[0];
+	if (chdir(path) < 0)
 	{
-		if (!cmd->argv[1])
-		{
-			if (!ft_strncmp(cmd->argv[0], "-", 2))
-				return (cd_to(all, "OLDPWD"));
-			return (cd_to_path(all, cmd->argv[0]));
-		}
-		else
-		{
-			ft_putstr_fd("cd: too many arguments\n", 2);
-			all->res = 1;
-		}
+		write (1, "error", 5);
+		exit (2); // set error path not found or other
 	}
+	change_var("OLD_PWD", get_var(my_env, "PWD"));
+	change_var("PWD", getcwd(NULL, _PC_PATH_MAX));
 	return (0);
 }

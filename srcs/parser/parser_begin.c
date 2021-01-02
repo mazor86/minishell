@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   parser_begin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 19:39:07 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/02 12:54:08 by tisabel          ###   ########.fr       */
+/*   Created: 2020/12/08 19:32:45 by tisabel           #+#    #+#             */
+/*   Updated: 2020/12/08 19:33:29 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
-int		ft_echo(t_data *data)
+void    exec_commands(t_data *data, char *line, t_var **my_env)
 {
-	int		i;
-	char	flag;
-
-	i = -1;
-	is_n = 0;
-	while (data->argum[++i])
-	{
-		if (i == 0 && !ft_strncmp(cmd->argv[i], "-n", 3))
-			flag = 1;
-		else
+	if (line[0] == '\0')
 		{
-			ft_putstr_fd(cmd->argv[i], 1);
-			if (cmd->argv[i + 1])
-				ft_putchar_fd(' ', 1);
+			g_exit_status = 0;
+			return ;
 		}
-	}
-	if (!flag)
-		ft_putchar_fd('\n', 1);
-	all->res = 0;
-	return (0);
+    parce_command(data, line, my_env);
+    check_name(data, my_env);
 }

@@ -3,66 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/25 10:29:09 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 16:53:33 by jlyessa          ###   ########.fr       */
+/*   Created: 2020/11/08 19:47:58 by jlyessa           #+#    #+#             */
+/*   Updated: 2021/01/02 12:54:13 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-/*
-** removes the environment variable
-**
-** @param *all general structure
-** @param *s unset function argument
-*/
-
-static void	delete_env(t_all *all, char *s)
+void	ft_rm_element(t_var **my_env, int j)
 {
-	t_list	*lst;
-	t_list	*tmp;
-	t_list	*parent;
+	t_var *new_env;
+	int len;
+	int i;
 
-	lst = all->env;
-	parent = NULL;
-	while (lst)
-	{
-		if (!ft_strncmp(((t_env*)lst->content)->name, s, ft_strlen(s) + 1))
+	i = 0;
+	len = 0;
+	while ((*my_env)[len].name != NULL)
+		len++;
+	if (!(new_env = (t_var*)malloc(sizeof(t_var) * (len + 1))))
+			exit (2);
+	while (i < len)
+		if (i != j)
 		{
-			tmp = lst;
-			lst = lst->next;
-			if (parent)
-				parent->next = lst;
-			free(((t_env*)tmp->content)->name);
-			if (((t_env*)tmp->content)->par)
-				free(((t_env*)tmp->content)->par);
-			free(tmp);
+			new_env[i].name = ft_strdup((*my_env)[i].name);
+			new_env[i].value = ft_strdup((*my_env)[i].value);
+			new_env[i].standard = (*my_env)[i].standard;
+			i++;
 		}
-		else
-		{
-			parent = lst;
-			lst = lst->next;
-		}
-	}
+	new_env[i].name = NULL;
+	free_t_var(my_env);
+	*my_env = new_env;
 }
 
-/*
-** executes the unset command
-**
-** @param *all general structure
-** @param *cmd command structure
-** @return 0
-*/
-
-int			ft_unset(t_all *all, t_cmd *cmd)
+int		ft_unset(t_data *data, t_var **my_env)
 {
-	int		i;
+	int i;
+	int j; // сделать список элементов которые нужно удалить и удалять все за один проход.
 
-	i = -1;
-	while (cmd->argv[++i])
-		delete_env(all, cmd->argv[i]);
-	all->res = 0;
+	i = 0;
+	if (data->argum[0] == NULL)
+		return (0);
+	else
+	{
+		while (data->argum[i] != NULL)
+		{
+			j = 0;
+			while ((*my_env)[j].name != NULL)
+			{
+				if (ft_strcmp((*my_env)[i].name, data->argum[j]) == 0)
+				{
+					ft_rm_element(my_env, j);
+					break ;
+				}
+				j++;
+			}
+			i++;
+		}
+	}
 	return (0);
 }

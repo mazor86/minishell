@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 21:08:51 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 16:00:41 by jlyessa          ###   ########.fr       */
+/*   Created: 2020/10/25 13:35:15 by jlyessa           #+#    #+#             */
+/*   Updated: 2021/01/02 12:54:18 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void	update_main(t_all *all)
 int			main(int args, char **argv, char **env)
 {
 	t_all	all;
+	t_var	my_env;
 
 	(void)args;
 	(void)argv;
