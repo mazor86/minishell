@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:38:46 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/02 13:08:40 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/04 16:10:32 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 ** 0 if it was added by simply writing in the string, 1 if it is a standart and 2 if it was added via export)
 */
 
-typedef struct		s_var
+typedef struct		s_env
 {
 	char			*name;
 	char			*value;
 	short			standard;
-}					t_var;
+}					t_env;
 
 typedef struct		s_cmd
 {
@@ -37,7 +37,7 @@ typedef struct		s_cmd
 
 typedef struct		s_all
 {
-	t_var			*my_env;
+	t_env			*my_env;
 	t_cmd			*cmd;
 	char			*line;
 	int				pos;

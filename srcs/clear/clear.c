@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 19:39:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/02 13:18:17 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/04 16:36:02 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		clear_all(t_all *all)
 ** @param **text Pointer to array of strings
 */
 
-void	*free_split(char **text)
+void	*free_array(char **text)
 {
 	int		i;
 

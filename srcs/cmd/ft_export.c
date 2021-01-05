@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:46:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/02 13:34:35 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/05 20:50:45 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		check_arg(char *argum)
 	return (0);
 }
 
-void	add_arg(char *argum, t_var **my_env)
+void	add_arg(char *argum, t_env **my_env)
 {
 	int n;
 
@@ -42,9 +42,9 @@ void	add_arg(char *argum, t_var **my_env)
 	(*my_env)->standard = 2;
 }
 
-t_var	*copy_env(t_var *my_env)
+t_env	*copy_env(t_env *my_env)
 {
-	t_var	*copy;
+	t_env	*copy;
 	int		len;
 	int		i;
 
@@ -52,7 +52,7 @@ t_var	*copy_env(t_var *my_env)
 	while (my_env[len].name != NULL)
 		len++;
 	i = 0;
-	if (!(copy = (t_var*)malloc(sizeof(t_var) * (len + 1))))
+	if (!(copy = (t_env*)malloc(sizeof(t_env) * (len + 1))))
 			exit (2);
 	while (i < len)
 	{
@@ -64,7 +64,7 @@ t_var	*copy_env(t_var *my_env)
 	copy[i].name = NULL;
 }
 
-int		count_var(t_var *var)
+int		count_var(t_env *var)
 {
 	int len;
 	int i;
@@ -76,9 +76,9 @@ int		count_var(t_var *var)
 	return (len);
 }
 
-void	sort_env(t_var *var)
+void	sort_env(t_env *var)
 {
-	t_var	tmp;
+	t_env	tmp;
 	int		j;
 	int		i;
 	int 	s;
@@ -104,25 +104,25 @@ void	sort_env(t_var *var)
 	}
 }
 
-void	write_var(t_var var_i)
+void	write_var(t_env env_i)
 {
 	write(1, "declare -x ", 11);
-	write(1, var_i.name, ft_strlen(var_i.name));
+	write(1, env_i.name, ft_strlen(env_i.name));
 	write(1, "=", 1);
-	write(1, var_i.value, ft_strlen(var_i.value));
+	write(1, env_i.value, ft_strlen(env_i.value));
 	write(1, "\n", 1);
 }
 
-int		ft_export(t_data *data, t_var **my_env)
+int		ft_export(t_all **all)
 {
 	int i;
-	t_var *sorted_env;
+	t_env *sorted_env;
 	int len;
 
 	i = 0;
-	if(data->argum[0] == NULL)
+	if((*all)->cmd->argv[0] == NULL)
 	{
-		sorted_env = copy_env(*my_env);
+		sorted_env = copy_env((*all)->my_env);
 		sort_env(&sorted_env);
 		while (sorted_env[i].name != NULL)
 			if (sorted_env[i].standard != 0)
@@ -132,11 +132,11 @@ int		ft_export(t_data *data, t_var **my_env)
 			}
 	}
 	else
-		while (data->argum[i] != NULL)
+		while ((*all)->cmd->argv[i] != NULL)
 		{
-			check_arg(data->argum[i]);
-			add_arg(data->argum[i], my_env);
+			check_arg((*all)->cmd->argv[i]);
+			add_arg((*all)->cmd->argv[i], (*all)->my_env);
 		}
-	free_t_var(&sorted_env);
+	free_t_env(&sorted_env);
 	return (0);
 }
