@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:03:16 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 18:17:56 by jlyessa          ###   ########.fr       */
+/*   Updated: 2021/01/06 22:33:07 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static int	get_arg(t_all *all)
 
 int			parser_string(t_all *all)
 {
-	t_list		*lst;
+	t_cmd		*lst;
 
 	while (all->line[all->pos])
 	{

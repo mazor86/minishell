@@ -6,13 +6,13 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 17:21:32 by tisabel           #+#    #+#             */
-/*   Updated: 2020/12/31 01:53:41 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/05 21:03:52 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	convert_envp(t_var **envp_var, char **envp)
+void	convert_envp(t_env **envp_var, char **envp)
 {
 	int i;
 	int j;
@@ -22,7 +22,7 @@ void	convert_envp(t_var **envp_var, char **envp)
 	len_envp = 0;
 	while (envp[len_envp])
 		len_envp++;
-	if (!(*envp_var = (t_var*)malloc(sizeof(t_var) * (len_envp + 1))))
+	if (!(*envp_var = (t_env*)malloc(sizeof(t_env) * (len_envp + 1))))
 		exit (1);
 	while (envp[i] != NULL)
 	{

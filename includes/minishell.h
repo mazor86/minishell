@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/05 20:51:13 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/05 20:58:39 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,17 +94,17 @@ int				add_remalloc_argv(t_all *all, const char *spec, int *i);
 void			*free_array(char **text);
 
 int				ft_error(char *name, char *text, int ret);
-void    		exec_commands(t_data *data, char *line, t_env **my_env);
-int				parce_command(t_data *data, char *line, t_env **my_env);
-void			parce_line(t_data *data, char *line, t_env **my_env);
-void			check_name(t_data *data, char ***my_env);
-int				parce_s_quotes(char *line, t_data *data, t_env **my_env);
-int				parce_d_quotes(char *line, t_data *data, t_env **my_env);
+//void    		exec_commands(t_data *data, char *line, t_env **my_env);
+//int				parce_command(t_data *data, char *line, t_env **my_env);
+//void			parce_line(t_data *data, char *line, t_env **my_env);
+//void			check_name(t_data *data, char ***my_env);
+//int				parce_s_quotes(char *line, t_data *data, t_env **my_env);
+//int				parce_d_quotes(char *line, t_data *data, t_env **my_env);
 void            set_var(char *line, t_env **my_env);
 int             get_var(t_env **my_env, char *var_name);
-int             get_ecran(char *line, t_data *data, t_env **my_env);
-int             get_arg(char *line, t_data *data, t_env **my_env);
-int             exec_pipe(char *line, t_data *data, t_env **my_env);
-int             exec_semicolon(char *line, t_data *data, t_env **my_env);
+//int             get_ecran(char *line, t_data *data, t_env **my_env);
+//int             get_arg(char *line, t_data *data, t_env **my_env);
+//int             exec_pipe(char *line, t_data *data, t_env **my_env);
+//int             exec_semicolon(char *line, t_data *data, t_env **my_env);
 
 #endif

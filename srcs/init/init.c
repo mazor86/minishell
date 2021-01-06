@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 19:38:32 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 17:32:40 by jlyessa          ###   ########.fr       */
+/*   Updated: 2021/01/05 21:10:33 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
 ** @return command pointer, otherwise NULL
 */
 
-t_list	*init_cmd(void)
+t_cmd	*init_cmd(void)
 {
 	t_cmd	*cmd;
-	t_list	*res;
 
 	if (!(cmd = malloc(sizeof(t_cmd))))
 		return (NULL);
@@ -31,9 +30,8 @@ t_list	*init_cmd(void)
 		return (NULL);
 	cmd->argv[1] = 0;
 	cmd->pipe = 0;
-	if (!(res = ft_lstnew(cmd)))
-		free(cmd);
-	return (res);
+	cmd->next = NULL;
+	return (cmd);
 }
 
 /*
