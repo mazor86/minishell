@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 00:04:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/07 22:51:51 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:14:22 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,12 @@ static int	get_result(t_all *all, char **text)
 
 static int	set_env(t_all *all, char **text, char *var)
 {
-	t_list		*lst;
 
-	lst = all->my_env;
-	while (lst)
-	{
-		if (!ft_strncmp(var, ((t_env*)lst->content)->name, ft_strlen(var) + 1))
-		{
-			if (join_str(text, ((t_env*)lst->content)->par) == -1)
-				return (-1);
-			break ;
-		}
-		lst = lst->next;
-	}
+	if (join_str(text, get_var(all->my_env, var)) == -1)
+		return (-1);
 	return (0);
 }
+
 
 /*
 ** Replaces text with the value of an environment variable

@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:03:16 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/07 13:53:20 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:22:18 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static int	get_name(t_all *all)
 
 	while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 	{
-		if (!get_spec(all, &((t_cmd*)ft_lstlast(all->cmd)->content)->name))
+		if (!get_spec(all, &(cmdlast(all->cmd)->name)))
 		{
-			if (join_char(&((t_cmd*)ft_lstlast(all->cmd)->content)->name,
+			if (join_char(&(cmdlast(all->cmd)->name),
 				all->line[all->pos]) == -1)
 				return (-1);
 			all->pos++;
@@ -117,7 +117,7 @@ int			parser_string(t_all *all)
 	{
 		if (!(lst = init_cmd()))
 			return (-1);
-		ft_cmdadd_back(&all->cmd, lst);
+		cmdadd_back(&all->cmd, lst);
 		trim_space(all);
 		if (get_name(all) == -1)
 			return (-1);

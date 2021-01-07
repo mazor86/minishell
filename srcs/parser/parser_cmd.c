@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:20:05 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 17:55:38 by jlyessa          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:06:39 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** @param **f a pointer to an array of functions
 */
 
-static void	init_f(int (**f)(t_all*, t_cmd*))
+static void	init_f(int (**f)(t_all**))
 {
 	f[0] = ft_echo;
 	f[1] = ft_pwd;
@@ -34,25 +34,26 @@ static void	init_f(int (**f)(t_all*, t_cmd*))
 **
 ** @param *all general structure
 ** @param *lst command pointer
-** @return 1 if the command is executed, 0 if not executed, the error is -1
+** @return 1 if the command is executed, 0 if not executed, exitstatus
+** (errno number) in case of the error
 */
 
-static int	start_cmd(t_all *all, t_list *lst)
+static int	start_cmd(t_all *all, t_cmd *lst)
 {
 	int			i;
 	const char	*name[7] = { "echo", "pwd", "export", "env", "unset", "cd",
 				"exit" };
-	int			(*f[7])(t_all*, t_cmd*);
+	int			(*f[7])(t_all**);
 
 	i = 0;
 	init_f(f);
 	while (i < 7)
 	{
-		if (!ft_strncmp(((t_cmd*)lst->content)->name, name[i],
+		if (!ft_strncmp(lst->name, name[i],
 			ft_strlen(name[i]) + 1))
 		{
-			if (f[i](all, (t_cmd*)lst->content) == -1)
-				return (-1);
+			if (f[i](&all) != 0)
+				return (g_exit_status);
 			return (1);
 		}
 		i++;
@@ -91,7 +92,7 @@ static int	free_local(char **split, char **split2, char **text, int ret)
 ** @return 0 if good, otherwise -1
 */
 
-static int	start_execve(t_all *all, t_list *lst, char **envp, char **argv)
+static int	start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 {
 	pid_t	pid;
 	char	*fullname;
@@ -103,13 +104,13 @@ static int	start_execve(t_all *all, t_list *lst, char **envp, char **argv)
 	if (!(fullname = get_full_cmd_name(all, lst)))
 		return (free_local(envp, argv, &fullname, 0));
 	if ((pid = fork()) == -1)
-		return (ft_error(((t_cmd*)lst->content)->name, ": failed to fork", -1));
+		return (ft_error(lst->name, ": failed to fork", 13, NULL));
 	if (pid == 0)
 	{
 		if (execve(fullname, argv, envp) == -1)
 		{
-			return (ft_error(((t_cmd*)lst->content)->name,
-				": permission denied", 0));
+			return (ft_error(lst->name,
+				": permission denied", 13, NULL));
 		}
 		exit(0);
 	}
@@ -127,7 +128,7 @@ static int	start_execve(t_all *all, t_list *lst, char **envp, char **argv)
 
 int			parser_cmd(t_all *all)
 {
-	t_list	*lst;
+	t_cmd	*lst;
 	int		res_cmd;
 	char	**envp;
 	char	**argv;

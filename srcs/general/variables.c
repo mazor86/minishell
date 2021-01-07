@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 21:53:07 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/07 23:08:05 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:14:10 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int		set_var(char *line, t_env **my_env)
 	return (g_exit_status = 0);
 }
 
-int	get_var(t_env **my_env, char *var_name)
+char	*get_var(t_env *my_env, char *var_name)
 {
 	int i;
 
 	i = 0;
-	while (ft_strcmp((*my_env)[i].name, var_name) != 0 && (*my_env)[i].name != NULL)
+	while (ft_strcmp(my_env[i].name, var_name) != 0 && my_env[i].name != NULL)
 		i++;
-	return ((*my_env)[i].name == NULL ? NULL : (*my_env)[i].value);
+	return (my_env[i].name == NULL ? NULL : my_env[i].value);
 }

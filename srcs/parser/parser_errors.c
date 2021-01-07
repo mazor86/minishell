@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 11:57:19 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 18:00:23 by jlyessa          ###   ########.fr       */
+/*   Updated: 2021/01/07 23:31:31 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 static int	ret_err(t_all *all, char *text)
 {
 	all->res = 2;
-	return (ft_error(NULL, text, 1));
+	return (ft_error(NULL, text, 1, NULL));
 }
 
 /*
@@ -34,19 +34,19 @@ static int	ret_err(t_all *all, char *text)
 ** @return 0 if no error was found, 1 error was found
 */
 
-static int	parser_syntax_errors2(t_all *all, t_list *lst)
+static int	parser_syntax_errors2(t_all *all, t_cmd *lst)
 {
-	if (!ft_strncmp(((t_cmd*)lst->content)->name, "", 1))
+	if (!ft_strncmp(lst->name, "", 1))
 	{
-		if (lst->next && !ft_strncmp(((t_cmd*)lst->next->content)->name, "", 1))
+		if (lst->next && !ft_strncmp((lst->next)->name, "", 1))
 		{
-			if (((t_cmd*)lst->content)->pipe &&
-				((t_cmd*)lst->next->content)->pipe)
+			if (lst->pipe &&
+				(lst->next)->pipe)
 				return (ret_err(all, "syntax error \"||\""));
 			else
 				return (ret_err(all, "syntax error \";;\""));
 		}
-		if (((t_cmd*)lst->content)->pipe)
+		if (lst->pipe)
 			return (ret_err(all, "syntax error \"|\""));
 		else
 			return (ret_err(all, "syntax error \";\""));
@@ -63,16 +63,16 @@ static int	parser_syntax_errors2(t_all *all, t_list *lst)
 
 int			parser_syntax_errors(t_all *all)
 {
-	t_list	*lst;
+	t_cmd	*lst;
 
 	lst = all->cmd;
 	while (lst)
 	{
-		if (lst == all->cmd && !ft_strncmp(((t_cmd*)lst->content)->name,
-			"", 1) && ((t_cmd*)lst->content)->pipe)
+		if (lst == all->cmd && !ft_strncmp(lst->name,
+			"", 1) && lst->pipe)
 		{
-			if (lst->next && !ft_strncmp(((t_cmd*)lst->next->content)->name,
-				"", 1) && ((t_cmd*)lst->next->content)->pipe)
+			if (lst->next && !ft_strncmp((lst->next)->name,
+				"", 1) && (lst->next)->pipe)
 				return (ret_err(all, "syntax error \"||\""));
 			else
 				return (ret_err(all, "syntax error \"|\""));

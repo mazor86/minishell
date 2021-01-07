@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:00:54 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 18:07:41 by jlyessa          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:36:10 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	get_cd_local(char *path, char *name)
 ** @return full file path, otherwise NULL
 */
 
-static char	*parse_split_local(char **split, t_all *all, t_list *lst)
+static char	*parse_split_local(char **split, t_all *all, t_cmd *lst)
 {
 	int		i;
 	char	*res;
@@ -57,10 +57,10 @@ static char	*parse_split_local(char **split, t_all *all, t_list *lst)
 	res = NULL;
 	while (split[++i])
 	{
-		if (get_cd_local(split[i], ((t_cmd*)lst->content)->name) == 1)
+		if (get_cd_local(split[i], lst->name) == 1)
 		{
 			if (!(res = ft_strjoin_char(split[i], '/')) ||
-				join_str(&res, ((t_cmd*)lst->content)->name) == -1)
+				join_str(&res, lst->name) == -1)
 			{
 				if (res)
 					free(res);
@@ -69,7 +69,7 @@ static char	*parse_split_local(char **split, t_all *all, t_list *lst)
 			return (res);
 		}
 	}
-	ft_error(((t_cmd*)lst->content)->name, ": command not found", 0);
+	ft_error(lst->name, ": command not found", 0, NULL);
 	all->res = 127;
 	return (NULL);
 }
@@ -82,17 +82,17 @@ static char	*parse_split_local(char **split, t_all *all, t_list *lst)
 ** @return full file path, otherwise NULL
 */
 
-char		*get_full_cmd_name(t_all *all, t_list *lst)
+char		*get_full_cmd_name(t_all *all, t_cmd *lst)
 {
 	char	**split;
-	t_env	*env;
+	char	*env;
 	char	*res;
 
-	if (ft_strchr(((t_cmd*)lst->content)->name, '/'))
-		return (ft_strdup(((t_cmd*)lst->content)->name));
-	if (!(env = get_env(all, "PATH")))
+	if (ft_strchr(lst->name, '/'))
+		return (ft_strdup(lst->name));
+	if (!(env = get_var(all->my_env, "PATH")))
 		return (NULL);
-	if (!(split = ft_split(env->par, ':')))
+	if (!(split = ft_split(env, ':')))
 		return (NULL);
 	if (!(res = parse_split_local(split, all, lst)))
 		return (free_split(split));
