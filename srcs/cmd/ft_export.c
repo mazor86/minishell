@@ -6,11 +6,11 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:46:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/07 22:13:45 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 01:00:57 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 int		check_arg(char *argum)
 {

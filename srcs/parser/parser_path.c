@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:00:54 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 00:36:10 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:38:34 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char		*get_full_cmd_name(t_all *all, t_cmd *lst)
 	if (!(split = ft_split(env, ':')))
 		return (NULL);
 	if (!(res = parse_split_local(split, all, lst)))
-		return (free_split(split));
-	free_split(split);
+		return (free_array(split));
+	free_array(split);
 	return (res);
 }

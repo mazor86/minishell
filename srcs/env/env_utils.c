@@ -6,11 +6,11 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 16:48:09 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/07 22:04:56 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:47:31 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 t_env	*copy_env(t_env *my_env)
 {
@@ -53,7 +53,6 @@ void	sort_env(t_env *var)
 	t_env	tmp;
 	int		j;
 	int		i;
-	int 	s;
 	int		num;
 
 	j = 0;

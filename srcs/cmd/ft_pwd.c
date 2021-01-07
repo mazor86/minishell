@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:43:41 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/07 22:27:44 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 01:00:31 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int		ft_pwd(t_all **all)
 	char 	*pwd;
 
 	g_exit_status = 0;
-	if (!(pwd = getcwd(NULL, _PC_PATH_MAX)))
-		ft_error("pwd", "out of memory", 12, NULL);
+	if ((pwd = get_var((*all)->my_env, "PWD")) == NULL &&
+	!(pwd = getcwd(NULL, _PC_PATH_MAX)))
+		ft_error("pwd", "out of memory", 12, NULL); // access denied is also possible
 	else
 	{
 		ft_putstr_fd(pwd, 1);

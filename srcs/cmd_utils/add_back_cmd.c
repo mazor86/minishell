@@ -6,11 +6,11 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:41:03 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/06 22:45:46 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:48:15 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 void	cmdadd_back(t_cmd **lst, t_cmd *new)
 {
@@ -22,7 +22,7 @@ void	cmdadd_back(t_cmd **lst, t_cmd *new)
 			*lst = new;
 		else
 		{
-			res = ft_lstlast(*lst);
+			res = cmdlast(*lst);
 			res->next = new;
 		}
 	}

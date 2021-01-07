@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 13:00:31 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 00:06:13 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:41:47 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 ** @return pointer to the command name, otherwise NULL
 */
 
-static char	*get_filename(t_list *lst)
+static char	*get_filename(t_cmd *lst)
 {
 	char	*res;
 
-	if (!(res = ft_strrchr(((t_cmd*)lst->content)->name, '/')))
-		return (ft_strdup(((t_cmd*)lst->content)->name));
+	if (!(res = ft_strrchr(lst->name, '/')))
+		return (ft_strdup(lst->name));
 	return (ft_strdup(++res));
 }
 
@@ -38,7 +38,7 @@ static char	*get_filename(t_list *lst)
 
 static void	*free_argv_local(char **split, char **name)
 {
-	free_split(split);
+	free_array(split);
 	if (name && *name)
 		free(*name);
 	return (NULL);
@@ -101,7 +101,7 @@ char		**convert_argv(t_cmd *lst)
 	if (!(res = ft_calloc(i + 2, sizeof(char*))))
 		return (NULL);
 	if (!(name = get_filename(lst)))
-		return (free_split(res));
+		return (free_array(res));
 	if (!(res[0] = ft_strdup(name)))
 		return (free_argv_local(res, &name));
 	i = -1;

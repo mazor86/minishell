@@ -6,11 +6,11 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 17:21:32 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/05 21:03:52 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:47:05 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 void	convert_envp(t_env **envp_var, char **envp)
 {

@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:20:05 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 00:06:39 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:39:09 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ static int	start_cmd(t_all *all, t_cmd *lst)
 static int	free_local(char **split, char **split2, char **text, int ret)
 {
 	if (split)
-		free_split(split);
+		free_array(split);
 	if (split2)
-		free_split(split2);
+		free_array(split2);
 	if (*text)
 		free(*text);
 	return (ret);

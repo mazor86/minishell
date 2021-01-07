@@ -6,11 +6,11 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:43:14 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/06 22:44:06 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 00:47:41 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 t_cmd	*cmdlast(t_cmd *lst)
 {

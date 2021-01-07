@@ -6,7 +6,7 @@
 #    By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/03 21:04:29 by jlyessa           #+#    #+#              #
-#    Updated: 2021/01/07 22:46:55 by tisabel          ###   ########.fr        #
+#    Updated: 2021/01/08 00:39:49 by tisabel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SRCS = srcs/main.c \
 		srcs/parser/parser_path.c \
 		srcs/parser/parser_errors.c \
 		srcs/parser/parser_cmd.c \
-		srcs/parser/parser_begin.c \
 		srcs/parser/convert.c \
 		srcs/init/init.c \
 		srcs/general/variables.c \
