@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_variables.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 00:04:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 18:24:34 by jlyessa          ###   ########.fr       */
+/*   Updated: 2021/01/07 22:51:51 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	set_env(t_all *all, char **text, char *var)
 {
 	t_list		*lst;
 
-	lst = all->env;
+	lst = all->my_env;
 	while (lst)
 	{
 		if (!ft_strncmp(var, ((t_env*)lst->content)->name, ft_strlen(var) + 1))

@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:45:35 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/05 11:59:33 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/07 22:23:47 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int		ft_cd(t_all **all)
 		return (1);
 	}
 	change_var("OLD_PWD", get_var((*all)->my_env, "PWD"));
-	change_var("PWD", getcwd(NULL, 0));
+	change_var("PWD", getcwd(NULL, _PC_PATH_MAX));
 	return (0);
 }

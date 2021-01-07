@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlyessa <jlyessa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 00:07:49 by jlyessa           #+#    #+#             */
-/*   Updated: 2020/12/29 18:37:25 by jlyessa          ###   ########.fr       */
+/*   Updated: 2021/01/07 22:51:02 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ int		add_remalloc_argv(t_all *all, const char *spec, int *i)
 	trim_space(all);
 	if (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 	{
-		if (!(((t_cmd*)(ft_lstlast(all->cmd)->content))->argv =
-			remalloc_args(((t_cmd*)(ft_lstlast(all->cmd)->content))->argv)))
+		if (!((cmdlast(all->cmd))->argv =
+			remalloc_args(((cmdlast(all->cmd)))->argv)))
 			return (-1);
 		(*i)++;
 	}

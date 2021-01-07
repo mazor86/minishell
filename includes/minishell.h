@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/05 20:58:39 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/07 23:04:27 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,21 @@ int				parser_cmd(t_all *all);
 int				parser_syntax_errors(t_all *all);
 
 /*
+** Cmd utils functions
+*/
+
+t_cmd			*cmdlast(t_cmd *lst);
+void			cmdadd_back(t_cmd **lst, t_cmd *new);
+
+/*
+** Env utils functions
+*/
+
+t_env			*copy_env(t_env *my_env);
+int				count_var(t_env *var);
+void			sort_env(t_env *var);
+
+/*
 ** buildin functions
 */
 
@@ -93,14 +108,14 @@ char			**remalloc_args(char **args);
 int				add_remalloc_argv(t_all *all, const char *spec, int *i);
 void			*free_array(char **text);
 
-int				ft_error(char *name, char *text, int ret);
+int				ft_error(char *name, char *text, int ret, char *var);
 //void    		exec_commands(t_data *data, char *line, t_env **my_env);
 //int				parce_command(t_data *data, char *line, t_env **my_env);
 //void			parce_line(t_data *data, char *line, t_env **my_env);
 //void			check_name(t_data *data, char ***my_env);
 //int				parce_s_quotes(char *line, t_data *data, t_env **my_env);
 //int				parce_d_quotes(char *line, t_data *data, t_env **my_env);
-void            set_var(char *line, t_env **my_env);
+int            	set_var(char *line, t_env **my_env);
 int             get_var(t_env **my_env, char *var_name);
 //int             get_ecran(char *line, t_data *data, t_env **my_env);
 //int             get_arg(char *line, t_data *data, t_env **my_env);
