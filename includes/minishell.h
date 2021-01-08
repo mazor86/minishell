@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/08 00:36:13 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 01:02:50 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int				g_exit_status = 0;
 ** General functions for reading input and processing arguments and variables
 */
 
-int				get_next_line(int fd, char **line);
 char			*ft_strcut(char *str, char c);
 int 			new_arg(char ***array, char *new_arg);
 char            **copy_array(char **array);
