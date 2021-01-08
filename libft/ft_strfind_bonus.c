@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_strfind_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 19:58:58 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/08 17:36:19 by tisabel          ###   ########.fr       */
+/*   Created: 2020/08/11 02:50:19 by tisabel           #+#    #+#             */
+/*   Updated: 2020/10/27 17:18:58 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*temp;
+/*
+** Looks for the char in the string and if the char is found, returns the
+** position of element in the sequence (not index).
+*/
 
-	if (!lst || !new)
-		return (0);
-	temp = *lst;
-	if (*lst == NULL)
-		*lst = new;
-	else
+int		ft_strfind(const char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (-1);
+	while (s[i] != '\0')
 	{
-		temp = ft_lstlast(*lst);
-		temp->next = new;
+		if (s[i] == c)
+			return (i + 1);
+		i++;
 	}
-	return (1);
+	return (0);
 }

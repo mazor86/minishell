@@ -6,11 +6,34 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 19:39:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/04 16:36:02 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 17:32:41 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+/*
+** Clears the entire array of t_env structures
+**
+** @param **my_env
+*/
+
+void	free_t_env(t_env **my_env)
+{
+	int i;
+
+	i = 0;
+	while (my_env[i]->name != NULL)
+	{
+		free(my_env[i]->name);
+		my_env[i]->name = NULL;
+		free(my_env[i]->value);
+		my_env[i]->value = NULL;
+		my_env[i]->standard = 0;
+		i++;
+	}
+	*my_env = NULL;
+}
 
 /*
 ** Clears the entire t_cmd structure
@@ -20,23 +43,23 @@
 
 void	clear_cmd(t_cmd **cmd_lst)
 {
-	t_list	*tmp;
+	t_cmd	*tmp;
 	int		i;
 
 	tmp = *cmd_lst;
 	while (tmp)
 	{
 		i = -1;
-		free(((t_cmd*)tmp->content)->name);
-		if (((t_cmd*)tmp->content)->argv)
+		free(tmp->name);
+		if (tmp->argv)
 		{
-			while (((t_cmd*)tmp->content)->argv[++i])
-				free(((t_cmd*)tmp->content)->argv[i]);
+			while (tmp->argv[++i])
+				free(tmp->argv[i]);
 		}
-		free(((t_cmd*)tmp->content)->argv);
+		free(tmp->argv);
 		tmp = tmp->next;
 	}
-	ft_lstclear(cmd_lst, free);
+	*cmd_lst = NULL;
 }
 
 /*
@@ -48,7 +71,7 @@ void	clear_cmd(t_cmd **cmd_lst)
 int		clear_all(t_all *all)
 {
 	clear_cmd(&all->cmd);
-	clear_env(&all->my_env);
+	free_t_env(&all->my_env);
 	free(all->line);
 	return (-1);
 }

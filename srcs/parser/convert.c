@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 13:00:31 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 00:41:47 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 18:46:03 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,36 +50,29 @@ static void	*free_argv_local(char **split, char **name)
 ** @param *all general structure
 ** @return pointer to an array of strings, otherwise NULL
 */
-/*
-char		**convert_env(t_all *all)
+
+char		**deconvert_env(t_all *all)
 {
-	t_env	*lst;
 	char	**res;
+	int		len;
 	int		i;
 
-	lst = all->my_env;
 	i = 0;
-	while (lst)
-	{
-		i++;
-		lst = lst->next;
-	}
-	if (!(res = ft_calloc(i + 1, sizeof(char*))))
+	len = count_var(all->my_env);
+	if (!(res = (char**)malloc(sizeof(char*) * (len + 1))))
 		return (NULL);
-	i = 0;
-	lst = all->my_env;
-	while (lst)
+	while (all->my_env[i].name != NULL)
 	{
-		if (!(res[i] = ft_strdup(lst->name)) ||
-			join_char(&res[i], '=') == -1 ||
-			join_str(&res[i], lst->par) == -1)
-			return (free_split(res));
+		if (all->my_env[i].standard != 0)
+			if (!(res[i] = ft_strdup(all->my_env[i].name)) ||
+			!(res[i] = ft_strjoin(res[i], "=")) ||
+			!(res[i] = ft_strjoin(res[i], all->my_env[i].value)))
+				return (NULL);
 		i++;
-		lst = lst->next;
 	}
 	return (res);
 }
-*/
+
 
 /*
 ** converts command arguments to an array of strings

@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/08 01:02:50 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 17:56:04 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int             check_digit(char *str);
 */
 
 int				clear_all(t_all *all);
-char			**convert_env(t_all *all);
+char			**deconvert_env(t_all *all);
 char			**convert_argv(t_cmd *lst);
 char			*get_full_cmd_name(t_all *all, t_cmd *lst);
 int            	set_var(char *line, t_env **my_env);
@@ -78,6 +78,7 @@ t_env			*copy_env(t_env *my_env);
 int				count_var(t_env *var);
 void			sort_env(t_env *var);
 void			free_t_env(t_env **my_env);
+int				change_env(t_env *my_env, char *var_name, char *new_value);
 
 void			convert_envp(t_env **envp_var, char **envp);
 int				parser_env(t_all *all, char **env);
@@ -85,7 +86,6 @@ t_env			*get_env(t_all *all, char *name);
 char			*get_name_env(char *env);
 char			*get_param_env(char *env);
 int				add_env(t_all *all, char *name, char *par);
-int				update_env(t_all *all, char *name, char *txt, char is_created);
 void			sort_env(t_env *var);
 
 /*

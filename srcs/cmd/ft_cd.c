@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:45:35 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/07 22:23:47 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 15:18:09 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int		ft_cd(t_all **all)
 {
 	int i;
-	int n;
 	char *path;
 
 	i = 0;
@@ -28,7 +27,7 @@ int		ft_cd(t_all **all)
 		g_exit_status = 1;
 		return (1);
 	}
-	change_var("OLD_PWD", get_var((*all)->my_env, "PWD"));
-	change_var("PWD", getcwd(NULL, _PC_PATH_MAX));
+	change_env((*all)->my_env, "OLD_PWD", get_var((*all)->my_env, "PWD"));
+	change_env((*all)->my_env, "PWD", getcwd(NULL, _PC_PATH_MAX));
 	return (0);
 }

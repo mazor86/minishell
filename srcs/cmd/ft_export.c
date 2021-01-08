@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:46:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 01:00:57 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 15:07:22 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	add_arg(char *argum, t_env **my_env)
 	int n;
 
 	(*my_env)->name = ft_strcut(argum, '=');
-	if ((n = ft_strfind(argum, "=")) != 0)
+	if ((n = ft_strfind(argum, '=')) != 0)
 		(*my_env)->value = ft_strdup(&argum[n]);
 	else
 		(*my_env)->value = ft_strdup("");
@@ -59,7 +59,7 @@ int			ft_export(t_all **all)
 	{
 		if (!(sorted_env = copy_env((*all)->my_env)))
 			return (ft_error("export", "out of memory", 12, NULL));
-		sort_env(&sorted_env);
+		sort_env(sorted_env);
 		while (sorted_env[i].name != NULL)
 			if (sorted_env[i].standard != 0)
 			{
@@ -75,7 +75,7 @@ int			ft_export(t_all **all)
 				ft_error("export", "not a valid identifier", 1,
 				(*all)->cmd->argv[i]);
 			else
-				add_arg((*all)->cmd->argv[i], (*all)->my_env);
+				add_arg((*all)->cmd->argv[i], &(*all)->my_env);
 			i++;
 		}
 	return (g_exit_status);

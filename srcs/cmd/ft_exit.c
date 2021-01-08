@@ -6,11 +6,25 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 18:38:00 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/05 18:00:21 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 17:48:46 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+int		check_digit(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (ft_isdigit(str[i]) != 1)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 /*
 ** executes the exit command
@@ -47,6 +61,6 @@ int		ft_exit(t_all **all)
 		ft_putstr_fd("exit\n", 1);
         g_exit_status = ft_atoi((*all)->cmd->argv[0]);
 	}
-    free_all(all);
+    clear_all(*all);
 	exit (g_exit_status);
 }
