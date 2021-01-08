@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/02 13:48:25 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 18:55:00 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	clear(t_all *all)
 	all->line = NULL;
 	all->pos = 0;
 	all->res = 1;
+	all->exit_status = 0;
 }
 
 /*
@@ -72,5 +73,5 @@ int			main(int args, char **argv, char **env)
 		}
 		ft_putstr_fd("bash-3.2$ ", 1);
 	}
-	return (g_exit_status);
+	return (all.exit_status);
 }

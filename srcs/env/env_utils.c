@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 16:48:09 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/08 15:17:25 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 19:44:52 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,18 @@ void	sort_env(t_env *var)
 	}
 }
 
-int		change_env(t_env *my_env, char *var_name, char *new_value)
+int		change_env(t_all *all, char *var_name, char *new_value)
 {
 	int i;
 
 	i = 0;
-	while (my_env[i].name != NULL)
+	while (all->my_env[i].name != NULL)
 	{
-		if (ft_strcmp(my_env[i].name, var_name) == 0)
+		if (ft_strcmp(all->my_env[i].name, var_name) == 0)
 		{
-			free(my_env[i].value);
-			if (!(my_env[i].value = ft_strdup(new_value)))
-				return (ft_error("export", "out of memory", 12, NULL));
+			free(all->my_env[i].value);
+			if (!(all->my_env[i].value = ft_strdup(new_value)))
+				return (ft_error("export", "out of memory", 12, all));
 			break ;
 		}
 		i++;

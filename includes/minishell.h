@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/08 17:56:04 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 19:43:59 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@
 # include <dirent.h>
 # include "../libft/libft.h"
 # include "struct.h"
-
-/*
-** global variable for exit status
-*/
-
-int				g_exit_status = 0;
 
 /*
 ** General functions for reading input and processing arguments and variables
@@ -44,7 +38,7 @@ int				clear_all(t_all *all);
 char			**deconvert_env(t_all *all);
 char			**convert_argv(t_cmd *lst);
 char			*get_full_cmd_name(t_all *all, t_cmd *lst);
-int            	set_var(char *line, t_env **my_env);
+int            	set_var(char *line, t_all *all);
 char            *get_var(t_env *my_env, char *var_name);
 
 /*
@@ -78,7 +72,7 @@ t_env			*copy_env(t_env *my_env);
 int				count_var(t_env *var);
 void			sort_env(t_env *var);
 void			free_t_env(t_env **my_env);
-int				change_env(t_env *my_env, char *var_name, char *new_value);
+int				change_env(t_all *all, char *var_name, char *new_value);
 
 void			convert_envp(t_env **envp_var, char **envp);
 int				parser_env(t_all *all, char **env);
@@ -92,13 +86,13 @@ void			sort_env(t_env *var);
 ** buildin functions
 */
 
-int				ft_echo(t_all **all);
-int				ft_pwd(t_all **all);
-int				ft_export(t_all **all);
-int				ft_env(t_all **all);
-int				ft_unset(t_all **all);
-int				ft_cd(t_all **all);
-int				ft_exit(t_all **all);
+int				ft_echo(t_all *all);
+int				ft_pwd(t_all *all);
+int				ft_export(t_all *all);
+int				ft_env(t_all *all);
+int				ft_unset(t_all *all);
+int				ft_cd(t_all *all);
+int				ft_exit(t_all *all);
 
 int				join_char(char **text, char c);
 int				join_str(char **text, char *s);
@@ -111,7 +105,7 @@ void			*free_array(char **text);
 ** errors processing functions
 */
 
-int				ft_error(char *name, char *text, int ret, char *var);
+int				ft_error(char *name, char *text, int ret, t_all *all);
 //void    		exec_commands(t_data *data, char *line, t_env **my_env);
 //int				parce_command(t_data *data, char *line, t_env **my_env);
 //void			parce_line(t_data *data, char *line, t_env **my_env);

@@ -6,7 +6,7 @@
 #    By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/11 16:53:48 by jlyessa           #+#    #+#              #
-#    Updated: 2021/01/08 15:05:25 by tisabel          ###   ########.fr        #
+#    Updated: 2021/01/08 18:51:51 by tisabel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 	ft_lstmap.c get_next_line.c ft_strjoin_char.c ft_strstr_bonus.c \
-	ft_strfind_bonus.c ft_strcmp_bonus.c ft_min_bonus.c ft_max_bonus.c
+	ft_strfind_bonus.c ft_strcmp_bonus.c ft_min_bonus.c ft_max_bonus.c \
+	ft_strcut_bonus.c
 
 OBJ = ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:38:46 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/04 16:10:32 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 18:55:28 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct		s_all
 	char			*line;
 	int				pos;
 	int				res;
+	int				exit_status;
 }					t_all;
 
 #endif

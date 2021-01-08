@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 17:30:23 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 17:36:06 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 18:50:58 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ typedef struct	s_list
 	void			*content;
 	struct s_list	*next;
 }				t_list;
-
-int				get_next_line(int fd, char **line);
 
 void			*ft_memset(void *s, int c, size_t n);
 void			ft_bzero(void *s, size_t n);
@@ -69,11 +67,18 @@ void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*));
+
+/*
+** Additional bonus functions
+*/
+
+int				get_next_line(int fd, char **line);
 int				ft_strfind(const char *s, char c);
 char			*ft_strstr(const char *haystack, const char *needle);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_min(int one, int two);
 int				ft_max(int one, int two);
+char			*ft_strcut(char *str, char c);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:46:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 15:07:22 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 19:39:44 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,17 @@ static void	write_var(t_env env_i)
 	ft_putstr_fd("\n", 1);
 }
 
-int			ft_export(t_all **all)
+int			ft_export(t_all *all)
 {
 	int i;
 	t_env *sorted_env;
 
 	i = 0;
-	g_exit_status = 0;
-	if((*all)->cmd->argv[0] == NULL)
+	all->exit_status = 0;
+	if(all->cmd->argv[0] == NULL)
 	{
-		if (!(sorted_env = copy_env((*all)->my_env)))
-			return (ft_error("export", "out of memory", 12, NULL));
+		if (!(sorted_env = copy_env(all->my_env)))
+			return (ft_error("export", "out of memory", 12, all));
 		sort_env(sorted_env);
 		while (sorted_env[i].name != NULL)
 			if (sorted_env[i].standard != 0)
@@ -69,14 +69,14 @@ int			ft_export(t_all **all)
 		free_t_env(&sorted_env);
 	}
 	else
-		while ((*all)->cmd->argv[i] != NULL)
+		while (all->cmd->argv[i] != NULL)
 		{
-			if ((check_arg((*all)->cmd->argv[i])) == 1)
+			if ((check_arg(all->cmd->argv[i])) == 1)
 				ft_error("export", "not a valid identifier", 1,
-				(*all)->cmd->argv[i]);
+				all);
 			else
-				add_arg((*all)->cmd->argv[i], &(*all)->my_env);
+				add_arg(all->cmd->argv[i], &all->my_env);
 			i++;
 		}
-	return (g_exit_status);
+	return (all->exit_status);
 }

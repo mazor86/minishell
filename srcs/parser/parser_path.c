@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:00:54 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 00:38:34 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 19:41:49 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	*parse_split_local(char **split, t_all *all, t_cmd *lst)
 			return (res);
 		}
 	}
-	ft_error(lst->name, ": command not found", 0, NULL);
+	ft_error(lst->name, ": command not found", 0, all);
 	all->res = 127;
 	return (NULL);
 }

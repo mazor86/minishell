@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:20:05 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 00:39:09 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/08 19:41:35 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** @param **f a pointer to an array of functions
 */
 
-static void	init_f(int (**f)(t_all**))
+static void	init_f(int (**f)(t_all*))
 {
 	f[0] = ft_echo;
 	f[1] = ft_pwd;
@@ -43,7 +43,7 @@ static int	start_cmd(t_all *all, t_cmd *lst)
 	int			i;
 	const char	*name[7] = { "echo", "pwd", "export", "env", "unset", "cd",
 				"exit" };
-	int			(*f[7])(t_all**);
+	int			(*f[7])(t_all*);
 
 	i = 0;
 	init_f(f);
@@ -52,8 +52,8 @@ static int	start_cmd(t_all *all, t_cmd *lst)
 		if (!ft_strncmp(lst->name, name[i],
 			ft_strlen(name[i]) + 1))
 		{
-			if (f[i](&all) != 0)
-				return (g_exit_status);
+			if (f[i](all) != 0)
+				return (all->exit_status);
 			return (1);
 		}
 		i++;
@@ -98,19 +98,19 @@ static int	start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 	char	*fullname;
 
 	fullname = NULL;
-	if (!(envp = convert_env(all)) ||
+	if (!(envp = deconvert_env(all)) ||
 		!(argv = convert_argv(lst)))
 		return (free_local(envp, argv, &fullname, -1));
 	if (!(fullname = get_full_cmd_name(all, lst)))
 		return (free_local(envp, argv, &fullname, 0));
 	if ((pid = fork()) == -1)
-		return (ft_error(lst->name, ": failed to fork", 13, NULL));
+		return (ft_error(lst->name, ": failed to fork", 13, all));
 	if (pid == 0)
 	{
 		if (execve(fullname, argv, envp) == -1)
 		{
 			return (ft_error(lst->name,
-				": permission denied", 13, NULL));
+				": permission denied", 13, all));
 		}
 		exit(0);
 	}
