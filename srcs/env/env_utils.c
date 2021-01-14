@@ -6,90 +6,112 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 16:48:09 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/08 19:44:52 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/11 13:09:50 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
+/*
+** creates an enviroment variables structure
+**
+** @return env pointer, otherwise NULL
+*/
+
+t_env	*init_env(void)
+{
+	t_env	*my_env;
+
+	if (!(my_env = malloc(sizeof(t_env))))
+		return (NULL);
+	
+	if (!(my_env->name = ft_strdup("")) || !(my_env->value = ft_strdup("")))
+		return (NULL);
+	my_env->standard = 0;
+	my_env->next = NULL;
+	return (my_env);
+}
+
 t_env	*copy_env(t_env *my_env)
 {
 	t_env	*copy;
-	int		len;
-	int		i;
+	t_env	**begin;
 
-	len = 0;
-	while (my_env[len].name != NULL)
-		len++;
-	i = 0;
-	if (!(copy = (t_env*)malloc(sizeof(t_env) * (len + 1))))
-		return (NULL);
-	while (i < len)
+	copy = init_env();
+	begin = &copy;
+	while (my_env)
 	{
-		if (!(copy[i].name = ft_strdup(my_env[i].name)) ||
-		!(copy[i].value = ft_strdup(my_env[i].value)))
+		if (!(copy->name = ft_strdup(my_env->name)) ||
+		!(copy->value = ft_strdup(my_env->value)))
 			return (NULL);
-		copy[i].standard = my_env[i].standard;
-		i++;
+		copy->standard = my_env->standard;
+		my_env = my_env->next;
+		copy = copy->next;
 	}
-	copy[i].name = NULL;
-	return (copy);
+	copy->next = NULL;
+	return (*begin);
 }
 
-int		count_var(t_env *var)
+int		count_env(t_env *my_env)
 {
-	int len;
-	int i;
+	int	len;
 
-	i = 0;
 	len = 0;
-	while (var[i].name != NULL)
+	while (my_env)
+	{
 		len++;
+		my_env = my_env->next;
+	}
 	return (len);
 }
 
-void	sort_env(t_env *var)
+void	sort_env(t_env **my_env)
 {
-	t_env	tmp;
-	int		j;
+	t_env	**begin;
+	t_env	*tmp_1;
+	t_env	*tmp_2;
+	int		len;
 	int		i;
-	int		num;
 
-	j = 0;
-	num = count_var(var);
-	while (j < num)
+	i = 0;
+	begin = my_env;
+	len = count_env(*my_env);
+	while (i < len - 1)
 	{
-		i = 0;
-		while (i < num - j)
+		while ((*my_env)->next)
 		{
-			if (var[i].name[0] < var[i + 1].name[0] && var[i + 1].name != NULL
-			&& var[i].name != NULL)
+			if ((*my_env)->name < (*my_env)->next->name)
 			{
-				tmp = var[i];
-				var[i] = var[i + 1];
-				var[i + 1] = tmp;
+				tmp_1 = *my_env;
+				tmp_2 = (*my_env)->next->next;
+				*my_env = (*my_env)->next;
+				(*my_env)->next = tmp_1;
+				tmp_1->next = tmp_2;
 			}
-			i++;
+			*my_env = (*my_env)->next;
 		}
-		j++;
+		*my_env = *begin;
+		i++;
 	}
 }
 
 int		change_env(t_all *all, char *var_name, char *new_value)
 {
-	int i;
+	t_env **temp;
 
-	i = 0;
-	while (all->my_env[i].name != NULL)
+	temp = NULL;
+	*temp = all->my_env;
+	while (all->my_env->name != NULL)
 	{
-		if (ft_strcmp(all->my_env[i].name, var_name) == 0)
+		if (ft_strcmp(all->my_env->name, var_name) == 0)
 		{
-			free(all->my_env[i].value);
-			if (!(all->my_env[i].value = ft_strdup(new_value)))
+			free(all->my_env->value);
+			if (!(all->my_env->value = ft_strdup(new_value)))
 				return (ft_error("export", "out of memory", 12, all));
 			break ;
 		}
-		i++;
+		all->my_env = all->my_env->next;
 	}
+	all->my_env = *temp;
 	return (0);
 }

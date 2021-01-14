@@ -6,7 +6,7 @@
 #    By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/03 21:04:29 by jlyessa           #+#    #+#              #
-#    Updated: 2021/01/08 00:39:49 by tisabel          ###   ########.fr        #
+#    Updated: 2021/01/11 13:12:21 by tisabel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ SRCS = srcs/main.c \
 		srcs/parser/convert.c \
 		srcs/init/init.c \
 		srcs/general/variables.c \
-		srcs/general/conv_envp.c \
 		srcs/env/env_utils.c \
+		srcs/env/conv_env.c \
 		srcs/cmd_utils/cmd_last.c \
 		srcs/cmd_utils/add_back_cmd.c \
 		srcs/cmd/ft_unset.c \

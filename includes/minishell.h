@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/08 19:43:59 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/11 11:42:21 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,36 +63,32 @@ void			cmdadd_back(t_cmd **lst, t_cmd *new);
 t_cmd			*init_cmd(void);
 int				is_null_cmd(t_cmd *lst);
 void			clear_cmd(t_cmd **cmd_lst);
+int 			cmd_len(t_cmd *cmd);
 
 /*
 ** Env utils functions
 */
 
+t_env			*init_env(void);
 t_env			*copy_env(t_env *my_env);
-int				count_var(t_env *var);
-void			sort_env(t_env *var);
+int				count_env(t_env *my_env);
+void			sort_env(t_env **my_env);
 void			free_t_env(t_env **my_env);
 int				change_env(t_all *all, char *var_name, char *new_value);
-
-void			convert_envp(t_env **envp_var, char **envp);
-int				parser_env(t_all *all, char **env);
-t_env			*get_env(t_all *all, char *name);
-char			*get_name_env(char *env);
-char			*get_param_env(char *env);
-int				add_env(t_all *all, char *name, char *par);
-void			sort_env(t_env *var);
+void			del_one_env(t_env *my_env);
+int				convert_env(t_env **env_var, char **env, t_all *all);
 
 /*
 ** buildin functions
 */
 
-int				ft_echo(t_all *all);
-int				ft_pwd(t_all *all);
-int				ft_export(t_all *all);
-int				ft_env(t_all *all);
-int				ft_unset(t_all *all);
-int				ft_cd(t_all *all);
-int				ft_exit(t_all *all);
+int				ft_echo(t_all *all, t_cmd *cmd);
+int				ft_pwd(t_all *all, t_cmd *cmd);
+int				ft_export(t_all *all, t_cmd *cmd);
+int				ft_env(t_all *all, t_cmd *cmd);
+int				ft_unset(t_all *all, t_cmd *cmd);
+int				ft_cd(t_all *all, t_cmd *cmd);
+int				ft_exit(t_all *all, t_cmd *cmd);
 
 int				join_char(char **text, char c);
 int				join_str(char **text, char *s);
@@ -117,5 +113,12 @@ int				ft_error(char *name, char *text, int ret, t_all *all);
 //int             get_arg(char *line, t_data *data, t_env **my_env);
 //int             exec_pipe(char *line, t_data *data, t_env **my_env);
 //int             exec_semicolon(char *line, t_data *data, t_env **my_env);
+
+/*
+** Pipe functions
+*/
+
+int				init_pipe(t_all *all, t_cmd *cmd);
+void			save_fds(t_all *all);
 
 #endif

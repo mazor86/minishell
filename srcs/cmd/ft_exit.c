@@ -31,36 +31,29 @@ int		check_digit(char *str)
 **
 ** @param *all general structure
 ** @param *cmd command structure
-** @return 0
+** @return exitstatus
 */
 
-int		ft_exit(t_all *all)
+int		ft_exit(t_all *all, t_cmd *cmd)
 {
     int n;
 
-    n = 0;
-    while (all->cmd->argv[n] != NULL)
-        n++;
-    if (n > 1 || check_digit(all->cmd->argv[0]) != 1)
+    n = cmd_len(cmd);
+    all->exit_status = 0;
+    if (n > 1 || check_digit(cmd->argv[0]) != 1)
     {
-        ft_putstr_fd("bash: exit:", 2);
-        if (check_digit(all->cmd->argv[0]) != 1)
-        {
-            ft_putstr_fd(all->cmd->argv[0], 2);
-            ft_putstr_fd(": numeric argument required", 2);
-            all->exit_status = 255;
-        }
+        if (check_digit(cmd->argv[0]) != 1)
+        	ft_error("exit", "Numeric argument required", 255, all);
         else
-        {
-            ft_putstr_fd("too many arguments\n", 2);
-            all->exit_status = 1;
-        }
+			ft_error("exit", strerror(1), 1, all);
     }
-    else if (n == 1)
+    else
 	{
-		ft_putstr_fd("exit\n", 1);
-        all->exit_status = ft_atoi(all->cmd->argv[0]);
+		ft_putstr_fd("exit\n", all->pipe_fd[1]);
+    	if (n == 1)
+			all->exit_status = ft_atoi(cmd->argv[0]);
 	}
+    free_t_env(&all->my_env);
     clear_all(all);
 	exit (all->exit_status);
 }

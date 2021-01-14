@@ -12,27 +12,26 @@
 
 #include "../../includes/minishell.h"
 
-int		ft_echo(t_all *all)
+int		ft_echo(t_all *all, t_cmd *cmd)
 {
 	int		i;
-	int		is_n;
 	char	flag;
 
 	i = -1;
-	is_n = 0;
-	while (all->cmd->argv[++i])
+	flag = '\0';
+	all->exit_status = 0;
+	while (cmd->argv[++i])
 	{
-		if (i == 0 && !ft_strncmp(all->cmd->argv[i], "-n", 3))
+		if (i == 0 && !ft_strncmp(cmd->argv[i], "-n", 3))
 			flag = 1;
 		else
 		{
-			ft_putstr_fd(all->cmd->argv[i], 1);
-			if (all->cmd->argv[i + 1])
-				ft_putchar_fd(' ', 1);
+			ft_putstr_fd(cmd->argv[i], all->pipe_fd[1]);
+			if (cmd->argv[i + 1])
+				ft_putchar_fd(' ', all->pipe_fd[1]);
 		}
 	}
 	if (!flag)
-		ft_putchar_fd('\n', 1);
-	all->exit_status = 0;
-	return (0);
+		ft_putchar_fd('\n', all->pipe_fd[1]);
+	return (all->exit_status);
 }

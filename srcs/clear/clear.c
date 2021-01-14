@@ -18,21 +18,28 @@
 ** @param **my_env
 */
 
+void	del_one_env(t_env *my_env)
+{
+	free(my_env->name);
+	my_env->name = NULL;
+	free(my_env->value);
+	my_env->value = NULL;
+	my_env->next = NULL;
+	my_env->standard = 0;
+}
+
 void	free_t_env(t_env **my_env)
 {
-	int i;
+	t_env	*temp;
 
-	i = 0;
-	while (my_env[i]->name != NULL)
-	{
-		free(my_env[i]->name);
-		my_env[i]->name = NULL;
-		free(my_env[i]->value);
-		my_env[i]->value = NULL;
-		my_env[i]->standard = 0;
-		i++;
-	}
-	*my_env = NULL;
+	if (my_env)
+		while (*my_env)
+		{
+			temp = (*my_env)->next;
+			del_one_env(*my_env);
+			free(*my_env);
+			*my_env = temp;
+		}
 }
 
 /*
@@ -71,9 +78,8 @@ void	clear_cmd(t_cmd **cmd_lst)
 int		clear_all(t_all *all)
 {
 	clear_cmd(&all->cmd);
-	free_t_env(&all->my_env);
 	free(all->line);
-	return (-1);
+	return (all->exit_status);
 }
 
 /*

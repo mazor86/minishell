@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 13:00:31 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 18:46:03 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/10 12:41:15 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char		**deconvert_env(t_all *all)
 	int		i;
 
 	i = 0;
-	len = count_var(all->my_env);
+	len = count_env(all->my_env);
 	if (!(res = (char**)malloc(sizeof(char*) * (len + 1))))
 		return (NULL);
 	while (all->my_env[i].name != NULL)

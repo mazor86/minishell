@@ -25,6 +25,7 @@ typedef struct		s_env
 	char			*name;
 	char			*value;
 	short			standard;
+	struct s_env	*next;
 }					t_env;
 
 typedef struct		s_cmd
@@ -42,6 +43,8 @@ typedef struct		s_all
 	char			*line;
 	int				pos;
 	int				res;
+	int 			fd[2];
+	int 			pipe_fd[2];
 	int				exit_status;
 }					t_all;
 

@@ -20,11 +20,13 @@
 ** @return 0 if good, otherwise exitstatus of the program (errno number)
 */
 
-int		ft_pwd(t_all *all)
+int		ft_pwd(t_all *all, t_cmd *cmd)
 {
 	char 	*pwd;
 
 	all->exit_status = 0;
+	if (ft_strcmp(cmd->argv[0], "") != 0)
+		ft_error("pwd", "wrong number of arguments", 21, all);
 	if ((pwd = get_var(all->my_env, "PWD")) == NULL &&
 	!(pwd = getcwd(NULL, _PC_PATH_MAX)))
 		ft_error("pwd", "out of memory", 12, all); // access denied is also possible

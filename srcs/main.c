@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 18:55:00 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/10 12:44:52 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ static void	clear(t_all *all)
 	all->line = NULL;
 	all->pos = 0;
 	all->res = 1;
+	all->fd[0] = 0;
+	all->fd[1] = 1;
+	all->pipe_fd[0] = 0;
+	all->pipe_fd[1] = 1;
 	all->exit_status = 0;
 }
 
@@ -59,15 +63,15 @@ int			main(int args, char **argv, char **env)
 	(void)args;
 	(void)argv;
 	clear(&all);
-	convert_envp(&(all.my_env), env);
+	convert_env(&all.my_env, env, &all);
 	ft_putstr_fd("bash-3.2$ ", 1);
-	while (get_next_line(1, &all.line))
+	while (get_next_line(0, &all.line))
 	{
 		if (all.line)
 		{
-			if (parser_string(&all) == -1)
+			if (parser_string(&all) != 0)
 				return (clear_all(&all));
-			if (parser_cmd(&all) == -1)
+			if (parser_cmd(&all) != 0)
 				return (clear_all(&all));
 			update_main(&all);
 		}

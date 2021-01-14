@@ -43,7 +43,7 @@ static int	start_cmd(t_all *all, t_cmd *lst)
 	int			i;
 	const char	*name[7] = { "echo", "pwd", "export", "env", "unset", "cd",
 				"exit" };
-	int			(*f[7])(t_all*);
+	int			(*f[7])(t_all*, t_cmd*);
 
 	i = 0;
 	init_f(f);
@@ -52,7 +52,7 @@ static int	start_cmd(t_all *all, t_cmd *lst)
 		if (!ft_strncmp(lst->name, name[i],
 			ft_strlen(name[i]) + 1))
 		{
-			if (f[i](all) != 0)
+			if (f[i](all, lst) != 0)
 				return (all->exit_status);
 			return (1);
 		}
@@ -142,12 +142,16 @@ int			parser_cmd(t_all *all)
 	{
 		if (!is_null_cmd(lst))
 		{
-			if ((res_cmd = start_cmd(all, lst)) == -1)
-				return (-1);
+			if (lst->pipe == 1)
+			{
+				init_pipe(all, lst);
+			}
+			if ((res_cmd = start_cmd(all, lst)) != 0)
+				return (all->exit_status);
 			if (!res_cmd)
 			{
-				if (start_execve(all, lst, envp, argv) == -1)
-					return (-1);
+				if (start_execve(all, lst, envp, argv) != 0)
+					return (all->exit_status);
 			}
 		}
 		lst = lst->next;

@@ -20,28 +20,28 @@
 ** @return 0
 */
 
-int		ft_env(t_all *all)
+int		ft_env(t_all *all, t_cmd *cmd)
 {
-	int i;
+	t_env *temp;
 
-	i = 0;
-	if(all->cmd->argv[0] != 0)
-		{
-			write(1, "Error. Wrong number of arguments.", 34);
-			all->exit_status = 2;
-			exit(all->exit_status);
-		}
+	temp = all->my_env;
+	all->exit_status = 0;
+	if (ft_strcmp(cmd->argv[0], "") != 0)
+	{
+		ft_error("env", "Wrong number of arguments", 21, all);
+		return (all->exit_status);
+	}
 	else
-		while (all->my_env[i].name != NULL)
+		while (temp != NULL)
 		{
-			if (all->my_env[i].standard == 1)
+			if (temp->standard == 1)
 			{
-				write(1, all->my_env[i].name, ft_strlen(all->my_env[i].name));
+				write(1, temp->name, ft_strlen(temp->name));
 				write(1, "=", 1);
-				write(1, all->my_env[i].value, ft_strlen(all->my_env[i].value));
+				write(1, temp->value, ft_strlen(temp->value));
 				write(1, "\n", 1);
 			}
-		i++;
+			temp = temp->next;
 		}
-	return (0);
+	return (all->exit_status);
 }

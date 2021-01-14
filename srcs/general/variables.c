@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 21:53:07 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/08 19:41:22 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/10 12:40:50 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		set_var(char *line, t_all *all)
 	i = 0;
 	j = 0;
 	temp = all->my_env;
-	len_env = count_var(temp);
+	len_env = count_env(all->my_env);
 	if (!(all->my_env = (t_env*)malloc(sizeof(t_env) * (len_env + 2))))
 		return( ft_error(NULL, "out of memory", 12, all));
 	while (temp[i].name != NULL)

@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:46:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 19:39:44 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/11 11:42:49 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int		check_arg(char *argum)
 	while (argum[i] != '\0')
 	{
 		if (ft_isalpha(argum[i]) == 0 && ((ft_isdigit(argum[i]) != 0
-		|| (ft_isdigit(argum[i]) == 0  && i == 0)) || (argum[i] != '_')))
+		|| (ft_isdigit(argum[i]) == 0  && i == 0)) || argum[i] != '_'
+		|| argum[i] != '='))
 				return (1);
 		i++;
 	}
@@ -48,18 +49,18 @@ static void	write_var(t_env env_i)
 	ft_putstr_fd("\n", 1);
 }
 
-int			ft_export(t_all *all)
+int			ft_export(t_all *all, t_cmd *cmd)
 {
 	int i;
 	t_env *sorted_env;
 
 	i = 0;
 	all->exit_status = 0;
-	if(all->cmd->argv[0] == NULL)
+	if(cmd->argv[0] == NULL)
 	{
 		if (!(sorted_env = copy_env(all->my_env)))
 			return (ft_error("export", "out of memory", 12, all));
-		sort_env(sorted_env);
+		sort_env(&sorted_env);
 		while (sorted_env[i].name != NULL)
 			if (sorted_env[i].standard != 0)
 			{
@@ -69,13 +70,13 @@ int			ft_export(t_all *all)
 		free_t_env(&sorted_env);
 	}
 	else
-		while (all->cmd->argv[i] != NULL)
+		while (cmd->argv[i] != NULL)
 		{
-			if ((check_arg(all->cmd->argv[i])) == 1)
+			if ((check_arg(cmd->argv[i])) == 1)
 				ft_error("export", "not a valid identifier", 1,
 				all);
 			else
-				add_arg(all->cmd->argv[i], &all->my_env);
+				add_arg(cmd->argv[i], &all->my_env);
 			i++;
 		}
 	return (all->exit_status);

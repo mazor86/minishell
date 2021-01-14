@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*   cmd_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/08 19:45:35 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 19:44:12 by tisabel          ###   ########.fr       */
+/*   Created: 2021/01/06 22:43:14 by tisabel           #+#    #+#             */
+/*   Updated: 2021/01/08 00:47:41 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		ft_cd(t_all *all, t_cmd *cmd)
+int 	cmd_len(t_cmd *cmd)
 {
-	char *path;
+	int	res;
 
-	all->exit_status = 0;
-	path = cmd->argv[0] == NULL ? get_var(all->my_env, "HOME") : cmd->argv[0];
-	if (chdir(path) < 0)
+	res = 0;
+	while (cmd)
 	{
-		ft_error("cd", "No such file or directory", 2, all);
-		return (all->exit_status);
+		res++;
+		cmd = cmd->next;
 	}
-	change_env(all, "OLD_PWD", get_var(all->my_env, "PWD"));
-	change_env(all, "PWD", getcwd(NULL, _PC_PATH_MAX));
-	return (all->exit_status);
+	return (res);
 }
