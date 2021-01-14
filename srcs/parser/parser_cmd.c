@@ -143,8 +143,10 @@ int			parser_cmd(t_all *all)
 		if (!is_null_cmd(lst))
 		{
 			if (lst->pipe == 1)
+			{
 				if (with_pipe(all, lst, envp, argv) != 0)
 					return (all->exit_status);
+			}
 			else
 			{
 				if ((res_cmd = start_cmd(all, lst)) != 0)
