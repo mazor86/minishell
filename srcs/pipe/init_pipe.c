@@ -1,12 +1,8 @@
 
 #include "../includes/minishell.h"
 
-<<<<<<< HEAD
-int with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp) {
-=======
 int with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
 {
->>>>>>> master
 	int res_cmd;
 	pid_t childpid;
 
@@ -24,8 +20,4 @@ int with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
 			return (all->exit_status);
 		return (0);
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
