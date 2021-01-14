@@ -35,21 +35,31 @@ t_env	*init_env(void)
 t_env	*copy_env(t_env *my_env)
 {
 	t_env	*copy;
-	t_env	**begin;
+	t_env	*temp;
+	t_env	*begin;
 
-	copy = init_env();
-	begin = &copy;
-	while (my_env)
+	temp = my_env;
+	if (!(copy = (t_env*)malloc(sizeof(t_env)))
+	|| !(copy->name = ft_strdup(temp->name)) ||
+	!(copy->value = ft_strdup(temp->value)))
+		return (NULL);
+	copy->standard = temp->standard;
+	begin = copy;
+	while (temp)
 	{
-		if (!(copy->name = ft_strdup(my_env->name)) ||
-		!(copy->value = ft_strdup(my_env->value)))
-			return (NULL);
-		copy->standard = my_env->standard;
-		my_env = my_env->next;
-		copy = copy->next;
+		if (temp->next != NULL)
+		{
+			if (!(copy->next = (t_env*)malloc(sizeof(t_env))) ||
+				!(copy->next->name = ft_strdup(temp->next->name)) ||
+				!(copy->next->value = ft_strdup(temp->next->value)))
+				return (NULL); // почистить копию листа
+			copy->next->standard = temp->next->standard;
+			copy = copy->next;
+		}
+		temp = temp->next;
 	}
 	copy->next = NULL;
-	return (*begin);
+	return (begin);
 }
 
 int		count_env(t_env *my_env)
@@ -97,21 +107,19 @@ void	sort_env(t_env **my_env)
 
 int		change_env(t_all *all, char *var_name, char *new_value)
 {
-	t_env **temp;
+	t_env *temp;
 
-	temp = NULL;
-	*temp = all->my_env;
-	while (all->my_env->name != NULL)
+	temp = all->my_env;
+	while (temp)
 	{
-		if (ft_strcmp(all->my_env->name, var_name) == 0)
+		if (ft_strcmp(temp->name, var_name) == 0)
 		{
-			free(all->my_env->value);
-			if (!(all->my_env->value = ft_strdup(new_value)))
+			free(temp->value);
+			if (!(temp->value = ft_strdup(new_value)))
 				return (ft_error("export", "out of memory", 12, all));
 			break ;
 		}
-		all->my_env = all->my_env->next;
+		temp = temp->next;
 	}
-	all->my_env = *temp;
 	return (0);
 }

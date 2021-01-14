@@ -23,6 +23,8 @@ int		ft_cd(t_all *all, t_cmd *cmd)
 		ft_error("cd", "No such file or directory", 2, all);
 		return (all->exit_status);
 	}
+	if (get_var(all->my_env, "OLD_PWD") == NULL)
+		add_arg("OLD_PWD", &all->my_env);
 	change_env(all, "OLD_PWD", get_var(all->my_env, "PWD"));
 	change_env(all, "PWD", getcwd(NULL, _PC_PATH_MAX));
 	return (all->exit_status);

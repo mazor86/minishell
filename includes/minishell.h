@@ -25,20 +25,11 @@
 */
 
 char			*ft_strcut(char *str, char c);
-int 			new_arg(char ***array, char *new_arg);
-char            **copy_array(char **array);
 int             check_digit(char *str);
-
-
-/*
-** General functions for reading input and processing arguments and variables
-*/
-
 int				clear_all(t_all *all);
 char			**deconvert_env(t_all *all);
 char			**convert_argv(t_cmd *lst);
 char			*get_full_cmd_name(t_all *all, t_cmd *lst);
-int            	set_var(char *line, t_all *all);
 char            *get_var(t_env *my_env, char *var_name);
 
 /*
@@ -52,6 +43,9 @@ int				get_strong_quotes(t_all *all, char **text);
 int				get_quotes(t_all *all, char **text);
 int				parser_cmd(t_all *all);
 int				parser_syntax_errors(t_all *all);
+int				start_cmd(t_all *all, t_cmd *lst);
+int				start_execve(t_all *all, t_cmd *lst, char **envp,
+					char **argv);
 
 
 /*
@@ -77,6 +71,8 @@ void			free_t_env(t_env **my_env);
 int				change_env(t_all *all, char *var_name, char *new_value);
 void			del_one_env(t_env *my_env);
 int				convert_env(t_env **env_var, char **env, t_all *all);
+t_env			*env_last(t_env *env);
+void			add_arg(char *argum, t_env **my_env);
 
 /*
 ** buildin functions
@@ -90,6 +86,10 @@ int				ft_unset(t_all *all, t_cmd *cmd);
 int				ft_cd(t_all *all, t_cmd *cmd);
 int				ft_exit(t_all *all, t_cmd *cmd);
 
+/*
+** execve functions
+*/
+
 int				join_char(char **text, char c);
 int				join_str(char **text, char *s);
 void			trim_space(t_all *all);
@@ -102,23 +102,12 @@ void			*free_array(char **text);
 */
 
 int				ft_error(char *name, char *text, int ret, t_all *all);
-//void    		exec_commands(t_data *data, char *line, t_env **my_env);
-//int				parce_command(t_data *data, char *line, t_env **my_env);
-//void			parce_line(t_data *data, char *line, t_env **my_env);
-//void			check_name(t_data *data, char ***my_env);
-//int				parce_s_quotes(char *line, t_data *data, t_env **my_env);
-//int				parce_d_quotes(char *line, t_data *data, t_env **my_env);
-
-//int             get_ecran(char *line, t_data *data, t_env **my_env);
-//int             get_arg(char *line, t_data *data, t_env **my_env);
-//int             exec_pipe(char *line, t_data *data, t_env **my_env);
-//int             exec_semicolon(char *line, t_data *data, t_env **my_env);
 
 /*
 ** Pipe functions
 */
 
-int				init_pipe(t_all *all, t_cmd *cmd);
+int				with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp);
 void			save_fds(t_all *all);
 
 #endif

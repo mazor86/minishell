@@ -18,7 +18,7 @@
 ** @param **f a pointer to an array of functions
 */
 
-static void	init_f(int (**f)(t_all*))
+static void	init_f(int (**f)(t_all*, t_cmd*))
 {
 	f[0] = ft_echo;
 	f[1] = ft_pwd;
@@ -38,7 +38,7 @@ static void	init_f(int (**f)(t_all*))
 ** (errno number) in case of the error
 */
 
-static int	start_cmd(t_all *all, t_cmd *lst)
+int	start_cmd(t_all *all, t_cmd *lst)
 {
 	int			i;
 	const char	*name[7] = { "echo", "pwd", "export", "env", "unset", "cd",
@@ -92,7 +92,7 @@ static int	free_local(char **split, char **split2, char **text, int ret)
 ** @return 0 if good, otherwise -1
 */
 
-static int	start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
+int	start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 {
 	pid_t	pid;
 	char	*fullname;
@@ -143,15 +143,16 @@ int			parser_cmd(t_all *all)
 		if (!is_null_cmd(lst))
 		{
 			if (lst->pipe == 1)
-			{
-				init_pipe(all, lst);
-			}
-			if ((res_cmd = start_cmd(all, lst)) != 0)
-				return (all->exit_status);
-			if (!res_cmd)
-			{
-				if (start_execve(all, lst, envp, argv) != 0)
+				if (with_pipe(all, lst, envp, argv) != 0)
 					return (all->exit_status);
+			else
+			{
+				if ((res_cmd = start_cmd(all, lst)) != 0)
+					return (all->exit_status);
+				if (!res_cmd) {
+					if (start_execve(all, lst, envp, argv) != 0)
+						return (all->exit_status);
+				}
 			}
 		}
 		lst = lst->next;

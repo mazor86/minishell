@@ -17,14 +17,19 @@ int		check_arg(char *argum)
 	int i;
 
 	i = 0;
-	while (argum[i] != '\0')
+	while (argum[i] != '\0' && argum[i] != '=')
 	{
-		if (ft_isalpha(argum[i]) == 0 && ((ft_isdigit(argum[i]) != 0
-		|| (ft_isdigit(argum[i]) == 0  && i == 0)) || argum[i] != '_'
-		|| argum[i] != '='))
+		if (ft_isalpha(argum[i]) == 0)
+		{
+			if (argum[i] != '_' && ft_isdigit(argum[i]) == 0)
 				return (1);
+			if (ft_isdigit(argum[i]) == 0  && i == 0)
+				return (1);
+		}
 		i++;
 	}
+	if (argum[i] == '=' && i == 0)
+		return (1);
 	return (0);
 }
 
@@ -51,23 +56,25 @@ static void	write_var(t_env env_i)
 
 int			ft_export(t_all *all, t_cmd *cmd)
 {
-	int i;
+	int		i;
+	t_env *begin;
 	t_env *sorted_env;
 
 	i = 0;
 	all->exit_status = 0;
-	if(cmd->argv[0] == NULL)
+	if(ft_strncmp(cmd->argv[0],"", 1) == 0)
 	{
 		if (!(sorted_env = copy_env(all->my_env)))
 			return (ft_error("export", "out of memory", 12, all));
-		sort_env(&sorted_env);
-		while (sorted_env[i].name != NULL)
-			if (sorted_env[i].standard != 0)
+		//sort_env(&sorted_env);
+		begin = sorted_env;
+		while (sorted_env != NULL)
+			if (sorted_env->standard != 0)
 			{
-				write_var(sorted_env[i]);
-				i++;
+				write_var(*sorted_env);
+				sorted_env = sorted_env->next;
 			}
-		free_t_env(&sorted_env);
+		free_t_env(&begin);
 	}
 	else
 		while (cmd->argv[i] != NULL)

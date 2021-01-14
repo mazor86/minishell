@@ -69,10 +69,8 @@ int			main(int args, char **argv, char **env)
 	{
 		if (all.line)
 		{
-			if (parser_string(&all) != 0)
-				return (clear_all(&all));
-			if (parser_cmd(&all) != 0)
-				return (clear_all(&all));
+			parser_string(&all);
+			parser_cmd(&all);
 			update_main(&all);
 		}
 		ft_putstr_fd("bash-3.2$ ", 1);
