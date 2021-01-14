@@ -25,8 +25,8 @@ static void	clear(t_all *all)
 	all->line = NULL;
 	all->pos = 0;
 	all->res = 1;
-	all->fd[0] = 0;
-	all->fd[1] = 1;
+	all->save_fd[0] = 0;
+	all->save_fd[1] = 1;
 	all->pipe_fd[0] = 0;
 	all->pipe_fd[1] = 1;
 	all->exit_status = 0;

@@ -17,7 +17,8 @@
 ** name = name of the variable
 ** value = value of the variable
 ** standard = is it a standard envp variable or added via export (takes values
-** 0 if it was added by simply writing in the string, 1 if it is a standart and 2 if it was added via export)
+** 0 if it was added by simply writing in the string, 1 if it is a standart and
+** 2 if it was added via export)
 */
 
 typedef struct		s_env
@@ -28,13 +29,35 @@ typedef struct		s_env
 	struct s_env	*next;
 }					t_env;
 
+/*
+** name = name of the command (if it is redirect, the name is eaqual to empty
+** string - "")
+** argv = arguments of the command
+** pipe = is there a pipe after the command (0 if there is no pipe and 1 if
+** there is)
+** redir = NULL if there is no redirect after the command. If there is one,
+** it is stored in the variable.
+*/
+
 typedef struct		s_cmd
 {
 	char			*name;
 	char			**argv;
 	char			pipe;
+	char			*redir;
 	struct s_cmd	*next;
 }					t_cmd;
+
+/*
+** my_env = list of environmental variables
+** cmd = list of commands
+** pos = ??
+** res = ??
+** save_fd = variable that stores the copies of the closed 0 and 1 fds.
+** pipe_fd = variables that stores the opened for pipe fds ??
+** exit status = contains exit status of the process. if no errors occured
+** it is eaqual to 0, otherwise it is eaqual to errno value.
+*/
 
 typedef struct		s_all
 {
@@ -43,7 +66,7 @@ typedef struct		s_all
 	char			*line;
 	int				pos;
 	int				res;
-	int 			fd[2];
+	int 			save_fd[2];
 	int 			pipe_fd[2];
 	int				exit_status;
 }					t_all;

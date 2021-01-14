@@ -104,10 +104,11 @@ void			*free_array(char **text);
 int				ft_error(char *name, char *text, int ret, t_all *all);
 
 /*
-** Pipe functions
+** Pipe & redirect functions
 */
 
 int				with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp);
 void			save_fds(t_all *all);
+void			restore_fds(t_all *all);
 
 #endif
