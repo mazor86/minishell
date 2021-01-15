@@ -17,6 +17,7 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <dirent.h>
+# include <fcntl.h>
 # include "../libft/libft.h"
 # include "struct.h"
 
@@ -46,7 +47,8 @@ int				parser_syntax_errors(t_all *all);
 int				start_cmd(t_all *all, t_cmd *lst);
 int				start_execve(t_all *all, t_cmd *lst, char **envp,
 					char **argv);
-
+int				exec_command(t_all *all, t_cmd *cmd, char **argv,
+					char **envp);
 
 /*
 ** Cmd utils functions
@@ -108,7 +110,8 @@ int				ft_error(char *name, char *text, int ret, t_all *all);
 */
 
 int				with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp);
-void			save_fds(t_all *all);
-void			restore_fds(t_all *all);
+void			save_fds(t_all *all, int n);
+void			restore_fds(t_all *all, int n);
+int				init_redirect(t_all *all, t_cmd *cmd, char **argv, char **envp);
 
 #endif

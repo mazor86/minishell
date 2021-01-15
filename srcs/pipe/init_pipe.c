@@ -13,11 +13,6 @@ int with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
 		close(all->pipe_fd[0]);
 	else
 		close(all->pipe_fd[1]);
-	if ((res_cmd = start_cmd(all, cmd)) != 0)
-		return (all->exit_status);
-	if (!res_cmd) {
-		if (start_execve(all, cmd, envp, argv) != 0)
-			return (all->exit_status);
-		return (0);
-	}
+	exec_command(all, cmd, envp, argv);
+	return (all->exit_status);
 }

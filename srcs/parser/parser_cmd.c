@@ -119,6 +119,17 @@ int	start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 	return (free_local(envp, argv, &fullname, 0));
 }
 
+int			exec_command(t_all *all, t_cmd *cmd, char **argv, char **envp)
+{
+	int res_cmd;
+
+	if ((res_cmd = start_cmd(all, cmd)) != 0)
+		return (all->exit_status);
+	if (!res_cmd)
+		start_execve(all, cmd, envp, argv);
+	return (all->exit_status);
+}
+
 /*
 ** execute the command
 **
@@ -129,7 +140,6 @@ int	start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 int			parser_cmd(t_all *all)
 {
 	t_cmd	*lst;
-	int		res_cmd;
 	char	**envp;
 	char	**argv;
 
@@ -149,12 +159,16 @@ int			parser_cmd(t_all *all)
 			}
 			else
 			{
-				if ((res_cmd = start_cmd(all, lst)) != 0)
-					return (all->exit_status);
-				if (!res_cmd) {
-					if (start_execve(all, lst, envp, argv) != 0)
+				if (lst->redir[0] != '\0')
+				{
+					if (init_redirect(all, lst, envp, argv) != 0)
 						return (all->exit_status);
+					while (lst->next->redir[0] != '\0')
+						lst = lst->next;
 				}
+				else
+					if (exec_command(all, lst, envp, argv) != 0)
+						return (all->exit_status);
 			}
 		}
 		lst = lst->next;
