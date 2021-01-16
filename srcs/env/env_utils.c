@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 16:48:09 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/11 13:09:50 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/17 04:14:46 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ t_env	*init_env(void)
 
 	if (!(my_env = malloc(sizeof(t_env))))
 		return (NULL);
-	
-	if (!(my_env->name = ft_strdup("")) || !(my_env->value = ft_strdup("")))
+	if (!(my_env->name = ft_strdup(""))
+		|| !(my_env->value = ft_strdup("")))
 		return (NULL);
 	my_env->standard = 0;
 	my_env->next = NULL;
@@ -39,9 +39,9 @@ t_env	*copy_env(t_env *my_env)
 	t_env	*begin;
 
 	temp = my_env;
-	if (!(copy = (t_env*)malloc(sizeof(t_env)))
-	|| !(copy->name = ft_strdup(temp->name)) ||
-	!(copy->value = ft_strdup(temp->value)))
+	if (!(copy = (t_env*)malloc(sizeof(t_env))) ||
+		!(copy->name = ft_strdup(temp->name))
+		|| !(copy->value = ft_strdup(temp->value)))
 		return (NULL);
 	copy->standard = temp->standard;
 	begin = copy;

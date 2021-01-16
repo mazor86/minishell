@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:20:05 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 19:41:35 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/17 04:11:54 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,8 +167,10 @@ int			parser_cmd(t_all *all)
 						lst = lst->next;
 				}
 				else
+				{
 					if (exec_command(all, lst, envp, argv) != 0)
-						return (all->exit_status);
+					return (all->exit_status);
+				}
 			}
 		}
 		lst = lst->next;

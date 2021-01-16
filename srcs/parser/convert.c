@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 13:00:31 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/10 12:41:15 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/17 03:59:51 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ char		**deconvert_env(t_all *all)
 	}
 	return (res);
 }
-
 
 /*
 ** converts command arguments to an array of strings

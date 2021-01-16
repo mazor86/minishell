@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:43:41 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 19:39:53 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/17 03:49:05 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 int		ft_pwd(t_all *all, t_cmd *cmd)
 {
-	char 	*pwd;
+	char	*pwd;
 
 	all->exit_status = 0;
 	if (ft_strcmp(cmd->argv[0], "") != 0)

@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 17:30:23 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 18:50:58 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/17 03:47:58 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,5 @@ int				ft_strcmp(const char *s1, const char *s2);
 int				ft_min(int one, int two);
 int				ft_max(int one, int two);
 char			*ft_strcut(char *str, char c);
-
 
 #endif

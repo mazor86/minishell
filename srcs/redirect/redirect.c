@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redirect.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/17 04:07:42 by tisabel           #+#    #+#             */
+/*   Updated: 2021/01/17 04:08:39 by tisabel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int open_file(char redir[2], char *argum)
+int	open_file(char redir[2], char *argum)
 {
 	int fd;
 
@@ -17,7 +28,7 @@ int open_file(char redir[2], char *argum)
 	return (fd);
 }
 
-int init_redirect(t_all *all, t_cmd *cmd, char **argv, char **envp)
+int	init_redirect(t_all *all, t_cmd *cmd, char **argv, char **envp)
 {
 	t_cmd	*temp;
 	int		fd;

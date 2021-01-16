@@ -33,16 +33,41 @@ int		check_arg(char *argum)
 	return (0);
 }
 
-void	add_arg(char *argum, t_env **my_env)
+int	add_arg(t_all *all, char *argum, t_env **my_env)
 {
 	int n;
+	char *name;
+	t_env *temp;
 
-	(*my_env)->name = ft_strcut(argum, '=');
-	if ((n = ft_strfind(argum, '=')) != 0)
-		(*my_env)->value = ft_strdup(&argum[n]);
+	temp = *my_env;
+	if ((check_arg(argum)) == 1)
+		return (ft_error("export", "not a valid identifier", 1,
+						 all));
 	else
-		(*my_env)->value = ft_strdup("");
-	(*my_env)->standard = 2;
+	{
+		if (!(name = ft_strcut(argum, '=')))
+			return (2);
+		while (temp->next)
+		{
+			if (ft_strcmp(temp->name, name))
+			{
+				temp->name = name;
+				break;
+			}
+			temp = temp->next;
+		}
+		if (temp == NULL)
+			add_back_env(my_env, creat_env(argum));
+		if ((n = ft_strfind(argum, '=')) != 0)
+		{
+			if (!(temp->value = ft_strdup(&argum[n])))
+				return (2);
+		}
+		else
+			if (!(temp->value = ft_strdup("")))
+				return (2);
+		temp->standard = 2;
+	}
 }
 
 static void	write_var(t_env env_i)
@@ -79,11 +104,8 @@ int			ft_export(t_all *all, t_cmd *cmd)
 	else
 		while (cmd->argv[i] != NULL)
 		{
-			if ((check_arg(cmd->argv[i])) == 1)
-				ft_error("export", "not a valid identifier", 1,
-				all);
-			else
-				add_arg(cmd->argv[i], &all->my_env); // переписать добавлять элемент в конец если не существует или заменять значение если существует
+			if (add_arg(all, cmd->argv[i], &all->my_env) == 2)
+				return (ft_error("export", "out of memory", 12, all));
 			i++;
 		}
 	return (all->exit_status);

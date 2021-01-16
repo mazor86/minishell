@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_pipe.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/17 04:10:03 by tisabel           #+#    #+#             */
+/*   Updated: 2021/01/17 04:10:28 by tisabel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
+int	with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
 {
-	int res_cmd;
-	pid_t childpid;
+	int		res_cmd;
+	pid_t	childpid;
 
 	pipe(all->pipe_fd);
 	if ((childpid = fork()) == -1)

@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fd_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/17 04:08:33 by tisabel           #+#    #+#             */
+/*   Updated: 2021/01/17 04:08:58 by tisabel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void save_fds(t_all *all, int n)
+void	save_fds(t_all *all, int n)
 {
 	if (n == 0)
 	{
@@ -22,7 +33,7 @@ void save_fds(t_all *all, int n)
 	}
 }
 
-void restore_fds(t_all *all, int n)
+void	restore_fds(t_all *all, int n)
 {
 	if (n == 0)
 	{

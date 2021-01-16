@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 00:04:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 00:14:22 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/17 04:01:05 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static int	set_env(t_all *all, char **text, char *var)
 		return (-1);
 	return (0);
 }
-
 
 /*
 ** Replaces text with the value of an environment variable

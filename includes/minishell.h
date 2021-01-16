@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/11 11:42:21 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/17 03:46:44 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@
 */
 
 char			*ft_strcut(char *str, char c);
-int             check_digit(char *str);
+int				check_digit(char *str);
 int				clear_all(t_all *all);
 char			**deconvert_env(t_all *all);
 char			**convert_argv(t_cmd *lst);
 char			*get_full_cmd_name(t_all *all, t_cmd *lst);
-char            *get_var(t_env *my_env, char *var_name);
+char			*get_var(t_env *my_env, char *var_name);
 
 /*
 ** Parcer functions
@@ -60,7 +60,7 @@ void			cmdadd_back(t_cmd **lst, t_cmd *new);
 t_cmd			*init_cmd(void);
 int				is_null_cmd(t_cmd *lst);
 void			clear_cmd(t_cmd **cmd_lst);
-int 			cmd_len(t_cmd *cmd);
+int				cmd_len(t_cmd *cmd);
 
 /*
 ** Env utils functions
@@ -75,7 +75,7 @@ int				change_env(t_all *all, char *var_name, char *new_value);
 void			del_one_env(t_env *my_env);
 int				convert_env(t_env **env_var, char **env, t_all *all);
 t_env			*env_last(t_env *env);
-void			add_arg(char *argum, t_env **my_env);
+int				add_arg(t_all *all, char *argum, t_env **my_env);
 
 /*
 ** buildin functions
