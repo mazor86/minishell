@@ -18,6 +18,7 @@
 # include <sys/wait.h>
 # include <dirent.h>
 # include <fcntl.h>
+# include <signal.h>
 # include "../libft/libft.h"
 # include "struct.h"
 
@@ -113,5 +114,11 @@ int				with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp);
 void			save_fds(t_all *all, int n);
 void			restore_fds(t_all *all, int n);
 int				init_redirect(t_all *all, t_cmd *cmd, char **argv, char **envp);
+
+/*
+** Signals implementing functions
+*/
+
+void			init_signals(t_all *all);
 
 #endif

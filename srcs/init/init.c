@@ -30,6 +30,8 @@ t_cmd	*init_cmd(void)
 		return (NULL);
 	cmd->argv[1] = 0;
 	cmd->pipe = 0;
+	cmd->redir[0] = '\0';
+	cmd->redir[1] = '\0';
 	cmd->next = NULL;
 	return (cmd);
 }

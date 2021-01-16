@@ -25,11 +25,10 @@ static void	clear(t_all *all)
 	all->line = NULL;
 	all->pos = 0;
 	all->res = 1;
-	all->save_fd[0] = 0;
-	all->save_fd[1] = 1;
-	all->pipe_fd[0] = 0;
-	all->pipe_fd[1] = 1;
-	all->exit_status = 0;
+	all->save_fd[0] = -1;
+	all->save_fd[1] = -1;
+	all->pipe_fd[0] = -1;
+	all->pipe_fd[1] = -1;
 }
 
 /*
@@ -65,6 +64,7 @@ int			main(int args, char **argv, char **env)
 	clear(&all);
 	convert_env(&all.my_env, env, &all);
 	ft_putstr_fd("bash-3.2$ ", 1);
+	init_signals(&all);
 	while (get_next_line(0, &all.line))
 	{
 		if (all.line)

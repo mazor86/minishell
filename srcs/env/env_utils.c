@@ -90,7 +90,7 @@ void	sort_env(t_env **my_env)
 	{
 		while ((*my_env)->next)
 		{
-			if ((*my_env)->name < (*my_env)->next->name)
+			if (ft_strcmp((*my_env)->name, (*my_env)->next->name) < 0)
 			{
 				tmp_1 = *my_env;
 				tmp_2 = (*my_env)->next->next;

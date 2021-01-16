@@ -66,7 +66,7 @@ int			ft_export(t_all *all, t_cmd *cmd)
 	{
 		if (!(sorted_env = copy_env(all->my_env)))
 			return (ft_error("export", "out of memory", 12, all));
-		//sort_env(&sorted_env);
+		sort_env(&sorted_env);
 		begin = sorted_env;
 		while (sorted_env != NULL)
 			if (sorted_env->standard != 0)
@@ -83,7 +83,7 @@ int			ft_export(t_all *all, t_cmd *cmd)
 				ft_error("export", "not a valid identifier", 1,
 				all);
 			else
-				add_arg(cmd->argv[i], &all->my_env);
+				add_arg(cmd->argv[i], &all->my_env); // переписать добавлять элемент в конец если не существует или заменять значение если существует
 			i++;
 		}
 	return (all->exit_status);
