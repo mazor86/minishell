@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/includes/minishell.h
+stdio.h
+-
+sys/types.h
+-
+sys/wait.h
+-
+dirent.h
+-
+fcntl.h
+-
+signal.h
+-
+../libft/libft.h
+/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/libft/libft.h
+struct.h
+/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/includes/struct.h
+
+/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/includes/struct.h
+
+/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/libft/libft.h
+unistd.h
+-
+stdlib.h
+-
+string.h
+-
+
+/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/srcs/env/env_utils.c
+../../includes/minishell.h
+/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/includes/minishell.h
+
