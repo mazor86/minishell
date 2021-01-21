@@ -10,15 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-static int		set_read(int fd, char **line)
+static int      ft_gnl_exit(t_all *all)
+{
+    ft_putstr_fd("exit\n", 1);
+    free_t_env(&all->my_env);
+    clear_all(all);
+    exit(all->exit_status);
+}
+
+static int		set_read(int fd, char **line, t_all *all)
 {
 	char	*res;
+	int     ret;
 	char	buf[2];
 
-	while (read(fd, buf, 1) > 0)
+	while ((ret = read(fd, buf, 1)) >= 0)
 	{
+        if (ret == 0)
+        {
+            if (ft_strcmp(*line, "") == 0)
+                ft_gnl_exit(t_all);
+            else
+            {
+                ft_putstr_fd("  \b\b", 1);
+                continue ;
+            }
+        }
 		buf[1] = 0;
 		if (buf[0] == '\n')
 			break ;
@@ -32,14 +51,14 @@ static int		set_read(int fd, char **line)
 			return (-1);
 		free(res);
 	}
-	return (0);
+	return (-1);
 }
 
-int				get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line, t_all *all)
 {
 	if (fd < 0 || !line)
 		return (-1);
-	if (set_read(fd, line) == -1)
+	if (set_read(fd, line, all) == -1)
 		return (-1);
 	return (1);
 }

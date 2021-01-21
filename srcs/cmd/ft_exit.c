@@ -12,6 +12,16 @@
 
 #include "../../includes/minishell.h"
 
+int     arg_len(t_cmd *cmd)
+{
+    int i;
+
+    i = 0;
+    while (argv[i] != NULL)
+        i++;
+    return (i);
+}
+
 int		check_digit(char *str)
 {
 	int i;
@@ -38,8 +48,7 @@ int		ft_exit(t_all *all, t_cmd *cmd)
 {
 	int	n;
 
-	n = cmd_len(cmd);
-	all->exit_status = 0;
+	n = arg_len(cmd);
 	if (n > 1 || check_digit(cmd->argv[0]) != 1)
 	{
 		if (check_digit(cmd->argv[0]) != 1)
@@ -49,7 +58,7 @@ int		ft_exit(t_all *all, t_cmd *cmd)
 	}
 	else
 	{
-		ft_putstr_fd("exit\n", all->pipe_fd[1]);
+		ft_putstr_fd("exit\n", 1);
 		if (n == 1)
 			all->exit_status = ft_atoi(cmd->argv[0]);
 	}

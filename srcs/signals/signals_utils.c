@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	sigint_sighandler(int i)
 {
@@ -26,6 +26,6 @@ void	sigquit_sighandler(int i)
 
 void	init_signals(t_all *all)
 {
-	signal(SIGINT, sigint_sighandler);
-	signal(SIGQUIT, sigquit_sighandler);
+    signal(SIGINT, sigint_sighandler);
+    signal(SIGQUIT, sigquit_sighandler);
 }

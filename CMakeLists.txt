@@ -61,7 +61,7 @@ add_executable(minishell
         libft/ft_substr.c
         libft/ft_tolower.c
         libft/ft_toupper.c
-        libft/get_next_line.c
+        srcs/general/get_next_line.c
         libft/libft.h
         srcs/clear/clear.c
         srcs/clear/error.c

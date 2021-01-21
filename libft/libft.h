@@ -72,7 +72,6 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*));
 ** Additional bonus functions
 */
 
-int				get_next_line(int fd, char **line);
 int				ft_strfind(const char *s, char c);
 char			*ft_strstr(const char *haystack, const char *needle);
 int				ft_strcmp(const char *s1, const char *s2);

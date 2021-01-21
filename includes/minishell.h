@@ -33,6 +33,7 @@ char			**deconvert_env(t_all *all);
 char			**convert_argv(t_cmd *lst);
 char			*get_full_cmd_name(t_all *all, t_cmd *lst);
 char			*get_var(t_env *my_env, char *var_name);
+int				get_next_line(int fd, char **line);
 
 /*
 ** Parcer functions
