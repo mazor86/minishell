@@ -76,6 +76,8 @@ void			del_one_env(t_env *my_env);
 int				convert_env(t_env **env_var, char **env, t_all *all);
 t_env			*env_last(t_env *env);
 int				add_arg(t_all *all, char *argum, t_env **my_env);
+void			add_back_env (t_env **my_env, t_env *new_env);
+t_env			*creat_env(char *argum, t_all *all);
 
 /*
 ** buildin functions

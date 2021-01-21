@@ -1898,6 +1898,33 @@ srcs/env/env_utils.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/env/env_utils.c.s
 .PHONY : srcs/env/env_utils.c.s
 
+srcs/env/env_utils_2.o: srcs/env/env_utils_2.c.o
+
+.PHONY : srcs/env/env_utils_2.o
+
+# target to build an object file
+srcs/env/env_utils_2.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/env/env_utils_2.c.o
+.PHONY : srcs/env/env_utils_2.c.o
+
+srcs/env/env_utils_2.i: srcs/env/env_utils_2.c.i
+
+.PHONY : srcs/env/env_utils_2.i
+
+# target to preprocess a source file
+srcs/env/env_utils_2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/env/env_utils_2.c.i
+.PHONY : srcs/env/env_utils_2.c.i
+
+srcs/env/env_utils_2.s: srcs/env/env_utils_2.c.s
+
+.PHONY : srcs/env/env_utils_2.s
+
+# target to generate assembly for a file
+srcs/env/env_utils_2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/env/env_utils_2.c.s
+.PHONY : srcs/env/env_utils_2.c.s
+
 srcs/general/variables.o: srcs/general/variables.c.o
 
 .PHONY : srcs/general/variables.o
@@ -2534,6 +2561,9 @@ help:
 	@echo "... srcs/env/env_utils.o"
 	@echo "... srcs/env/env_utils.i"
 	@echo "... srcs/env/env_utils.s"
+	@echo "... srcs/env/env_utils_2.o"
+	@echo "... srcs/env/env_utils_2.i"
+	@echo "... srcs/env/env_utils_2.s"
 	@echo "... srcs/general/variables.o"
 	@echo "... srcs/general/variables.i"
 	@echo "... srcs/general/variables.s"

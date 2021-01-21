@@ -57,7 +57,7 @@ int	add_arg(t_all *all, char *argum, t_env **my_env)
 			temp = temp->next;
 		}
 		if (temp == NULL)
-			add_back_env(my_env, creat_env(argum));
+			add_back_env(my_env, creat_env(argum, all));
 		if ((n = ft_strfind(argum, '=')) != 0)
 		{
 			if (!(temp->value = ft_strdup(&argum[n])))

@@ -46,7 +46,7 @@ int	init_redirect(t_all *all, t_cmd *cmd, char **argv, char **envp)
 				temp = temp->next;
 			}
 		}
-		if (exec_command(all, cmd, envp, argv) != 0)
+		if (exec_command(all, cmd, argv, envp) != 0)
 		{
 			temp->redir[0] == '<' ? restore_fds(all, 0) : restore_fds(all, 1);
 			return (all->exit_status);

@@ -64,6 +64,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/srcs/cmd_utils/cmd_len.c.o"
   "CMakeFiles/minishell.dir/srcs/env/conv_env.c.o"
   "CMakeFiles/minishell.dir/srcs/env/env_utils.c.o"
+  "CMakeFiles/minishell.dir/srcs/env/env_utils_2.c.o"
   "CMakeFiles/minishell.dir/srcs/general/variables.c.o"
   "CMakeFiles/minishell.dir/srcs/init/init.c.o"
   "CMakeFiles/minishell.dir/srcs/main.c.o"

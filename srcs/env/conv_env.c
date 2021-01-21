@@ -40,12 +40,3 @@ int		convert_env(t_env **env_var, char **env, t_all *all)
 	}
 	return (0);
 }
-
-t_env	*env_last(t_env *env)
-{
-	if (!env)
-		return (NULL);
-	while (env->next)
-		env = env->next;
-	return (env);
-}

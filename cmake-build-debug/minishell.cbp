@@ -290,6 +290,9 @@
 		<Unit filename="/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/srcs/env/env_utils.c">
 			<Option target="minishell"/>
 		</Unit>
+		<Unit filename="/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/srcs/env/env_utils_2.c">
+			<Option target="minishell"/>
+		</Unit>
 		<Unit filename="/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/srcs/general/variables.c">
 			<Option target="minishell"/>
 		</Unit>
