@@ -24,6 +24,7 @@ void	cmdadd_back(t_cmd **lst, t_cmd *new)
 		{
 			res = cmdlast(*lst);
 			res->next = new;
+            new->prev = res;
 		}
 	}
 }

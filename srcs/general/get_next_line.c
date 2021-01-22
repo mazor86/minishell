@@ -31,7 +31,7 @@ static int		set_read(int fd, char **line, t_all *all)
         if (ret == 0)
         {
             if (ft_strcmp(*line, "") == 0)
-                ft_gnl_exit(t_all);
+                ft_gnl_exit(all);
             else
             {
                 ft_putstr_fd("  \b\b", 1);

@@ -87,4 +87,10 @@ add_executable(minishell
         srcs/parser/parser_string.c
         srcs/parser/parser_variables.c
         srcs/parser/utils.c
-        srcs/main.c srcs/pipe/init_pipe.c srcs/cmd_utils/cmd_len.c srcs/pipe/fd_utils.c srcs/redirect/redirect.c srcs/signals/signals_utils.c srcs/env/env_utils_2.c)
+        srcs/main.c
+        srcs/pipe/init_pipe.c
+        srcs/cmd_utils/cmd_len.c
+        srcs/pipe/fd_utils.c
+        srcs/redirect/redirect.c
+        srcs/signals/signals_utils.c
+        srcs/env/env_utils_2.c)

@@ -33,6 +33,7 @@ t_cmd	*init_cmd(void)
 	cmd->redir[0] = '\0';
 	cmd->redir[1] = '\0';
 	cmd->next = NULL;
+    cmd->prev = NULL;
 	return (cmd);
 }
 

@@ -22,6 +22,8 @@
 # include "../libft/libft.h"
 # include "struct.h"
 
+extern int      errno;
+
 /*
 ** General functions for reading input and processing arguments and variables
 */
@@ -33,7 +35,7 @@ char			**deconvert_env(t_all *all);
 char			**convert_argv(t_cmd *lst);
 char			*get_full_cmd_name(t_all *all, t_cmd *lst);
 char			*get_var(t_env *my_env, char *var_name);
-int				get_next_line(int fd, char **line);
+int				get_next_line(int fd, char **line, t_all *all);
 
 /*
 ** Parcer functions
@@ -51,6 +53,7 @@ int				start_execve(t_all *all, t_cmd *lst, char **envp,
 					char **argv);
 int				exec_command(t_all *all, t_cmd *cmd, char **argv,
 					char **envp);
+int             free_local(char **split, char **split2, char **text, int ret);
 
 /*
 ** Cmd utils functions
@@ -114,14 +117,17 @@ int				ft_error(char *name, char *text, int ret, t_all *all);
 */
 
 int				with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp);
-void			save_fds(t_all *all, int n);
-void			restore_fds(t_all *all, int n);
+void	        save_fds(t_all *all);
+void			restore_fds(t_all *all);
 int				init_redirect(t_all *all, t_cmd *cmd, char **argv, char **envp);
+int             no_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp);
+void	        open_pipe_fd(t_all *all);
+void	        close_pipe_fd(t_all *all);
 
 /*
 ** Signals implementing functions
 */
 
-void			init_signals(t_all *all);
+void	        init_signals(t_all *all, char c);
 
 #endif

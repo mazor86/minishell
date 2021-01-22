@@ -68,6 +68,7 @@ int	add_arg(t_all *all, char *argum, t_env **my_env)
 				return (2);
 		temp->standard = 2;
 	}
+    return (0);
 }
 
 static void	write_var(t_env env_i)

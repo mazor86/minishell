@@ -12,20 +12,75 @@
 
 #include "../../includes/minishell.h"
 
-int	with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
+int     execve_with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
 {
-	int		res_cmd;
-	pid_t	childpid;
+    char	*fullname;
 
-	pipe(all->pipe_fd);
-	if ((childpid = fork()) == -1)
-		ft_error("fork", "return -1", 12, all);
-	if (childpid == 0)
-		close(all->pipe_fd[0]);
-        exec_command(all, cmd, envp, argv);
-	else
-		waitpid(childpid, &all->res, 0);
-		close(all->pipe_fd[1]);
+    fullname = NULL;
+    if (!(envp = deconvert_env(all)) ||
+        !(argv = convert_argv(cmd)))
+        return (free_local(envp, argv, &fullname, -1));
+    if (!(fullname = get_full_cmd_name(all, cmd)))
+        return (free_local(envp, argv, &fullname, 0));
+    if (execve(fullname, argv, envp) == -1)
+        exit(ft_error(cmd->name, ": permission denied", 13, all));
+    free_local(envp, argv, &fullname, 0);
+    exit(0);
+}
 
-	return (all->exit_status);
+int     exec_command_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
+{
+    pid_t	pid;
+    int res_cmd;
+
+    if ((pid = fork()) == -1)
+        return (ft_error(cmd->name, ": failed to fork", 13, all));
+    signal(SIGINT, SIG_IGN);
+    signal(SIGQUIT, SIG_IGN);
+    if (pid == 0)
+    {
+        open_pipe_fd(all);
+        init_signals(all, 'c');
+        if ((res_cmd = start_cmd(all, cmd)) != 0)
+            exit(all->exit_status);
+        if (!res_cmd)
+            execve_with_pipe(all, cmd, argv, envp);
+    }
+    else
+        waitpid(pid, &all->res, 0);
+    init_signals(all, 'p');
+    close_pipe_fd(all);
+    return (all->exit_status);
+}
+
+int     with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
+{
+    if (cmd->redir[0] != '\0')
+    {
+        if (init_redirect(all, cmd, argv, envp) != 0)
+            return (all->exit_status);
+        while (cmd->next->redir[0] != '\0')
+            cmd = cmd->next;
+    }
+    else
+        if (exec_command(all, cmd, argv, envp) != 0)
+            return (all->exit_status);
+    return (all->exit_status);
+}
+
+int     no_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
+{
+    if (cmd->redir[0] != '\0')
+    {
+        if (init_redirect(all, cmd, argv, envp) != 0)
+            return (all->exit_status);
+        while (cmd->next->redir[0] != '\0')
+            cmd = cmd->next;
+    }
+    else
+    {
+        if (exec_command(all, cmd, argv, envp) != 0)
+            return (all->exit_status);
+    }
+    return (all->exit_status);
 }

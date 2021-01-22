@@ -38,7 +38,7 @@ static void	init_f(int (**f)(t_all*, t_cmd*))
 ** (errno number) in case of the error
 */
 
-int	start_cmd(t_all *all, t_cmd *lst)
+int	        start_cmd(t_all *all, t_cmd *lst)
 {
 	int			i;
 	const char	*name[7] = { "echo", "pwd", "export", "env", "unset", "cd",
@@ -71,7 +71,7 @@ int	start_cmd(t_all *all, t_cmd *lst)
 ** @return ret
 */
 
-static int	free_local(char **split, char **split2, char **text, int ret)
+int         free_local(char **split, char **split2, char **text, int ret)
 {
 	if (split)
 		free_array(split);
@@ -92,7 +92,7 @@ static int	free_local(char **split, char **split2, char **text, int ret)
 ** @return 0 if good, otherwise -1
 */
 
-int	start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
+int         start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 {
 	pid_t	pid;
 	char	*fullname;
@@ -105,21 +105,23 @@ int	start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 		return (free_local(envp, argv, &fullname, 0));
 	if ((pid = fork()) == -1)
 		return (ft_error(lst->name, ": failed to fork", 13, all));
+    signal(SIGINT, SIG_IGN);
+    signal(SIGQUIT, SIG_IGN);
 	if (pid == 0)
 	{
+        init_signals(all, 'c');
 		if (execve(fullname, argv, envp) == -1)
-		{
 			return (ft_error(lst->name,
 				": permission denied", 13, all));
-		}
 		exit(0);
 	}
 	else
-		waitpid(pid, &all->res, 0);
-	return (free_local(envp, argv, &fullname, 0));
+        waitpid(pid, &all->res, 0);
+    init_signals(all, 'p');
+	return (free_local(envp, argv, &fullname, all->exit_status));
 }
 
-int			exec_command(t_all *all, t_cmd *cmd, char **argv, char **envp)
+int		    exec_command(t_all *all, t_cmd *cmd, char **argv, char **envp)
 {
 	int res_cmd;
 
@@ -134,10 +136,10 @@ int			exec_command(t_all *all, t_cmd *cmd, char **argv, char **envp)
 ** execute the command
 **
 ** @param *all general structure
-** @return 0 if good, otherwise -1
+** @return 0 if good, otherwise returns exit status and prints error
 */
 
-int			parser_cmd(t_all *all)
+int		    parser_cmd(t_all *all)
 {
 	t_cmd	*lst;
 	char	**envp;
@@ -154,24 +156,14 @@ int			parser_cmd(t_all *all)
 		{
 			if (lst->pipe == 1)
 			{
-				if (with_pipe(all, lst, envp, argv) != 0)
-					return (all->exit_status);
-			}
+                if (with_pipe(all, lst, argv, envp) != 0)
+                    return (all->exit_status);
+            }
 			else
-			{
-				if (lst->redir[0] != '\0')
-				{
-					if (init_redirect(all, lst, envp, argv) != 0)
-						return (all->exit_status);
-					while (lst->next->redir[0] != '\0')
-						lst = lst->next;
-				}
-				else
-				{
-					if (exec_command(all, lst, envp, argv) != 0)
-					return (all->exit_status);
-				}
-			}
+            {
+                if (no_pipe(all, lst, argv, envp) != 0)
+                    return (all->exit_status);
+            }
 		}
 		lst = lst->next;
 	}

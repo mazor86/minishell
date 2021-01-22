@@ -17,7 +17,7 @@ int     arg_len(t_cmd *cmd)
     int i;
 
     i = 0;
-    while (argv[i] != NULL)
+    while (cmd->argv[i] != NULL)
         i++;
     return (i);
 }
