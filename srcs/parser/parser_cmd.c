@@ -54,11 +54,11 @@ int	        start_cmd(t_all *all, t_cmd *lst)
 		{
 			if (f[i](all, lst) != 0)
 				return (all->exit_status);
-			return (1);
+			return (0);
 		}
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 /*
@@ -125,9 +125,9 @@ int		    exec_command(t_all *all, t_cmd *cmd, char **argv, char **envp)
 {
 	int res_cmd;
 
-	if ((res_cmd = start_cmd(all, cmd)) != 0)
+	if ((res_cmd = start_cmd(all, cmd)) > 0)
 		return (all->exit_status);
-	if (!res_cmd)
+	if (res_cmd == -1)
 		start_execve(all, cmd, envp, argv);
 	return (all->exit_status);
 }

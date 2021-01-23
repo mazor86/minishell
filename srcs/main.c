@@ -65,9 +65,9 @@ int			main(int args, char **argv, char **env)
 	convert_env(&all.my_env, env, &all);
 	ft_putstr_fd("bash-3.2$ ", 1);
 	init_signals(&all, 'p');
-	while (get_next_line(0, &all.line))
+	while (get_next_line(0, &all.line, &all))
 	{
-        save_fds(&all);
+        save_fds(&all, 2);
 		if (all.line)
 		{
 			parser_string(&all);
@@ -75,7 +75,7 @@ int			main(int args, char **argv, char **env)
 			update_main(&all);
 		}
 		ft_putstr_fd("bash-3.2$ ", 1);
-        restore_fds(&all);
+        restore_fds(&all, 2);
 	}
 	return (all.exit_status);
 }

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/includes/minishell.h
+/Users/tisabel/Documents/minishell/includes/minishell.h
 stdio.h
 -
 sys/types.h
@@ -20,13 +20,13 @@ fcntl.h
 signal.h
 -
 ../libft/libft.h
-/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/libft/libft.h
+/Users/tisabel/Documents/minishell/libft/libft.h
 struct.h
-/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/includes/struct.h
+/Users/tisabel/Documents/minishell/includes/struct.h
 
-/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/includes/struct.h
+/Users/tisabel/Documents/minishell/includes/struct.h
 
-/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/libft/libft.h
+/Users/tisabel/Documents/minishell/libft/libft.h
 unistd.h
 -
 stdlib.h
@@ -34,7 +34,7 @@ stdlib.h
 string.h
 -
 
-/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/srcs/env/env_utils.c
+/Users/tisabel/Documents/minishell/srcs/cmd/ft_export.c
 ../../includes/minishell.h
-/Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/includes/minishell.h
+/Users/tisabel/Documents/minishell/includes/minishell.h
 

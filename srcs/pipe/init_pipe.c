@@ -33,6 +33,7 @@ int     exec_command_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
     pid_t	pid;
     int res_cmd;
 
+    pipe(all->pipe_fd);
     if ((pid = fork()) == -1)
         return (ft_error(cmd->name, ": failed to fork", 13, all));
     signal(SIGINT, SIG_IGN);
@@ -41,13 +42,16 @@ int     exec_command_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
     {
         open_pipe_fd(all);
         init_signals(all, 'c');
-        if ((res_cmd = start_cmd(all, cmd)) != 0)
+        if ((res_cmd = start_cmd(all, cmd)) > 0)
             exit(all->exit_status);
-        if (!res_cmd)
+        if (res_cmd == -1)
             execve_with_pipe(all, cmd, argv, envp);
+        exit(0);
     }
     else
+    {
         waitpid(pid, &all->res, 0);
+    }
     init_signals(all, 'p');
     close_pipe_fd(all);
     return (all->exit_status);
@@ -63,7 +67,7 @@ int     with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
             cmd = cmd->next;
     }
     else
-        if (exec_command(all, cmd, argv, envp) != 0)
+        if (exec_command_pipe(all, cmd, argv, envp) != 0)
             return (all->exit_status);
     return (all->exit_status);
 }

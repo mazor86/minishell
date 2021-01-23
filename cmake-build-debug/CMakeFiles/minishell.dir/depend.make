@@ -143,9 +143,6 @@ CMakeFiles/minishell.dir/libft/ft_tolower.c.o: ../libft/ft_tolower.c
 
 CMakeFiles/minishell.dir/libft/ft_toupper.c.o: ../libft/ft_toupper.c
 
-CMakeFiles/minishell.dir/libft/get_next_line.c.o: ../libft/get_next_line.c
-CMakeFiles/minishell.dir/libft/get_next_line.c.o: ../libft/libft.h
-
 CMakeFiles/minishell.dir/srcs/clear/clear.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/clear/clear.c.o: ../includes/struct.h
 CMakeFiles/minishell.dir/srcs/clear/clear.c.o: ../libft/libft.h
@@ -215,6 +212,16 @@ CMakeFiles/minishell.dir/srcs/env/env_utils.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/env/env_utils.c.o: ../includes/struct.h
 CMakeFiles/minishell.dir/srcs/env/env_utils.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/env/env_utils.c.o: ../srcs/env/env_utils.c
+
+CMakeFiles/minishell.dir/srcs/env/env_utils_2.c.o: ../includes/minishell.h
+CMakeFiles/minishell.dir/srcs/env/env_utils_2.c.o: ../includes/struct.h
+CMakeFiles/minishell.dir/srcs/env/env_utils_2.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/env/env_utils_2.c.o: ../srcs/env/env_utils_2.c
+
+CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o: ../includes/minishell.h
+CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o: ../includes/struct.h
+CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o: ../srcs/general/get_next_line.c
 
 CMakeFiles/minishell.dir/srcs/general/variables.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/general/variables.c.o: ../includes/struct.h

@@ -68,10 +68,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/yuliyamartsenko/Documents/studing/programming/School21/minishell
+CMAKE_SOURCE_DIR = /Users/tisabel/Documents/minishell
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/tisabel/Documents/minishell/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/cmake-build-debug/CMakeFiles /Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles /Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yuliyamartsenko/Documents/studing/programming/School21/minishell/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1493,33 +1493,6 @@ libft/ft_toupper.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/ft_toupper.c.s
 .PHONY : libft/ft_toupper.c.s
 
-libft/get_next_line.o: libft/get_next_line.c.o
-
-.PHONY : libft/get_next_line.o
-
-# target to build an object file
-libft/get_next_line.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/get_next_line.c.o
-.PHONY : libft/get_next_line.c.o
-
-libft/get_next_line.i: libft/get_next_line.c.i
-
-.PHONY : libft/get_next_line.i
-
-# target to preprocess a source file
-libft/get_next_line.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/get_next_line.c.i
-.PHONY : libft/get_next_line.c.i
-
-libft/get_next_line.s: libft/get_next_line.c.s
-
-.PHONY : libft/get_next_line.s
-
-# target to generate assembly for a file
-libft/get_next_line.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/libft/get_next_line.c.s
-.PHONY : libft/get_next_line.c.s
-
 srcs/clear/clear.o: srcs/clear/clear.c.o
 
 .PHONY : srcs/clear/clear.o
@@ -1924,6 +1897,33 @@ srcs/env/env_utils_2.s: srcs/env/env_utils_2.c.s
 srcs/env/env_utils_2.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/env/env_utils_2.c.s
 .PHONY : srcs/env/env_utils_2.c.s
+
+srcs/general/get_next_line.o: srcs/general/get_next_line.c.o
+
+.PHONY : srcs/general/get_next_line.o
+
+# target to build an object file
+srcs/general/get_next_line.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/general/get_next_line.c.o
+.PHONY : srcs/general/get_next_line.c.o
+
+srcs/general/get_next_line.i: srcs/general/get_next_line.c.i
+
+.PHONY : srcs/general/get_next_line.i
+
+# target to preprocess a source file
+srcs/general/get_next_line.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/general/get_next_line.c.i
+.PHONY : srcs/general/get_next_line.c.i
+
+srcs/general/get_next_line.s: srcs/general/get_next_line.c.s
+
+.PHONY : srcs/general/get_next_line.s
+
+# target to generate assembly for a file
+srcs/general/get_next_line.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/general/get_next_line.c.s
+.PHONY : srcs/general/get_next_line.c.s
 
 srcs/general/variables.o: srcs/general/variables.c.o
 
@@ -2516,9 +2516,6 @@ help:
 	@echo "... libft/ft_toupper.o"
 	@echo "... libft/ft_toupper.i"
 	@echo "... libft/ft_toupper.s"
-	@echo "... libft/get_next_line.o"
-	@echo "... libft/get_next_line.i"
-	@echo "... libft/get_next_line.s"
 	@echo "... srcs/clear/clear.o"
 	@echo "... srcs/clear/clear.i"
 	@echo "... srcs/clear/clear.s"
@@ -2564,6 +2561,9 @@ help:
 	@echo "... srcs/env/env_utils_2.o"
 	@echo "... srcs/env/env_utils_2.i"
 	@echo "... srcs/env/env_utils_2.s"
+	@echo "... srcs/general/get_next_line.o"
+	@echo "... srcs/general/get_next_line.i"
+	@echo "... srcs/general/get_next_line.s"
 	@echo "... srcs/general/variables.o"
 	@echo "... srcs/general/variables.i"
 	@echo "... srcs/general/variables.s"
