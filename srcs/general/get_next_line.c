@@ -51,7 +51,7 @@ static int		set_read(int fd, char **line, t_all *all)
 			return (-1);
 		free(res);
 	}
-	return (-1);
+	return (1);
 }
 
 int				get_next_line(int fd, char **line, t_all *all)

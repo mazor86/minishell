@@ -58,15 +58,18 @@ static void	update_main(t_all *all)
 int			main(int args, char **argv, char **env)
 {
 	t_all	all;
+	int res;
 
 	(void)args;
 	(void)argv;
 	clear(&all);
 	convert_env(&all.my_env, env, &all);
-	ft_putstr_fd("bash-3.2$ ", 1);
+	ft_putstr_fd("my bash$ ", 1);
 	init_signals(&all, 'p');
-	while (get_next_line(0, &all.line, &all))
+	res = 1;
+	while (res)
 	{
+        get_next_line(0, &all.line, &all);
         save_fds(&all, 2);
 		if (all.line)
 		{
@@ -74,8 +77,7 @@ int			main(int args, char **argv, char **env)
 			parser_cmd(&all);
 			update_main(&all);
 		}
-		ft_putstr_fd("bash-3.2$ ", 1);
+		ft_putstr_fd("my bash$ ", 1);
         restore_fds(&all, 2);
 	}
-	return (all.exit_status);
 }

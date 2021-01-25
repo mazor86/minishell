@@ -98,7 +98,8 @@ int         start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 	char	*fullname;
 
 	fullname = NULL;
-	if (!(envp = deconvert_env(all)) ||
+	errno = 0;
+	if (!(envp = deconvert_env(&all->my_env)) ||
 		!(argv = convert_argv(lst)))
 		return (free_local(envp, argv, &fullname, -1));
 	if (!(fullname = get_full_cmd_name(all, lst)))
@@ -117,6 +118,7 @@ int         start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 	}
 	else
         waitpid(pid, &all->res, 0);
+    all->exit_status = errno;
     init_signals(all, 'p');
 	return (free_local(envp, argv, &fullname, all->exit_status));
 }
@@ -125,11 +127,18 @@ int		    exec_command(t_all *all, t_cmd *cmd, char **argv, char **envp)
 {
 	int res_cmd;
 
+    if (cmd->prev && cmd->prev->pipe == 1 && (dup2(cmd->prev->fd_pipe[0], 0) < 0))
+        return (all->exit_status);
+    if (cmd->prev && cmd->prev->pipe == 1)
+    {
+        close(cmd->prev->fd_pipe[0]);
+        restore_fds(all, 1);
+    }
 	if ((res_cmd = start_cmd(all, cmd)) > 0)
 		return (all->exit_status);
 	if (res_cmd == -1)
 		start_execve(all, cmd, envp, argv);
-	return (all->exit_status);
+    return (all->exit_status);
 }
 
 /*

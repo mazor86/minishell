@@ -26,7 +26,7 @@ int		convert_env(t_env **env_var, char **env, t_all *all)
 	{
 		temp->name = ft_strcut(env[i], '=');
 		n = ft_strfind(env[i], '=');
-		temp->value = ft_strdup(&env[i][n + 1]);
+		temp->value = ft_strdup(&env[i][n]);
 		temp->standard = 1;
 		if (env[i + 1] == NULL)
 			temp->next = NULL;

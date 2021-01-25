@@ -75,32 +75,46 @@ int		count_env(t_env *my_env)
 	return (len);
 }
 
+void swap_envs(t_env **begin, t_env *my_env)
+{
+    t_env *temp;
+
+    temp = *begin;
+    if (*begin != my_env)
+    {
+        while (temp->next != my_env)
+            temp = temp->next;
+        temp->next = my_env->next;
+        my_env->next = my_env->next->next;
+        temp->next->next = my_env;
+    }
+    else
+    {
+        *begin = temp->next;
+        temp->next = temp->next->next;
+        (*begin)->next = temp;
+    }
+}
 void	sort_env(t_env **my_env)
 {
-	t_env	**begin;
-	t_env	*tmp_1;
-	t_env	*tmp_2;
+	t_env	*temp;
 	int		len;
 	int		i;
 
 	i = 0;
-	begin = my_env;
 	len = count_env(*my_env);
 	while (i < len - 1)
 	{
-		while ((*my_env)->next)
+        temp = *my_env;
+		while (temp->next)
 		{
-			if (ft_strcmp((*my_env)->name, (*my_env)->next->name) < 0)
+			if (ft_strcmp(temp->name, temp->next->name) > 0)
 			{
-				tmp_1 = *my_env;
-				tmp_2 = (*my_env)->next->next;
-				*my_env = (*my_env)->next;
-				(*my_env)->next = tmp_1;
-				tmp_1->next = tmp_2;
+				swap_envs(my_env, temp);
 			}
-			*my_env = (*my_env)->next;
+			else
+                temp = temp->next;
 		}
-		*my_env = *begin;
 		i++;
 	}
 }

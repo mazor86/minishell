@@ -46,16 +46,16 @@ void	restore_fds(t_all *all, int n)
     }
 }
 
-void	open_pipe_fd(t_all *all)
+void	open_pipe_fd(t_cmd *cmd)
 {
-    dup2(all->pipe_fd[1], 1);
-    close(all->pipe_fd[0]);
-    close(all->pipe_fd[1]);
+    dup2(cmd->fd_pipe[1], 1);
+//    close(all->pipe_fd[0]);
+//    close(all->pipe_fd[1]);
 }
 
-void	close_pipe_fd(t_all *all)
+void	close_pipe_fd(t_cmd *cmd)
 {
-    dup2(all->pipe_fd[0], 0);
-    close(all->pipe_fd[0]);
-    close(all->pipe_fd[1]);
+    close(cmd->fd_pipe[1]);
+    if (cmd->prev && cmd->prev->pipe == 1)
+        close(cmd->prev->fd_pipe[0]);
 }

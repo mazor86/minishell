@@ -34,7 +34,7 @@ stdlib.h
 string.h
 -
 
-/Users/tisabel/Documents/minishell/srcs/cmd/ft_export.c
+/Users/tisabel/Documents/minishell/srcs/parser/parser_path.c
 ../../includes/minishell.h
 /Users/tisabel/Documents/minishell/includes/minishell.h
 

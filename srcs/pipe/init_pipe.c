@@ -17,7 +17,7 @@ int     execve_with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
     char	*fullname;
 
     fullname = NULL;
-    if (!(envp = deconvert_env(all)) ||
+    if (!(envp = deconvert_env(&all->my_env)) ||
         !(argv = convert_argv(cmd)))
         return (free_local(envp, argv, &fullname, -1));
     if (!(fullname = get_full_cmd_name(all, cmd)))
@@ -33,15 +33,16 @@ int     exec_command_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
     pid_t	pid;
     int res_cmd;
 
-    pipe(all->pipe_fd);
+    errno = 0;
+    pipe(cmd->fd_pipe);
     if ((pid = fork()) == -1)
         return (ft_error(cmd->name, ": failed to fork", 13, all));
-    signal(SIGINT, SIG_IGN);
-    signal(SIGQUIT, SIG_IGN);
     if (pid == 0)
     {
-        open_pipe_fd(all);
+        open_pipe_fd(cmd);
         init_signals(all, 'c');
+        if (cmd->prev && cmd->prev->pipe == 1 && (dup2(cmd->prev->fd_pipe[0], 0) < 0))
+            exit(all->exit_status);
         if ((res_cmd = start_cmd(all, cmd)) > 0)
             exit(all->exit_status);
         if (res_cmd == -1)
@@ -50,10 +51,13 @@ int     exec_command_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
     }
     else
     {
+        signal(SIGINT, SIG_IGN);
+        signal(SIGQUIT, SIG_IGN);
         waitpid(pid, &all->res, 0);
+        close_pipe_fd(cmd);
     }
+    all->exit_status = errno;
     init_signals(all, 'p');
-    close_pipe_fd(all);
     return (all->exit_status);
 }
 

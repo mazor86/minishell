@@ -31,7 +31,7 @@ extern int      errno;
 char			*ft_strcut(char *str, char c);
 int				check_digit(char *str);
 int				clear_all(t_all *all);
-char			**deconvert_env(t_all *all);
+char			**deconvert_env(t_env **env);
 char			**convert_argv(t_cmd *lst);
 char			*get_full_cmd_name(t_all *all, t_cmd *lst);
 char			*get_var(t_env *my_env, char *var_name);
@@ -121,8 +121,8 @@ void	        save_fds(t_all *all, int n);
 void			restore_fds(t_all *all, int n);
 int				init_redirect(t_all *all, t_cmd *cmd, char **argv, char **envp);
 int             no_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp);
-void	        open_pipe_fd(t_all *all);
-void	        close_pipe_fd(t_all *all);
+void	        open_pipe_fd(t_cmd *cmd);
+void	        close_pipe_fd(t_cmd *cmd);
 
 /*
 ** Signals implementing functions

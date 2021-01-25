@@ -75,9 +75,9 @@ static void	write_var(t_env env_i)
 {
 	ft_putstr_fd("declare -x ", 1);
 	ft_putstr_fd(env_i.name, 1);
-	ft_putstr_fd("=", 1);
+	ft_putstr_fd("= \"", 1);
 	ft_putstr_fd(env_i.value, 1);
-	ft_putstr_fd("\n", 1);
+	ft_putstr_fd("\"\n", 1);
 }
 
 int			ft_export(t_all *all, t_cmd *cmd)

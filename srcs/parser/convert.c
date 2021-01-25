@@ -51,24 +51,27 @@ static void	*free_argv_local(char **split, char **name)
 ** @return pointer to an array of strings, otherwise NULL
 */
 
-char		**deconvert_env(t_all *all)
+char		**deconvert_env(t_env **my_env)
 {
+    t_env   *temp;
 	char	**res;
 	int		len;
-	int		i;
+	int     i;
 
 	i = 0;
-	len = count_env(all->my_env);
+	temp = *my_env;
+	len = count_env(temp);
 	if (!(res = (char**)malloc(sizeof(char*) * (len + 1))))
 		return (NULL);
-	while (all->my_env[i].name != NULL)
+	while (temp->next != NULL)
 	{
-		if (all->my_env[i].standard != 0)
-			if (!(res[i] = ft_strdup(all->my_env[i].name)) ||
+		if (temp->standard != 0)
+			if (!(res[i] = ft_strdup(temp->name)) ||
 			!(res[i] = ft_strjoin(res[i], "=")) ||
-			!(res[i] = ft_strjoin(res[i], all->my_env[i].value)))
+			!(res[i] = ft_strjoin(res[i], temp->value)))
 				return (NULL);
-		i++;
+        temp = temp->next;
+        i++;
 	}
 	return (res);
 }

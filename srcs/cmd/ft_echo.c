@@ -26,12 +26,12 @@ int		ft_echo(t_all *all, t_cmd *cmd)
 			flag = 1;
 		else
 		{
-			ft_putstr_fd(cmd->argv[i], all->pipe_fd[1]);
+			ft_putstr_fd(cmd->argv[i], 1);
 			if (cmd->argv[i + 1])
-				ft_putchar_fd(' ', all->pipe_fd[1]);
+				ft_putchar_fd(' ', 1);
 		}
 	}
 	if (!flag)
-		ft_putchar_fd('\n', all->pipe_fd[1]);
+		ft_putchar_fd('\n', 1);
 	return (all->exit_status);
 }
