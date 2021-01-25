@@ -178,6 +178,11 @@ CMakeFiles/minishell.dir/srcs/cmd/ft_export.c.o
  /Users/tisabel/Documents/minishell/includes/struct.h
  /Users/tisabel/Documents/minishell/libft/libft.h
  /Users/tisabel/Documents/minishell/srcs/cmd/ft_export.c
+CMakeFiles/minishell.dir/srcs/cmd/ft_export_utils.c.o
+ /Users/tisabel/Documents/minishell/includes/minishell.h
+ /Users/tisabel/Documents/minishell/includes/struct.h
+ /Users/tisabel/Documents/minishell/libft/libft.h
+ /Users/tisabel/Documents/minishell/srcs/cmd/ft_export_utils.c
 CMakeFiles/minishell.dir/srcs/cmd/ft_pwd.c.o
  /Users/tisabel/Documents/minishell/includes/minishell.h
  /Users/tisabel/Documents/minishell/includes/struct.h

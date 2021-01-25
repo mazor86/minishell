@@ -262,6 +262,9 @@
 		<Unit filename="/Users/tisabel/Documents/minishell/srcs/cmd/ft_export.c">
 			<Option target="minishell"/>
 		</Unit>
+		<Unit filename="/Users/tisabel/Documents/minishell/srcs/cmd/ft_export_utils.c">
+			<Option target="minishell"/>
+		</Unit>
 		<Unit filename="/Users/tisabel/Documents/minishell/srcs/cmd/ft_pwd.c">
 			<Option target="minishell"/>
 		</Unit>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 13:00:31 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/17 03:59:51 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/25 19:06:41 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ static void	*free_argv_local(char **split, char **name)
 
 char		**deconvert_env(t_env **my_env)
 {
-    t_env   *temp;
+	t_env	*temp;
 	char	**res;
 	int		len;
-	int     i;
+	int		i;
 
 	i = 0;
 	temp = *my_env;
@@ -70,8 +70,8 @@ char		**deconvert_env(t_env **my_env)
 			!(res[i] = ft_strjoin(res[i], "=")) ||
 			!(res[i] = ft_strjoin(res[i], temp->value)))
 				return (NULL);
-        temp = temp->next;
-        i++;
+		temp = temp->next;
+		i++;
 	}
 	return (res);
 }

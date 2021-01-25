@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 18:38:00 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/17 03:44:16 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/25 16:52:51 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int     arg_len(t_cmd *cmd)
+int		arg_len(t_cmd *cmd)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (cmd->argv[i] != NULL)
-        i++;
-    return (i);
+	i = 0;
+	while (cmd->argv[i] != NULL)
+		i++;
+	return (i);
 }
 
 int		check_digit(char *str)
@@ -64,5 +64,7 @@ int		ft_exit(t_all *all, t_cmd *cmd)
 	}
 	free_t_env(&all->my_env);
 	clear_all(all);
+	close(all->save_fd[0]);
+	close(all->save_fd[1]);
 	exit(all->exit_status);
 }

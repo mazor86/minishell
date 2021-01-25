@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:38:46 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/17 04:12:46 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/25 19:48:20 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,21 @@ typedef struct		s_env
 ** redir = NULL if there is no redirect after the command. If there is one,
 ** it is stored in the variable.
 */
+typedef struct		s_redir
+{
+	char			*file;
+	char			r[2];
+}					t_redir;
 
 typedef struct		s_cmd
 {
 	char			*name;
 	char			**argv;
 	char			pipe;
-	char			redir[2];
-	int             fd_pipe[2];
+	t_redir			*redir;
+	int				fd_pipe[2];
 	struct s_cmd	*next;
-    struct s_cmd	*prev;
+	struct s_cmd	*prev;
 }					t_cmd;
 
 /*
@@ -69,8 +74,8 @@ typedef struct		s_all
 	int				pos;
 	int				res;
 	int				save_fd[2];
-	int				pipe_fd[2];
 	int				exit_status;
+	int				semicol;
 }					t_all;
 
 #endif

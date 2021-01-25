@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/17 03:46:44 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/25 20:18:39 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include "../libft/libft.h"
 # include "struct.h"
 
-extern int      errno;
+extern int		errno;
+int				g_exit_s;
 
 /*
 ** General functions for reading input and processing arguments and variables
@@ -51,9 +52,8 @@ int				parser_syntax_errors(t_all *all);
 int				start_cmd(t_all *all, t_cmd *lst);
 int				start_execve(t_all *all, t_cmd *lst, char **envp,
 					char **argv);
-int				exec_command(t_all *all, t_cmd *cmd, char **argv,
-					char **envp);
-int             free_local(char **split, char **split2, char **text, int ret);
+int				exec_command(t_all *all, t_cmd *cmd);
+int				free_local(char **split, char **split2, char **text, int ret);
 
 /*
 ** Cmd utils functions
@@ -65,6 +65,8 @@ t_cmd			*init_cmd(void);
 int				is_null_cmd(t_cmd *lst);
 void			clear_cmd(t_cmd **cmd_lst);
 int				cmd_len(t_cmd *cmd);
+int			    check_arg(char *argum);
+int			    put_value(char *argum, t_env **temp);
 
 /*
 ** Env utils functions
@@ -116,18 +118,20 @@ int				ft_error(char *name, char *text, int ret, t_all *all);
 ** Pipe & redirect functions
 */
 
-int				with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp);
-void	        save_fds(t_all *all, int n);
+int				with_pipe(t_all *all, t_cmd *cmd);
+void			save_fds(t_all *all, int n);
 void			restore_fds(t_all *all, int n);
-int				init_redirect(t_all *all, t_cmd *cmd, char **argv, char **envp);
-int             no_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp);
-void	        open_pipe_fd(t_cmd *cmd);
-void	        close_pipe_fd(t_cmd *cmd);
+int				init_redirect(t_all *all, t_cmd *cmd, int pipe);
+int				no_pipe(t_all *all, t_cmd *cmd);
+void			open_pipe_fd(t_cmd *cmd);
+void			close_pipe_fd(t_cmd *cmd);
+int             exec_command_pipe(t_all *all, t_cmd *cmd);
 
 /*
 ** Signals implementing functions
 */
 
-void	        init_signals(t_all *all, char c);
+void			init_signals(t_all *all, char c);
+void            mute_signals(void);
 
 #endif

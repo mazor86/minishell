@@ -116,14 +116,14 @@ int			parser_string(t_all *all)
 	while (all->line[all->pos])
 	{
 		if (!(lst = init_cmd()))
-			return (ft_error("export", "out of memory", 12, all));
+			return (ft_error(NULL, "out of memory", 12, all));
 		cmdadd_back(&all->cmd, lst);
 		trim_space(all);
 		if (get_name(all) == -1)
-			return (ft_error("export", "out of memory", 12, all));
+			return (ft_error(NULL, "out of memory", 12, all));
 		trim_space(all);
 		if (get_arg(all) == -1)
-			return (ft_error("export", "out of memory", 12, all));
+			return (ft_error(NULL, "out of memory", 12, all));
 		if (all->line[all->pos] == '|')
 			(cmdlast(all->cmd))->pipe = 1;
 		all->pos++;

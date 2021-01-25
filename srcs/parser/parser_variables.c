@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_variables.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 00:04:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/17 04:01:05 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/25 19:14:54 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static int	get_result(t_all *all, char **text)
 
 static int	set_env(t_all *all, char **text, char *var)
 {
-
 	if (join_str(text, get_var(all->my_env, var)) == -1)
 		return (-1);
 	return (0);

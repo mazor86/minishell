@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 04:07:42 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/17 04:08:39 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/25 20:29:31 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,63 @@ int	open_file(char redir[2], char *argum)
 	return (fd);
 }
 
-int	init_redirect(t_all *all, t_cmd *cmd, char **argv, char **envp)
+int count_redir(t_redir *redir)
 {
-	t_cmd	*temp;
-	int		fd;
+    int i;
 
-	temp = cmd;
-	while (temp->redir[0] != '\0' && temp->next)
-	{
-		temp->redir[0] == '<' ? save_fds(all, 0) : save_fds(all, 1);
-		while (ft_strcmp(temp->redir, cmd->redir) == 0)
-		{
-			fd = open_file(temp->redir, temp->argv[0]);
-			if (ft_strcmp(temp->next->redir, cmd->redir) == 0)
-			{
-				close(fd);
-				temp = temp->next;
-			}
-		}
-		if (exec_command(all, cmd, argv, envp) != 0)
-		{
-			temp->redir[0] == '<' ? restore_fds(all, 0) : restore_fds(all, 1);
-			return (all->exit_status);
-		}
-		temp->redir[0] == '<' ? restore_fds(all, 0) : restore_fds(all, 1);
-		temp = temp->next;
-	}
+    i = 0;
+    while (redir[i].r[0] != '\0')
+        i++;
+    return (i);
+}
+
+void close_fds(int *fds, int n)
+{
+    int i;
+
+    i = 0;
+    while (i < n)
+    {
+        close(fds[i]);
+        i++;
+    }
+}
+
+int	init_redirect(t_all *all, t_cmd *cmd, int pipe)
+{
+    char    redir[2];
+	int     fd;
+	int     red;
+	int		i;
+	int     n;
+
+	i = 0;
+	n = count_redir(cmd->redir);
+    while (i < n)
+    {
+        if ((fd = open_file(cmd->redir[i].r, cmd->redir[i].file)) < 0)
+        {
+            close(red);
+            return (ft_error(cmd->redir[i].file, "No such file or directory", 1, all));
+        }
+        if (i == 0)
+        {
+            redir[0] = cmd->redir[i].r[0];
+            redir[1] = cmd->redir[i].r[1];
+        }
+        if (i > 0 && (cmd->redir[i].r[0] == cmd->redir[0].r[0]))
+        {
+            close(red);
+            red = fd;
+            redir[0] = cmd->redir[i].r[0];
+            redir[1] = cmd->redir[i].r[1];
+        }
+        else if (cmd->redir[i].r[0] != cmd->redir[0].r[0] && cmd->redir[i].r[0] != '\0')
+            close(fd);
+        i++;
+    }
+    redir[0] == '<' ? dup2(red, 0) : dup2(red, 1);
+    pipe == 1 ? exec_command_pipe(all, cmd) : exec_command(all, cmd);
+    close(red);
 	return (all->exit_status);
 }

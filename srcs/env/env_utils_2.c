@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_utils_2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/25 16:45:55 by tisabel           #+#    #+#             */
+/*   Updated: 2021/01/25 19:00:56 by tisabel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
@@ -10,7 +21,7 @@ t_env	*env_last(t_env *env)
 	return (env);
 }
 
-void add_back_env(t_env **my_env, t_env *new_env)
+void	add_back_env(t_env **my_env, t_env *new_env)
 {
 	t_env	*res;
 
@@ -26,18 +37,49 @@ void add_back_env(t_env **my_env, t_env *new_env)
 	}
 }
 
-t_env *creat_env(char *argum, t_all *all)
+t_env	*creat_env(char *argum, t_all *all)
 {
 	t_env	*temp;
 
 	if (!(temp = init_env()))
-    {
-        ft_error("unset", "out of memory", 12, all);
-        return (NULL);
-    }
+	{
+		ft_error("unset", "out of memory", 12, all);
+		return (NULL);
+	}
 	temp->name = ft_strcut(argum, '=');
 	temp->value = ft_strdup(ft_strnstr(argum, "=", ft_strlen(argum)) + 1);
 	temp->standard = 2;
 	return (temp);
 }
 
+int		change_env(t_all *all, char *var_name, char *new_value)
+{
+	t_env *temp;
+
+	temp = all->my_env;
+	while (temp)
+	{
+		if (ft_strcmp(temp->name, var_name) == 0)
+		{
+			free(temp->value);
+			if (!(temp->value = ft_strdup(new_value)))
+				return (ft_error("export", "out of memory", 12, all));
+			break ;
+		}
+		temp = temp->next;
+	}
+	return (0);
+}
+
+int		count_env(t_env *my_env)
+{
+	int	len;
+
+	len = 0;
+	while (my_env)
+	{
+		len++;
+		my_env = my_env->next;
+	}
+	return (len);
+}

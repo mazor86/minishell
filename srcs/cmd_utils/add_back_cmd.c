@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_back_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 22:41:03 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/17 03:47:10 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/25 18:25:47 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	cmdadd_back(t_cmd **lst, t_cmd *new)
 		{
 			res = cmdlast(*lst);
 			res->next = new;
-            new->prev = res;
+			new->prev = res;
 		}
 	}
 }

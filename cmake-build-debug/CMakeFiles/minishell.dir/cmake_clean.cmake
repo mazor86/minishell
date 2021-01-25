@@ -56,6 +56,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/srcs/cmd/ft_env.c.o"
   "CMakeFiles/minishell.dir/srcs/cmd/ft_exit.c.o"
   "CMakeFiles/minishell.dir/srcs/cmd/ft_export.c.o"
+  "CMakeFiles/minishell.dir/srcs/cmd/ft_export_utils.c.o"
   "CMakeFiles/minishell.dir/srcs/cmd/ft_pwd.c.o"
   "CMakeFiles/minishell.dir/srcs/cmd/ft_unset.c.o"
   "CMakeFiles/minishell.dir/srcs/cmd_utils/add_back_cmd.c.o"

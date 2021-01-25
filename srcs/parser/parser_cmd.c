@@ -3,63 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:20:05 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/17 04:11:54 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/25 19:58:25 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-** function pointers initialization
-**
-** @param **f a pointer to an array of functions
-*/
-
-static void	init_f(int (**f)(t_all*, t_cmd*))
-{
-	f[0] = ft_echo;
-	f[1] = ft_pwd;
-	f[2] = ft_export;
-	f[3] = ft_env;
-	f[4] = ft_unset;
-	f[5] = ft_cd;
-	f[6] = ft_exit;
-}
-
-/*
-** launching its functions
-**
-** @param *all general structure
-** @param *lst command pointer
-** @return 1 if the command is executed, 0 if not executed, exitstatus
-** (errno number) in case of the error
-*/
-
-int	        start_cmd(t_all *all, t_cmd *lst)
-{
-	int			i;
-	const char	*name[7] = { "echo", "pwd", "export", "env", "unset", "cd",
-				"exit" };
-	int			(*f[7])(t_all*, t_cmd*);
-
-	i = 0;
-	init_f(f);
-	while (i < 7)
-	{
-		if (!ft_strncmp(lst->name, name[i],
-			ft_strlen(name[i]) + 1))
-		{
-			if (f[i](all, lst) != 0)
-				return (all->exit_status);
-			return (0);
-		}
-		i++;
-	}
-	return (-1);
-}
 
 /*
 ** clears strings
@@ -71,7 +22,7 @@ int	        start_cmd(t_all *all, t_cmd *lst)
 ** @return ret
 */
 
-int         free_local(char **split, char **split2, char **text, int ret)
+int			free_local(char **split, char **split2, char **text, int ret)
 {
 	if (split)
 		free_array(split);
@@ -92,53 +43,54 @@ int         free_local(char **split, char **split2, char **text, int ret)
 ** @return 0 if good, otherwise -1
 */
 
-int         start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
+int			start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 {
 	pid_t	pid;
 	char	*fullname;
 
 	fullname = NULL;
-	errno = 0;
+	all->exit_status = 0;
 	if (!(envp = deconvert_env(&all->my_env)) ||
-		!(argv = convert_argv(lst)))
-		return (free_local(envp, argv, &fullname, -1));
-	if (!(fullname = get_full_cmd_name(all, lst)))
-		return (free_local(envp, argv, &fullname, 0));
+		!(argv = convert_argv(lst)) ||
+		!(fullname = get_full_cmd_name(all, lst)))
+		return (free_local(envp, argv, &fullname, all->exit_status));
 	if ((pid = fork()) == -1)
 		return (ft_error(lst->name, ": failed to fork", 13, all));
-    signal(SIGINT, SIG_IGN);
-    signal(SIGQUIT, SIG_IGN);
 	if (pid == 0)
 	{
-        init_signals(all, 'c');
+		init_signals(all, 'c');
+		errno = 0;
 		if (execve(fullname, argv, envp) == -1)
-			return (ft_error(lst->name,
-				": permission denied", 13, all));
-		exit(0);
+			ft_error(lst->name, strerror(errno), errno, all);
+		exit(all->exit_status);
 	}
 	else
-        waitpid(pid, &all->res, 0);
-    all->exit_status = errno;
-    init_signals(all, 'p');
+	{
+		mute_signals();
+		waitpid(pid, &all->res, 0);
+		close_pipe_fd(lst);
+	}
+	init_signals(all, 'p');
 	return (free_local(envp, argv, &fullname, all->exit_status));
 }
 
-int		    exec_command(t_all *all, t_cmd *cmd, char **argv, char **envp)
+int			exec_command(t_all *all, t_cmd *cmd)
 {
 	int res_cmd;
 
-    if (cmd->prev && cmd->prev->pipe == 1 && (dup2(cmd->prev->fd_pipe[0], 0) < 0))
-        return (all->exit_status);
-    if (cmd->prev && cmd->prev->pipe == 1)
-    {
-        close(cmd->prev->fd_pipe[0]);
-        restore_fds(all, 1);
-    }
+	if (cmd->prev && cmd->prev->pipe == 1 &&
+		(dup2(cmd->prev->fd_pipe[0], 0) < 0))
+		return (all->exit_status);
+	if (cmd->prev && cmd->prev->pipe == 1)
+	{
+		close(cmd->prev->fd_pipe[0]);
+		restore_fds(all, 1);
+	}
 	if ((res_cmd = start_cmd(all, cmd)) > 0)
 		return (all->exit_status);
 	if (res_cmd == -1)
-		start_execve(all, cmd, envp, argv);
-    return (all->exit_status);
+		start_execve(all, cmd, NULL, NULL);
+	return (all->exit_status);
 }
 
 /*
@@ -148,33 +100,29 @@ int		    exec_command(t_all *all, t_cmd *cmd, char **argv, char **envp)
 ** @return 0 if good, otherwise returns exit status and prints error
 */
 
-int		    parser_cmd(t_all *all)
+int			parser_cmd(t_all *all)
 {
 	t_cmd	*lst;
-	char	**envp;
-	char	**argv;
 
 	lst = all->cmd;
-	envp = NULL;
-	argv = NULL;
 	if (parser_syntax_errors(all) == 1)
-		return (0);
+		return (all->exit_status);
 	while (lst)
 	{
-		if (!is_null_cmd(lst))
+		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
 		{
 			if (lst->pipe == 1)
 			{
-                if (with_pipe(all, lst, argv, envp) != 0)
-                    return (all->exit_status);
-            }
+				if (with_pipe(all, lst) != 0)
+					return (all->exit_status);
+			}
 			else
-            {
-                if (no_pipe(all, lst, argv, envp) != 0)
-                    return (all->exit_status);
-            }
+			{
+				if (no_pipe(all, lst) != 0)
+					return (all->exit_status);
+			}
 		}
 		lst = lst->next;
 	}
-	return (0);
+	return (all->exit_status);
 }

@@ -1682,6 +1682,33 @@ srcs/cmd/ft_export.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/cmd/ft_export.c.s
 .PHONY : srcs/cmd/ft_export.c.s
 
+srcs/cmd/ft_export_utils.o: srcs/cmd/ft_export_utils.c.o
+
+.PHONY : srcs/cmd/ft_export_utils.o
+
+# target to build an object file
+srcs/cmd/ft_export_utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/cmd/ft_export_utils.c.o
+.PHONY : srcs/cmd/ft_export_utils.c.o
+
+srcs/cmd/ft_export_utils.i: srcs/cmd/ft_export_utils.c.i
+
+.PHONY : srcs/cmd/ft_export_utils.i
+
+# target to preprocess a source file
+srcs/cmd/ft_export_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/cmd/ft_export_utils.c.i
+.PHONY : srcs/cmd/ft_export_utils.c.i
+
+srcs/cmd/ft_export_utils.s: srcs/cmd/ft_export_utils.c.s
+
+.PHONY : srcs/cmd/ft_export_utils.s
+
+# target to generate assembly for a file
+srcs/cmd/ft_export_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/cmd/ft_export_utils.c.s
+.PHONY : srcs/cmd/ft_export_utils.c.s
+
 srcs/cmd/ft_pwd.o: srcs/cmd/ft_pwd.c.o
 
 .PHONY : srcs/cmd/ft_pwd.o
@@ -2537,6 +2564,9 @@ help:
 	@echo "... srcs/cmd/ft_export.o"
 	@echo "... srcs/cmd/ft_export.i"
 	@echo "... srcs/cmd/ft_export.s"
+	@echo "... srcs/cmd/ft_export_utils.o"
+	@echo "... srcs/cmd/ft_export_utils.i"
+	@echo "... srcs/cmd/ft_export_utils.s"
 	@echo "... srcs/cmd/ft_pwd.o"
 	@echo "... srcs/cmd/ft_pwd.i"
 	@echo "... srcs/cmd/ft_pwd.s"

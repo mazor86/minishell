@@ -64,13 +64,17 @@ static int	parser_syntax_errors2(t_all *all, t_cmd *lst)
 int			parser_syntax_errors(t_all *all)
 {
 	t_cmd	*lst;
+	int		check;
 
+	check = 1;
 	lst = all->cmd;
 	while (lst)
 	{
-		if (lst == all->cmd && !ft_strncmp(lst->name,
+		//if (lst == all->cmd && !ft_strncmp(lst->name,
+		if (check == 1 && !ft_strncmp(lst->name,
 			"", 1) && lst->pipe)
 		{
+			check = 0;
 			if (lst->next && !ft_strncmp((lst->next)->name,
 				"", 1) && (lst->next)->pipe)
 				return (ret_err(all, "syntax error \"||\""));

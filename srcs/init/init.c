@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 19:38:32 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/08 00:06:42 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/25 19:05:46 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static t_redir *init_redir()
+{
+    t_redir *redir;
+
+    if (!(redir = malloc(sizeof(t_redir))))
+        return (NULL);
+    redir->file = NULL;
+    redir->r[0] = '\0';
+    redir->r[1] = '\0';
+    return (redir);
+}
 
 /*
 ** creates a command structure
@@ -26,14 +38,13 @@ t_cmd	*init_cmd(void)
 		return (NULL);
 	cmd->name = ft_strdup("");
 	if (!(cmd->argv = ft_calloc(2, sizeof(char*))) ||
-		!(cmd->argv[0] = ft_strdup("")))
+		!(cmd->argv[0] = ft_strdup(""))
+		|| !(cmd->redir = init_redir()))
 		return (NULL);
-	cmd->argv[1] = 0;
+	cmd->argv[1] = NULL;
 	cmd->pipe = 0;
-	cmd->redir[0] = '\0';
-	cmd->redir[1] = '\0';
 	cmd->next = NULL;
-    cmd->prev = NULL;
+	cmd->prev = NULL;
 	return (cmd);
 }
 

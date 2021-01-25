@@ -61,6 +61,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/tisabel/Documents/minishell/srcs/cmd/ft_env.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/cmd/ft_env.c.o"
   "/Users/tisabel/Documents/minishell/srcs/cmd/ft_exit.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/cmd/ft_exit.c.o"
   "/Users/tisabel/Documents/minishell/srcs/cmd/ft_export.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/cmd/ft_export.c.o"
+  "/Users/tisabel/Documents/minishell/srcs/cmd/ft_export_utils.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/cmd/ft_export_utils.c.o"
   "/Users/tisabel/Documents/minishell/srcs/cmd/ft_pwd.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/cmd/ft_pwd.c.o"
   "/Users/tisabel/Documents/minishell/srcs/cmd/ft_unset.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/cmd/ft_unset.c.o"
   "/Users/tisabel/Documents/minishell/srcs/cmd_utils/add_back_cmd.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/cmd_utils/add_back_cmd.c.o"

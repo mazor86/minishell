@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/10 12:44:52 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/25 20:21:30 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ static void	clear(t_all *all)
 	all->line = NULL;
 	all->pos = 0;
 	all->res = 1;
-	all->save_fd[0] = -1;
-	all->save_fd[1] = -1;
-	all->pipe_fd[0] = -1;
-	all->pipe_fd[1] = -1;
+	all->semicol = 0;
 }
 
 /*
@@ -41,8 +38,11 @@ static void	clear(t_all *all)
 static void	update_main(t_all *all)
 {
 	clear_cmd(&all->cmd);
-	free(all->line);
-	all->line = NULL;
+	if (all->semicol == 0)
+	{
+		free(all->line);
+		all->line = NULL;
+	}
 	all->pos = 0;
 }
 
@@ -58,26 +58,25 @@ static void	update_main(t_all *all)
 int			main(int args, char **argv, char **env)
 {
 	t_all	all;
-	int res;
 
 	(void)args;
 	(void)argv;
 	clear(&all);
 	convert_env(&all.my_env, env, &all);
-	ft_putstr_fd("my bash$ ", 1);
 	init_signals(&all, 'p');
-	res = 1;
-	while (res)
+	ft_putstr_fd("my bash$ ", 1);
+	save_fds(&all, 2);
+	while (1 == 1)
 	{
-        get_next_line(0, &all.line, &all);
-        save_fds(&all, 2);
+		if (!all.line)
+			get_next_line(0, &all.line, &all);
 		if (all.line)
 		{
 			parser_string(&all);
 			parser_cmd(&all);
 			update_main(&all);
+			ft_putstr_fd("my bash$ ", 1);
 		}
-		ft_putstr_fd("my bash$ ", 1);
-        restore_fds(&all, 2);
+		restore_fds(&all, 2);
 	}
 }
