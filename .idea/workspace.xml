@@ -12,29 +12,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e9df100-bf31-49a1-9cfd-444cb6a32434" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/minishell.dSYM/Contents/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/srcs/no_pipe_cmd/start_command.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/srcs/signals/signals.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/minishell.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/minishell.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/minishell.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/struct.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_exit.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libft/ft_strjoin.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strjoin.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/clear/clear.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/clear/clear.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_export.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_export.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_pwd.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_pwd.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/cmd_utils/add_back_cmd.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd_utils/add_back_cmd.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/env/env_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/env/env_utils.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/env/env_utils_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/env/env_utils_2.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/general/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/general/get_next_line.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/init/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/init/init.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/parser/convert.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/convert.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_cmd.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_cmd.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_errors.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_errors.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_string.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_string.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_variables.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_variables.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_cmd.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/utils.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/pipe/fd_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/pipe/fd_utils.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/pipe/init_pipe.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/pipe/init_pipe.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/redirect/redirect.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/redirect/redirect.c" afterDir="false" />
@@ -61,11 +74,15 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1nTYf6SFRVP0KjRcB8O8l0sQ0de" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -74,11 +91,6 @@
     <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="minishell" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="minishell" TARGET_NAME="minishell" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="minishell" RUN_TARGET_NAME="minishell">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -104,12 +116,30 @@
       <workItem from="1611477077887" duration="6123000" />
       <workItem from="1611486500348" duration="732000" />
       <workItem from="1611490956683" duration="6169000" />
-      <workItem from="1611568071299" duration="18571000" />
+      <workItem from="1611568071299" duration="18720000" />
+      <workItem from="1611645992767" duration="936000" />
+      <workItem from="1611656653282" duration="5728000" />
+      <workItem from="1611668020709" duration="6157000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -126,23 +156,53 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/srcs/pipe/init_pipe.c</url>
-          <line>122</line>
+          <line>76</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/srcs/pipe/init_pipe.c</url>
-          <line>136</line>
+          <line>81</line>
           <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/srcs/env/env_utils.c</url>
-          <line>56</line>
-          <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/srcs/env/env_utils.c</url>
           <line>69</line>
           <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/env/env_utils.c</url>
+          <line>54</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/main.c</url>
+          <line>77</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.c</url>
+          <line>69</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.c</url>
+          <line>38</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.c</url>
+          <line>28</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.c</url>
+          <line>33</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/parser/convert.c</url>
+          <line>62</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -243,15 +243,20 @@ CMakeFiles/minishell.dir/srcs/main.c.o: ../includes/struct.h
 CMakeFiles/minishell.dir/srcs/main.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/main.c.o: ../srcs/main.c
 
+CMakeFiles/minishell.dir/srcs/no_pipe_cmd/parser_cmd.c.o: ../includes/minishell.h
+CMakeFiles/minishell.dir/srcs/no_pipe_cmd/parser_cmd.c.o: ../includes/struct.h
+CMakeFiles/minishell.dir/srcs/no_pipe_cmd/parser_cmd.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/no_pipe_cmd/parser_cmd.c.o: ../srcs/no_pipe_cmd/parser_cmd.c
+
+CMakeFiles/minishell.dir/srcs/no_pipe_cmd/start_command.c.o: ../includes/minishell.h
+CMakeFiles/minishell.dir/srcs/no_pipe_cmd/start_command.c.o: ../includes/struct.h
+CMakeFiles/minishell.dir/srcs/no_pipe_cmd/start_command.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/no_pipe_cmd/start_command.c.o: ../srcs/no_pipe_cmd/start_command.c
+
 CMakeFiles/minishell.dir/srcs/parser/convert.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/parser/convert.c.o: ../includes/struct.h
 CMakeFiles/minishell.dir/srcs/parser/convert.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/parser/convert.c.o: ../srcs/parser/convert.c
-
-CMakeFiles/minishell.dir/srcs/parser/parser_cmd.c.o: ../includes/minishell.h
-CMakeFiles/minishell.dir/srcs/parser/parser_cmd.c.o: ../includes/struct.h
-CMakeFiles/minishell.dir/srcs/parser/parser_cmd.c.o: ../libft/libft.h
-CMakeFiles/minishell.dir/srcs/parser/parser_cmd.c.o: ../srcs/parser/parser_cmd.c
 
 CMakeFiles/minishell.dir/srcs/parser/parser_errors.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/parser/parser_errors.c.o: ../includes/struct.h
@@ -302,6 +307,11 @@ CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o: ../includes/struct.h
 CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o: ../srcs/redirect/redirect.c
+
+CMakeFiles/minishell.dir/srcs/signals/signals.c.o: ../includes/minishell.h
+CMakeFiles/minishell.dir/srcs/signals/signals.c.o: ../includes/struct.h
+CMakeFiles/minishell.dir/srcs/signals/signals.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/signals/signals.c.o: ../srcs/signals/signals.c
 
 CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.o: ../includes/struct.h

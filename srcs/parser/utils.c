@@ -41,12 +41,12 @@ int		join_char(char **text, char c)
 
 int		join_str(char **text, char *s)
 {
-	char	*t;
+	//char	*t;
 
-	t = *text;
-	if (!(*text = ft_strjoin(t, s)))
+	//t = *text;
+	if (!(*text = ft_strjoin(*text, s)))
 		return (-1);
-	free(t);
+	//free(t);
 	return (0);
 }
 

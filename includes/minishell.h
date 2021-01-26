@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/25 20:18:39 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/26 11:17:37 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include "../libft/libft.h"
 # include "struct.h"
 
-extern int		errno;
 int				g_exit_s;
 
 /*
@@ -65,8 +64,8 @@ t_cmd			*init_cmd(void);
 int				is_null_cmd(t_cmd *lst);
 void			clear_cmd(t_cmd **cmd_lst);
 int				cmd_len(t_cmd *cmd);
-int			    check_arg(char *argum);
-int			    put_value(char *argum, t_env **temp);
+int				check_arg(char *argum);
+int				put_value(char *argum, t_env **temp);
 
 /*
 ** Env utils functions
@@ -123,15 +122,16 @@ void			save_fds(t_all *all, int n);
 void			restore_fds(t_all *all, int n);
 int				init_redirect(t_all *all, t_cmd *cmd, int pipe);
 int				no_pipe(t_all *all, t_cmd *cmd);
-void			open_pipe_fd(t_cmd *cmd);
 void			close_pipe_fd(t_cmd *cmd);
-int             exec_command_pipe(t_all *all, t_cmd *cmd);
+int				exec_command_pipe(t_all *all, t_cmd *cmd);
 
 /*
 ** Signals implementing functions
 */
 
 void			init_signals(t_all *all, char c);
-void            mute_signals(void);
+void			mute_signals(void);
+void            catch_signals(t_all *all);
+void            implement_signals(t_all *all);
 
 #endif

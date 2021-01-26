@@ -31,20 +31,16 @@ t_env	*init_env(void)
 	return (my_env);
 }
 
-t_env	*copy_var(t_env **from)
+int	copy_var(t_env *from, t_env *new)
 {
-	t_env *new;
-
-	if (!(new = init_env()))
-		return (NULL);
-	if (!(new->name = ft_strdup((*from)->name))
-		|| !(new->value = ft_strdup((*from)->value)))
+	if (!(new->name = ft_strdup(from->name))
+		|| !(new->value = ft_strdup(from->value)))
 	{
 		free_t_env(&new);
-		return (NULL);
+		return (0);
 	}
-	new->standard = (*from)->standard;
-	return (new);
+	new->standard = from->standard;
+	return (1);
 }
 
 t_env	*copy_env(t_env *my_env)
@@ -54,18 +50,22 @@ t_env	*copy_env(t_env *my_env)
 	t_env	*begin;
 
 	temp = my_env;
-	if (!(copy = copy_var(&temp)))
-		return (NULL);
-	begin = copy;
+    if (!(copy = init_env()))
+        return (NULL);
+    if (copy_var(temp, copy) == 0)
+        return (NULL);
+    begin = copy;
 	while (temp)
 	{
-		if (temp->next != NULL)
+        temp = temp->next;
+		if (temp != NULL)
 		{
-			if (!(copy = copy_var(&temp)))
+            if (!(copy->next = init_env()))
+                return (NULL);
+            copy = copy->next;
+			if (copy_var(temp, copy) == 0)
 				return (NULL);
-			copy = copy->next;
 		}
-		temp = temp->next;
 	}
 	return (begin);
 }

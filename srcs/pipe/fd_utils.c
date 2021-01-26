@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 04:08:33 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/25 20:21:48 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/26 11:17:23 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,6 @@ void	restore_fds(t_all *all, int n)
 		dup2(all->save_fd[0], 0);
 		dup2(all->save_fd[1], 1);
 	}
-}
-
-void	open_pipe_fd(t_cmd *cmd)
-{
-	dup2(cmd->fd_pipe[1], 1);
-//    close(all->pipe_fd[0]);
-//    close(all->pipe_fd[1]);
 }
 
 void	close_pipe_fd(t_cmd *cmd)

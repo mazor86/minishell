@@ -75,8 +75,14 @@ int			main(int args, char **argv, char **env)
 			parser_string(&all);
 			parser_cmd(&all);
 			update_main(&all);
+            ft_putstr_fd("\b\b  \b\b", 1);
 			ft_putstr_fd("my bash$ ", 1);
 		}
+		else
+        {
+            ft_putstr_fd("\b\b  \b\b", 1);
+            ft_putstr_fd("my bash$ ", 1);
+        }
 		restore_fds(&all, 2);
 	}
 }

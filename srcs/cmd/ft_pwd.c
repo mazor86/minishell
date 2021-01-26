@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:43:41 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/25 16:54:15 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/26 12:33:49 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 int		ft_pwd(t_all *all, t_cmd *cmd)
 {
-	char	*pwd;
+	char		*pwd;
+	extern int	errno;
 
 	all->exit_status = 0;
 	errno = 0;

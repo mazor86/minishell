@@ -93,11 +93,15 @@ void	*free_array(char **text)
 	int		i;
 
 	i = -1;
-	if (text)
+	if (text && *text)
 	{
 		while (text[++i])
-			free(text[i]);
+		{
+		    free(text[i]);
+		    text[i] = NULL;
+		}
 		free(text);
+		text = NULL;
 	}
 	return (NULL);
 }

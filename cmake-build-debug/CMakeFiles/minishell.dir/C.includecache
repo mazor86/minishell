@@ -34,7 +34,11 @@ stdlib.h
 string.h
 -
 
-/Users/tisabel/Documents/minishell/srcs/env/env_utils.c
+/Users/tisabel/Documents/minishell/srcs/main.c
+../includes/minishell.h
+/Users/tisabel/Documents/minishell/includes/minishell.h
+
+/Users/tisabel/Documents/minishell/srcs/parser/convert.c
 ../../includes/minishell.h
 /Users/tisabel/Documents/minishell/includes/minishell.h
 

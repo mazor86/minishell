@@ -16,6 +16,7 @@ FLAGS = -Wall -Wextra -Werror -g
 LIBFT = libft.a
 
 SRCS = srcs/main.c \
+		srcs/signals/signals.c\
 		srcs/signals/signals_utils.c\
 		srcs/redirect/redirect.c\
 		srcs/pipe/fd_utils.c\
@@ -27,8 +28,9 @@ SRCS = srcs/main.c \
 		srcs/parser/parser_quotes.c \
 		srcs/parser/parser_path.c \
 		srcs/parser/parser_errors.c \
-		srcs/parser/parser_cmd.c \
 		srcs/parser/convert.c \
+		srcs/no_pipe_cmd/parser_cmd.c \
+		srcs/no_pipe_cmd/start_command.c \
 		srcs/init/init.c \
 		srcs/general/variables.c \
 		srcs/general/get_next_line.c\

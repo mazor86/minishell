@@ -243,16 +243,21 @@ CMakeFiles/minishell.dir/srcs/main.c.o
  /Users/tisabel/Documents/minishell/includes/struct.h
  /Users/tisabel/Documents/minishell/libft/libft.h
  /Users/tisabel/Documents/minishell/srcs/main.c
+CMakeFiles/minishell.dir/srcs/no_pipe_cmd/parser_cmd.c.o
+ /Users/tisabel/Documents/minishell/includes/minishell.h
+ /Users/tisabel/Documents/minishell/includes/struct.h
+ /Users/tisabel/Documents/minishell/libft/libft.h
+ /Users/tisabel/Documents/minishell/srcs/no_pipe_cmd/parser_cmd.c
+CMakeFiles/minishell.dir/srcs/no_pipe_cmd/start_command.c.o
+ /Users/tisabel/Documents/minishell/includes/minishell.h
+ /Users/tisabel/Documents/minishell/includes/struct.h
+ /Users/tisabel/Documents/minishell/libft/libft.h
+ /Users/tisabel/Documents/minishell/srcs/no_pipe_cmd/start_command.c
 CMakeFiles/minishell.dir/srcs/parser/convert.c.o
  /Users/tisabel/Documents/minishell/includes/minishell.h
  /Users/tisabel/Documents/minishell/includes/struct.h
  /Users/tisabel/Documents/minishell/libft/libft.h
  /Users/tisabel/Documents/minishell/srcs/parser/convert.c
-CMakeFiles/minishell.dir/srcs/parser/parser_cmd.c.o
- /Users/tisabel/Documents/minishell/includes/minishell.h
- /Users/tisabel/Documents/minishell/includes/struct.h
- /Users/tisabel/Documents/minishell/libft/libft.h
- /Users/tisabel/Documents/minishell/srcs/parser/parser_cmd.c
 CMakeFiles/minishell.dir/srcs/parser/parser_errors.c.o
  /Users/tisabel/Documents/minishell/includes/minishell.h
  /Users/tisabel/Documents/minishell/includes/struct.h
@@ -303,6 +308,11 @@ CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o
  /Users/tisabel/Documents/minishell/includes/struct.h
  /Users/tisabel/Documents/minishell/libft/libft.h
  /Users/tisabel/Documents/minishell/srcs/redirect/redirect.c
+CMakeFiles/minishell.dir/srcs/signals/signals.c.o
+ /Users/tisabel/Documents/minishell/includes/minishell.h
+ /Users/tisabel/Documents/minishell/includes/struct.h
+ /Users/tisabel/Documents/minishell/libft/libft.h
+ /Users/tisabel/Documents/minishell/srcs/signals/signals.c
 CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.o
  /Users/tisabel/Documents/minishell/includes/minishell.h
  /Users/tisabel/Documents/minishell/includes/struct.h

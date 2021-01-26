@@ -74,8 +74,9 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/tisabel/Documents/minishell/srcs/general/variables.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/general/variables.c.o"
   "/Users/tisabel/Documents/minishell/srcs/init/init.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/init/init.c.o"
   "/Users/tisabel/Documents/minishell/srcs/main.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/main.c.o"
+  "/Users/tisabel/Documents/minishell/srcs/no_pipe_cmd/parser_cmd.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/no_pipe_cmd/parser_cmd.c.o"
+  "/Users/tisabel/Documents/minishell/srcs/no_pipe_cmd/start_command.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/no_pipe_cmd/start_command.c.o"
   "/Users/tisabel/Documents/minishell/srcs/parser/convert.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/convert.c.o"
-  "/Users/tisabel/Documents/minishell/srcs/parser/parser_cmd.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/parser_cmd.c.o"
   "/Users/tisabel/Documents/minishell/srcs/parser/parser_errors.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/parser_errors.c.o"
   "/Users/tisabel/Documents/minishell/srcs/parser/parser_path.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/parser_path.c.o"
   "/Users/tisabel/Documents/minishell/srcs/parser/parser_quotes.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/parser_quotes.c.o"
@@ -86,6 +87,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/tisabel/Documents/minishell/srcs/pipe/fd_utils.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o"
   "/Users/tisabel/Documents/minishell/srcs/pipe/init_pipe.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o"
   "/Users/tisabel/Documents/minishell/srcs/redirect/redirect.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o"
+  "/Users/tisabel/Documents/minishell/srcs/signals/signals.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/signals/signals.c.o"
   "/Users/tisabel/Documents/minishell/srcs/signals/signals_utils.c" "/Users/tisabel/Documents/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
@@ -94,6 +96,7 @@ set(CMAKE_C_COMPILER_ID "AppleClang")
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../includes"
   "../libft"
+  "../srcs"
   )
 
 # Targets to which this target links.

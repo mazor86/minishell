@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:46:57 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/25 18:25:21 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/26 11:13:31 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int			add_arg(t_all *all, char *argum, t_env **my_env)
 		{
 			while (k < n)
 			{
-			    temp = temp->next;
-			    k++;
+				temp = temp->next;
+				k++;
 			}
 			if (put_value(argum, &temp) != 0)
 				return (2);

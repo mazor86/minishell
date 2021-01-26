@@ -2033,6 +2033,60 @@ srcs/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/main.c.s
 .PHONY : srcs/main.c.s
 
+srcs/no_pipe_cmd/parser_cmd.o: srcs/no_pipe_cmd/parser_cmd.c.o
+
+.PHONY : srcs/no_pipe_cmd/parser_cmd.o
+
+# target to build an object file
+srcs/no_pipe_cmd/parser_cmd.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/no_pipe_cmd/parser_cmd.c.o
+.PHONY : srcs/no_pipe_cmd/parser_cmd.c.o
+
+srcs/no_pipe_cmd/parser_cmd.i: srcs/no_pipe_cmd/parser_cmd.c.i
+
+.PHONY : srcs/no_pipe_cmd/parser_cmd.i
+
+# target to preprocess a source file
+srcs/no_pipe_cmd/parser_cmd.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/no_pipe_cmd/parser_cmd.c.i
+.PHONY : srcs/no_pipe_cmd/parser_cmd.c.i
+
+srcs/no_pipe_cmd/parser_cmd.s: srcs/no_pipe_cmd/parser_cmd.c.s
+
+.PHONY : srcs/no_pipe_cmd/parser_cmd.s
+
+# target to generate assembly for a file
+srcs/no_pipe_cmd/parser_cmd.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/no_pipe_cmd/parser_cmd.c.s
+.PHONY : srcs/no_pipe_cmd/parser_cmd.c.s
+
+srcs/no_pipe_cmd/start_command.o: srcs/no_pipe_cmd/start_command.c.o
+
+.PHONY : srcs/no_pipe_cmd/start_command.o
+
+# target to build an object file
+srcs/no_pipe_cmd/start_command.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/no_pipe_cmd/start_command.c.o
+.PHONY : srcs/no_pipe_cmd/start_command.c.o
+
+srcs/no_pipe_cmd/start_command.i: srcs/no_pipe_cmd/start_command.c.i
+
+.PHONY : srcs/no_pipe_cmd/start_command.i
+
+# target to preprocess a source file
+srcs/no_pipe_cmd/start_command.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/no_pipe_cmd/start_command.c.i
+.PHONY : srcs/no_pipe_cmd/start_command.c.i
+
+srcs/no_pipe_cmd/start_command.s: srcs/no_pipe_cmd/start_command.c.s
+
+.PHONY : srcs/no_pipe_cmd/start_command.s
+
+# target to generate assembly for a file
+srcs/no_pipe_cmd/start_command.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/no_pipe_cmd/start_command.c.s
+.PHONY : srcs/no_pipe_cmd/start_command.c.s
+
 srcs/parser/convert.o: srcs/parser/convert.c.o
 
 .PHONY : srcs/parser/convert.o
@@ -2059,33 +2113,6 @@ srcs/parser/convert.s: srcs/parser/convert.c.s
 srcs/parser/convert.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/convert.c.s
 .PHONY : srcs/parser/convert.c.s
-
-srcs/parser/parser_cmd.o: srcs/parser/parser_cmd.c.o
-
-.PHONY : srcs/parser/parser_cmd.o
-
-# target to build an object file
-srcs/parser/parser_cmd.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/parser_cmd.c.o
-.PHONY : srcs/parser/parser_cmd.c.o
-
-srcs/parser/parser_cmd.i: srcs/parser/parser_cmd.c.i
-
-.PHONY : srcs/parser/parser_cmd.i
-
-# target to preprocess a source file
-srcs/parser/parser_cmd.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/parser_cmd.c.i
-.PHONY : srcs/parser/parser_cmd.c.i
-
-srcs/parser/parser_cmd.s: srcs/parser/parser_cmd.c.s
-
-.PHONY : srcs/parser/parser_cmd.s
-
-# target to generate assembly for a file
-srcs/parser/parser_cmd.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/parser_cmd.c.s
-.PHONY : srcs/parser/parser_cmd.c.s
 
 srcs/parser/parser_errors.o: srcs/parser/parser_errors.c.o
 
@@ -2357,6 +2384,33 @@ srcs/redirect/redirect.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/redirect/redirect.c.s
 .PHONY : srcs/redirect/redirect.c.s
 
+srcs/signals/signals.o: srcs/signals/signals.c.o
+
+.PHONY : srcs/signals/signals.o
+
+# target to build an object file
+srcs/signals/signals.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/signals/signals.c.o
+.PHONY : srcs/signals/signals.c.o
+
+srcs/signals/signals.i: srcs/signals/signals.c.i
+
+.PHONY : srcs/signals/signals.i
+
+# target to preprocess a source file
+srcs/signals/signals.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/signals/signals.c.i
+.PHONY : srcs/signals/signals.c.i
+
+srcs/signals/signals.s: srcs/signals/signals.c.s
+
+.PHONY : srcs/signals/signals.s
+
+# target to generate assembly for a file
+srcs/signals/signals.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/signals/signals.c.s
+.PHONY : srcs/signals/signals.c.s
+
 srcs/signals/signals_utils.o: srcs/signals/signals_utils.c.o
 
 .PHONY : srcs/signals/signals_utils.o
@@ -2603,12 +2657,15 @@ help:
 	@echo "... srcs/main.o"
 	@echo "... srcs/main.i"
 	@echo "... srcs/main.s"
+	@echo "... srcs/no_pipe_cmd/parser_cmd.o"
+	@echo "... srcs/no_pipe_cmd/parser_cmd.i"
+	@echo "... srcs/no_pipe_cmd/parser_cmd.s"
+	@echo "... srcs/no_pipe_cmd/start_command.o"
+	@echo "... srcs/no_pipe_cmd/start_command.i"
+	@echo "... srcs/no_pipe_cmd/start_command.s"
 	@echo "... srcs/parser/convert.o"
 	@echo "... srcs/parser/convert.i"
 	@echo "... srcs/parser/convert.s"
-	@echo "... srcs/parser/parser_cmd.o"
-	@echo "... srcs/parser/parser_cmd.i"
-	@echo "... srcs/parser/parser_cmd.s"
 	@echo "... srcs/parser/parser_errors.o"
 	@echo "... srcs/parser/parser_errors.i"
 	@echo "... srcs/parser/parser_errors.s"
@@ -2639,6 +2696,9 @@ help:
 	@echo "... srcs/redirect/redirect.o"
 	@echo "... srcs/redirect/redirect.i"
 	@echo "... srcs/redirect/redirect.s"
+	@echo "... srcs/signals/signals.o"
+	@echo "... srcs/signals/signals.i"
+	@echo "... srcs/signals/signals.s"
 	@echo "... srcs/signals/signals_utils.o"
 	@echo "... srcs/signals/signals_utils.i"
 	@echo "... srcs/signals/signals_utils.s"

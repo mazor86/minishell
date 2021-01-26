@@ -61,7 +61,7 @@ char		**deconvert_env(t_env **my_env)
 	i = 0;
 	temp = *my_env;
 	len = count_env(temp);
-	if (!(res = (char**)malloc(sizeof(char*) * (len + 1))))
+	if (!(res = (char**)(malloc(sizeof(char*) * (len + 1)))))
 		return (NULL);
 	while (temp->next != NULL)
 	{
@@ -69,10 +69,11 @@ char		**deconvert_env(t_env **my_env)
 			if (!(res[i] = ft_strdup(temp->name)) ||
 			!(res[i] = ft_strjoin(res[i], "=")) ||
 			!(res[i] = ft_strjoin(res[i], temp->value)))
-				return (NULL);
+				return (free_array(res));
 		temp = temp->next;
 		i++;
 	}
+    res[i] = NULL;
 	return (res);
 }
 

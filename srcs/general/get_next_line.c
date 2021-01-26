@@ -22,7 +22,7 @@ static int		ft_gnl_exit(t_all *all)
 
 static int		set_read(int fd, char **line, t_all *all)
 {
-	char	*res;
+	//char	*res;
 	int		ret;
 	char	buf[2];
 
@@ -46,10 +46,10 @@ static int		set_read(int fd, char **line, t_all *all)
 			if (!(*line = ft_strdup("")))
 				return (-1);
 		}
-		res = *line;
-		if (!(*line = ft_strjoin(res, buf)))
+		//res = *line;
+		if (!(*line = ft_strjoin(*line, buf)))
 			return (-1);
-		free(res);
+		//free(res);
 	}
 	return (1);
 }

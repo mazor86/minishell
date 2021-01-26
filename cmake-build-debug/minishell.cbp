@@ -46,6 +46,7 @@
 				<Compiler>
 					<Add directory="/Users/tisabel/Documents/minishell/includes"/>
 					<Add directory="/Users/tisabel/Documents/minishell/libft"/>
+					<Add directory="/Users/tisabel/Documents/minishell/srcs"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -68,6 +69,7 @@
 				<Compiler>
 					<Add directory="/Users/tisabel/Documents/minishell/includes"/>
 					<Add directory="/Users/tisabel/Documents/minishell/libft"/>
+					<Add directory="/Users/tisabel/Documents/minishell/srcs"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -301,10 +303,13 @@
 		<Unit filename="/Users/tisabel/Documents/minishell/srcs/main.c">
 			<Option target="minishell"/>
 		</Unit>
-		<Unit filename="/Users/tisabel/Documents/minishell/srcs/parser/convert.c">
+		<Unit filename="/Users/tisabel/Documents/minishell/srcs/no_pipe_cmd/parser_cmd.c">
 			<Option target="minishell"/>
 		</Unit>
-		<Unit filename="/Users/tisabel/Documents/minishell/srcs/parser/parser_cmd.c">
+		<Unit filename="/Users/tisabel/Documents/minishell/srcs/no_pipe_cmd/start_command.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/tisabel/Documents/minishell/srcs/parser/convert.c">
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/Users/tisabel/Documents/minishell/srcs/parser/parser_errors.c">
@@ -335,6 +340,9 @@
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/Users/tisabel/Documents/minishell/srcs/redirect/redirect.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/tisabel/Documents/minishell/srcs/signals/signals.c">
 			<Option target="minishell"/>
 		</Unit>
 		<Unit filename="/Users/tisabel/Documents/minishell/srcs/signals/signals_utils.c">

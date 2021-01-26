@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:20:05 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/25 19:58:25 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/26 11:11:31 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,20 @@
 int			free_local(char **split, char **split2, char **text, int ret)
 {
 	if (split)
-		free_array(split);
+    {
+        free_array(split);
+        *split = NULL;
+    }
 	if (split2)
-		free_array(split2);
+	{
+	    free_array(split2);
+        *split2 = NULL;
+	}
 	if (*text)
-		free(*text);
+	{
+	    free(*text);
+        *text = NULL;
+	}
 	return (ret);
 }
 
@@ -43,10 +52,20 @@ int			free_local(char **split, char **split2, char **text, int ret)
 ** @return 0 if good, otherwise -1
 */
 
+void        parant_process(int pid, t_all *all, t_cmd *lst)
+{
+    mute_signals();
+    waitpid(pid, &all->res, 0);
+    catch_signals(all);
+    implement_signals(all);
+    close_pipe_fd(lst);
+}
+
 int			start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 {
-	pid_t	pid;
-	char	*fullname;
+	pid_t		pid;
+	char		*fullname;
+	extern int	errno;
 
 	fullname = NULL;
 	all->exit_status = 0;
@@ -65,11 +84,7 @@ int			start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 		exit(all->exit_status);
 	}
 	else
-	{
-		mute_signals();
-		waitpid(pid, &all->res, 0);
-		close_pipe_fd(lst);
-	}
+        parant_process(pid, all, lst);
 	init_signals(all, 'p');
 	return (free_local(envp, argv, &fullname, all->exit_status));
 }
