@@ -64,7 +64,7 @@ int			main(int args, char **argv, char **env)
 	clear(&all);
 	convert_env(&all.my_env, env, &all);
 	init_signals(&all, 'p');
-	ft_putstr_fd("my bash$ ", 1);
+	ft_putstr_fd(PROMPT, 1);
 	save_fds(&all, 2);
 	while (1 == 1)
 	{
@@ -78,14 +78,15 @@ int			main(int args, char **argv, char **env)
 			{
 				update_main(&all);
 				ft_putstr_fd("\b\b  \b\b", 1);
-				ft_putstr_fd("my bash$ ", 1);
+				ft_putstr_fd(PROMPT, 1);
 			}
 		}
 		else
         {
             ft_putstr_fd("\b\b  \b\b", 1);
-            ft_putstr_fd("my bash$ ", 1);
+            ft_putstr_fd(PROMPT, 1);
         }
 		restore_fds(&all, 2);
 	}
 }
+

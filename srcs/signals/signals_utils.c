@@ -16,7 +16,7 @@ void	sigint_sighandler(int i)
 {
 	(void)i;
 	ft_putstr_fd("\b\b  \n", 1);
-    ft_putstr_fd("my bash$ ", 1);
+    ft_putstr_fd(PROMPT, 1);
 }
 
 void	sigquit_sighandler(int i)

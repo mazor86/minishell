@@ -22,6 +22,8 @@
 # include "../libft/libft.h"
 # include "struct.h"
 
+# define PROMPT "\x1b[36m mini_bash$ \x1b[0m"
+
 int				g_exit_s;
 
 /*
