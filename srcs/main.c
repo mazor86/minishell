@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by jlyessa           #+#    #+#             */
-/*   Updated: 2021/01/25 20:21:30 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/01/28 15:46:00 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,12 @@ int			main(int args, char **argv, char **env)
 		{
 			parser_string(&all);
 			parser_cmd(&all);
-			update_main(&all);
-            ft_putstr_fd("\b\b  \b\b", 1);
-			ft_putstr_fd("my bash$ ", 1);
+			if (all.line[0] != ';')
+			{
+				update_main(&all);
+				ft_putstr_fd("\b\b  \b\b", 1);
+				ft_putstr_fd("my bash$ ", 1);
+			}
 		}
 		else
         {
