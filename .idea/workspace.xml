@@ -102,8 +102,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_export.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_export.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/general/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/general/get_next_line.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/convert.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/convert.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +189,7 @@
       <workItem from="1611869550449" duration="1646000" />
       <workItem from="1611872919688" duration="4245000" />
       <workItem from="1612673832269" duration="1788000" />
-      <workItem from="1612873331342" duration="12854000" />
+      <workItem from="1612873331342" duration="15729000" />
     </task>
     <servers />
   </component>

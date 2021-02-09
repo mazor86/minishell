@@ -26,6 +26,10 @@ struct.h
 
 /Users/mazor/projects/minishell/includes/struct.h
 
+/Users/mazor/projects/minishell/libft/ft_strlen.c
+libft.h
+/Users/mazor/projects/minishell/libft/libft.h
+
 /Users/mazor/projects/minishell/libft/libft.h
 unistd.h
 -
@@ -34,7 +38,7 @@ stdlib.h
 string.h
 -
 
-/Users/mazor/projects/minishell/srcs/cmd/ft_export.c
+/Users/mazor/projects/minishell/srcs/parser/convert.c
 ../../includes/minishell.h
 /Users/mazor/projects/minishell/includes/minishell.h
 
