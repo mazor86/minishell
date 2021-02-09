@@ -34,7 +34,7 @@ stdlib.h
 string.h
 -
 
-/Users/mazor/projects/minishell/srcs/parser/parser_path.c
+/Users/mazor/projects/minishell/srcs/cmd/ft_export.c
 ../../includes/minishell.h
 /Users/mazor/projects/minishell/includes/minishell.h
 

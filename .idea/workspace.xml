@@ -99,21 +99,11 @@
       <change afterPath="$PROJECT_DIR$/srcs/redirect/redirect.o" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/srcs/signals/signals.o" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/srcs/signals/signals_utils.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/minishell.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/clear/clear.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/clear/clear.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_export.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_export.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/general/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/general/get_next_line.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/init/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/init/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/convert.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/convert.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_string.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_string.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/utils.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +190,7 @@
       <workItem from="1611869550449" duration="1646000" />
       <workItem from="1611872919688" duration="4245000" />
       <workItem from="1612673832269" duration="1788000" />
-      <workItem from="1612873331342" duration="11258000" />
+      <workItem from="1612873331342" duration="12854000" />
     </task>
     <servers />
   </component>
@@ -306,6 +296,31 @@
           <url>file://$PROJECT_DIR$/srcs/clear/clear.c</url>
           <line>60</line>
           <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/cmd/ft_export.c</url>
+          <line>41</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/cmd/ft_export.c</url>
+          <line>101</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/cmd/ft_export.c</url>
+          <line>103</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/env/env_utils_2.c</url>
+          <line>27</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/cmd/ft_export.c</url>
+          <line>23</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
