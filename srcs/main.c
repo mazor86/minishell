@@ -66,20 +66,25 @@ int			main(int args, char **argv, char **env)
 	init_signals(&all, 'p');
 	ft_putstr_fd(PROMPT, 1);
 	save_fds(&all, 2);
-	while (1 == 1)
+	while (1)
 	{
 		if (!all.line)
 			get_next_line(0, &all.line, &all);
 		if (all.line)
 		{
+//		    check_syntax(&all);
 			parser_string(&all);
 			parser_cmd(&all);
-			if (all.line[0] != ';')
+			if (all.line[all.pos] != ';')
 			{
 				update_main(&all);
 				ft_putstr_fd("\b\b  \b\b", 1);
 				ft_putstr_fd(PROMPT, 1);
 			}
+			else
+            {
+			    clear_cmd(&all.cmd);
+            }
 		}
 		else
         {

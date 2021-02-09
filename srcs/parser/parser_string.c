@@ -50,15 +50,15 @@ static int	get_spec(t_all *all, char **text)
 ** @return 0 if good, otherwise -1
 */
 
-static int	get_name(t_all *all)
+static int	get_name(t_all *all, t_cmd *lst)
 {
 	const char	spec[4] = " |;";
 
 	while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 	{
-		if (!get_spec(all, &(cmdlast(all->cmd)->name)))
+		if (!get_spec(all, &(lst->name)))
 		{
-			if (join_char(&(cmdlast(all->cmd)->name),
+			if (join_char(&(lst->name),
 				all->line[all->pos]) == -1)
 				return (-1);
 			all->pos++;
@@ -74,7 +74,7 @@ static int	get_name(t_all *all)
 ** @return 0 if good, otherwise -1
 */
 
-static int	get_arg(t_all *all)
+static int	get_arg(t_all *all, t_cmd *lst)
 {
 	const char	spec[3] = "|;";
 	int			i;
@@ -84,16 +84,14 @@ static int	get_arg(t_all *all)
 	{
 		if (all->line[all->pos] == ' ')
 		{
-			if (add_remalloc_argv(all, spec, &i) == -1)
+			if (add_remalloc_argv(all, lst, spec, &i) == -1)
 				return (-1);
 		}
 		else
 		{
-			if (!get_spec(all,
-				&(cmdlast(all->cmd))->argv[i]))
+			if (!get_spec(all, &lst->argv[i]))
 			{
-				if (join_char(&(cmdlast(all->cmd))->argv[i],
-					all->line[all->pos]) == -1)
+				if (join_char(&lst->argv[i], all->line[all->pos]) == -1)
 					return (-1);
 				all->pos++;
 			}
@@ -109,24 +107,53 @@ static int	get_arg(t_all *all)
 ** @return 0 if good, otherwise -1
 */
 
+//int			parser_string(t_all *all)
+//{
+//	t_cmd		*lst;
+//
+//	while (all->line[all->pos])
+//	{
+//		if (!(lst = init_cmd()))
+//			return (ft_error(NULL, "out of memory", 12, all));
+//		cmdadd_back(&all->cmd, lst);
+//		trim_space(all);
+//		if (get_name(all) == -1)
+//			return (ft_error(NULL, "out of memory", 12, all));
+//		trim_space(all);
+//		if (get_arg(all) == -1)
+//			return (ft_error(NULL, "out of memory", 12, all));
+//		if (all->line[all->pos] == '|')
+//			(cmdlast(all->cmd))->pipe = 1;
+//		all->pos++;
+//	}
+//	return (0);
+//}
 int			parser_string(t_all *all)
 {
-	t_cmd		*lst;
+    t_cmd		*lst;
 
-	while (all->line[all->pos])
-	{
-		if (!(lst = init_cmd()))
-			return (ft_error(NULL, "out of memory", 12, all));
-		cmdadd_back(&all->cmd, lst);
-		trim_space(all);
-		if (get_name(all) == -1)
-			return (ft_error(NULL, "out of memory", 12, all));
-		trim_space(all);
-		if (get_arg(all) == -1)
-			return (ft_error(NULL, "out of memory", 12, all));
-		if (all->line[all->pos] == '|')
-			(cmdlast(all->cmd))->pipe = 1;
-		all->pos++;
-	}
-	return (0);
+    while (all->line[all->pos])
+    {
+        if (all->line[all->pos] == ';')
+            all->pos++;
+        if (!(lst = init_cmd()))
+            return (ft_error(NULL, "out of memory", 12, all));
+        trim_space(all);
+        if (get_name(all, lst) == -1)
+            return (ft_error(NULL, "out of memory", 12, all));
+        trim_space(all);
+        if (get_arg(all, lst) == -1)
+            return (ft_error(NULL, "out of memory", 12, all));
+        if (all->line[all->pos] == '|')
+            lst->pipe = 1;
+        if (!(*lst->name))
+            clear_cmd(&lst);
+        else
+            cmdadd_back(&all->cmd, lst);
+        if (all->line[all->pos] == ';')
+            break ;
+        if (all->line[all->pos])
+            all->pos++;
+    }
+    return (0);
 }

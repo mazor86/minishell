@@ -13,7 +13,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <stdio.h>
+# include <stdio.h>//
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <dirent.h>
@@ -22,7 +22,7 @@
 # include "../libft/libft.h"
 # include "struct.h"
 
-# define PROMPT "\x1b[36m mini_bash$ \x1b[0m"
+# define PROMPT "\x1b[36mmini_bash$ \x1b[0m"
 
 int				g_exit_s;
 
@@ -106,7 +106,7 @@ int				join_char(char **text, char c);
 int				join_str(char **text, char *s);
 void			trim_space(t_all *all);
 char			**remalloc_args(char **args);
-int				add_remalloc_argv(t_all *all, const char *spec, int *i);
+int				add_remalloc_argv(t_all *all, t_cmd *lst, const char *spec, int *i);
 void			*free_array(char **text);
 
 /*

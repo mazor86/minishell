@@ -72,7 +72,9 @@ int			start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
 	if (!(envp = deconvert_env(&all->my_env)) ||
 		!(argv = convert_argv(lst)) ||
 		!(fullname = get_full_cmd_name(all, lst)))
-		return (free_local(envp, argv, &fullname, all->exit_status));
+	{
+	    return (free_local(envp, argv, &fullname, all->exit_status));
+	}
 	if ((pid = fork()) == -1)
 		return (ft_error(lst->name, ": failed to fork", 13, all));
 	if (pid == 0)

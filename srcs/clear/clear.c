@@ -57,7 +57,8 @@ void	clear_cmd(t_cmd **cmd_lst)
 	while (tmp)
 	{
 		i = -1;
-		free(tmp->name);
+		if (tmp->name)
+		    free(tmp->name);
 		if (tmp->argv)
 		{
 			while (tmp->argv[++i])

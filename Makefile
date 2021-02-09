@@ -56,7 +56,7 @@ OBJ = $(SRCS:.c=.o)
 HEADER = includes/minishell.h libft/libft.h
 
 %.o: %.c
-	@gcc $(FLAGS) -c -o $@ $^
+	gcc $(FLAGS) -c -o $@ $^
 
 all: $(NAME)
 

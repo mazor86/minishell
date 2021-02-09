@@ -66,12 +66,13 @@ char		**deconvert_env(t_env **my_env)
 	while (temp->next != NULL)
 	{
 		if (temp->standard != 0)
-			if (!(res[i] = ft_strdup(temp->name)) ||
-			!(res[i] = ft_strjoin(res[i], "=")) ||
-			!(res[i] = ft_strjoin(res[i], temp->value)))
-				return (free_array(res));
-		temp = temp->next;
+		{
+            if (!(res[i] = ft_strdup(temp->name)) || !(res[i] = ft_strjoin(res[i], "=")) ||
+                !(res[i] = ft_strjoin(res[i], temp->value)))
+                return (free_array(res));
+        }
 		i++;
+		temp = temp->next;
 	}
     res[i] = NULL;
 	return (res);

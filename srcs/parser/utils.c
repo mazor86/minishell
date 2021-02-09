@@ -85,8 +85,10 @@ char	**remalloc_args(char **argv)
 		if (!(res[i] = ft_strdup(argv[i])))
 			return (NULL);
 		free(argv[i]);
+		argv[i] = NULL;
 	}
 	free(argv);
+	argv = NULL;
 	if (!(res[i] = ft_strdup("")))
 		return (NULL);
 	res[i + 1] = 0;
@@ -102,13 +104,12 @@ char	**remalloc_args(char **argv)
 ** @return 0 if good, otherwise -1
 */
 
-int		add_remalloc_argv(t_all *all, const char *spec, int *i)
+int		add_remalloc_argv(t_all *all, t_cmd *lst, const char *spec, int *i)
 {
 	trim_space(all);
 	if (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 	{
-		if (!((cmdlast(all->cmd))->argv =
-			remalloc_args(((cmdlast(all->cmd)))->argv)))
+		if (!(lst->argv = remalloc_args(lst->argv)))
 			return (-1);
 		(*i)++;
 	}
