@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/26 11:17:37 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/02/10 16:00:08 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,9 @@ int				init_redirect(t_all *all, t_cmd *cmd, int pipe);
 int				no_pipe(t_all *all, t_cmd *cmd);
 void			close_pipe_fd(t_cmd *cmd);
 int				exec_command_pipe(t_all *all, t_cmd *cmd);
+void            clear_redir(t_redir *redir);
+void            check_redir(t_all *all, t_cmd *lst);
+//t_redir         *realloc_redir(t_redir *old);
 
 /*
 ** Signals implementing functions

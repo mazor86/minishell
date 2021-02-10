@@ -19,6 +19,7 @@ SRCS = srcs/main.c \
 		srcs/signals/signals.c\
 		srcs/signals/signals_utils.c\
 		srcs/redirect/redirect.c\
+		srcs/redirect/redir_utils.c\
 		srcs/pipe/fd_utils.c\
 		srcs/pipe/init_pipe.c\
 		srcs/parser/utils.c \

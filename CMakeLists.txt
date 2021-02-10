@@ -93,6 +93,7 @@ add_executable(minishell
         srcs/pipe/fd_utils.c
         srcs/pipe/init_pipe.c
         srcs/redirect/redirect.c
+        srsc/redirect/redir_utils.c
         srcs/signals/signals_utils.c
         srcs/signals/signals.c
         srcs/main.c)

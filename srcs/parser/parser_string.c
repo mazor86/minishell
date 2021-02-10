@@ -52,7 +52,7 @@ static int	get_spec(t_all *all, char **text)
 
 static int	get_name(t_all *all, t_cmd *lst)
 {
-	const char	spec[4] = " |;";
+	const char	spec[6] = " |;><";
 
 	while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 	{
@@ -76,12 +76,13 @@ static int	get_name(t_all *all, t_cmd *lst)
 
 static int	get_arg(t_all *all, t_cmd *lst)
 {
-	const char	spec[3] = "|;";
+	const char	spec[5] = "|;><";
 	int			i;
 
 	i = 0;
 	while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 	{
+	    check_redir(all, lst);
 		if (all->line[all->pos] == ' ')
 		{
 			if (add_remalloc_argv(all, lst, spec, &i) == -1)
@@ -107,27 +108,6 @@ static int	get_arg(t_all *all, t_cmd *lst)
 ** @return 0 if good, otherwise -1
 */
 
-//int			parser_string(t_all *all)
-//{
-//	t_cmd		*lst;
-//
-//	while (all->line[all->pos])
-//	{
-//		if (!(lst = init_cmd()))
-//			return (ft_error(NULL, "out of memory", 12, all));
-//		cmdadd_back(&all->cmd, lst);
-//		trim_space(all);
-//		if (get_name(all) == -1)
-//			return (ft_error(NULL, "out of memory", 12, all));
-//		trim_space(all);
-//		if (get_arg(all) == -1)
-//			return (ft_error(NULL, "out of memory", 12, all));
-//		if (all->line[all->pos] == '|')
-//			(cmdlast(all->cmd))->pipe = 1;
-//		all->pos++;
-//	}
-//	return (0);
-//}
 int			parser_string(t_all *all)
 {
     t_cmd		*lst;
@@ -139,6 +119,7 @@ int			parser_string(t_all *all)
         if (!(lst = init_cmd()))
             return (ft_error(NULL, "out of memory", 12, all));
         trim_space(all);
+        check_redir(all, lst);
         if (get_name(all, lst) == -1)
             return (ft_error(NULL, "out of memory", 12, all));
         trim_space(all);

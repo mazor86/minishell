@@ -65,6 +65,7 @@ void	clear_cmd(t_cmd **cmd_lst)
 				free(tmp->argv[i]);
 		}
 		free(tmp->argv);
+		clear_redir(tmp->redir);
 		tmp = tmp->next;
 	}
 	*cmd_lst = NULL;
