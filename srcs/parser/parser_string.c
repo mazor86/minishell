@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:03:16 by mazor             #+#    #+#             */
-/*   Updated: 2021/01/08 19:36:57 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/02/10 21:05:14 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** @return 1 if a special character is encountered, 0 if not, -1 error
 */
 
-static int	get_spec(t_all *all, char **text)
+int         get_spec(t_all *all, char **text)
 {
 	const char	spec[5] = "\\$\'\"";
 	int			(*f[4])(t_all*, char**);
@@ -76,7 +76,7 @@ static int	get_name(t_all *all, t_cmd *lst)
 
 static int	get_arg(t_all *all, t_cmd *lst)
 {
-	const char	spec[5] = "|;><";
+	const char	spec[3] = "|;";
 	int			i;
 
 	i = 0;
@@ -88,7 +88,7 @@ static int	get_arg(t_all *all, t_cmd *lst)
 			if (add_remalloc_argv(all, lst, spec, &i) == -1)
 				return (-1);
 		}
-		else
+		else if (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 		{
 			if (!get_spec(all, &lst->argv[i]))
 			{
@@ -119,7 +119,8 @@ int			parser_string(t_all *all)
         if (!(lst = init_cmd()))
             return (ft_error(NULL, "out of memory", 12, all));
         trim_space(all);
-        check_redir(all, lst);
+        if (check_redir(all, lst) == -1)
+            return (ft_error(NULL, "out of memory", 12, all));
         if (get_name(all, lst) == -1)
             return (ft_error(NULL, "out of memory", 12, all));
         trim_space(all);

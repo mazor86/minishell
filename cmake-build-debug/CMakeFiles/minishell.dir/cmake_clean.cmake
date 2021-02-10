@@ -81,6 +81,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/srcs/parser/utils.c.o"
   "CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o"
   "CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o"
+  "CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.o"
   "CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o"
   "CMakeFiles/minishell.dir/srcs/signals/signals.c.o"
   "CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.o"

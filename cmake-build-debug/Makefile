@@ -68,10 +68,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tisabel/Documents/minishell_2
+CMAKE_SOURCE_DIR = /Users/mazor/projects/minishell
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tisabel/Documents/minishell_2/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/mazor/projects/minishell/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tisabel/Documents/minishell_2/cmake-build-debug/CMakeFiles /Users/tisabel/Documents/minishell_2/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles /Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tisabel/Documents/minishell_2/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -2357,6 +2357,33 @@ srcs/pipe/init_pipe.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.s
 .PHONY : srcs/pipe/init_pipe.c.s
 
+srcs/redirect/redir_utils.o: srcs/redirect/redir_utils.c.o
+
+.PHONY : srcs/redirect/redir_utils.o
+
+# target to build an object file
+srcs/redirect/redir_utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.o
+.PHONY : srcs/redirect/redir_utils.c.o
+
+srcs/redirect/redir_utils.i: srcs/redirect/redir_utils.c.i
+
+.PHONY : srcs/redirect/redir_utils.i
+
+# target to preprocess a source file
+srcs/redirect/redir_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.i
+.PHONY : srcs/redirect/redir_utils.c.i
+
+srcs/redirect/redir_utils.s: srcs/redirect/redir_utils.c.s
+
+.PHONY : srcs/redirect/redir_utils.s
+
+# target to generate assembly for a file
+srcs/redirect/redir_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.s
+.PHONY : srcs/redirect/redir_utils.c.s
+
 srcs/redirect/redirect.o: srcs/redirect/redirect.c.o
 
 .PHONY : srcs/redirect/redirect.o
@@ -2693,6 +2720,9 @@ help:
 	@echo "... srcs/pipe/init_pipe.o"
 	@echo "... srcs/pipe/init_pipe.i"
 	@echo "... srcs/pipe/init_pipe.s"
+	@echo "... srcs/redirect/redir_utils.o"
+	@echo "... srcs/redirect/redir_utils.i"
+	@echo "... srcs/redirect/redir_utils.s"
 	@echo "... srcs/redirect/redirect.o"
 	@echo "... srcs/redirect/redirect.i"
 	@echo "... srcs/redirect/redirect.s"

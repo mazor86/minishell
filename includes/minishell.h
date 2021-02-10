@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/02/10 16:00:08 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/10 20:16:36 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int				start_cmd(t_all *all, t_cmd *lst);
 int				start_execve(t_all *all, t_cmd *lst);
 int				exec_command(t_all *all, t_cmd *cmd);
 int				free_local(char **array_1, char **array_2, char **text, int ret);
+int             get_spec(t_all *all, char **text);
 
 /*
 ** Cmd utils functions
@@ -126,7 +127,9 @@ int				no_pipe(t_all *all, t_cmd *cmd);
 void			close_pipe_fd(t_cmd *cmd);
 int				exec_command_pipe(t_all *all, t_cmd *cmd);
 void            clear_redir(t_redir *redir);
-void            check_redir(t_all *all, t_cmd *lst);
+int             check_redir(t_all *all, t_cmd *lst);
+int			    count_redir(t_redir *redir);
+
 //t_redir         *realloc_redir(t_redir *old);
 
 /*
