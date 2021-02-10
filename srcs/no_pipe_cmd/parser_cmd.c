@@ -22,18 +22,12 @@
 ** @return ret
 */
 
-int			free_local(char **split, char **split2, char **text, int ret)
+int			free_local(char **array_1, char **array_2, char **text, int ret)
 {
-	if (split)
-    {
-        free_array(split);
-        *split = NULL;
-    }
-	if (split2)
-	{
-	    free_array(split2);
-        *split2 = NULL;
-	}
+	if (array_1)
+        free_array(array_1);
+	if (array_2)
+	    free_array(array_2);
 	if (*text)
 	{
 	    free(*text);
@@ -61,20 +55,20 @@ void        parant_process(int pid, t_all *all, t_cmd *lst)
     close_pipe_fd(lst);
 }
 
-int			start_execve(t_all *all, t_cmd *lst, char **envp, char **argv)
+int			start_execve(t_all *all, t_cmd *lst)
 {
 	pid_t		pid;
 	char		*fullname;
 	extern int	errno;
+    char        **envp;
+    char        **argv;
 
-	fullname = NULL;
 	all->exit_status = 0;
-	if (!(envp = deconvert_env(&all->my_env)) ||
-		!(argv = convert_argv(lst)) ||
-		!(fullname = get_full_cmd_name(all, lst)))
-	{
-	    return (free_local(envp, argv, &fullname, all->exit_status));
-	}
+    envp = deconvert_env(&all->my_env);
+    argv = convert_argv(lst);
+    fullname = get_full_cmd_name(all, lst);
+    if (!envp ||!argv || !fullname)
+        return (free_local(envp, argv, &fullname, all->exit_status));
 	if ((pid = fork()) == -1)
 		return (ft_error(lst->name, ": failed to fork", 13, all));
 	if (pid == 0)
@@ -106,7 +100,7 @@ int			exec_command(t_all *all, t_cmd *cmd)
 	if ((res_cmd = start_cmd(all, cmd)) > 0)
 		return (all->exit_status);
 	if (res_cmd == -1)
-		start_execve(all, cmd, NULL, NULL);
+		start_execve(all, cmd);
 	return (all->exit_status);
 }
 

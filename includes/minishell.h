@@ -51,10 +51,9 @@ int				get_quotes(t_all *all, char **text);
 int				parser_cmd(t_all *all);
 int				parser_syntax_errors(t_all *all);
 int				start_cmd(t_all *all, t_cmd *lst);
-int				start_execve(t_all *all, t_cmd *lst, char **envp,
-					char **argv);
+int				start_execve(t_all *all, t_cmd *lst);
 int				exec_command(t_all *all, t_cmd *cmd);
-int				free_local(char **split, char **split2, char **text, int ret);
+int				free_local(char **array_1, char **array_2, char **text, int ret);
 
 /*
 ** Cmd utils functions
