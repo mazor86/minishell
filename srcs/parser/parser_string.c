@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:03:16 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/10 21:05:14 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/14 17:40:15 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,23 @@ static int	get_arg(t_all *all, t_cmd *lst)
 {
 	const char	spec[3] = "|;";
 	int			i;
+	int         redir;
 
 	i = 0;
 	while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 	{
-	    check_redir(all, lst);
-		if (all->line[all->pos] == ' ')
-		{
-			if (add_remalloc_argv(all, lst, spec, &i) == -1)
-				return (-1);
+		if (all->line[all->pos] == ' ') {
+            trim_space(all);
+            if (!(redir = check_redir(all, lst))) {
+                if (add_remalloc_argv(all, lst, spec, &i) == -1)
+                    return (-1);
+            }
+            else
+                if (redir == -1)
+                    return (ft_error(NULL, "out of memory", 12, all));
 		}
-		else if (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
+		else if (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]) &&
+		        !(redir = check_redir(all, lst)))
 		{
 			if (!get_spec(all, &lst->argv[i]))
 			{
@@ -97,7 +103,9 @@ static int	get_arg(t_all *all, t_cmd *lst)
 				all->pos++;
 			}
 		}
-	}
+		else if (redir == -1)
+            return (ft_error(NULL, "out of memory", 12, all));
+    }
 	return (0);
 }
 
