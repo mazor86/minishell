@@ -89,6 +89,7 @@ add_executable(minishell
         srcs/parser/parser_shielding.c
         srcs/parser/parser_string.c
         srcs/parser/parser_variables.c
+        srcs/parser/syntax_errors.c
         srcs/parser/utils.c
         srcs/pipe/fd_utils.c
         srcs/pipe/init_pipe.c

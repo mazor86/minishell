@@ -1091,9 +1091,22 @@ CMakeFiles/minishell.dir/srcs/parser/parser_variables.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/srcs/parser/parser_variables.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mazor/projects/minishell/srcs/parser/parser_variables.c -o CMakeFiles/minishell.dir/srcs/parser/parser_variables.c.s
 
+CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o: CMakeFiles/minishell.dir/flags.make
+CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o: ../srcs/parser/syntax_errors.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o   -c /Users/mazor/projects/minishell/srcs/parser/syntax_errors.c
+
+CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mazor/projects/minishell/srcs/parser/syntax_errors.c > CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.i
+
+CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mazor/projects/minishell/srcs/parser/syntax_errors.c -o CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.s
+
 CMakeFiles/minishell.dir/srcs/parser/utils.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/parser/utils.c.o: ../srcs/parser/utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/minishell.dir/srcs/parser/utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/minishell.dir/srcs/parser/utils.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/parser/utils.c.o   -c /Users/mazor/projects/minishell/srcs/parser/utils.c
 
 CMakeFiles/minishell.dir/srcs/parser/utils.c.i: cmake_force
@@ -1106,7 +1119,7 @@ CMakeFiles/minishell.dir/srcs/parser/utils.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o: ../srcs/pipe/fd_utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o   -c /Users/mazor/projects/minishell/srcs/pipe/fd_utils.c
 
 CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.i: cmake_force
@@ -1119,7 +1132,7 @@ CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o: ../srcs/pipe/init_pipe.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o   -c /Users/mazor/projects/minishell/srcs/pipe/init_pipe.c
 
 CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.i: cmake_force
@@ -1132,7 +1145,7 @@ CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o: ../srcs/redirect/redirect.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/redirect/redirect.c.o   -c /Users/mazor/projects/minishell/srcs/redirect/redirect.c
 
 CMakeFiles/minishell.dir/srcs/redirect/redirect.c.i: cmake_force
@@ -1145,7 +1158,7 @@ CMakeFiles/minishell.dir/srcs/redirect/redirect.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.o: ../srcs/redirect/redir_utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.o   -c /Users/mazor/projects/minishell/srcs/redirect/redir_utils.c
 
 CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.i: cmake_force
@@ -1158,7 +1171,7 @@ CMakeFiles/minishell.dir/srcs/redirect/redir_utils.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.o: ../srcs/signals/signals_utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.o   -c /Users/mazor/projects/minishell/srcs/signals/signals_utils.c
 
 CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.i: cmake_force
@@ -1171,7 +1184,7 @@ CMakeFiles/minishell.dir/srcs/signals/signals_utils.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/signals/signals.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/signals/signals.c.o: ../srcs/signals/signals.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/minishell.dir/srcs/signals/signals.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/minishell.dir/srcs/signals/signals.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/signals/signals.c.o   -c /Users/mazor/projects/minishell/srcs/signals/signals.c
 
 CMakeFiles/minishell.dir/srcs/signals/signals.c.i: cmake_force
@@ -1184,7 +1197,7 @@ CMakeFiles/minishell.dir/srcs/signals/signals.c.s: cmake_force
 
 CMakeFiles/minishell.dir/srcs/main.c.o: CMakeFiles/minishell.dir/flags.make
 CMakeFiles/minishell.dir/srcs/main.c.o: ../srcs/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/minishell.dir/srcs/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/minishell.dir/srcs/main.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minishell.dir/srcs/main.c.o   -c /Users/mazor/projects/minishell/srcs/main.c
 
 CMakeFiles/minishell.dir/srcs/main.c.i: cmake_force
@@ -1275,6 +1288,7 @@ minishell_OBJECTS = \
 "CMakeFiles/minishell.dir/srcs/parser/parser_shielding.c.o" \
 "CMakeFiles/minishell.dir/srcs/parser/parser_string.c.o" \
 "CMakeFiles/minishell.dir/srcs/parser/parser_variables.c.o" \
+"CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o" \
 "CMakeFiles/minishell.dir/srcs/parser/utils.c.o" \
 "CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o" \
 "CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o" \
@@ -1365,6 +1379,7 @@ minishell: CMakeFiles/minishell.dir/srcs/parser/parser_quotes.c.o
 minishell: CMakeFiles/minishell.dir/srcs/parser/parser_shielding.c.o
 minishell: CMakeFiles/minishell.dir/srcs/parser/parser_string.c.o
 minishell: CMakeFiles/minishell.dir/srcs/parser/parser_variables.c.o
+minishell: CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o
 minishell: CMakeFiles/minishell.dir/srcs/parser/utils.c.o
 minishell: CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o
 minishell: CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o
@@ -1375,7 +1390,7 @@ minishell: CMakeFiles/minishell.dir/srcs/signals/signals.c.o
 minishell: CMakeFiles/minishell.dir/srcs/main.c.o
 minishell: CMakeFiles/minishell.dir/build.make
 minishell: CMakeFiles/minishell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Linking C executable minishell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Linking C executable minishell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/minishell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

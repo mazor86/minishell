@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:20:05 by mazor             #+#    #+#             */
-/*   Updated: 2021/01/26 11:11:31 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/02/17 21:21:23 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ int			parser_cmd(t_all *all)
 	t_cmd	*lst;
 
 	lst = all->cmd;
-	if (parser_syntax_errors(all) == 1)
-		return (all->exit_status);
+//	if (parser_syntax_errors(all) == 1)
+//		return (all->exit_status);
 	while (lst)
 	{
 		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')

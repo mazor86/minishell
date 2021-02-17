@@ -6,13 +6,13 @@
 #    By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/03 21:04:29 by mazor             #+#    #+#              #
-#    Updated: 2021/01/11 13:12:21 by tisabel          ###   ########.fr        #
+#    Updated: 2021/02/17 22:42:04 by mazor            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -g -fsanitize=address #-Wall -Wextra -Werror
 LIBFT = libft.a
 
 SRCS = srcs/main.c \
@@ -29,6 +29,7 @@ SRCS = srcs/main.c \
 		srcs/parser/parser_quotes.c \
 		srcs/parser/parser_path.c \
 		srcs/parser/parser_errors.c \
+		srcs/parser/syntax_errors.c \
 		srcs/parser/convert.c \
 		srcs/no_pipe_cmd/parser_cmd.c \
 		srcs/no_pipe_cmd/start_command.c \

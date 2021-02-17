@@ -78,6 +78,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/minishell.dir/srcs/parser/parser_shielding.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/parser_string.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/parser_variables.c.o"
+  "CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o"
   "CMakeFiles/minishell.dir/srcs/parser/utils.c.o"
   "CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o"
   "CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o"

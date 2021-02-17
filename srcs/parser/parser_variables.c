@@ -26,7 +26,7 @@ static int	get_result(t_all *all, char **text)
 
 	if (all->line[all->pos] == '?')
 	{
-		if (!(num = ft_itoa(all->res)))
+		if (!(num = ft_itoa(all->exit_status)))
 			return (-1);
 		if (join_str(text, num) == -1)
 			return (-1);

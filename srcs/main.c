@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by mazor             #+#    #+#             */
-/*   Updated: 2021/01/28 15:46:00 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/17 21:25:02 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			main(int args, char **argv, char **env)
 			get_next_line(0, &all.line, &all);
 		if (all.line)
 		{
-//		    check_syntax(&all);
+		    check_syntax(&all);
 			parser_string(&all);
 			parser_cmd(&all);
 			if (all.line[all.pos] != ';')

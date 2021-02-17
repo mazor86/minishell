@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 11:57:19 by mazor             #+#    #+#             */
-/*   Updated: 2021/01/08 19:41:41 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/02/17 20:27:41 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 ** @return 1
 */
 
-static int	ret_err(t_all *all, char *text)
+int	ret_err(t_all *all, char *text)
 {
 	all->res = 2;
-	return (ft_error(NULL, text, 1, all));
+	return (ft_error(NULL, text, 258, all));
 }
 
 /*

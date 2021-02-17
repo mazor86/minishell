@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/02/10 20:16:36 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/17 20:27:41 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int				start_execve(t_all *all, t_cmd *lst);
 int				exec_command(t_all *all, t_cmd *cmd);
 int				free_local(char **array_1, char **array_2, char **text, int ret);
 int             get_spec(t_all *all, char **text);
+int             check_syntax(t_all *all);
+
 
 /*
 ** Cmd utils functions
@@ -114,6 +116,8 @@ void			*free_array(char **text);
 */
 
 int				ft_error(char *name, char *text, int ret, t_all *all);
+int             ret_err(t_all *all, char *text);
+
 
 /*
 ** Pipe & redirect functions
