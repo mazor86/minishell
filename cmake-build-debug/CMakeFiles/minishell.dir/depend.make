@@ -288,6 +288,11 @@ CMakeFiles/minishell.dir/srcs/parser/parser_variables.c.o: ../includes/struct.h
 CMakeFiles/minishell.dir/srcs/parser/parser_variables.c.o: ../libft/libft.h
 CMakeFiles/minishell.dir/srcs/parser/parser_variables.c.o: ../srcs/parser/parser_variables.c
 
+CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o: ../includes/minishell.h
+CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o: ../includes/struct.h
+CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o: ../libft/libft.h
+CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o: ../srcs/parser/syntax_errors.c
+
 CMakeFiles/minishell.dir/srcs/parser/utils.c.o: ../includes/minishell.h
 CMakeFiles/minishell.dir/srcs/parser/utils.c.o: ../includes/struct.h
 CMakeFiles/minishell.dir/srcs/parser/utils.c.o: ../libft/libft.h

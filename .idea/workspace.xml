@@ -12,28 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e9df100-bf31-49a1-9cfd-444cb6a32434" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/srcs/parser/syntax_errors.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/minishell.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/minishell.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/minishell.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/minishell.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/libft.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_errors.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_errors.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_errors.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_errors.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_variables.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_variables.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_variables.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_variables.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/syntax_errors.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/syntax_errors.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/syntax_errors.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/syntax_errors.o" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +64,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="minishell" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="minishell" TARGET_NAME="minishell" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="minishell" RUN_TARGET_NAME="minishell">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -126,7 +105,8 @@
       <workItem from="1612973339763" duration="5034000" />
       <workItem from="1613307830309" duration="6430000" />
       <workItem from="1613572128463" duration="2453000" />
-      <workItem from="1613579790843" duration="6644000" />
+      <workItem from="1613579790843" duration="7196000" />
+      <workItem from="1613596083517" duration="686000" />
     </task>
     <servers />
   </component>
@@ -182,6 +162,11 @@
           <url>file://$PROJECT_DIR$/srcs/parser/parser_string.c</url>
           <line>134</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/main.c</url>
+          <line>74</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

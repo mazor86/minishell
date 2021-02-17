@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:45:43 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/17 22:41:00 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/18 00:14:17 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char    *syntax_err_text(char *line)
         return ("syntax error \";\"");
     if (*line == '&')
         return ("syntax error \"&\"");
+    return ("syntax error");
 }
 
 int     begin_syntax_error(char c)
@@ -45,18 +46,19 @@ int    trim_quote(char **line)
     if (**line == '\'' || **line == '\"')
     {
         c = **line;
-        *line++;
+        (*line)++;
         while (**line)
         {
             if (**line == c)
             {
-                *line++;
+                (*line)++;
                 return (0);
             }
             else
-                *line++;
+                (*line)++;
         }
     }
+    return (1);
 }
 
 int     check_syntax(t_all *all)
@@ -75,7 +77,7 @@ int     check_syntax(t_all *all)
             line++;
     }
     if (quote)
-        return (ret_err, "syntax error near unexpected token `newline\'");
+        return (ret_err(all, "syntax error near unexpected token `newline\'"));
 
     return (0);
 }
