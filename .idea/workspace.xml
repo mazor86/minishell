@@ -13,11 +13,55 @@
   <component name="ChangeListManager">
     <list default="true" id="2e9df100-bf31-49a1-9cfd-444cb6a32434" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bash1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/minishell.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/libft.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minishell.dSYM/Contents/Resources/DWARF/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell.dSYM/Contents/Resources/DWARF/minishell" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/clear/clear.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/clear/clear.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/clear/clear.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/clear/clear.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/clear/error.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/clear/error.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_cd.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_cd.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_echo.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_echo.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_env.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_env.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_exit.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_exit.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_export.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_export.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_export_utils.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_export_utils.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_pwd.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_pwd.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd/ft_unset.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd/ft_unset.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd_utils/add_back_cmd.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd_utils/add_back_cmd.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd_utils/cmd_last.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd_utils/cmd_last.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/cmd_utils/cmd_len.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/cmd_utils/cmd_len.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/env/conv_env.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/env/conv_env.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/env/env_utils.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/env/env_utils.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/env/env_utils_2.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/env/env_utils_2.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/general/get_next_line.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/general/get_next_line.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/general/variables.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/general/variables.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/init/init.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/init/init.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/no_pipe_cmd/parser_cmd.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/no_pipe_cmd/start_command.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/no_pipe_cmd/start_command.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/convert.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/convert.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_errors.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_errors.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_path.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_path.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_quotes.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_quotes.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_shielding.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_shielding.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_string.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_string.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_string.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_string.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_variables.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_variables.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/parser/syntax_errors.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/syntax_errors.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/parser/syntax_errors.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/syntax_errors.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/utils.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/utils.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/utils.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/pipe/fd_utils.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/pipe/fd_utils.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/pipe/init_pipe.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/pipe/init_pipe.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/redirect/redir_utils.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/redirect/redir_utils.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/redirect/redirect.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/redirect/redirect.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/signals/signals.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/signals/signals.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/signals/signals_utils.o" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/signals/signals_utils.o" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,17 +105,17 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
   </component>
   <component name="RunManager">
-    <configuration name="minishell" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="minishell" TARGET_NAME="minishell" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="minishell" RUN_TARGET_NAME="minishell">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="minishell" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="minishell" TARGET_NAME="minishell" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="minishell" RUN_TARGET_NAME="minishell">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -106,7 +150,10 @@
       <workItem from="1613307830309" duration="6430000" />
       <workItem from="1613572128463" duration="2453000" />
       <workItem from="1613579790843" duration="7196000" />
-      <workItem from="1613596083517" duration="686000" />
+      <workItem from="1613596083517" duration="758000" />
+      <workItem from="1613603431022" duration="1338000" />
+      <workItem from="1613628339712" duration="2438000" />
+      <workItem from="1613644118678" duration="5599000" />
     </task>
     <servers />
   </component>
@@ -144,19 +191,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/srcs/main.c</url>
-          <line>75</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/srcs/redirect/redir_utils.c</url>
           <line>86</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/srcs/main.c</url>
-          <line>76</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/srcs/parser/parser_string.c</url>
@@ -167,6 +204,11 @@
           <url>file://$PROJECT_DIR$/srcs/main.c</url>
           <line>74</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/parser/syntax_errors.c</url>
+          <line>132</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

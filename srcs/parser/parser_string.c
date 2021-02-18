@@ -141,7 +141,10 @@ int			parser_string(t_all *all)
         else
             cmdadd_back(&all->cmd, lst);
         if (all->line[all->pos] == ';')
+        {
+            all->semicol = 1;
             break ;
+        }
         if (all->line[all->pos])
             all->pos++;
     }

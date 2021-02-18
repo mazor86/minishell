@@ -84,6 +84,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mazor/projects/minishell/srcs/parser/parser_string.c" "/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/parser_string.c.o"
   "/Users/mazor/projects/minishell/srcs/parser/parser_variables.c" "/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/parser_variables.c.o"
   "/Users/mazor/projects/minishell/srcs/parser/syntax_errors.c" "/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.o"
+  "/Users/mazor/projects/minishell/srcs/parser/syntax_errors_utils.c" "/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/syntax_errors_utils.c.o"
   "/Users/mazor/projects/minishell/srcs/parser/utils.c" "/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/parser/utils.c.o"
   "/Users/mazor/projects/minishell/srcs/pipe/fd_utils.c" "/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/pipe/fd_utils.c.o"
   "/Users/mazor/projects/minishell/srcs/pipe/init_pipe.c" "/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/minishell.dir/srcs/pipe/init_pipe.c.o"

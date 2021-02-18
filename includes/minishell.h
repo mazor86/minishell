@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/02/17 20:27:41 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/18 14:42:51 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ int				exec_command(t_all *all, t_cmd *cmd);
 int				free_local(char **array_1, char **array_2, char **text, int ret);
 int             get_spec(t_all *all, char **text);
 int             check_syntax(t_all *all);
+char    *syntax_err_text(char *line);
+char    *syntax_err_flag_to_text(int flag);
+int     trim_space_in_line(char **line);
+
 
 
 /*
@@ -106,7 +110,7 @@ int				ft_exit(t_all *all, t_cmd *cmd);
 
 int				join_char(char **text, char c);
 int				join_str(char **text, char *s);
-void			trim_space(t_all *all);
+void            trim_space(t_all *all);
 char			**remalloc_args(char **args);
 int				add_remalloc_argv(t_all *all, t_cmd *lst, const char *spec, int *i);
 void			*free_array(char **text);

@@ -333,6 +333,9 @@
 		<Unit filename="/Users/mazor/projects/minishell/srcs/parser/syntax_errors.c">
 			<Option target="minishell"/>
 		</Unit>
+		<Unit filename="/Users/mazor/projects/minishell/srcs/parser/syntax_errors_utils.c">
+			<Option target="minishell"/>
+		</Unit>
 		<Unit filename="/Users/mazor/projects/minishell/srcs/parser/utils.c">
 			<Option target="minishell"/>
 		</Unit>

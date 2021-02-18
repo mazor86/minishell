@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/17 21:25:02 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/18 09:21:46 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,14 @@ int			main(int args, char **argv, char **env)
 			get_next_line(0, &all.line, &all);
 		if (all.line)
 		{
-		    check_syntax(&all);
-			parser_string(&all);
-			parser_cmd(&all);
-			if (all.line[all.pos] != ';')
-			{
-				update_main(&all);
-				ft_putstr_fd("\b\b  \b\b", 1);
-				ft_putstr_fd(PROMPT, 1);
-			}
-			else
+		    if (!check_syntax(&all))
             {
-			    clear_cmd(&all.cmd);
+                parser_string(&all);
+                parser_cmd(&all);
             }
+            update_main(&all);
+            ft_putstr_fd("\b\b  \b\b", 1);
+            ft_putstr_fd(PROMPT, 1);
 		}
 		else
         {

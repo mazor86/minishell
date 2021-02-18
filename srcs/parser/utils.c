@@ -56,7 +56,7 @@ int		join_str(char **text, char *s)
 ** @param *all general structure
 */
 
-void	trim_space(t_all *all)
+void    trim_space(t_all *all)
 {
 	while (all->line[all->pos] && all->line[all->pos] == ' ')
 		all->pos++;

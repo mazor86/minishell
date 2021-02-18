@@ -12,7 +12,7 @@
 
 NAME = minishell
 
-FLAGS = -g -fsanitize=address #-Wall -Wextra -Werror
+FLAGS = -g  -Wall -Wextra -Werror #-fsanitize=address
 LIBFT = libft.a
 
 SRCS = srcs/main.c \
@@ -30,6 +30,7 @@ SRCS = srcs/main.c \
 		srcs/parser/parser_path.c \
 		srcs/parser/parser_errors.c \
 		srcs/parser/syntax_errors.c \
+		srcs/parser/syntax_errors_utils.c \
 		srcs/parser/convert.c \
 		srcs/no_pipe_cmd/parser_cmd.c \
 		srcs/no_pipe_cmd/start_command.c \

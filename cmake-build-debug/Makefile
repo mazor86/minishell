@@ -2303,6 +2303,33 @@ srcs/parser/syntax_errors.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/syntax_errors.c.s
 .PHONY : srcs/parser/syntax_errors.c.s
 
+srcs/parser/syntax_errors_utils.o: srcs/parser/syntax_errors_utils.c.o
+
+.PHONY : srcs/parser/syntax_errors_utils.o
+
+# target to build an object file
+srcs/parser/syntax_errors_utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/syntax_errors_utils.c.o
+.PHONY : srcs/parser/syntax_errors_utils.c.o
+
+srcs/parser/syntax_errors_utils.i: srcs/parser/syntax_errors_utils.c.i
+
+.PHONY : srcs/parser/syntax_errors_utils.i
+
+# target to preprocess a source file
+srcs/parser/syntax_errors_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/syntax_errors_utils.c.i
+.PHONY : srcs/parser/syntax_errors_utils.c.i
+
+srcs/parser/syntax_errors_utils.s: srcs/parser/syntax_errors_utils.c.s
+
+.PHONY : srcs/parser/syntax_errors_utils.s
+
+# target to generate assembly for a file
+srcs/parser/syntax_errors_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell.dir/build.make CMakeFiles/minishell.dir/srcs/parser/syntax_errors_utils.c.s
+.PHONY : srcs/parser/syntax_errors_utils.c.s
+
 srcs/parser/utils.o: srcs/parser/utils.c.o
 
 .PHONY : srcs/parser/utils.o
@@ -2741,6 +2768,9 @@ help:
 	@echo "... srcs/parser/syntax_errors.o"
 	@echo "... srcs/parser/syntax_errors.i"
 	@echo "... srcs/parser/syntax_errors.s"
+	@echo "... srcs/parser/syntax_errors_utils.o"
+	@echo "... srcs/parser/syntax_errors_utils.i"
+	@echo "... srcs/parser/syntax_errors_utils.s"
 	@echo "... srcs/parser/utils.o"
 	@echo "... srcs/parser/utils.i"
 	@echo "... srcs/parser/utils.s"
