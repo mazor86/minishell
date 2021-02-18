@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:20:05 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/17 21:21:23 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/18 17:40:00 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@
 int			free_local(char **array_1, char **array_2, char **text, int ret)
 {
 	if (array_1)
-        free_array(array_1);
+		free_array(array_1);
 	if (array_2)
-	    free_array(array_2);
+		free_array(array_2);
 	if (*text)
 	{
-	    free(*text);
-        *text = NULL;
+		free(*text);
+		*text = NULL;
 	}
 	return (ret);
 }
@@ -46,29 +46,30 @@ int			free_local(char **array_1, char **array_2, char **text, int ret)
 ** @return 0 if good, otherwise -1
 */
 
-void        parant_process(int pid, t_all *all, t_cmd *lst)
+void		parant_process(int pid, t_all *all, t_cmd *lst)
 {
-    mute_signals();
-    waitpid(pid, &all->res, 0);
-    catch_signals(all);
-    implement_signals(all);
-    close_pipe_fd(lst);
+	mute_signals();
+	waitpid(pid, &all->res, 0);
+	catch_signals(all);
+	implement_signals(all);
+	close_pipe_fd(lst);
 }
 
+//TODO 26 lines in start_execve
 int			start_execve(t_all *all, t_cmd *lst)
 {
 	pid_t		pid;
 	char		*fullname;
 	extern int	errno;
-    char        **envp;
-    char        **argv;
+	char		**envp;
+	char		**argv;
 
 	all->exit_status = 0;
-    envp = deconvert_env(&all->my_env);
-    argv = convert_argv(lst);
-    fullname = get_full_cmd_name(all, lst);
-    if (!envp ||!argv || !fullname)
-        return (free_local(envp, argv, &fullname, all->exit_status));
+	envp = deconvert_env(&all->my_env);
+	argv = convert_argv(lst);
+	fullname = get_full_cmd_name(all, lst);
+	if (!envp || !argv || !fullname)
+		return (free_local(envp, argv, &fullname, all->exit_status));
 	if ((pid = fork()) == -1)
 		return (ft_error(lst->name, ": failed to fork", 13, all));
 	if (pid == 0)
@@ -80,7 +81,7 @@ int			start_execve(t_all *all, t_cmd *lst)
 		exit(all->exit_status);
 	}
 	else
-        parant_process(pid, all, lst);
+		parant_process(pid, all, lst);
 	init_signals(all, 'p');
 	return (free_local(envp, argv, &fullname, all->exit_status));
 }
@@ -116,8 +117,6 @@ int			parser_cmd(t_all *all)
 	t_cmd	*lst;
 
 	lst = all->cmd;
-//	if (parser_syntax_errors(all) == 1)
-//		return (all->exit_status);
 	while (lst)
 	{
 		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')

@@ -6,14 +6,13 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/02/18 14:42:51 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/18 17:32:01 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <stdio.h>//
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <dirent.h>
@@ -49,18 +48,15 @@ int				get_variables(t_all *all, char **text);
 int				get_strong_quotes(t_all *all, char **text);
 int				get_quotes(t_all *all, char **text);
 int				parser_cmd(t_all *all);
-int				parser_syntax_errors(t_all *all);
 int				start_cmd(t_all *all, t_cmd *lst);
 int				start_execve(t_all *all, t_cmd *lst);
 int				exec_command(t_all *all, t_cmd *cmd);
-int				free_local(char **array_1, char **array_2, char **text, int ret);
-int             get_spec(t_all *all, char **text);
-int             check_syntax(t_all *all);
-char    *syntax_err_text(char *line);
-char    *syntax_err_flag_to_text(int flag);
-int     trim_space_in_line(char **line);
-
-
+int				free_local(char **arr_1, char **arr_2, char **text, int ret);
+int				get_spec(t_all *all, char **text);
+int				check_syntax(t_all *all);
+char			*syntax_err_text(char *line);
+char			*syntax_err_flag_to_text(int flag);
+int				trim_space_in_line(char **line);
 
 /*
 ** Cmd utils functions
@@ -110,9 +106,10 @@ int				ft_exit(t_all *all, t_cmd *cmd);
 
 int				join_char(char **text, char c);
 int				join_str(char **text, char *s);
-void            trim_space(t_all *all);
+void			trim_space(t_all *all);
 char			**remalloc_args(char **args);
-int				add_remalloc_argv(t_all *all, t_cmd *lst, const char *spec, int *i);
+int				add_remalloc_argv(t_all *all, t_cmd *lst,\
+									const char *spec, int *i);
 void			*free_array(char **text);
 
 /*
@@ -120,8 +117,7 @@ void			*free_array(char **text);
 */
 
 int				ft_error(char *name, char *text, int ret, t_all *all);
-int             ret_err(t_all *all, char *text);
-
+int				ret_err(t_all *all, char *text);
 
 /*
 ** Pipe & redirect functions
@@ -134,11 +130,9 @@ int				init_redirect(t_all *all, t_cmd *cmd, int pipe);
 int				no_pipe(t_all *all, t_cmd *cmd);
 void			close_pipe_fd(t_cmd *cmd);
 int				exec_command_pipe(t_all *all, t_cmd *cmd);
-void            clear_redir(t_redir *redir);
-int             check_redir(t_all *all, t_cmd *lst);
-int			    count_redir(t_redir *redir);
-
-//t_redir         *realloc_redir(t_redir *old);
+void			clear_redir(t_redir *redir);
+int				check_redir(t_all *all, t_cmd *lst);
+int				count_redir(t_redir *redir);
 
 /*
 ** Signals implementing functions
@@ -146,7 +140,7 @@ int			    count_redir(t_redir *redir);
 
 void			init_signals(t_all *all, char c);
 void			mute_signals(void);
-void            catch_signals(t_all *all);
-void            implement_signals(t_all *all);
+void			catch_signals(t_all *all);
+void			implement_signals(t_all *all);
 
 #endif

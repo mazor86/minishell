@@ -41,7 +41,6 @@ t_cmd			*init_cmd(void)
 		!(cmd->argv[0] = ft_strdup(""))
 		|| !(cmd->redir = init_redir()))
 		return (NULL);
-//	cmd->argv[1] = NULL;
 	cmd->pipe = 0;
 	cmd->next = NULL;
 	cmd->prev = NULL;

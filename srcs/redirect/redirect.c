@@ -55,13 +55,13 @@ static int	change_redir(t_cmd *cmd, char **redir, int i, int fd)
 	if (i == 0)
 	{
 		(*redir)[0] = cmd->redir[i].r[0];
-        (*redir)[1] = cmd->redir[i].r[1];
+		(*redir)[1] = cmd->redir[i].r[1];
 	}
 	else if (cmd->redir[i].r[0] == cmd->redir[0].r[0])
 	{
-        (*redir)[0] = cmd->redir[i].r[0];
-        (*redir)[1] = cmd->redir[i].r[1];
-        return (1);
+		(*redir)[0] = cmd->redir[i].r[0];
+		(*redir)[1] = cmd->redir[i].r[1];
+		return (1);
 	}
 	else if (cmd->redir[i].r[0] != cmd->redir[0].r[0] &&
 		cmd->redir[i].r[0] != '\0')

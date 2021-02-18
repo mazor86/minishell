@@ -41,12 +41,8 @@ int		join_char(char **text, char c)
 
 int		join_str(char **text, char *s)
 {
-	//char	*t;
-
-	//t = *text;
 	if (!(*text = ft_strjoin(*text, s)))
 		return (-1);
-	//free(t);
 	return (0);
 }
 
@@ -56,7 +52,7 @@ int		join_str(char **text, char *s)
 ** @param *all general structure
 */
 
-void    trim_space(t_all *all)
+void	trim_space(t_all *all)
 {
 	while (all->line[all->pos] && all->line[all->pos] == ' ')
 		all->pos++;

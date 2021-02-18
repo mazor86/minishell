@@ -16,7 +16,7 @@ void	sigint_sighandler(int i)
 {
 	(void)i;
 	ft_putstr_fd("\b\b  \n", 1);
-    ft_putstr_fd(PROMPT, 1);
+	ft_putstr_fd(PROMPT, 1);
 }
 
 void	sigquit_sighandler(int i)
@@ -32,8 +32,8 @@ void	init_signals(t_all *all, char c)
 	errno = 0;
 	if (c == 'c')
 	{
-        signal(SIGINT, SIG_DFL);
-        signal(SIGQUIT, SIG_DFL);
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 	}
 	else
 	{

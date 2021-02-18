@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:03:16 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/14 17:40:15 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/18 18:50:42 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** @return 1 if a special character is encountered, 0 if not, -1 error
 */
 
-int         get_spec(t_all *all, char **text)
+int			get_spec(t_all *all, char **text)
 {
 	const char	spec[5] = "\\$\'\"";
 	int			(*f[4])(t_all*, char**);
@@ -74,27 +74,29 @@ static int	get_name(t_all *all, t_cmd *lst)
 ** @return 0 if good, otherwise -1
 */
 
+//TODO 33 lines
 static int	get_arg(t_all *all, t_cmd *lst)
 {
 	const char	spec[3] = "|;";
 	int			i;
-	int         redir;
+	int			redir;
 
 	i = 0;
 	while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 	{
-		if (all->line[all->pos] == ' ') {
-            trim_space(all);
-            if (!(redir = check_redir(all, lst))) {
-                if (add_remalloc_argv(all, lst, spec, &i) == -1)
-                    return (-1);
-            }
-            else
-                if (redir == -1)
-                    return (ft_error(NULL, "out of memory", 12, all));
+		if (all->line[all->pos] == ' ')
+		{
+			trim_space(all);
+			if (!(redir = check_redir(all, lst)))
+			{
+				if (add_remalloc_argv(all, lst, spec, &i) == -1)
+					return (-1);
+			}
+			else if (redir == -1)
+				return (ft_error(NULL, "out of memory", 12, all));
 		}
 		else if (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]) &&
-		        !(redir = check_redir(all, lst)))
+				!(redir = check_redir(all, lst)))
 		{
 			if (!get_spec(all, &lst->argv[i]))
 			{
@@ -104,8 +106,8 @@ static int	get_arg(t_all *all, t_cmd *lst)
 			}
 		}
 		else if (redir == -1)
-            return (ft_error(NULL, "out of memory", 12, all));
-    }
+			return (ft_error(NULL, "out of memory", 12, all));
+	}
 	return (0);
 }
 
@@ -116,37 +118,38 @@ static int	get_arg(t_all *all, t_cmd *lst)
 ** @return 0 if good, otherwise -1
 */
 
+//TODO 31 lines
 int			parser_string(t_all *all)
 {
-    t_cmd		*lst;
+	t_cmd		*lst;
 
-    while (all->line[all->pos])
-    {
-        if (all->line[all->pos] == ';')
-            all->pos++;
-        if (!(lst = init_cmd()))
-            return (ft_error(NULL, "out of memory", 12, all));
-        trim_space(all);
-        if (check_redir(all, lst) == -1)
-            return (ft_error(NULL, "out of memory", 12, all));
-        if (get_name(all, lst) == -1)
-            return (ft_error(NULL, "out of memory", 12, all));
-        trim_space(all);
-        if (get_arg(all, lst) == -1)
-            return (ft_error(NULL, "out of memory", 12, all));
-        if (all->line[all->pos] == '|')
-            lst->pipe = 1;
-        if (!(*lst->name))
-            clear_cmd(&lst);
-        else
-            cmdadd_back(&all->cmd, lst);
-        if (all->line[all->pos] == ';')
-        {
-            all->semicol = 1;
-            break ;
-        }
-        if (all->line[all->pos])
-            all->pos++;
-    }
-    return (0);
+	while (all->line[all->pos])
+	{
+		if (all->line[all->pos] == ';')
+			all->pos++;
+		if (!(lst = init_cmd()))
+			return (ft_error(NULL, "out of memory", 12, all));
+		trim_space(all);
+		if (check_redir(all, lst) == -1)
+			return (ft_error(NULL, "out of memory", 12, all));
+		if (get_name(all, lst) == -1)
+			return (ft_error(NULL, "out of memory", 12, all));
+		trim_space(all);
+		if (get_arg(all, lst) == -1)
+			return (ft_error(NULL, "out of memory", 12, all));
+		if (all->line[all->pos] == '|')
+			lst->pipe = 1;
+		if (!(*lst->name))
+			clear_cmd(&lst);
+		else
+			cmdadd_back(&all->cmd, lst);
+		if (all->line[all->pos] == ';')
+		{
+			all->semicol = 1;
+			break ;
+		}
+		if (all->line[all->pos])
+			all->pos++;
+	}
+	return (0);
 }

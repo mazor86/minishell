@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 13:00:31 by mazor             #+#    #+#             */
-/*   Updated: 2021/01/25 19:06:41 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/02/18 18:45:50 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	*free_argv_local(char **split, char **name)
 ** @return pointer to an array of strings, otherwise NULL
 */
 
+//TODO 26 lines
 char		**deconvert_env(t_env **my_env)
 {
 	t_env	*temp;
@@ -67,22 +68,17 @@ char		**deconvert_env(t_env **my_env)
 	{
 		if (temp->standard != 0)
 		{
-            if (!(res[i] = ft_strdup(temp->name)))
-            {
-                return (free_array(res)); }
-            if(!(res[i] = ft_strjoin(res[i], "=")))
-            {
-                return (free_array(res));
-            }
-            if (!(res[i] = ft_strjoin(res[i], temp->value)))
-            {
-                return (free_array(res));
-            }
-        }
+			if (!(res[i] = ft_strdup(temp->name)))
+				return (free_array(res));
+			if (!(res[i] = ft_strjoin(res[i], "=")))
+				return (free_array(res));
+			if (!(res[i] = ft_strjoin(res[i], temp->value)))
+				return (free_array(res));
+		}
 		i++;
 		temp = temp->next;
 	}
-    res[i] = NULL;
+	res[i] = NULL;
 	return (res);
 }
 

@@ -14,17 +14,17 @@
 
 int			env_cmp(t_env *temp, char *argum)
 {
-	int     i;
-	char    *arg;
+	int		i;
+	char	*arg;
 
 	i = 0;
 	while (temp)
 	{
-        arg = ft_strcut(argum, '=');
+		arg = ft_strcut(argum, '=');
 		if (ft_strncmp(temp->name, arg, ft_strlen(arg) + 1) == 0)
 		{
-            free(arg);
-		    return (i);
+			free(arg);
+			return (i);
 		}
 		i++;
 		temp = temp->next;

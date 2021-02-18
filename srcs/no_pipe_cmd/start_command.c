@@ -61,7 +61,7 @@ int			start_cmd(t_all *all, t_cmd *lst)
 	return (-1);
 }
 
-int		no_pipe(t_all *all, t_cmd *cmd)
+int			no_pipe(t_all *all, t_cmd *cmd)
 {
 	if (cmd->redir->r[0] != '\0')
 	{

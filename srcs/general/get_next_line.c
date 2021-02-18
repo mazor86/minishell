@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 14:01:03 by mazor             #+#    #+#             */
-/*   Updated: 2021/01/25 19:04:09 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/02/18 17:37:24 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,30 @@ static int		ft_gnl_exit(t_all *all)
 	exit(all->exit_status);
 }
 
-static int      check_ret(int ret, char **line, t_all *all)
+static int		check_ret(int ret, char **line, t_all *all)
 {
-    if (ret == 0)
-    {
-        if (ft_strcmp(*line, "") == 0)
-            ft_gnl_exit(all);
-        else
-        {
-            ft_putstr_fd("  \b\b", 1);
-            return (1);
-        }
-    }
-    return (0);
+	if (ret == 0)
+	{
+		if (ft_strcmp(*line, "") == 0)
+			ft_gnl_exit(all);
+		else
+		{
+			ft_putstr_fd("  \b\b", 1);
+			return (1);
+		}
+	}
+	return (0);
 }
 
 static int		set_read(int fd, char **line, t_all *all)
 {
-	//char	*res;
 	int		ret;
 	char	buf[2];
 
 	while ((ret = read(fd, buf, 1)) >= 0)
 	{
-	    if (check_ret(ret, line, all))
-            continue ;
-//		if (ret == 0)
-//		{
-//			if (ft_strcmp(*line, "") == 0)
-//				ft_gnl_exit(all);
-//			else
-//			{
-//				ft_putstr_fd("  \b\b", 1);
-//				continue ;
-//			}
-//		}
+		if (check_ret(ret, line, all))
+			continue ;
 		buf[1] = 0;
 		if (buf[0] == '\n')
 			break ;
@@ -63,10 +52,8 @@ static int		set_read(int fd, char **line, t_all *all)
 			if (!(*line = ft_strdup("")))
 				return (-1);
 		}
-		//res = *line;
 		if (!(*line = ft_strjoin(*line, buf)))
 			return (-1);
-		//free(res);
 	}
 	return (1);
 }

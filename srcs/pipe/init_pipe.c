@@ -31,7 +31,7 @@ int		execve_with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
 
 void	run_command_pipe(t_all *all, t_cmd *cmd)
 {
-    int res_cmd;
+	int res_cmd;
 
 	if (cmd->prev && cmd->prev->pipe == 1 &&
 		(dup2(cmd->prev->fd_pipe[0], 0) < 0))

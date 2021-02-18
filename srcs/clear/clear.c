@@ -58,7 +58,7 @@ void	clear_cmd(t_cmd **cmd_lst)
 	{
 		i = -1;
 		if (tmp->name)
-		    free(tmp->name);
+			free(tmp->name);
 		if (tmp->argv)
 		{
 			while (tmp->argv[++i])
@@ -100,8 +100,8 @@ void	*free_array(char **text)
 	{
 		while (text[++i])
 		{
-		    free(text[i]);
-		    text[i] = NULL;
+			free(text[i]);
+			text[i] = NULL;
 		}
 		free(text);
 		text = NULL;
