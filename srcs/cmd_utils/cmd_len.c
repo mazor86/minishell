@@ -12,6 +12,7 @@
 
 #include "../../includes/minishell.h"
 
+//TODO not use in project. May be remove it from here and minishell.h?
 int	cmd_len(t_cmd *cmd)
 {
 	int	res;

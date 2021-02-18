@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:03:16 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/18 18:50:42 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/18 18:51:28 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static int	get_name(t_all *all, t_cmd *lst)
 {
 	const char	spec[6] = " |;><";
 
+	trim_space(all);
 	while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 	{
 		if (!get_spec(all, &(lst->name)))

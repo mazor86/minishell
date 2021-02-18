@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/18 18:56:48 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/18 19:13:36 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ static void	update_main(t_all *all)
 */
 
 //TODO 31 lines
+//TODO fix wrong prompt after 1st input
+//TODO fix memory leaks
+//TODO fix Makefile (especially includes), check dependecies
 int			main(int args, char **argv, char **env)
 {
 	t_all	all;
