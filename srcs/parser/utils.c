@@ -100,14 +100,11 @@ char	**remalloc_args(char **argv)
 ** @return 0 if good, otherwise -1
 */
 
-int		add_remalloc_argv(t_all *all, t_cmd *lst, const char *spec, int *i)
+int		add_remalloc_argv(t_all *all, t_cmd *lst, int *i)
 {
 	trim_space(all);
-	if (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
-	{
-		if (!(lst->argv = remalloc_args(lst->argv)))
-			return (-1);
-		(*i)++;
-	}
+	if (!(lst->argv = remalloc_args(lst->argv)))
+		return (-1);
+	(*i)++;
 	return (0);
 }

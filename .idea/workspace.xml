@@ -12,6 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e9df100-bf31-49a1-9cfd-444cb6a32434" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/file1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/file2" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libft.a" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libft/ft_atoi.o" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/libft/ft_bzero.o" afterDir="false" />
@@ -104,8 +106,12 @@
       <change afterPath="$PROJECT_DIR$/srcs/signals/signals_utils.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/minishell.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/signals/signals.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/signals/signals.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/parser_string.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/parser_string.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parser/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parser/utils.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/redirect/redir_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/redirect/redir_utils.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/redirect/redirect.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/redirect/redirect.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +208,7 @@
       <workItem from="1613662058584" duration="4347000" />
       <workItem from="1614260788281" duration="1028000" />
       <workItem from="1614264375020" duration="120000" />
-      <workItem from="1614264719658" duration="978000" />
+      <workItem from="1614264719658" duration="12149000" />
     </task>
     <servers />
   </component>
@@ -241,13 +247,8 @@
       <breakpoints>
         <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/srcs/redirect/redir_utils.c</url>
-          <line>88</line>
+          <line>89</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/srcs/parser/parser_string.c</url>
-          <line>138</line>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/srcs/parser/parser_shielding.c</url>
@@ -258,11 +259,41 @@
           <line>62</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/main.c</url>
+          <line>86</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/redirect/redirect.c</url>
+          <line>81</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/main.c</url>
+          <line>85</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/parser/parser_string.c</url>
+          <line>111</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/main.c</url>
+          <line>80</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/srcs/parser/parser_string.c</url>
+          <line>91</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
-        <watch expression="all-&gt;line[all-&gt;pos]" language="ObjectiveC" />
+        <watch expression="all.line[all.pos]" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>

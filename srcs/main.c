@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/25 18:05:52 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/25 18:06:43 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,17 @@ int			main(int args, char **argv, char **env)
 			}
 			if (!all.semicol)
 			{
+				restore_fds(&all, 2);
 				ft_putstr_fd("\b\b  \b\b", 1);
 				ft_putstr_fd(PROMPT, 1);
 			}
 			update_main(&all);
-
 		}
 		else
 		{
+			restore_fds(&all, 2);
 			ft_putstr_fd("\b\b  \b\b", 1);
 			ft_putstr_fd(PROMPT, 1);
 		}
-		restore_fds(&all, 2);
 	}
 }

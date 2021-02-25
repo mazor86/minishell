@@ -84,7 +84,8 @@ int				check_redir(t_all *all, t_cmd *lst)
 {
 	int		n;
 
-	if (all->line[all->pos] == '>' || all->line[all->pos] == '<')
+	trim_space(all);
+	while (all->line[all->pos] == '>' || all->line[all->pos] == '<')
 	{
 		n = count_redir(lst->redir);
 		if (!(lst->redir = realloc_redir(lst->redir, n)))
@@ -94,6 +95,7 @@ int				check_redir(t_all *all, t_cmd *lst)
 			lst->redir[n].r[1] = all->line[all->pos++];
 		if (!(lst->redir[n].file = get_filename(all)))
 			return (-1);
+		trim_space(all);
 	}
 	return (0);
 }

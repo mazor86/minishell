@@ -108,8 +108,7 @@ int				join_char(char **text, char c);
 int				join_str(char **text, char *s);
 void			trim_space(t_all *all);
 char			**remalloc_args(char **args);
-int				add_remalloc_argv(t_all *all, t_cmd *lst,\
-									const char *spec, int *i);
+int				add_remalloc_argv(t_all *all, t_cmd *lst, int *i);
 void			*free_array(char **text);
 
 /*

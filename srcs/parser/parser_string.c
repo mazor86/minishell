@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:03:16 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/18 18:51:28 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/25 22:14:03 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,39 +76,22 @@ static int	get_name(t_all *all, t_cmd *lst)
 */
 
 //TODO 33 lines
-static int	get_arg(t_all *all, t_cmd *lst)
+static int	get_arg(t_all *all, t_cmd *lst, int *i)
 {
-	const char	spec[3] = "|;";
-	int			i;
-	int			redir;
+	const char	spec[6] = "|; ><";
 
-	i = 0;
 	while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
 	{
-		if (all->line[all->pos] == ' ')
+		if (!get_spec(all, &lst->argv[*i]))
 		{
-			trim_space(all);
-			if (!(redir = check_redir(all, lst)))
-			{
-				if (add_remalloc_argv(all, lst, spec, &i) == -1)
-					return (-1);
-			}
-			else if (redir == -1)
-				return (ft_error(NULL, "out of memory", 12, all));
+			if (join_char(&lst->argv[*i], all->line[all->pos]) == -1)
+				return (-1);
+			all->pos++;
 		}
-		else if (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]) &&
-				!(redir = check_redir(all, lst)))
-		{
-			if (!get_spec(all, &lst->argv[i]))
-			{
-				if (join_char(&lst->argv[i], all->line[all->pos]) == -1)
-					return (-1);
-				all->pos++;
-			}
-		}
-		else if (redir == -1)
-			return (ft_error(NULL, "out of memory", 12, all));
 	}
+	if (*(lst->argv[*i]))
+		if (add_remalloc_argv(all, lst, i) == -1)
+			return (-1);
 	return (0);
 }
 
@@ -123,21 +106,26 @@ static int	get_arg(t_all *all, t_cmd *lst)
 int			parser_string(t_all *all)
 {
 	t_cmd		*lst;
+	int 		i;
 
 	while (all->line[all->pos])
 	{
+		i = 0;
 		if (all->line[all->pos] == ';')
 			all->pos++;
 		if (!(lst = init_cmd()))
 			return (ft_error(NULL, "out of memory", 12, all));
-		trim_space(all);
 		if (check_redir(all, lst) == -1)
 			return (ft_error(NULL, "out of memory", 12, all));
 		if (get_name(all, lst) == -1)
 			return (ft_error(NULL, "out of memory", 12, all));
-		trim_space(all);
-		if (get_arg(all, lst) == -1)
-			return (ft_error(NULL, "out of memory", 12, all));
+		while (all->line[all->pos] && !ft_strchr("|;", all->line[all->pos]))
+		{
+			if (check_redir(all, lst) == -1)
+				return (ft_error(NULL, "out of memory", 12, all));
+			if (get_arg(all, lst, &i) == -1)
+				return (ft_error(NULL, "out of memory", 12, all));
+		}
 		if (all->line[all->pos] == '|')
 			lst->pipe = 1;
 		if (!(*lst->name))
