@@ -39,7 +39,7 @@ void	implement_signals(t_all *all)
 	}
 	else if (all->res == 130)
 	{
-		ft_putstr_fd("\b\b  \n", 1);
+		ft_putstr_fd("\b\b", 1);
 		ft_putstr_fd("^C\n", 1);
 	}
 }
