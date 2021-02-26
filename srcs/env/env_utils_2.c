@@ -46,9 +46,17 @@ t_env	*creat_env(char *argum, t_all *all)
 		ft_error("unset", "out of memory", 12, all);
 		return (NULL);
 	}
-	temp->name = ft_strcut(argum, '=');
-	temp->value = ft_strdup(ft_strnstr(argum, "=", ft_strlen(argum)) + 1);
-	temp->standard = 2;
+	if (ft_strfind(argum, '=') != 0)
+	{
+        temp->name = ft_strcut(argum, '=');
+        temp->value = ft_strdup(ft_strnstr(argum, "=", ft_strlen(argum)) + 1);
+    }
+	else
+    {
+        temp->name = ft_strdup(argum);
+        temp->value = ft_strdup("");
+    }
+    temp->standard = 2;
 	return (temp);
 }
 

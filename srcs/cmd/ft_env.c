@@ -34,7 +34,7 @@ int		ft_env(t_all *all, t_cmd *cmd)
 	else
 		while (temp != NULL)
 		{
-			if (temp->standard == 1)
+			if (temp->standard > 0 && ft_strncmp(temp->value, "", 1) != 0)
 			{
 				write(1, temp->name, ft_strlen(temp->name));
 				write(1, "=", 1);
