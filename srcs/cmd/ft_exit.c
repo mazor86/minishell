@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 18:38:00 by mazor             #+#    #+#             */
-/*   Updated: 2021/01/25 16:52:51 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/02/26 19:55:25 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		ft_exit(t_all *all, t_cmd *cmd)
 	}
 	free_t_env(&all->my_env);
 	clear_all(all);
+	//restore_fds(all, 2);
 	close(all->save_fd[0]);
 	close(all->save_fd[1]);
 	exit(all->exit_status);

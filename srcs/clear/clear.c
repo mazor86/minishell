@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 19:39:57 by mazor             #+#    #+#             */
-/*   Updated: 2021/01/08 17:32:41 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/02/26 20:27:31 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,35 @@
 
 void	del_one_env(t_env *my_env)
 {
-	free(my_env->name);
-	my_env->name = NULL;
-	free(my_env->value);
-	my_env->value = NULL;
-	my_env->next = NULL;
+	if (my_env->name)
+	{
+		free(my_env->name);
+		my_env->name = NULL;
+	}
+	if (my_env->value)
+	{
+		free(my_env->value);
+		my_env->value = NULL;
+	}
 	my_env->standard = 0;
 }
 
 void	free_t_env(t_env **my_env)
 {
 	t_env	*temp;
+	t_env  *save;
 
 	if (my_env)
-		while (*my_env)
+	{
+		temp = *my_env;
+		while (temp)
 		{
-			temp = (*my_env)->next;
-			del_one_env(*my_env);
-			free(*my_env);
-			*my_env = temp;
+			save = temp->next;
+			del_one_env(temp);
+			free(temp);
+			temp = save;
 		}
+	}
 }
 
 /*
@@ -51,28 +60,29 @@ void	free_t_env(t_env **my_env)
 void	clear_cmd(t_cmd **cmd_lst)
 {
 	t_cmd	*tmp;
+	t_cmd	*save;
 	int		i;
 
-	tmp = *cmd_lst;
-	while (tmp)
+	if (cmd_lst)
 	{
-		i = -1;
-		if (tmp->name)
-		{
-			free(tmp->name);
-			tmp->name = NULL;
+		tmp = *cmd_lst;
+		while (tmp) {
+			save = tmp->next;
+			i = -1;
+			if (tmp->name) {
+				free(tmp->name);
+				tmp->name = NULL;
+			}
+			if (tmp->argv) {
+				while (tmp->argv[++i])
+					free(tmp->argv[i]);
+			}
+			free(tmp->argv);
+			clear_redir(tmp->redir);
+			free(tmp);
+			tmp = save;
 		}
-		if (tmp->argv)
-		{
-			while (tmp->argv[++i])
-				free(tmp->argv[i]);
-		}
-		free(tmp->argv);
-		clear_redir(tmp->redir);
-		tmp = tmp->next;
 	}
-	free(*cmd_lst);
-	*cmd_lst = NULL;
 }
 
 /*

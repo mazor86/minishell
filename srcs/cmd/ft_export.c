@@ -99,7 +99,7 @@ int			ft_export(t_all *all, t_cmd *cmd)
 		free_t_env(&sorted_env);
 	}
 	else
-		while (cmd->argv[i] != NULL)
+		while (cmd->argv[i] != NULL && cmd->argv[i][0] != '\0')
 		{
 			if (add_arg(all, cmd->argv[i], &all->my_env) == 2)
 				return (ft_error("export", "out of memory", 12, all));
