@@ -128,7 +128,7 @@ int			parser_string(t_all *all)
 		}
 		if (all->line[all->pos] == '|')
 			lst->pipe = 1;
-		if (!(*lst->name))
+		if (!(*(lst->name)))
 			clear_cmd(&lst);
 		else
 			cmdadd_back(&all->cmd, lst);

@@ -3,6 +3,7 @@ project(minishell C)
 
 set(CMAKE_C_STANDARD 11)
 
+include_directories(.)
 include_directories(includes)
 include_directories(libft)
 include_directories(srcs)
@@ -74,14 +75,14 @@ add_executable(minishell
         srcs/cmd_utils/add_back_cmd.c
         srcs/cmd_utils/cmd_last.c
         srcs/cmd_utils/cmd_len.c
-        srcs/no_pipe_cmd/start_command.c
-        srcs/no_pipe_cmd/parser_cmd.c
         srcs/env/conv_env.c
         srcs/env/env_utils.c
         srcs/env/env_utils_2.c
         srcs/general/get_next_line.c
         srcs/general/variables.c
         srcs/init/init.c
+        srcs/no_pipe_cmd/parser_cmd.c
+        srcs/no_pipe_cmd/start_command.c
         srcs/parser/convert.c
         srcs/parser/parser_errors.c
         srcs/parser/parser_path.c
@@ -94,8 +95,8 @@ add_executable(minishell
         srcs/parser/utils.c
         srcs/pipe/fd_utils.c
         srcs/pipe/init_pipe.c
-        srcs/redirect/redirect.c
         srcs/redirect/redir_utils.c
-        srcs/signals/signals_utils.c
+        srcs/redirect/redirect.c
         srcs/signals/signals.c
+        srcs/signals/signals_utils.c
         srcs/main.c)

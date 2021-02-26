@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 16:45:55 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/25 19:00:56 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:53:39 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,9 @@ t_env	*creat_env(char *argum, t_all *all)
 		ft_error("unset", "out of memory", 12, all);
 		return (NULL);
 	}
-	if (ft_strfind(argum, '=') != 0)
-	{
-        temp->name = ft_strcut(argum, '=');
-        temp->value = ft_strdup(ft_strnstr(argum, "=", ft_strlen(argum)) + 1);
-    }
-	else
-    {
-        temp->name = ft_strdup(argum);
-        temp->value = ft_strdup("");
-    }
-    temp->standard = 2;
+	temp->name = ft_strcut(argum, '=');
+	temp->value = ft_strdup(ft_strnstr(argum, "=", ft_strlen(argum)) + 1);
+	temp->standard = 2;
 	return (temp);
 }
 

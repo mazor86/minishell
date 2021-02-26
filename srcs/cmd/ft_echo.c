@@ -27,7 +27,7 @@ int		ft_echo(t_all *all, t_cmd *cmd)
 		else
 		{
 			ft_putstr_fd(cmd->argv[i], 1);
-			if (cmd->argv[i + 1])
+			if (cmd->argv[i + 1] && cmd->argv[i + 1][0] != '\0')
 				ft_putchar_fd(' ', 1);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:48:51 by mazor             #+#    #+#             */
-/*   Updated: 2021/01/08 19:01:43 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:53:39 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_env(t_all *all, t_cmd *cmd)
 	else
 		while (temp != NULL)
 		{
-			if (temp->standard > 0 && ft_strncmp(temp->value, "", 1) != 0)
+			if (temp->standard == 1)
 			{
 				write(1, temp->name, ft_strlen(temp->name));
 				write(1, "=", 1);

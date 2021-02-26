@@ -86,9 +86,9 @@ int			main(int args, char **argv, char **env)
 				parser_string(&all);
 				parser_cmd(&all);
 			}
+			restore_fds(&all, 2);
 			if (!all.semicol)
 			{
-				restore_fds(&all, 2);
 				ft_putstr_fd("\b\b  \b\b", 1);
 				ft_putstr_fd(PROMPT, 1);
 			}

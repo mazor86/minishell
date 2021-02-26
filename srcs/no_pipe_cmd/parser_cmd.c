@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 21:20:05 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/18 17:40:00 by mazor            ###   ########.fr       */
+/*   Updated: 2021/02/26 18:24:37 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int			start_execve(t_all *all, t_cmd *lst)
 	if (!envp || !argv || !fullname)
 		return (free_local(envp, argv, &fullname, all->exit_status));
 	if ((pid = fork()) == -1)
-		return (ft_error(lst->name, "failed to fork", 13, all));
+		return (ft_error(lst->name, ": failed to fork", 13, all));
 	if (pid == 0)
 	{
 		init_signals(all, 'c');
@@ -90,18 +90,20 @@ int			exec_command(t_all *all, t_cmd *cmd)
 {
 	int res_cmd;
 
-	if (cmd->prev && cmd->prev->pipe == 1 &&
-		(dup2(cmd->prev->fd_pipe[0], 0) < 0))
-		return (all->exit_status);
 	if (cmd->prev && cmd->prev->pipe == 1)
 	{
+		if (dup2(cmd->prev->fd_pipe[0], 0) < 0)
+			return (all->exit_status);
 		close(cmd->prev->fd_pipe[0]);
-		restore_fds(all, 1);
+		if (cmd->redir->r[0] == '\0')
+			restore_fds(all, 1);
 	}
 	if ((res_cmd = start_cmd(all, cmd)) > 0)
 		return (all->exit_status);
 	if (res_cmd == -1)
 		start_execve(all, cmd);
+	if (cmd->prev && cmd->prev->pipe != 0)
+		restore_fds(all, 1);
 	return (all->exit_status);
 }
 

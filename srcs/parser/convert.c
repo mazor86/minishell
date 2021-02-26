@@ -103,7 +103,7 @@ char		**convert_argv(t_cmd *lst)
 		return (NULL);
 	if (!(name = get_filename(lst)))
 		return (free_array(res));
-	if (!(res[0] = ft_strdup(name)))
+	if (!(res[0] = name))
 		return (free_argv_local(res, &name));
 	i = -1;
 	while (lst->argv[++i])

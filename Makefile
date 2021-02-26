@@ -12,7 +12,7 @@
 
 NAME = minishell
 
-FLAGS = -g  -Wall -Wextra -Werror #-fsanitize=address
+FLAGS = -g  -Wall -Wextra -Werror -fsanitize=address
 LIBFT = libft.a
 
 SRCS = srcs/main.c \
