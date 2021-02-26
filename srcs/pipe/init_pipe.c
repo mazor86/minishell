@@ -24,7 +24,7 @@ int		execve_with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
 	if (!(fullname = get_full_cmd_name(all, cmd)))
 		return (free_local(envp, argv, &fullname, 0));
 	if (execve(fullname, argv, envp) == -1)
-		exit(ft_error(cmd->name, ": permission denied", 13, all));
+		exit(ft_error(cmd->name, "permission denied", 13, all));
 	free_local(envp, argv, &fullname, 0);
 	exit(0);
 }
@@ -51,7 +51,7 @@ int		exec_command_pipe(t_all *all, t_cmd *cmd)
 	errno = 0;
 	pipe(cmd->fd_pipe);
 	if ((pid = fork()) == -1)
-		return (ft_error(cmd->name, ": failed to fork", 13, all));
+		return (ft_error(cmd->name, "failed to fork", 13, all));
 	if (pid == 0)
 	{
 		dup2(cmd->fd_pipe[1], 1);

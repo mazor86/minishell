@@ -71,7 +71,7 @@ int			start_execve(t_all *all, t_cmd *lst)
 	if (!envp || !argv || !fullname)
 		return (free_local(envp, argv, &fullname, all->exit_status));
 	if ((pid = fork()) == -1)
-		return (ft_error(lst->name, ": failed to fork", 13, all));
+		return (ft_error(lst->name, "failed to fork", 13, all));
 	if (pid == 0)
 	{
 		init_signals(all, 'c');
