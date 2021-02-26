@@ -82,6 +82,7 @@ void	clear_cmd(t_cmd **cmd_lst)
 			free(tmp);
 			tmp = save;
 		}
+        *cmd_lst = NULL;
 	}
 }
 
