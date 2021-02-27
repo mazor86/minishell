@@ -35,7 +35,11 @@ void	run_command_pipe(t_all *all, t_cmd *cmd)
 
 	if (cmd->prev && cmd->prev->pipe == 1 &&
 		(dup2(cmd->prev->fd_pipe[0], 0) < 0))
-		exit(all->exit_status);
+	{
+	    close(cmd->prev->fd_pipe[0]);
+	    exit(all->exit_status);
+	}
+    close(cmd->prev->fd_pipe[0]);
 	if ((res_cmd = start_cmd(all, cmd)) > 0)
 		exit(all->exit_status);
 	if (res_cmd == -1)
@@ -51,10 +55,11 @@ int		exec_command_pipe(t_all *all, t_cmd *cmd)
 	errno = 0;
 	pipe(cmd->fd_pipe);
 	if ((pid = fork()) == -1)
-		return (ft_error(cmd->name, ": failed to fork", 13, all));
+		return (ft_error(cmd->name, "failed to fork", 13, all));
 	if (pid == 0)
 	{
 		dup2(cmd->fd_pipe[1], 1);
+		close(cmd->fd_pipe[1]);
 		init_signals(all, 'c');
 		run_command_pipe(all, cmd);
 	}
@@ -66,20 +71,5 @@ int		exec_command_pipe(t_all *all, t_cmd *cmd)
 	}
 	all->exit_status = errno;
 	init_signals(all, 'p');
-	return (all->exit_status);
-}
-
-int		with_pipe(t_all *all, t_cmd *cmd)
-{
-	if (cmd->redir->r[0] != '\0')
-	{
-		if (init_redirect(all, cmd, 1) != 0)
-			return (all->exit_status);
-	}
-	else
-	{
-		if (exec_command_pipe(all, cmd) != 0)
-			return (all->exit_status);
-	}
 	return (all->exit_status);
 }

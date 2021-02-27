@@ -38,76 +38,58 @@ int			count_redir(t_redir *redir)
 	return (i);
 }
 
-void		close_fds(int *fds, int n)
+void close_dup_fd(int red_in, int red_out, int n)
 {
-	int i;
-
-	i = 0;
-	while (i < n)
-	{
-		close(fds[i]);
-		i++;
-	}
+    if (n % 2 == 0)
+        if (red_in > 0)
+            close(red_in);
+    if (n > 0)
+        if (red_out > 0)
+            close(red_out);
+    if (n < 0)
+    {
+        if (red_out > 0)
+            dup2(red_out, 1);
+        if (red_in > 0)
+            dup2(red_in, 0);
+    }
 }
-
-//static int	change_redir(t_cmd *cmd, char **redir, int i, int fd)
-//{
-//	if (cmd->redir[i].r[0] == cmd->redir[0].r[0])
-//	{
-//		(*redir)[0] = cmd->redir[i].r[0];
-//		(*redir)[1] = cmd->redir[i].r[1];
-//		return (1);
-//	}
-//	else if (cmd->redir[i].r[0] != cmd->redir[0].r[0] &&
-//		cmd->redir[i].r[0] != '\0')
-//		close(fd);
-//	return (0);
-//}
 
 
 int			init_redirect(t_all *all, t_cmd *cmd, int pipe)
 {
 	int		fd;
-	int		red_in;
-	int		red_out;
+	int		red[2];
 	int		i;
 	int		n;
 
-	i = -1;
-	red_in = 0;
-	red_out = 0;
-	n = count_redir(cmd->redir);
-	while (++i < n)
-	{
-		if ((fd = open_file(cmd->redir[i].r, cmd->redir[i].file)) < 0)
-		{
-			if (red_in > 0)
-				close(red_in);
-			if (red_out > 0)
-				close(red_out);
-			return (ft_error(cmd->redir[i].file, strerror(2), 2, all));
-		}
-		if (cmd->redir[i].r[0] == '>')
-		{
-			if (red_out > 0)
-				close(red_out);
-			red_out = fd;
-		}
-		else
-		{
-			if (red_in > 0)
-				close(red_in);
-			red_in = fd;
-		}
-	}
-	if (red_out != 0)
-		dup2(red_out, 1);
-	if (red_in != 0)
-		dup2(red_in, 0);
+    red[0] = 0;
+    red[1] = 0;
+    if (cmd->redir->r[0] != '\0')
+    {
+        i = -1;
+        n = count_redir(cmd->redir);
+        while (++i < n)
+        {
+            if ((fd = open_file(cmd->redir[i].r, cmd->redir[i].file)) < 0)
+            {
+                close_dup_fd(red[0], red[1], 2);
+                return (ft_error(cmd->redir[i].file, strerror(2), 2, all));
+            }
+            if (cmd->redir[i].r[0] == '>')
+            {
+                close_dup_fd(red[0], red[1], 1);
+                red[1] = fd;
+            }
+            else
+            {
+                close_dup_fd(red[0], red[1], 0);
+                red[0] = fd;
+            }
+        }
+        close_dup_fd(red[0], red[1], -1);
+    }
 	pipe == 1 ? exec_command_pipe(all, cmd) : exec_command(all, cmd);
-	if (red_in > 0)
-		close(red_in);
-	if (red_out > 0)
-		close(red_out);
+    close_dup_fd(red[0], red[1], 2);
 	return (all->exit_status);
 }

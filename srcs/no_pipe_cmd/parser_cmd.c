@@ -68,21 +68,22 @@ int			start_execve(t_all *all, t_cmd *lst)
 	envp = deconvert_env(&all->my_env);
 	argv = convert_argv(lst);
 	fullname = get_full_cmd_name(all, lst);
-	if (!envp || !argv || !fullname)
-		return (free_local(envp, argv, &fullname, all->exit_status));
-	if ((pid = fork()) == -1)
-		return (ft_error(lst->name, ": failed to fork", 13, all));
-	if (pid == 0)
+	if (envp && argv && fullname)
 	{
-		init_signals(all, 'c');
-		errno = 0;
-		if (execve(fullname, argv, envp) == -1)
-			ft_error(lst->name, strerror(errno), errno, all);
-		exit(all->exit_status);
+		if ((pid = fork()) == -1)
+			return (ft_error(lst->name, "failed to fork", 13, all));
+		if (pid == 0)
+		{
+			init_signals(all, 'c');
+			errno = 0;
+			if (execve(fullname, argv, envp) == -1)
+				ft_error(lst->name, strerror(errno), errno, all);
+			exit(all->exit_status);
+		}
+		else
+			parant_process(pid, all, lst);
+		init_signals(all, 'p');
 	}
-	else
-		parant_process(pid, all, lst);
-	init_signals(all, 'p');
 	return (free_local(envp, argv, &fullname, all->exit_status));
 }
 
@@ -92,9 +93,8 @@ int			exec_command(t_all *all, t_cmd *cmd)
 
 	if (cmd->prev && cmd->prev->pipe == 1)
 	{
-		if (dup2(cmd->prev->fd_pipe[0], 0) < 0)
+		if (dup2_closer(cmd->prev->fd_pipe[0], 0) != 0)
 			return (all->exit_status);
-		close(cmd->prev->fd_pipe[0]);
 		if (cmd->redir->r[0] == '\0')
 			restore_fds(all, 1);
 	}
@@ -122,18 +122,8 @@ int			parser_cmd(t_all *all)
 	while (lst)
 	{
 		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
-		{
-			if (lst->pipe == 1)
-			{
-				if (with_pipe(all, lst) != 0)
-					return (all->exit_status);
-			}
-			else
-			{
-				if (no_pipe(all, lst) != 0)
-					return (all->exit_status);
-			}
-		}
+			if (init_redirect(all, lst, lst->pipe) != 0)
+				return (all->exit_status);
 		lst = lst->next;
 	}
 	return (all->exit_status);
