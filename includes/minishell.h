@@ -20,6 +20,7 @@
 # include <signal.h>
 # include "../libft/libft.h"
 # include "struct.h"
+# include <errno.h>
 
 # define PROMPT "\x1b[36mmini_bash$ \x1b[0m"
 
@@ -123,11 +124,9 @@ int				ret_err(t_all *all, char *text);
 ** Pipe & redirect functions
 */
 
-int				with_pipe(t_all *all, t_cmd *cmd);
-void			save_fds(t_all *all, int n);
-void			restore_fds(t_all *all, int n);
+void			save_fds(t_all *all);
+void			restore_fds(t_all *all);
 int				init_redirect(t_all *all, t_cmd *cmd, int pipe);
-int				no_pipe(t_all *all, t_cmd *cmd);
 void			close_pipe_fd(t_cmd *cmd);
 int				exec_command_pipe(t_all *all, t_cmd *cmd);
 void			clear_redir(t_redir *redir);

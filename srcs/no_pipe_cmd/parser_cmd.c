@@ -96,14 +96,14 @@ int			exec_command(t_all *all, t_cmd *cmd)
 		if (dup2_closer(cmd->prev->fd_pipe[0], 0) != 0)
 			return (all->exit_status);
 		if (cmd->redir->r[0] == '\0')
-			restore_fds(all, 1);
+			restore_fds(all);
 	}
 	if ((res_cmd = start_cmd(all, cmd)) > 0)
 		return (all->exit_status);
 	if (res_cmd == -1)
 		start_execve(all, cmd);
 	if (cmd->prev && cmd->prev->pipe != 0)
-		restore_fds(all, 1);
+		restore_fds(all);
 	return (all->exit_status);
 }
 

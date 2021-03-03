@@ -12,18 +12,10 @@
 
 #include "../../includes/minishell.h"
 
-void	save_fds(t_all *all, int n)
+void	save_fds(t_all *all)
 {
-//	if (n == 0)
-//		dup2(0, all->save_fd[0]);
-//	else if (n == 1)
-//		dup2(1, all->save_fd[1]);
-//	else
-    n;
-	{
-		all->save_fd[0] = dup(0);
-		all->save_fd[1] = dup(1);
-	}
+	all->save_fd[0] = dup(0);
+	all->save_fd[1] = dup(1);
 }
 int dup2_closer(int fd, int std)
 {
@@ -36,19 +28,8 @@ int dup2_closer(int fd, int std)
     close(fd);
     return (0);
 }
-void	restore_fds(t_all *all, int n)
+void	restore_fds(t_all *all)
 {
-//	if (n == 0)
-//	{
-//		dup2(all->save_fd[0], 0);
-//		close(all->save_fd[0]);
-//	}
-//	else if (n == 1)
-//	{
-//		dup2(all->save_fd[1], 1);
-//		close(all->save_fd[1]);
-//	}
-//	else
 	{
         dup2_closer(all->save_fd[0], 0);
         dup2_closer(all->save_fd[1], 1);
