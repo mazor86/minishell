@@ -38,7 +38,7 @@ void	restore_fds(t_all *all)
 
 void	close_pipe_fd(t_cmd *cmd)
 {
-	if (cmd->next->pipe == 0 && cmd->pipe == 1)
+	if (cmd->pipe == 1)
 	{
         close(cmd->fd_pipe[1]);
     }
