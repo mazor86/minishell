@@ -123,6 +123,7 @@ int			execute_cmd(t_all *all)
 	pid_t	pid;
 	int 	fd;
 	int		ret;
+//	int		other_ret;
 
 	lst = all->cmd;
 	i = 0;
@@ -185,7 +186,7 @@ int			execute_cmd(t_all *all)
 				}
 				dup2_closer(redout, 1);
 				if (lst->pipe == 0 && !(lst->prev && lst->prev->pipe == 1))
-					ret = execute_cmd(all);
+					ret = start_cmd(all, lst);
 				if (ret > 0)
 					return (ft_error(lst->redir[i].file, strerror(2), 2, all));
 				if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1) || ret == -1)
@@ -200,15 +201,19 @@ int			execute_cmd(t_all *all)
 							exec_command(all, lst);
 					}
 				}
+				if (lst->next == NULL)
+					break ;
 				lst = lst->next;
 			}
 		}
 		mute_signals();
 		waitpid(pid, &all->res, 0);
-		while (lst->prev->pipe)
+		if (lst && lst->pipe == 1 && lst->prev && lst->prev->pipe == 1)
 		{
-			close(lst->fd_pipe[1]);
-			close(lst->fd_pipe[0]);
+			while (lst->prev && lst->prev->pipe) {
+				close(lst->fd_pipe[1]);
+				close(lst->fd_pipe[0]);
+			}
 		}
 		all->exit_status = errno;
 		init_signals(all, 'p');
