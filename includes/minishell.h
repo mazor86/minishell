@@ -49,7 +49,7 @@ int				get_shielding(t_all *all, char **text);
 int				get_variables(t_all *all, char **text);
 int				get_strong_quotes(t_all *all, char **text);
 int				get_quotes(t_all *all, char **text);
-int				parser_cmd(t_all *all);
+int				execute_cmd(t_all *all);
 int				start_cmd(t_all *all, t_cmd *lst);
 int				start_execve(t_all *all, t_cmd *lst);
 int				exec_command(t_all *all, t_cmd *cmd);
@@ -132,6 +132,9 @@ int				exec_command_pipe(t_all *all, t_cmd *cmd);
 void			clear_redir(t_redir *redir);
 int				check_redir(t_all *all, t_cmd *lst);
 int				count_redir(t_redir *redir);
+void			close_dup_fd(int red_in, int red_out, int n);
+int				open_file(char redir[2], char *argum);
+void			run_command_pipe(t_all *all, t_cmd *cmd);
 
 /*
 ** Signals implementing functions

@@ -24,7 +24,7 @@ int		execve_with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
 	if (!(fullname = get_full_cmd_name(all, cmd)))
 		return (free_local(envp, argv, &fullname, 0));
 	if (execve(fullname, argv, envp) == -1)
-		exit(ft_error(cmd->name, ": permission denied", 13, all));
+		exit(ft_error(cmd->name, "permission denied", 13, all));
 	free_local(envp, argv, &fullname, 0);
 	exit(0);
 }
@@ -67,7 +67,7 @@ int		exec_command_pipe(t_all *all, t_cmd *cmd)
 	{
 		mute_signals();
 		waitpid(pid, &all->res, 0);
-		close_pipe_fd(cmd);
+		//close_pipe_fd(cmd);
 	}
 	all->exit_status = errno;
 	init_signals(all, 'p');

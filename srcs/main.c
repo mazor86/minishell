@@ -74,7 +74,7 @@ int			main(int args, char **argv, char **env)
 	convert_env(&all.my_env, env, &all);
 	init_signals(&all, 'p');
 	ft_putstr_fd(PROMPT, 1);
-	save_fds(&all);
+	//save_fds(&all);
 	while (1)
 	{
 		if (!all.line)
@@ -84,7 +84,7 @@ int			main(int args, char **argv, char **env)
 			if (!check_syntax(&all))
 			{
 				parser_string(&all);
-				parser_cmd(&all);
+				execute_cmd(&all);
 			}
 			restore_fds(&all);
 			if (!all.semicol)
