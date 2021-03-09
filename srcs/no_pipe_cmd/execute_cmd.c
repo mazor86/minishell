@@ -107,6 +107,34 @@ int			exec_command(t_all *all, t_cmd *cmd)
 	return (all->exit_status);
 }
 
+
+int		redir_execute(t_all *all, t_cmd *lst, char redir, int *red_type)
+{
+	int i;
+	int fd;
+
+	i = 0;
+	while (lst->redir[i].r[0] != '\0')
+	{
+		if (lst->redir[i].r[0] == redir)
+		{
+			fd = open_file(lst->redir[i].r, lst->redir[i].file);
+			if (*red_type > 0)
+				close(*red_type);
+			if (fd < 0)
+			{
+				restore_fds(all);
+				return (ft_error(lst->redir[i].file, strerror(2), 2, all));
+			}
+			*red_type = fd;
+		}
+		i++;
+	}
+	if (*red_type < 0)
+		*red_type = dup(all->save_fd[1]);
+	return (0);
+}
+
 /*
 ** execute the command
 **
@@ -123,39 +151,21 @@ int			execute_cmd(t_all *all)
 	pid_t	pid;
 	int 	fd;
 	int		ret;
-//	int		other_ret;
+	int		other_ret;
 
 	lst = all->cmd;
 	i = 0;
 	redin = -1;
 	redout = -1;
+	save_fds(all);
 	while (lst)
 	{
 		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
 		{
-			save_fds(all);
-			if (lst->redir->r[0] != '\0')
-			{
-				while (lst->redir->r[0] != '\0')
-				{
-					if (lst->redir[i].r[0] == '<')
-					{
-						fd = open_file(lst->redir[i].r, lst->redir[i].file);
-						close_dup_fd(redin, redout, 0);
-						if (fd < 0)
-						{
-							restore_fds(all);
-							return (ft_error(lst->redir[i].file, strerror(2), 2, all));
-						}
-						redin = fd;
-					}
-					i++;
-				}
-				if (redin < 0)
-					redin = dup(all->save_fd[0]);
-			}
 			while (lst)
 			{
+				if (lst->redir->r[0] != '\0')
+					redir_execute(all, lst, '<', &redin);
 				if (lst->pipe != 0)
 				{
 						dup2_closer(redin, 0);
@@ -165,31 +175,16 @@ int			execute_cmd(t_all *all)
 				}
 				else if (lst->pipe == 0)
 				{
-					i = 0;
-					while (lst->redir->r[0] != '\0')
-					{
-						if (lst->redir[i].r[0] == '>')
-						{
-							fd = open_file(lst->redir[i].r, lst->redir[i].file);
-							close_dup_fd(redin, redout, 1);
-							if (fd < 0)
-							{
-								restore_fds(all);
-								return (ft_error(lst->redir[i].file, strerror(2), 2, all));
-							}
-							redout = fd;
-						}
-						i++;
-					}
-					if (redout < 0)
-						redout = dup(all->save_fd[1]);
+					close(redin);
+					if (lst->redir->r[0] != '\0')
+						redir_execute(all, lst, '>', &redout);
 				}
 				dup2_closer(redout, 1);
 				if (lst->pipe == 0 && !(lst->prev && lst->prev->pipe == 1))
-					ret = start_cmd(all, lst);
-				if (ret > 0)
+					other_ret = start_cmd(all, lst);
+				if (other_ret > 0)
 					return (ft_error(lst->redir[i].file, strerror(2), 2, all));
-				if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1) || ret == -1)
+				if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1) || other_ret == -1)
 				{
 					if ((pid = fork()) == -1)
 						return (ft_error(lst->name, "failed to fork", 13, all));
@@ -222,80 +217,3 @@ int			execute_cmd(t_all *all)
 	restore_fds(all);
 	return (all->exit_status);
 }
-
-
-
-//void Command::execute()
-//{
-//save in/out
-//	int tmpin=dup(0);
-//	int tmpout=dup(1);
-//
-//set the initial input
-//	int fdin;
-//	if (infile)
-//	{
-//		fdin = open(infile,O_READ);
-//	}
-//	else
-//	{
-//	// Use default input
-//		fdin=dup(tmpin);
-//	}
-//
-//	int ret;
-//	int fdout;
-//	for(i=0;i<numsimplecommands; i++)
-//	{
-//		//redirect input
-//		dup2(fdin, 0);
-//		close(fdin);
-//		//setup output
-//		if (i == numsimplecommands - 1)
-//		{
-//		// Last simple command
-//			if(outfile)
-//			{
-//				fdout=open(outfile,â€¦â€¦);
-//			}
-//			else
-//			{
-//				// Use default output
-//				fdout=dup(tmpout);
-//			}
-//		}
-//		else
-//		{
-//		// Not last
-//		//simple command
-//		//create pipe
-//			int fdpipe[2];
-//			pipe(fdpipe);
-//			fdout = fdpipe[1];
-//			fdin = fdpipe[0];
-//		}// if/else
-//		// Redirect output
-//		dup2(fdout, 1);
-//		close(fdout);
-//		// Create child process
-//		ret=fork();
-//		if(ret==0)
-//		{
-//			execvp(scmd[i].args[0], scmd[i].args);
-//			perror(â€œexecvpâ€);
-//			_exit(1);
-//		}
-//	} //  for
-//
-//	//restore in/out defaults
-//	dup2(tmpin,0);
-//	dup2(tmpout,1);
-//	close(tmpin);
-//	close(tmpout);
-//
-//	if (!background)
-//	{
-//	// Wait for last command
-//		waitpid(ret, NULL);
-//	}
-//} // execute
