@@ -74,6 +74,8 @@ typedef struct		s_all
 	int				pos;
 	int				res;
 	int				save_fd[2];
+	int             fd_in;
+	int             fd_out;
 	int				exit_status;
 	int				semicol;
 }					t_all;

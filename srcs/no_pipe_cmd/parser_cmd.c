@@ -119,12 +119,17 @@ int			parser_cmd(t_all *all)
 	t_cmd	*lst;
 
 	lst = all->cmd;
+	save_fds(all);
 	while (lst)
 	{
 		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
 			if (init_redirect(all, lst, lst->pipe) != 0)
+			{
+				restore_fds(all);
 				return (all->exit_status);
+			}
 		lst = lst->next;
 	}
+	restore_fds(all);
 	return (all->exit_status);
 }
