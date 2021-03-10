@@ -82,7 +82,7 @@ static char		*get_filename(t_all *all)
 
 int				check_redir(t_all *all, t_cmd *lst)
 {
-	int		n;
+	int	n;
 
 	trim_space(all);
 	while (all->line[all->pos] == '>' || all->line[all->pos] == '<')

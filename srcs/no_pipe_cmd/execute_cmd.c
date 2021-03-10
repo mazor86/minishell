@@ -130,8 +130,6 @@ int		redir_execute(t_all *all, t_cmd *lst, char redir, int *red_type)
 		}
 		i++;
 	}
-	if (*red_type < 0)
-		*red_type = dup(all->save_fd[1]);
 	return (0);
 }
 
@@ -147,17 +145,14 @@ int			execute_cmd(t_all *all)
 	t_cmd	*lst;
 	int 	redin;
 	int 	redout;
-	int		i;
 	pid_t	pid;
-	int 	fd;
-	int		ret;
 	int		other_ret;
 
 	lst = all->cmd;
-	i = 0;
 	redin = -1;
 	redout = -1;
 	save_fds(all);
+    other_ret = 0;
 	while (lst)
 	{
 		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
@@ -166,6 +161,8 @@ int			execute_cmd(t_all *all)
 			{
 				if (lst->redir->r[0] != '\0')
 					redir_execute(all, lst, '<', &redin);
+                if (redin < 0)
+                    redin = dup(all->save_fd[0]);
 				if (lst->pipe != 0)
 				{
 						dup2_closer(redin, 0);
@@ -178,34 +175,45 @@ int			execute_cmd(t_all *all)
 					close(redin);
 					if (lst->redir->r[0] != '\0')
 						redir_execute(all, lst, '>', &redout);
+					else
+                        redout = dup(all->save_fd[1]);
 				}
+                if (redout < 0)
+                    redout = dup(all->save_fd[1]);
 				dup2_closer(redout, 1);
 				if (lst->pipe == 0 && !(lst->prev && lst->prev->pipe == 1))
 					other_ret = start_cmd(all, lst);
 				if (other_ret > 0)
-					return (ft_error(lst->redir[i].file, strerror(2), 2, all));
+					return (all->exit_status);
 				if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1) || other_ret == -1)
 				{
-					if ((pid = fork()) == -1)
+                    pid = fork();
+					if (pid < 0)
 						return (ft_error(lst->name, "failed to fork", 13, all));
-					if (pid == 0) {
+					if (pid == 0)
+					{
+                        printf("child"); //
 						init_signals(all, 'c');
 						if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1))
 							run_command_pipe(all, lst);
 						else
 							exec_command(all, lst);
 					}
+					if (pid > 0)
+                    {
+                        mute_signals();
+                        waitpid(pid, &all->res, 0);
+                    }
 				}
 				if (lst->next == NULL)
 					break ;
 				lst = lst->next;
 			}
 		}
-		mute_signals();
-		waitpid(pid, &all->res, 0);
 		if (lst && lst->pipe == 1 && lst->prev && lst->prev->pipe == 1)
 		{
-			while (lst->prev && lst->prev->pipe) {
+			while (lst->prev && lst->prev->pipe)
+			{
 				close(lst->fd_pipe[1]);
 				close(lst->fd_pipe[0]);
 			}
