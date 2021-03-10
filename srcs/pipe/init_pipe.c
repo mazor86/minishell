@@ -47,6 +47,70 @@ void	run_command_pipe(t_all *all, t_cmd *cmd)
 	exit(0);
 }
 
+int		exec_command_pipe(t_all *all, t_cmd **lst)
+{
+    int redin;
+    int redout;
+    int	other_ret;
+    pid_t pid;
+
+    redin = -1;
+    redout = -1;
+    other_ret = 0;
+    while (*lst) {
+        if ((*lst)->redir->r[0] != '\0')
+            redir_execute(all, *lst, '<', &redin);
+        if (redin < 0)
+            redin = dup(all->save_fd[0]);
+        if ((*lst)->pipe != 0) {
+            dup2_closer(all, redin, 0);
+            pipe((*lst)->fd_pipe);
+            redout = (*lst)->fd_pipe[1];
+            redin = (*lst)->fd_pipe[0];
+        } else if ((*lst)->pipe == 0) {
+            close(redin);
+            if ((*lst)->redir->r[0] != '\0')
+                redir_execute(all, *lst, '>', &redout);
+            else
+                redout = dup(all->save_fd[1]);
+        }
+        if (redout < 0)
+            redout = dup(all->save_fd[1]);
+        dup2_closer(all, redout, 1);
+        if ((*lst)->pipe == 0 && !((*lst)->prev && (*lst)->prev->pipe == 1))
+            other_ret = start_cmd(all, *lst);
+        if (other_ret > 0)
+            return (all->exit_status);
+        if ((*lst)->pipe == 1 || ((*lst)->prev && (*lst)->prev->pipe == 1)) {
+            pid = fork();
+            if (pid < 0)
+                return (ft_error((*lst)->name, "failed to fork", 13, all));
+            if (pid == 0) {
+                printf("child"); //
+                init_signals(all, 'c');
+                run_command_pipe(all, *lst);
+            }
+            if (pid > 0) {
+                mute_signals();
+                waitpid(pid, &all->res, 0);
+            }
+        }
+        if ((*lst)->next == NULL)
+            break;
+        *lst = (*lst)->next;
+    }
+    if (*lst && (*lst)->pipe == 1 && (*lst)->prev && (*lst)->prev->pipe == 1)
+        while ((*lst)->prev && (*lst)->prev->pipe)
+        {
+            close((*lst)->fd_pipe[1]);
+            close((*lst)->fd_pipe[0]);
+        }
+    //all->exit_status = errno;
+    init_signals(all, 'p');
+    return (all->exit_status);
+}
+
+/*
 int		exec_command_pipe(t_all *all, t_cmd *cmd)
 {
 	pid_t		pid;
@@ -72,4 +136,4 @@ int		exec_command_pipe(t_all *all, t_cmd *cmd)
 	all->exit_status = errno;
 	init_signals(all, 'p');
 	return (all->exit_status);
-}
+}*/

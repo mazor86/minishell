@@ -91,19 +91,19 @@ int			exec_command(t_all *all, t_cmd *cmd)
 {
 	int res_cmd;
 
-	if (cmd->prev && cmd->prev->pipe == 1)
-	{
-		if (dup2_closer(cmd->prev->fd_pipe[0], 0) != 0)
-			return (all->exit_status);
-		if (cmd->redir->r[0] == '\0')
-			restore_fds(all);
-	}
+	//if (cmd->prev && cmd->prev->pipe == 1)
+//	{
+//		if (dup2_closer(all, cmd->prev->fd_pipe[0], 0) != 0)
+//			return (all->exit_status);
+//		if (cmd->redir->r[0] == '\0')
+//			restore_fds(all);
+//	}
 	if ((res_cmd = start_cmd(all, cmd)) > 0)
 		return (all->exit_status);
 	if (res_cmd == -1)
 		start_execve(all, cmd);
-	if (cmd->prev && cmd->prev->pipe != 0)
-		restore_fds(all);
+//	if (cmd->prev && cmd->prev->pipe != 0)
+//		restore_fds(all);
 	return (all->exit_status);
 }
 
@@ -140,87 +140,47 @@ int		redir_execute(t_all *all, t_cmd *lst, char redir, int *red_type)
 ** @return 0 if good, otherwise returns exit status and prints error
 */
 
-int			execute_cmd(t_all *all)
+int			run_cmd(t_all *all)
 {
 	t_cmd	*lst;
 	int 	redin;
 	int 	redout;
-	pid_t	pid;
-	int		other_ret;
 
 	lst = all->cmd;
 	redin = -1;
 	redout = -1;
 	save_fds(all);
-    other_ret = 0;
 	while (lst)
 	{
 		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
 		{
-			while (lst)
-			{
-				if (lst->redir->r[0] != '\0')
-					redir_execute(all, lst, '<', &redin);
+		    if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1))
+		    {
+                if (exec_command_pipe(all, &lst) != 0)
+                {
+                    restore_fds(all);
+                    return (all->exit_status);
+                }
+            }
+            else
+            {
+                if (lst->redir->r[0] != '\0')
+                {
+                    redir_execute(all, lst, '<', &redin);
+                    redir_execute(all, lst, '>', &redout);
+                }
                 if (redin < 0)
                     redin = dup(all->save_fd[0]);
-				if (lst->pipe != 0)
-				{
-						dup2_closer(redin, 0);
-						pipe(lst->fd_pipe);
-						redout = lst->fd_pipe[1];
-						redin = lst->fd_pipe[0];
-				}
-				else if (lst->pipe == 0)
-				{
-					close(redin);
-					if (lst->redir->r[0] != '\0')
-						redir_execute(all, lst, '>', &redout);
-					else
-                        redout = dup(all->save_fd[1]);
-				}
                 if (redout < 0)
-                    redout = dup(all->save_fd[1]);
-				dup2_closer(redout, 1);
-				if (lst->pipe == 0 && !(lst->prev && lst->prev->pipe == 1))
-					other_ret = start_cmd(all, lst);
-				if (other_ret > 0)
-					return (all->exit_status);
-				if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1) || other_ret == -1)
-				{
-                    pid = fork();
-					if (pid < 0)
-						return (ft_error(lst->name, "failed to fork", 13, all));
-					if (pid == 0)
-					{
-                        printf("child"); //
-						init_signals(all, 'c');
-						if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1))
-							run_command_pipe(all, lst);
-						else
-							exec_command(all, lst);
-					}
-					if (pid > 0)
-                    {
-                        mute_signals();
-                        waitpid(pid, &all->res, 0);
-                    }
-				}
-				if (lst->next == NULL)
-					break ;
-				lst = lst->next;
-			}
+                    redout = dup(all->save_fd[0]);
+                if (exec_command(all, lst) != 0)
+                {
+                    restore_fds(all);
+                    return (all->exit_status);
+                }
+            }
+            lst = lst->next;
 		}
-		if (lst && lst->pipe == 1 && lst->prev && lst->prev->pipe == 1)
-		{
-			while (lst->prev && lst->prev->pipe)
-			{
-				close(lst->fd_pipe[1]);
-				close(lst->fd_pipe[0]);
-			}
-		}
-		all->exit_status = errno;
-		init_signals(all, 'p');
-		lst = lst->next;
 	}
 	restore_fds(all);
 	return (all->exit_status);

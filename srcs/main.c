@@ -84,7 +84,7 @@ int			main(int args, char **argv, char **env)
 			if (!check_syntax(&all))
 			{
 				parser_string(&all);
-				execute_cmd(&all);
+				run_cmd(&all);
 			}
 			//restore_fds(&all);
 			if (!all.semicol)

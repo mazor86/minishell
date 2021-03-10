@@ -81,7 +81,7 @@ add_executable(new_minishell
         srcs/general/get_next_line.c
         srcs/general/variables.c
         srcs/init/init.c
-        srcs/no_pipe_cmd/execute_cmd.c
+        srcs/no_pipe_cmd/run_cmd.c
         srcs/no_pipe_cmd/start_command.c
         srcs/parser/convert.c
         srcs/parser/parser_errors.c
