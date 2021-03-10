@@ -63,9 +63,7 @@ int		ft_exit(t_all *all, t_cmd *cmd)
 			all->exit_status = ft_atoi(cmd->argv[0]);
 	}
 	free_t_env(&all->my_env);
+    restore_fds(all);
 	clear_all(all);
-	restore_fds(all);
-	close(all->save_fd[0]);
-	close(all->save_fd[1]);
 	exit(all->exit_status);
 }
