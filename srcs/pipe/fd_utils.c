@@ -19,7 +19,7 @@ void	save_fds(t_all *all)
 }
 int dup2_closer(int fd, int std)
 {
-    if (dup2(fd, std) <0)
+    if (dup2(fd, std) < 0)
     {
         close(fd);
         //todo return error
