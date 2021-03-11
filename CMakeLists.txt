@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
-project(new_minishell C)
+project(minishell_new C)
 
 set(CMAKE_C_STANDARD 11)
 
@@ -8,7 +8,7 @@ include_directories(includes)
 include_directories(libft)
 include_directories(srcs)
 
-add_executable(new_minishell
+add_executable(minishell_new
         includes/minishell.h
         includes/struct.h
         libft/ft_atoi.c

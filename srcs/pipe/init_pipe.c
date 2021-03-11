@@ -12,87 +12,110 @@
 
 #include "../../includes/minishell.h"
 
-int		execve_with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
+int execve_with_pipe(t_all *all, t_cmd *cmd)
 {
 	char	*fullname;
+    char    **argv;
+    char    **envp;
 
-	fullname = NULL;
 	all->exit_status = 0;
-	if (!(envp = deconvert_env(&all->my_env)) ||
-		!(argv = convert_argv(cmd)))
-		return (free_local(envp, argv, &fullname, -1));
-	if (!(fullname = get_full_cmd_name(all, cmd)))
-		return (free_local(envp, argv, &fullname, 0));
-	if (execve(fullname, argv, envp) == -1)
-		exit(ft_error(cmd->name, "permission denied", 13, all));
-	free_local(envp, argv, &fullname, 0);
-	exit(0);
+    envp = deconvert_env(&all->my_env);
+    argv = convert_argv(cmd);
+    fullname = get_full_cmd_name(all, cmd);
+	if (envp && argv && fullname)
+    {
+        if (execve(fullname, argv, envp) == -1)
+            exit(ft_error(cmd->name, "permission denied", 13, all));
+        exit(free_local(envp, argv, &fullname, 0));
+    }
+    exit(free_local(envp, argv, &fullname, all->exit_status));
 }
 
 void	run_command_pipe(t_all *all, t_cmd *cmd)
 {
 	int res_cmd;
 
-	if (cmd->prev && cmd->prev->pipe == 1 &&
-		(dup2(cmd->prev->fd_pipe[0], 0) < 0))
-	{
-	    close(cmd->prev->fd_pipe[0]);
-	    exit(all->exit_status);
-	}
-    close(cmd->prev->fd_pipe[0]);
-	if ((res_cmd = start_cmd(all, cmd)) > 0)
-		exit(all->exit_status);
-	if (res_cmd == -1)
-		execve_with_pipe(all, cmd, NULL, NULL);
-	exit(0);
+//	if (cmd->prev && cmd->prev->pipe == 1 &&
+//		(dup2(cmd->prev->fd_pipe[0], 0) < 0))
+//	{
+//	    close(cmd->prev->fd_pipe[0]);
+//	    exit(all->exit_status);
+//	}
+//    close(cmd->prev->fd_pipe[0]);
+    res_cmd = start_cmd(all, cmd);
+	if (res_cmd < 0)
+	    all->exit_status = execve_with_pipe(all, cmd);
+	exit(all->exit_status);
 }
 
-int		exec_command_pipe(t_all *all, t_cmd **lst)
+int     init_pipes_redir(t_all *all, t_cmd **lst, int redin, int redout)
 {
-    int redin;
-    int redout;
     int	other_ret;
-    pid_t pid;
+    t_cmd *tmp;
 
-    redin = -1;
-    redout = -1;
     other_ret = 0;
-    while (*lst) {
-        if ((*lst)->redir->r[0] != '\0')
-            redir_execute(all, *lst, '<', &redin);
+    tmp = *lst;
+    while (tmp)
+    {
+        if (tmp->redir->r[0] != '\0')
+            redir_execute(all, tmp, '<', &redin);
         if (redin < 0)
             redin = dup(all->save_fd[0]);
-        if ((*lst)->pipe != 0) {
+        if (tmp->pipe != 0)
+        {
             dup2_closer(all, redin, 0);
-            pipe((*lst)->fd_pipe);
-            redout = (*lst)->fd_pipe[1];
-            redin = (*lst)->fd_pipe[0];
-        } else if ((*lst)->pipe == 0) {
+            pipe(tmp->fd_pipe);
+            redout = tmp->fd_pipe[1];
+            redin = tmp->fd_pipe[0];
+        }
+        else if (tmp->pipe == 0)
+        {
             close(redin);
-            if ((*lst)->redir->r[0] != '\0')
-                redir_execute(all, *lst, '>', &redout);
+            if (tmp->redir->r[0] != '\0')
+                redir_execute(all, tmp, '>', &redout);
             else
                 redout = dup(all->save_fd[1]);
         }
         if (redout < 0)
             redout = dup(all->save_fd[1]);
         dup2_closer(all, redout, 1);
-        if ((*lst)->pipe == 0 && !((*lst)->prev && (*lst)->prev->pipe == 1))
-            other_ret = start_cmd(all, *lst);
+        if (tmp->pipe == 0 && !(tmp->prev && tmp->prev->pipe == 1))
+            other_ret = start_cmd(all, tmp);
         if (other_ret > 0)
             return (all->exit_status);
-        if ((*lst)->pipe == 1 || ((*lst)->prev && (*lst)->prev->pipe == 1)) {
-            pid = fork();
-            if (pid < 0)
+    }
+    return (all->exit_status);
+}
+
+int		exec_command_pipe(t_all *all, t_cmd **lst)
+{
+    int redin;
+    int redout;
+    int i;
+    pid_t pid[PID_SIZE];
+
+    redin = -1;
+    redout = -1;
+    i = 0;
+    while (*lst)
+    {
+        if (init_pipes_redir(all, lst, redin, redout) != 0)
+            return (all->exit_status);
+        if ((*lst)->pipe == 1 || ((*lst)->prev && (*lst)->prev->pipe == 1))
+        {
+            pid[i] = fork();
+            if (pid[i] < 0)
                 return (ft_error((*lst)->name, "failed to fork", 13, all));
-            if (pid == 0) {
-                printf("child"); //
+            if (pid[i] == 0)
+            {
+                printf("child");
                 init_signals(all, 'c');
                 run_command_pipe(all, *lst);
             }
-            if (pid > 0) {
+            if (pid[i] > 0)
+            {
                 mute_signals();
-                waitpid(pid, &all->res, 0);
+                waitpid(pid[i], &all->res, 0);
             }
         }
         if ((*lst)->next == NULL)
@@ -100,11 +123,13 @@ int		exec_command_pipe(t_all *all, t_cmd **lst)
         *lst = (*lst)->next;
     }
     if (*lst && (*lst)->pipe == 1 && (*lst)->prev && (*lst)->prev->pipe == 1)
+    {
         while ((*lst)->prev && (*lst)->prev->pipe)
         {
             close((*lst)->fd_pipe[1]);
             close((*lst)->fd_pipe[0]);
         }
+    }
     //all->exit_status = errno;
     init_signals(all, 'p');
     return (all->exit_status);

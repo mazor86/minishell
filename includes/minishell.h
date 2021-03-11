@@ -24,6 +24,7 @@
 # include <stdio.h> //
 
 # define PROMPT "\x1b[36mmini_bash$ \x1b[0m"
+# define PID_SIZE 1000
 
 /*
 ** General functions for reading input and processing arguments and variables

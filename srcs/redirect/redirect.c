@@ -90,7 +90,7 @@ int			init_redirect(t_all *all, t_cmd *cmd, int pipe)
         }
         close_dup_fd(redin, redout, -1);
     }
-	pipe == 1 ? exec_command_pipe(all, cmd) : exec_command(all, cmd);
+	pipe == 1 ? exec_command_pipe(all, &cmd) : exec_command(all, cmd);
     close_dup_fd(redin, redout, 2);
 	return (all->exit_status);
 }
