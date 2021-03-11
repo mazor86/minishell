@@ -87,7 +87,7 @@ int			start_execve(t_all *all, t_cmd *lst)
 	return (free_local(envp, argv, &fullname, all->exit_status));
 }
 
-int			exec_command(t_all *all, t_cmd *cmd)
+int exec_command(t_all *all, t_cmd *cmd)
 {
 	int res_cmd;
 
@@ -133,6 +133,18 @@ int		redir_execute(t_all *all, t_cmd *lst, char redir, int *red_type)
 	return (0);
 }
 
+int redirections(t_all *all, t_cmd *lst, int *redin, int*redout)
+{
+    if (lst->redir->r[0] != '\0') {
+        redir_execute(all, lst, '<', redin);
+        redir_execute(all, lst, '>', redout);
+    }
+    if (*redin < 0)
+        *redin = dup(all->save_fd[0]);
+    if (*redout < 0)
+        *redout = dup(all->save_fd[0]);
+}
+
 /*
 ** execute the command
 **
@@ -147,13 +159,27 @@ int			run_cmd(t_all *all)
 	int 	redout;
 
 	lst = all->cmd;
-	redin = -1;
-	redout = -1;
-	save_fds(all);
+    redin = -1;
+    redout = -1;
+    save_fds(all);
+    if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
+    {
+        if (lst->pipe == 1)
+            exec_command_pipe(all, &lst);
+        redirections(all, lst, &redin, &redout);
+    }
+
+
+
+
+	/*
 	while (lst)
 	{
 		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
 		{
+            redin = -1;
+            redout = -1;
+            save_fds(all);
 		    if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1))
 		    {
                 if (exec_command_pipe(all, &lst) != 0)
@@ -173,15 +199,18 @@ int			run_cmd(t_all *all)
                     redin = dup(all->save_fd[0]);
                 if (redout < 0)
                     redout = dup(all->save_fd[0]);
+                dup2_closer(all, redin, 0);
+                dup2_closer(all, redout, 1);
                 if (exec_command(all, lst) != 0)
                 {
                     restore_fds(all);
                     return (all->exit_status);
                 }
             }
+            restore_fds(all);
             lst = lst->next;
 		}
 	}
-	restore_fds(all);
 	return (all->exit_status);
 }
+*/

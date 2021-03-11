@@ -24,7 +24,6 @@
 # include <stdio.h> //
 
 # define PROMPT "\x1b[36mmini_bash$ \x1b[0m"
-# define PID_SIZE 1000
 
 /*
 ** General functions for reading input and processing arguments and variables
@@ -52,7 +51,7 @@ int				get_quotes(t_all *all, char **text);
 int				run_cmd(t_all *all);
 int				start_cmd(t_all *all, t_cmd *lst);
 int				start_execve(t_all *all, t_cmd *lst);
-int				exec_command(t_all *all, t_cmd *cmd);
+int exec_command(t_all *all, t_cmd *cmd);
 int				free_local(char **arr_1, char **arr_2, char **text, int ret);
 int				get_spec(t_all *all, char **text);
 int				check_syntax(t_all *all);
@@ -128,7 +127,7 @@ void			save_fds(t_all *all);
 void			restore_fds(t_all *all);
 int				init_redirect(t_all *all, t_cmd *cmd, int pipe);
 void			close_pipe_fd(t_cmd *cmd);
-int				exec_command_pipe(t_all *all, t_cmd **lst);
+int exec_command_pipe(t_all *all, t_cmd **lst);
 void			clear_redir(t_redir *redir);
 int				check_redir(t_all *all, t_cmd *lst);
 int				count_redir(t_redir *redir);

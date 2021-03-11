@@ -87,7 +87,7 @@ int     init_pipes_redir(t_all *all, t_cmd **lst, int redin, int redout)
     return (all->exit_status);
 }
 
-int		exec_command_pipe(t_all *all, t_cmd **lst)
+int exec_command_pipe(t_all *all, t_cmd **lst)
 {
     int redin;
     int redout;
