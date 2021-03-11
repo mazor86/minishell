@@ -55,12 +55,20 @@ void		parent_process(int pid, t_all *all, t_cmd *lst)
 	close_pipe_fd(lst);
 }
 
-//TODO 26 lines in start_execve
+int		child_process(t_all *all, char **envp, char **argv, char *fullname)
+{
+	init_signals(all, 'c');
+	errno = 0;
+	all->exit_status = 0;
+	if (execve(fullname, argv, envp) == -1)
+		all->exit_status = errno;
+	return (all->exit_status);
+}
+
 int			start_execve(t_all *all, t_cmd *lst)
 {
 	pid_t		pid;
 	char		*fullname;
-	extern int	errno;
 	char		**envp;
 	char		**argv;
 
@@ -71,14 +79,13 @@ int			start_execve(t_all *all, t_cmd *lst)
 	if (envp && argv && fullname)
 	{
 		if ((pid = fork()) == -1)
-			return (ft_error(lst->name, "failed to fork", 13, all));
-		if (pid == 0)
 		{
-			init_signals(all, 'c');
-			errno = 0;
-			if (execve(fullname, argv, envp) == -1)
-				ft_error(lst->name, strerror(errno), errno, all);
-			exit(all->exit_status);
+			ft_error(lst->name, "failed to fork", 13, all);
+		}
+		else if (pid == 0)
+		{
+			child_process(all, envp, argv, fullname);
+			exit(ft_error(lst->name, strerror(errno), errno, all));
 		}
 		else
 			parent_process(pid, all, lst);
@@ -91,19 +98,10 @@ int exec_command(t_all *all, t_cmd *cmd)
 {
 	int res_cmd;
 
-	//if (cmd->prev && cmd->prev->pipe == 1)
-//	{
-//		if (dup2_closer(all, cmd->prev->fd_pipe[0], 0) != 0)
-//			return (all->exit_status);
-//		if (cmd->redir->r[0] == '\0')
-//			restore_fds(all);
-//	}
 	if ((res_cmd = start_cmd(all, cmd)) > 0)
 		return (all->exit_status);
 	if (res_cmd == -1)
 		start_execve(all, cmd);
-//	if (cmd->prev && cmd->prev->pipe != 0)
-//		restore_fds(all);
 	return (all->exit_status);
 }
 
@@ -133,16 +131,16 @@ int		redir_execute(t_all *all, t_cmd *lst, char redir, int *red_type)
 	return (0);
 }
 
-int redirections(t_all *all, t_cmd *lst, int *redin, int*redout)
+int redirections(t_all *all, t_cmd *lst, int *fdin, int*fdout)
 {
     if (lst->redir->r[0] != '\0') {
-        redir_execute(all, lst, '<', redin);
-        redir_execute(all, lst, '>', redout);
+        redir_execute(all, lst, '<', fdin);
+        redir_execute(all, lst, '>', fdout);
     }
-    if (*redin < 0)
-        *redin = dup(all->save_fd[0]);
-    if (*redout < 0)
-        *redout = dup(all->save_fd[0]);
+    if (*fdin < 0)
+        *fdin = dup(all->save_fd[0]);
+    if (*fdout < 0)
+        *fdout = dup(all->save_fd[0]);
 }
 
 /*
@@ -155,19 +153,29 @@ int redirections(t_all *all, t_cmd *lst, int *redin, int*redout)
 int			run_cmd(t_all *all)
 {
 	t_cmd	*lst;
-	int 	redin;
-	int 	redout;
+	int 	fdin;
+	int 	fdout;
 
 	lst = all->cmd;
-    redin = -1;
-    redout = -1;
+    fdin = -1;
+    fdout = -1;
     save_fds(all);
     if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
     {
-        if (lst->pipe == 1)
-            exec_command_pipe(all, &lst);
-        redirections(all, lst, &redin, &redout);
-    }
+		if (lst->pipe == 1)
+			exec_command_pipe(all, &lst);
+		else
+		{
+			redirections(all, lst, &fdin, &fdout);
+			dup2_closer(all, fdin, 0);
+			dup2_closer(all, fdout, 1);
+			if (!is_null_cmd(lst))
+				exec_command(all, lst);
+		}
+	}
+	restore_fds(all);
+	return (all->exit_status);
+}
 
 
 
@@ -177,8 +185,8 @@ int			run_cmd(t_all *all)
 	{
 		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
 		{
-            redin = -1;
-            redout = -1;
+            fdin = -1;
+            fdout = -1;
             save_fds(all);
 		    if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1))
 		    {
@@ -192,15 +200,15 @@ int			run_cmd(t_all *all)
             {
                 if (lst->redir->r[0] != '\0')
                 {
-                    redir_execute(all, lst, '<', &redin);
-                    redir_execute(all, lst, '>', &redout);
+                    redir_execute(all, lst, '<', &fdin);
+                    redir_execute(all, lst, '>', &fdout);
                 }
-                if (redin < 0)
-                    redin = dup(all->save_fd[0]);
-                if (redout < 0)
-                    redout = dup(all->save_fd[0]);
-                dup2_closer(all, redin, 0);
-                dup2_closer(all, redout, 1);
+                if (fdin < 0)
+                    fdin = dup(all->save_fd[0]);
+                if (fdout < 0)
+                    fdout = dup(all->save_fd[0]);
+                dup2_closer(all, fdin, 0);
+                dup2_closer(all, fdout, 1);
                 if (exec_command(all, lst) != 0)
                 {
                     restore_fds(all);

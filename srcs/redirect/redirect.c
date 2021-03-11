@@ -59,13 +59,13 @@ void close_dup_fd(int red_in, int red_out, int n)
 int			init_redirect(t_all *all, t_cmd *cmd, int pipe)
 {
 	int		fd;
-	int		redin;
-	int		redout;
+	int		fdin;
+	int		fdout;
 	int		i;
 	int		n;
 
-    redin = -1;
-    redout = -1;
+    fdin = -1;
+    fdout = -1;
     if (cmd->redir->r[0] != '\0')
     {
         i = -1;
@@ -74,23 +74,23 @@ int			init_redirect(t_all *all, t_cmd *cmd, int pipe)
         {
             if ((fd = open_file(cmd->redir[i].r, cmd->redir[i].file)) < 0)
             {
-                close_dup_fd(redin, redout, 2);
+                close_dup_fd(fdin, fdout, 2);
                 return (ft_error(cmd->redir[i].file, strerror(2), 2, all));
             }
             if (cmd->redir[i].r[0] == '>')
             {
-                close_dup_fd(redin, redout, 1);
-                redout = fd;
+                close_dup_fd(fdin, fdout, 1);
+                fdout = fd;
             }
             else
             {
-                close_dup_fd(redin, redout, 0);
-                redin = fd;
+                close_dup_fd(fdin, fdout, 0);
+                fdin = fd;
             }
         }
-        close_dup_fd(redin, redout, -1);
+        close_dup_fd(fdin, fdout, -1);
     }
 	pipe == 1 ? exec_command_pipe(all, &cmd) : exec_command(all, cmd);
-    close_dup_fd(redin, redout, 2);
+    close_dup_fd(fdin, fdout, 2);
 	return (all->exit_status);
 }
