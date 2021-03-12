@@ -6,12 +6,14 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:38:46 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/25 19:48:20 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/03/12 20:15:57 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+# define PID_SIZE 1024
 
 /*
 ** name = name of the variable
@@ -74,10 +76,9 @@ typedef struct		s_all
 	int				pos;
 	int				res;
 	int				save_fd[2];
-	int             fd_in;
-	int             fd_out;
 	int				exit_status;
 	int				semicol;
+    pid_t           pid[PID_SIZE];
 }					t_all;
 
 #endif

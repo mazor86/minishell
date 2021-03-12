@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 13:35:15 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/25 18:06:43 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/12 17:28:25 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 /*
 ** Zeroes all parameters in the structure t_all
-**
-** @param *all general structure
 */
 
 static void	clear(t_all *all)
@@ -25,16 +23,13 @@ static void	clear(t_all *all)
 	all->line = NULL;
 	all->pos = 0;
 	all->res = 1;
-	all->fd_in = -1;
-	all->fd_out = -1;
 	all->semicol = 0;
+	ft_bzero(all->pid, PID_SIZE);
 }
 
 /*
 ** Updates all parameters of the t_all structure to the standard
 ** ones to get a new line from the user
-**
-** @param *all general structure
 */
 
 static void	update_main(t_all *all)
@@ -54,27 +49,62 @@ static void	update_main(t_all *all)
 }
 
 /*
-** Main function
-**
-** @param args number of arguments
-** @param **argv arguments
-** @param **env environment variables
-** @return 0 if good, otherwise -1
+** Puts the promt that signifies that you can enter a new command
 */
 
-//TODO 31 lines
-//TODO fix wrong prompt after 1st input
+void        write_promt(t_cmd *lst)
+{
+    int on_line;
+    int echo;
+
+    on_line = 0;
+    echo = 1;
+    while (lst != NULL)
+    {
+        echo = strcmp(lst->name, "echo");
+        if (echo == 0)
+            break ;
+        lst = lst->next;
+    }
+    if (echo == 0)
+        if (lst != NULL && strcmp(lst->argv[0], "-n") == 0)
+            on_line = 1;
+    if (on_line == 0)
+        ft_putstr_fd("\b\b  \b\b", 1);
+    ft_putstr_fd(PROMPT, 1);
+}
+
+/*
+** Initialize the main structure, convert environment
+** variables to list, init signals
+*/
+
+void        init_main(t_all *all, char **env)
+{
+    clear(all);
+    convert_env(&all->my_env, env, all);
+    init_signals(all, 'p');
+}
+
+/*
+** Main function
+**
+** Executes the cycle of shell that collects data from the terminal,
+** executes commands
+**
+** return: 0 if everything went fine and exit status of the process
+** if something went wrong
+*/
+
 //TODO fix memory leaks
-//TODO fix Makefile (especially includes), check dependecies
+//TODO fix Makefile (especially includes), check dependencies
 int			main(int args, char **argv, char **env)
 {
 	t_all	all;
 
 	(void)args;
 	(void)argv;
-	clear(&all);
-	convert_env(&all.my_env, env, &all);
-	init_signals(&all, 'p');
+    init_main(&all, env);
 	ft_putstr_fd(PROMPT, 1);
 	while (1)
 	{
@@ -85,19 +115,13 @@ int			main(int args, char **argv, char **env)
 			if (!check_syntax(&all))
 			{
 				parser_string(&all);
-				parser_cmd(&all);
+				run_cmd(&all);
 			}
 			if (!all.semicol)
-			{
-				ft_putstr_fd("\b\b  \b\b", 1);
-				ft_putstr_fd(PROMPT, 1);
-			}
+			    write_promt(all.cmd);
 			update_main(&all);
 		}
 		else
-		{
-			ft_putstr_fd("\b\b  \b\b", 1);
-			ft_putstr_fd(PROMPT, 1);
-		}
+            write_promt(all.cmd);
 	}
 }

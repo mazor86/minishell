@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:45:43 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/18 18:43:18 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/12 20:15:57 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	trim_quote(char **line)
 		flag = 4;
 		while (**line)
 		{
-			if (**line == c)
+			if (**line == c && (c == '\'' || *(*line - 1) != '\\'))
 			{
 				(*line)++;
 				return (0);
@@ -104,6 +104,8 @@ int			check_syntax(t_all *all)
 			break ;
 		if ((flag = check_redir_err(&line)))
 			break ;
+		if ((flag = check_shielding(&line)))
+			break;
 		if (*line && line == temp)
 			line++;
 	}

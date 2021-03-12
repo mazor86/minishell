@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/minishell.iml" filepath="$PROJECT_DIR$/.idea/minishell.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/minishell_new.iml" filepath="$PROJECT_DIR$/.idea/minishell_new.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/new_minishell.iml" filepath="$PROJECT_DIR$/.idea/new_minishell.iml" />
     </modules>
   </component>
 </project>
