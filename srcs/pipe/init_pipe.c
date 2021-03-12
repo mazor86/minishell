@@ -47,80 +47,131 @@ void pipe_fd(t_cmd *lst, int *fdin, int *fdout)
 	*fdin = lst->fd_pipe[0];
 }
 
-int init_pipes_redir(t_all *all, t_cmd **lst)
+//int init_pipes_redir(t_all *all, t_cmd **lst, int *fdin, int *fdout)
+//{
+////    redirections(all, *lst, fdin, '<');
+////    redirections(all, *lst, fdout, '<');
+//    if ((*lst)->prev == NULL)
+//        *fdin = dup(all->save_fd[0]);
+//    if ((*lst)->pipe == 1)
+//    {
+//        pipe((*lst)->fd_pipe);
+//        dup2_closer(all, (*lst)->fd_pipe[1], 1);
+//
+//    }
+//}
+
+/*
+int init_pipes_redir(t_all *all, t_cmd **lst, int *fdin, int *fdout)
 {
-    t_cmd *tmp;
 	int fdin;
 	int fdout;
 
-	fdin = -1;
-	fdout = -1;
-    tmp = *lst;
-    while (tmp)
+    fdin = -1;
+    fdout = -1;
+    redirections(all, *lst, &fdin, '<');
+    if ((*lst)->pipe != 0)
     {
-		redirections(all, *lst, &fdin, '<');
-        if (tmp->pipe != 0)
-        {
-            if (dup2_closer(all, fdin, 0) != 0)
-				return (all->exit_status);
-			pipe_fd(tmp, &fdin, &fdout);
-        }
-        else if (tmp->pipe == 0)
-        {
-            if (close(fdin) != 0)
-				return (errno);
-			redirections(all, *lst, &fdout, '<');
-        }
-        dup2_closer(all, fdout, 1);
+        if (dup2_closer(all, fdin, 0) != 0)
+            return (all->exit_status);
+        pipe_fd(*lst, &fdin, &fdout);
     }
+    else if ((*lst)->pipe == 0)
+    {
+        if (close(fdin) != 0)
+            return (errno);
+        redirections(all, *lst, &fdout, '<');
+    }
+    dup2_closer(all, fdout, 1);
     return (0);
-}
+}*/
 
-void    pipe_parent_process(t_all *all, int pipes_len)
+void pipe_parent_process(t_all *all, int pipes_len)
 {
     int i;
 
     i = 0;
     mute_signals();
-    while (i < pipes_len)
+    while (i <= pipes_len)
     {
+//        ft_putstr_fd("!!!!", 2);
+//        ft_putnbr_fd( all->pid[i], 2);
+//        ft_putstr_fd("----\n", 2);
         waitpid(all->pid[i], &all->res, 0);
+        i++;
+    }
+    while (all->pid[i] != 0 && i < PID_SIZE)
+    {
+        all->pid[i] = 0;
         i++;
     }
     init_signals(all, 'p');
 }
 
-void    close_pipe_fds(t_cmd **lst)
-{
-    t_cmd *tmp;
-
-    tmp = *lst;
-    while (tmp->prev && tmp->prev->pipe)
-    {
-        close(tmp->fd_pipe[1]);
-        close(tmp->fd_pipe[0]);
-        tmp = tmp->next;
-    }
-}
-
 int     exec_command_pipe(t_all *all, t_cmd **lst)
 {
     int i;
+    int fdin;
+    int fdout;
 
+    fdin = -1;
+    fdout = -1;
     i = 0;
     while (*lst)
     {
     	if (!is_null_cmd(*lst) || (*lst)->redir->r[0] != '\0')
     	{
-			if (init_pipes_redir(all, lst) != 0)
-				return (all->exit_status);
+			//if (init_pipes_redir(all, lst, &fdin, &fdout) != 0)
+			//	return (all->exit_status);
+			if ((*lst)->pipe == 1)
+			    pipe((*lst)->fd_pipe);
             all->pid[i] = fork();
             if (all->pid[i] < 0)
                 return (ft_error((*lst)->name, "failed to fork", 13, all));
             if (all->pid[i] == 0)
             {
+//                if (i > 0)
+//                    waitpid(all->pid[i - 1], &all->res, 0);
+//                ft_putstr_fd("child ", 2); //
+//                ft_putnbr_fd(i, 2); //
+//                ft_putstr_fd("\n", 2); //
+//                if (all->last_fd > 0) {
+//                    dup2(all->last_fd, 0);
+//                    close(all->last_fd);
+//                    //char *buff;
+//                    //get_next_line(all->last_fd, &buff, all);
+//                    //ft_putstr_fd("PRINT: ", 2);
+//                   // ft_putstr_fd(buff,2);
+//                   // ft_putstr_fd("PRINT: ", 2);
+//                }
+                close(1);
+                if ((*lst)->pipe == 1)
+                {
+                    dup2_closer(all, (*lst)->fd_pipe[1], 1);
+                    close((*lst)->fd_pipe[0]);
+                }
+                else
+                    dup2(all->save_fd[1], 1);
                 init_signals(all, 'c');
                 run_command_pipe(all, *lst);
+            }
+            if (all->pid[i] > 0)
+            {
+                ft_putstr_fd("----", 2);
+                ft_putnbr_fd( all->pid[i], 2);
+                ft_putstr_fd("----\n", 2);
+//                if (all->last_fd > 0)
+//                    close(all->last_fd);
+//                all->last_fd = -1;
+                close(0);
+                if ((*lst)->pipe == 1)
+                {
+                    close((*lst)->fd_pipe[1]);
+                    dup2((*lst)->fd_pipe[0], 0);
+                    close((*lst)->fd_pipe[0]);
+                }
+                else
+                    dup2(all->save_fd[0], 0);
             }
 			if ((*lst)->next == NULL)
 				break ;
@@ -129,6 +180,5 @@ int     exec_command_pipe(t_all *all, t_cmd **lst)
 		}
     }
     pipe_parent_process(all, i);
-    close_pipe_fds(lst);
     return (all->exit_status);
 }

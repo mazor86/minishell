@@ -24,6 +24,7 @@ static void	clear(t_all *all)
 	all->pos = 0;
 	all->res = 1;
 	all->semicol = 0;
+	all->last_fd = -1;
 	ft_bzero(all->pid, PID_SIZE);
 }
 
