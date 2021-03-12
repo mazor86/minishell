@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 15:48:18 by mazor             #+#    #+#             */
-/*   Updated: 2021/02/18 18:46:53 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/12 15:00:21 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ char	*syntax_err_text(char *line)
 	if (*(line + 1) && *line == *(line + 1))
 	{
 		if (*line == '|')
-			return ("syntax error \"||\"");
+			return ("syntax error near unexpected token \"||\"");
 		if (*line == ';')
-			return ("syntax error \";;\"");
+			return ("syntax error near unexpected token \";;\"");
 		if (*line == '&')
-			return ("syntax error \"&&\"");
+			return ("syntax error near unexpected token \"&&\"");
 	}
 	if (*line == '|')
-		return ("syntax error \"|\"");
+		return ("syntax error near unexpected token \"|\"");
 	if (*line == ';')
-		return ("syntax error \";\"");
+		return ("syntax error near unexpected token \";\"");
 	if (*line == '&')
-		return ("syntax error \"&\"");
+		return ("syntax error near unexpected token \"&\"");
 	return ("syntax error");
 }
 
