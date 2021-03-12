@@ -25,97 +25,77 @@ int execve_with_pipe(t_all *all, t_cmd *cmd)
 	if (envp && argv && fullname)
     {
         if (execve(fullname, argv, envp) == -1)
-            exit(ft_error(cmd->name, "permission denied", 13, all));
-        exit(free_local(envp, argv, &fullname, 0));
+			return (ft_error(cmd->name, "permission denied", 13, all));
     }
-    exit(free_local(envp, argv, &fullname, all->exit_status));
+	return (free_local(envp, argv, &fullname, all->exit_status));
 }
 
 void	run_command_pipe(t_all *all, t_cmd *cmd)
 {
 	int res_cmd;
 
-//	if (cmd->prev && cmd->prev->pipe == 1 &&
-//		(dup2(cmd->prev->fd_pipe[0], 0) < 0))
-//	{
-//	    close(cmd->prev->fd_pipe[0]);
-//	    exit(all->exit_status);
-//	}
-//    close(cmd->prev->fd_pipe[0]);
     res_cmd = start_cmd(all, cmd);
 	if (res_cmd < 0)
 	    all->exit_status = execve_with_pipe(all, cmd);
 	exit(all->exit_status);
 }
 
-int     init_pipes_redir(t_all *all, t_cmd **lst, int fdin, int fdout)
+void pipe_fd(t_cmd *lst, int *fdin, int *fdout)
 {
-    int	other_ret;
-    t_cmd *tmp;
+	pipe(lst->fd_pipe);
+	*fdout = lst->fd_pipe[1];
+	*fdin = lst->fd_pipe[0];
+}
 
-    other_ret = 0;
+int init_pipes_redir(t_all *all, t_cmd **lst)
+{
+    t_cmd *tmp;
+	int fdin;
+	int fdout;
+
+	fdin = -1;
+	fdout = -1;
     tmp = *lst;
     while (tmp)
     {
-        if (tmp->redir->r[0] != '\0')
-            redir_execute(all, tmp, '<', &fdin);
-        if (fdin < 0)
-            fdin = dup(all->save_fd[0]);
+		redirections(all, *lst, &fdin, '<');
         if (tmp->pipe != 0)
         {
-            dup2_closer(all, fdin, 0);
-            pipe(tmp->fd_pipe);
-            fdout = tmp->fd_pipe[1];
-            fdin = tmp->fd_pipe[0];
+            if (dup2_closer(all, fdin, 0) != 0)
+				return (all->exit_status);
+			pipe_fd(tmp, &fdin, &fdout);
         }
         else if (tmp->pipe == 0)
         {
-            close(fdin);
-            if (tmp->redir->r[0] != '\0')
-                redir_execute(all, tmp, '>', &fdout);
-            else
-                fdout = dup(all->save_fd[1]);
+            if (close(fdin) != 0)
+				return (errno);
+			redirections(all, *lst, &fdout, '<');
         }
-        if (fdout < 0)
-            fdout = dup(all->save_fd[1]);
         dup2_closer(all, fdout, 1);
-        if (tmp->pipe == 0 && !(tmp->prev && tmp->prev->pipe == 1))
-            other_ret = start_cmd(all, tmp);
-        if (other_ret > 0)
-            return (all->exit_status);
     }
-    return (all->exit_status);
+    return (0);
 }
 
 int exec_command_pipe(t_all *all, t_cmd **lst)
 {
-    int fdin;
-    int fdout;
     int i;
-    pid_t pid[PID_SIZE];
 
-    fdin = -1;
-    fdout = -1;
     i = 0;
     while (*lst)
     {
     	if (!is_null_cmd(*lst) || (*lst)->redir->r[0] != '\0')
     	{
-			if (init_pipes_redir(all, lst, fdin, fdout) != 0)
+			if (init_pipes_redir(all, lst) != 0)
 				return (all->exit_status);
-			if ((*lst)->pipe == 1)
+			while ((*lst)->pipe == 1)
 			{
-				pid[i] = fork();
-				if (pid[i] < 0)
+				all->pid[i] = fork();
+				if (all->pid[i] < 0)
 					return (ft_error((*lst)->name, "failed to fork", 13, all));
-				if (pid[i] == 0) {
+				if (all->pid[i] == 0) {
 					printf("child");
 					init_signals(all, 'c');
 					run_command_pipe(all, *lst);
-				}
-				if (pid[i] > 0) {
-					mute_signals();
-					waitpid(pid[i], &all->res, 0);
 				}
 			}
 			if ((*lst)->next == NULL)
@@ -123,6 +103,11 @@ int exec_command_pipe(t_all *all, t_cmd **lst)
 			*lst = (*lst)->next;
 		}
     }
+	if (all->pid[i] > 0)
+	{
+		mute_signals();
+		waitpid(all->pid[i], &all->res, 0);
+	}
     if (*lst && (*lst)->pipe == 1 && (*lst)->prev && (*lst)->prev->pipe == 1)
     {
         while ((*lst)->prev && (*lst)->prev->pipe)
@@ -135,31 +120,3 @@ int exec_command_pipe(t_all *all, t_cmd **lst)
     init_signals(all, 'p');
     return (all->exit_status);
 }
-
-/*
-int		exec_command_pipe(t_all *all, t_cmd *cmd)
-{
-	pid_t		pid;
-	extern int	errno;
-
-	errno = 0;
-	pipe(cmd->fd_pipe);
-	if ((pid = fork()) == -1)
-		return (ft_error(cmd->name, "failed to fork", 13, all));
-	if (pid == 0)
-	{
-		dup2(cmd->fd_pipe[1], 1);
-		close(cmd->fd_pipe[1]);
-		init_signals(all, 'c');
-		run_command_pipe(all, cmd);
-	}
-	else
-	{
-		mute_signals();
-		waitpid(pid, &all->res, 0);
-		//close_pipe_fd(cmd);
-	}
-	all->exit_status = errno;
-	init_signals(all, 'p');
-	return (all->exit_status);
-}*/

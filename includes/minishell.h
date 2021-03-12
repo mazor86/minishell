@@ -51,7 +51,7 @@ int				get_quotes(t_all *all, char **text);
 int				run_cmd(t_all *all);
 int				start_cmd(t_all *all, t_cmd *lst);
 int				start_execve(t_all *all, t_cmd *lst);
-int exec_command(t_all *all, t_cmd *cmd);
+int				exec_command(t_all *all, t_cmd *cmd);
 int				free_local(char **arr_1, char **arr_2, char **text, int ret);
 int				get_spec(t_all *all, char **text);
 int				check_syntax(t_all *all);
@@ -135,6 +135,7 @@ void			close_dup_fd(int red_in, int red_out, int n);
 int				open_file(char redir[2], char *argum);
 void			run_command_pipe(t_all *all, t_cmd *cmd);
 int		        redir_execute(t_all *all, t_cmd *lst, char redir, int *red_type);
+int				redirections(t_all *all, t_cmd *lst, int *fd, char redir);
 
 /*
 ** Signals implementing functions

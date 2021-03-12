@@ -131,16 +131,20 @@ int		redir_execute(t_all *all, t_cmd *lst, char redir, int *red_type)
 	return (0);
 }
 
-int redirections(t_all *all, t_cmd *lst, int *fdin, int*fdout)
+int redirections(t_all *all, t_cmd *lst, int *fd, char redir)
 {
-    if (lst->redir->r[0] != '\0') {
-        redir_execute(all, lst, '<', fdin);
-        redir_execute(all, lst, '>', fdout);
-    }
-    if (*fdin < 0)
-        *fdin = dup(all->save_fd[0]);
-    if (*fdout < 0)
-        *fdout = dup(all->save_fd[0]);
+	if (lst->redir->r[0] != '\0') {
+		if (redir_execute(all, lst, redir, fd) != 0)
+			return (all->exit_status);
+	}
+	if (*fd < 0)
+	{
+		if (redir == '<')
+			*fd = dup(all->save_fd[0]);
+		else
+			*fd = dup(all->save_fd[1]);
+	}
+	return (0);
 }
 
 /*
@@ -166,59 +170,14 @@ int			run_cmd(t_all *all)
 			exec_command_pipe(all, &lst);
 		else
 		{
-			redirections(all, lst, &fdin, &fdout);
-			dup2_closer(all, fdin, 0);
-			dup2_closer(all, fdout, 1);
-			if (!is_null_cmd(lst))
+			if (redirections(all, lst, &fdin, '<') == 0 &&
+			redirections(all, lst, &fdout, '>') == 0 &&
+			dup2_closer(all, fdin, 0) == 0 &&
+			dup2_closer(all, fdout, 1) == 0 &&
+			!is_null_cmd(lst))
 				exec_command(all, lst);
 		}
 	}
 	restore_fds(all);
 	return (all->exit_status);
 }
-
-
-
-
-	/*
-	while (lst)
-	{
-		if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
-		{
-            fdin = -1;
-            fdout = -1;
-            save_fds(all);
-		    if (lst->pipe == 1 || (lst->prev && lst->prev->pipe == 1))
-		    {
-                if (exec_command_pipe(all, &lst) != 0)
-                {
-                    restore_fds(all);
-                    return (all->exit_status);
-                }
-            }
-            else
-            {
-                if (lst->redir->r[0] != '\0')
-                {
-                    redir_execute(all, lst, '<', &fdin);
-                    redir_execute(all, lst, '>', &fdout);
-                }
-                if (fdin < 0)
-                    fdin = dup(all->save_fd[0]);
-                if (fdout < 0)
-                    fdout = dup(all->save_fd[0]);
-                dup2_closer(all, fdin, 0);
-                dup2_closer(all, fdout, 1);
-                if (exec_command(all, lst) != 0)
-                {
-                    restore_fds(all);
-                    return (all->exit_status);
-                }
-            }
-            restore_fds(all);
-            lst = lst->next;
-		}
-	}
-	return (all->exit_status);
-}
-*/
