@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 00:04:57 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/12 17:21:18 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/12 19:53:26 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	set_env(t_all *all, char **text, char *var)
 int			get_variables(t_all *all, char **text)
 {
 	char		*var;
-	const char	spec[10] = " \'\";|><$?";
+	const char	spec[10] = " \'\";|><$?=";
 	int			res;
 
 	all->pos++;
