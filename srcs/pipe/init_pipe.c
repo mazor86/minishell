@@ -40,27 +40,6 @@ void	run_command_pipe(t_all *all, t_cmd *cmd)
 	exit(all->exit_status);
 }
 
-void pipe_fd(t_cmd *lst, int *fdin, int *fdout)
-{
-	pipe(lst->fd_pipe);
-	*fdout = lst->fd_pipe[1];
-	*fdin = lst->fd_pipe[0];
-}
-
-//int init_pipes_redir(t_all *all, t_cmd **lst, int *fdin, int *fdout)
-//{
-////    redirections(all, *lst, fdin, '<');
-////    redirections(all, *lst, fdout, '<');
-//    if ((*lst)->prev == NULL)
-//        *fdin = dup(all->save_fd[0]);
-//    if ((*lst)->pipe == 1)
-//    {
-//        pipe((*lst)->fd_pipe);
-//        dup2_closer(all, (*lst)->fd_pipe[1], 1);
-//
-//    }
-//}
-
 /*
 int init_pipes_redir(t_all *all, t_cmd **lst, int *fdin, int *fdout)
 {
@@ -94,9 +73,6 @@ void pipe_parent_process(t_all *all, int pipes_len)
     mute_signals();
     while (i <= pipes_len)
     {
-//        ft_putstr_fd("!!!!", 2);
-//        ft_putnbr_fd( all->pid[i], 2);
-//        ft_putstr_fd("----\n", 2);
         waitpid(all->pid[i], &all->res, 0);
         i++;
     }
@@ -121,29 +97,37 @@ int     exec_command_pipe(t_all *all, t_cmd **lst)
     {
     	if (!is_null_cmd(*lst) || (*lst)->redir->r[0] != '\0')
     	{
-			//if (init_pipes_redir(all, lst, &fdin, &fdout) != 0)
-			//	return (all->exit_status);
+            if ((*lst)->redir->r[0] != '\0') {
+                if (redir_execute(all, *lst, '<', &fdin) != 0)
+                {
+                    restore_fds(all);
+                    return (all->exit_status);
+                }
+            }
+            if ((*lst)->redir->r[0] != '\0') {
+                if (redir_execute(all, *lst, '>', &fdout) != 0)
+                {
+                    restore_fds(all);
+                    return (all->exit_status);
+                }
+            }
+            if (fdin >= 0)
+            {
+                close(0);
+                dup2(fdin, 0);
+                close(fdin);
+                fdin = -1;
+            }
 			if ((*lst)->pipe == 1)
 			    pipe((*lst)->fd_pipe);
             all->pid[i] = fork();
             if (all->pid[i] < 0)
+            {
+                restore_fds(all);
                 return (ft_error((*lst)->name, "failed to fork", 13, all));
+            }
             if (all->pid[i] == 0)
             {
-//                if (i > 0)
-//                    waitpid(all->pid[i - 1], &all->res, 0);
-//                ft_putstr_fd("child ", 2); //
-//                ft_putnbr_fd(i, 2); //
-//                ft_putstr_fd("\n", 2); //
-//                if (all->last_fd > 0) {
-//                    dup2(all->last_fd, 0);
-//                    close(all->last_fd);
-//                    //char *buff;
-//                    //get_next_line(all->last_fd, &buff, all);
-//                    //ft_putstr_fd("PRINT: ", 2);
-//                   // ft_putstr_fd(buff,2);
-//                   // ft_putstr_fd("PRINT: ", 2);
-//                }
                 close(1);
                 if ((*lst)->pipe == 1)
                 {
@@ -152,17 +136,18 @@ int     exec_command_pipe(t_all *all, t_cmd **lst)
                 }
                 else
                     dup2(all->save_fd[1], 1);
+                if (fdout >= 0)
+                {
+                    close(1);
+                    dup2(fdout, 1);
+                    close(fdout);
+                    fdout = -1;
+                }
                 init_signals(all, 'c');
                 run_command_pipe(all, *lst);
             }
             if (all->pid[i] > 0)
             {
-                ft_putstr_fd("----", 2);
-                ft_putnbr_fd( all->pid[i], 2);
-                ft_putstr_fd("----\n", 2);
-//                if (all->last_fd > 0)
-//                    close(all->last_fd);
-//                all->last_fd = -1;
                 close(0);
                 if ((*lst)->pipe == 1)
                 {
@@ -172,6 +157,11 @@ int     exec_command_pipe(t_all *all, t_cmd **lst)
                 }
                 else
                     dup2(all->save_fd[0], 0);
+                if (fdout >= 0)
+                {
+                    close(fdout);
+                    fdout = -1;
+                }
             }
 			if ((*lst)->next == NULL)
 				break ;

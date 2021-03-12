@@ -197,8 +197,8 @@ int			run_cmd(t_all *all)
 			dup2_closer(all, fdout, 1) == 0 &&
 			!is_null_cmd(lst))
 				exec_command(all, lst);
+            restore_fds(all);
 		}
 	}
-	restore_fds(all);
 	return (all->exit_status);
 }

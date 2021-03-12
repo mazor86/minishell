@@ -1,8 +1,0 @@
-CMakeLists.txt
-Makefile
-cmake-build-debug
-includes
-libft
-srcs
-test1
-test2
