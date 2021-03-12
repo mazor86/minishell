@@ -13,13 +13,9 @@
 #include "../../includes/minishell.h"
 
 /*
-** clears strings
+** clears strings created for the execve
 **
-** @param **split array of strings
-** @param **split2 array of strings
-** @param **text pointer to string
-** @param ret return
-** @return ret
+** return: 0 if good, otherwise returns exit status of the failed command
 */
 
 int			free_local(char **array_1, char **array_2, char **text, int ret)
@@ -37,16 +33,12 @@ int			free_local(char **array_1, char **array_2, char **text, int ret)
 }
 
 /*
-** execute the execve command
+** support functions for <start_execve> that run the child and parant process activities
 **
-** @param *all general structure
-** @param *lst command pointer
-** @param **envp array of environment variables strings
-** @param **argv array of argument strings
-** @return 0 if good, otherwise -1
+** return: 0 if good, otherwise returns exit status of the failed command
 */
 
-void		parent_process(int pid, t_all *all, t_cmd *lst)
+static void	parent_process(int pid, t_all *all, t_cmd *lst)
 {
 	mute_signals();
 	waitpid(pid, &all->res, 0);
@@ -55,7 +47,7 @@ void		parent_process(int pid, t_all *all, t_cmd *lst)
 	close_pipe_fd(lst);
 }
 
-int		child_process(t_all *all, char **envp, char **argv, char *fullname)
+static int	child_process(t_all *all, char **envp, char **argv, char *fullname)
 {
 	init_signals(all, 'c');
 	errno = 0;
@@ -64,6 +56,13 @@ int		child_process(t_all *all, char **envp, char **argv, char *fullname)
 		all->exit_status = errno;
 	return (all->exit_status);
 }
+
+/*
+** converts environmental variables to the array, checks if the
+** command exists and runs the corresponding command
+**
+** return: 0 if good, otherwise returns exit status of the failed command
+*/
 
 int			start_execve(t_all *all, t_cmd *lst)
 {
@@ -94,6 +93,13 @@ int			start_execve(t_all *all, t_cmd *lst)
 	return (free_local(envp, argv, &fullname, all->exit_status));
 }
 
+/*
+** checks if it is a build in or external command and starts
+** the corresponding execution
+**
+** return: 0 if good, otherwise returns exit status of the failed command
+*/
+
 int exec_command(t_all *all, t_cmd *cmd)
 {
 	int res_cmd;
@@ -105,8 +111,15 @@ int exec_command(t_all *all, t_cmd *cmd)
 	return (all->exit_status);
 }
 
+/*
+** select the last of the corresponding type redirections,
+** opening the files while it dont get to the last
+**
+** variables: redir_type - the fdin or fdout, redir - type of redirection
+** return: 0 if good, otherwise returns exit status of the failed command
+*/
 
-int		redir_execute(t_all *all, t_cmd *lst, char redir, int *red_type)
+int		redir_execute(t_all *all, t_cmd *lst, char redir, int *redir_type)
 {
 	int i;
 	int fd;
@@ -117,19 +130,28 @@ int		redir_execute(t_all *all, t_cmd *lst, char redir, int *red_type)
 		if (lst->redir[i].r[0] == redir)
 		{
 			fd = open_file(lst->redir[i].r, lst->redir[i].file);
-			if (*red_type > 0)
-				close(*red_type);
+			if (*redir_type > 0)
+				close(*redir_type);
 			if (fd < 0)
 			{
 				restore_fds(all);
 				return (ft_error(lst->redir[i].file, strerror(2), 2, all));
 			}
-			*red_type = fd;
+			*redir_type = fd;
 		}
 		i++;
 	}
 	return (0);
 }
+
+/*
+** checks for redirections and applys to the corresponding
+** type of stream: input or output. If there are no redirections,
+** apply the saved stdin or stdout
+**
+** variables: fd - the fdin or fdout, redir - type of redirection
+** return: 0 if good, otherwise returns exit status of the failed command
+*/
 
 int redirections(t_all *all, t_cmd *lst, int *fd, char redir)
 {
@@ -150,8 +172,7 @@ int redirections(t_all *all, t_cmd *lst, int *fd, char redir)
 /*
 ** execute the command
 **
-** @param *all general structure
-** @return 0 if good, otherwise returns exit status and prints error
+** return: 0 if good, otherwise returns exit status of the failed command
 */
 
 int			run_cmd(t_all *all)

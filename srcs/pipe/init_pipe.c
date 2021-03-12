@@ -76,7 +76,34 @@ int init_pipes_redir(t_all *all, t_cmd **lst)
     return (0);
 }
 
-int exec_command_pipe(t_all *all, t_cmd **lst)
+void    pipe_parent_process(t_all *all, int pipes_len)
+{
+    int i;
+
+    i = 0;
+    mute_signals();
+    while (i < pipes_len)
+    {
+        waitpid(all->pid[i], &all->res, 0);
+        i++;
+    }
+    init_signals(all, 'p');
+}
+
+void    close_pipe_fds(t_cmd **lst)
+{
+    t_cmd *tmp;
+
+    tmp = *lst;
+    while (tmp->prev && tmp->prev->pipe)
+    {
+        close(tmp->fd_pipe[1]);
+        close(tmp->fd_pipe[0]);
+        tmp = tmp->next;
+    }
+}
+
+int     exec_command_pipe(t_all *all, t_cmd **lst)
 {
     int i;
 
@@ -87,36 +114,21 @@ int exec_command_pipe(t_all *all, t_cmd **lst)
     	{
 			if (init_pipes_redir(all, lst) != 0)
 				return (all->exit_status);
-			while ((*lst)->pipe == 1)
-			{
-				all->pid[i] = fork();
-				if (all->pid[i] < 0)
-					return (ft_error((*lst)->name, "failed to fork", 13, all));
-				if (all->pid[i] == 0) {
-					printf("child");
-					init_signals(all, 'c');
-					run_command_pipe(all, *lst);
-				}
-			}
+            all->pid[i] = fork();
+            if (all->pid[i] < 0)
+                return (ft_error((*lst)->name, "failed to fork", 13, all));
+            if (all->pid[i] == 0)
+            {
+                init_signals(all, 'c');
+                run_command_pipe(all, *lst);
+            }
 			if ((*lst)->next == NULL)
-				break;
+				break ;
 			*lst = (*lst)->next;
+			i++;
 		}
     }
-	if (all->pid[i] > 0)
-	{
-		mute_signals();
-		waitpid(all->pid[i], &all->res, 0);
-	}
-    if (*lst && (*lst)->pipe == 1 && (*lst)->prev && (*lst)->prev->pipe == 1)
-    {
-        while ((*lst)->prev && (*lst)->prev->pipe)
-        {
-            close((*lst)->fd_pipe[1]);
-            close((*lst)->fd_pipe[0]);
-        }
-    }
-    //all->exit_status = errno;
-    init_signals(all, 'p');
+    pipe_parent_process(all, i);
+    close_pipe_fds(lst);
     return (all->exit_status);
 }

@@ -13,7 +13,7 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define PID_SIZE 1000
+# define PID_SIZE 1024
 
 /*
 ** name = name of the variable

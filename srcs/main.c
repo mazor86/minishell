@@ -24,6 +24,7 @@ static void	clear(t_all *all)
 	all->pos = 0;
 	all->res = 1;
 	all->semicol = 0;
+	ft_bzero(all->pid, PID_SIZE);
 }
 
 /*
@@ -96,7 +97,7 @@ void        init_main(t_all *all, char **env)
 */
 
 //TODO fix memory leaks
-//TODO fix Makefile (especially includes), check dependecies
+//TODO fix Makefile (especially includes), check dependencies
 int			main(int args, char **argv, char **env)
 {
 	t_all	all;
