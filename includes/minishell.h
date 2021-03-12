@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/03/12 15:00:21 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/12 17:21:19 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int				check_syntax(t_all *all);
 char			*syntax_err_text(char *line);
 char			*syntax_err_flag_to_text(int flag);
 int				trim_space_in_line(char **line);
+int 			check_shielding(char **line);
+
 
 /*
 ** Cmd utils functions
