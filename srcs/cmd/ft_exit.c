@@ -19,7 +19,7 @@ int		arg_len(t_cmd *cmd)
 	i = 0;
 	while (cmd->argv[i] != NULL)
 		i++;
-	return (i);
+	return (i - 1);
 }
 
 int		check_digit(char *str)
@@ -46,24 +46,28 @@ int		check_digit(char *str)
 
 int		ft_exit(t_all *all, t_cmd *cmd)
 {
-	int	n;
+	int				n;
+	unsigned char	exit_status;
 
 	n = arg_len(cmd);
-	if (n > 1 || check_digit(cmd->argv[0]) != 1)
+	ft_putstr_fd("exit\n", 1);
+	if (n > 1 || (check_digit(cmd->argv[0]) != 1 && cmd->argv[0][0] != '-'))
 	{
 		if (check_digit(cmd->argv[0]) != 1)
-			ft_error("exit", "Numeric argument required", 255, all);
+			ft_error("exit", "numeric argument required", 255, all);
 		else
-			ft_error("exit", strerror(1), 1, all);
+			ft_error("exit", "too many arguments", 100, all);
+		exit_status = (unsigned char)all->exit_status;
 	}
 	else
 	{
-		ft_putstr_fd("exit\n", 1);
 		if (n == 1)
-			all->exit_status = ft_atoi(cmd->argv[0]);
+			exit_status = (unsigned char)ft_atoi(cmd->argv[0]);
+		else
+			exit_status = (unsigned char)all->exit_status;
 	}
 	free_t_env(&all->my_env);
-    restore_fds(all);
+	restore_fds(all);
 	clear_all(all);
-	exit(all->exit_status);
+	exit(exit_status);
 }
