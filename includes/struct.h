@@ -76,11 +76,8 @@ typedef struct		s_all
 	int				pos;
 	int				res;
 	int				save_fd[2];
-<<<<<<< HEAD
     int             fdin;
     int             fdout;
-=======
->>>>>>> a30b7d2945f7c3c783390fe1dd935b6c1c57308b
 	int				exit_status;
 	int				semicol;
     pid_t           pid[PID_SIZE];
