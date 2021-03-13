@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 19:18:45 by tisabel           #+#    #+#             */
-/*   Updated: 2021/03/12 23:53:30 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/13 02:44:53 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strcut(char *str, char c)
 	i = 0;
 	while (str[len] != c && str[len] != '\0')
 		len++;
-	if (!(new = (char*)malloc(sizeof(char) * (len + 2))))
+	if (!(new = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	while (i < len)
 	{
