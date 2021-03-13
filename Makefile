@@ -12,7 +12,7 @@
 
 NAME = minishell
 
-FLAGS = -g  -Wall -Wextra -Werror -fsanitize=address
+FLAGS = -g -Wall -Wextra -Werror -fsanitize=address
 LIBFT = libft.a
 
 SRCS = srcs/main.c \
@@ -35,13 +35,14 @@ SRCS = srcs/main.c \
 		srcs/parser/convert.c \
 		srcs/no_pipe_cmd/run_cmd.c \
 		srcs/no_pipe_cmd/start_command.c \
+		srcs/no_pipe_cmd/start_execve_pipe.c\
 		srcs/init/init.c \
 		srcs/general/variables.c \
 		srcs/general/get_next_line.c\
 		srcs/env/env_utils_2.c \
 		srcs/env/env_utils.c \
 		srcs/env/conv_env.c \
-		srcs/cmd_utils/cmd_len.c \
+		srcs/env/env_free.c\
 		srcs/cmd_utils/cmd_last.c \
 		srcs/cmd_utils/add_back_cmd.c \
 		srcs/cmd/ft_unset.c \

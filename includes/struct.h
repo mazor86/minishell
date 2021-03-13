@@ -76,11 +76,11 @@ typedef struct		s_all
 	int				pos;
 	int				res;
 	int				save_fd[2];
-    int             fdin;
-    int             fdout;
+	int				fdin;
+	int				fdout;
 	int				exit_status;
 	int				semicol;
-    pid_t           pid[PID_SIZE];
+	pid_t			pid[PID_SIZE];
 }					t_all;
 
 #endif

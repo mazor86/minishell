@@ -53,7 +53,7 @@ t_env	*creat_env(char *argum, t_all *all)
 	}
 	else
 	{
-		temp->name = argum;
+		temp->name = ft_strdup(argum);
 		temp->value = ft_strdup("");
 	}
 	temp->standard = 2;

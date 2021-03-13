@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/minishell.h"
+
 /*
 ** support functions for <start_execve> that run the child and parant process
 ** activities
