@@ -69,7 +69,7 @@ static char	*parse_split_local(char **split, t_all *all, t_cmd *lst)
 			return (res);
 		}
 	}
-	ft_error(lst->name, ": command not found", 127, all);
+	ft_error(lst->name, "command not found", 127, all);
 	all->res = 127;
 	return (NULL);
 }

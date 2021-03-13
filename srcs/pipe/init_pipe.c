@@ -12,64 +12,75 @@
 
 #include "../../includes/minishell.h"
 
-int		execve_with_pipe(t_all *all, t_cmd *cmd, char **argv, char **envp)
+static int  child_process(t_all *all, t_cmd **lst, int *fdout)
 {
-	char	*fullname;
-
-	fullname = NULL;
-	all->exit_status = 0;
-	if (!(envp = deconvert_env(&all->my_env)) ||
-		!(argv = convert_argv(cmd)))
-		return (free_local(envp, argv, &fullname, -1));
-	if (!(fullname = get_full_cmd_name(all, cmd)))
-		return (free_local(envp, argv, &fullname, 0));
-	if (execve(fullname, argv, envp) == -1)
-		exit(ft_error(cmd->name, ": permission denied", 13, all));
-	free_local(envp, argv, &fullname, 0);
-	exit(0);
+    close(1);
+    if ((*lst)->pipe == 1)
+    {
+        dup2_closer(all, (*lst)->fd_pipe[1], 1);
+        close((*lst)->fd_pipe[0]);
+    }
+    else
+        dup2(all->save_fd[1], 1);
+    if (*fdout >= 0)
+    {
+        close(1);
+        dup2_closer(all, *fdout, 1);
+        *fdout = -1;
+    }
+    init_signals(all, 'c');
+    run_command_pipe(all, *lst);
+    return (0);
 }
 
-void	run_command_pipe(t_all *all, t_cmd *cmd)
+static int  parent_process_pipe(t_all *all, t_cmd **lst, int *fdout)
 {
-	int res_cmd;
-
-	if (cmd->prev && cmd->prev->pipe == 1 &&
-		(dup2(cmd->prev->fd_pipe[0], 0) < 0))
-	{
-	    close(cmd->prev->fd_pipe[0]);
-	    exit(all->exit_status);
-	}
-    close(cmd->prev->fd_pipe[0]);
-	if ((res_cmd = start_cmd(all, cmd)) > 0)
-		exit(all->exit_status);
-	if (res_cmd == -1)
-		execve_with_pipe(all, cmd, NULL, NULL);
-	exit(0);
+    close(0);
+    if ((*lst)->pipe == 1)
+    {
+        close((*lst)->fd_pipe[1]);
+        dup2_closer(all, (*lst)->fd_pipe[0], 0);
+    }
+    else
+        dup2(all->save_fd[0], 0);
+    if (*fdout >= 0)
+    {
+        close(*fdout);
+        *fdout = -1;
+    }
+    return (0);
 }
 
-int		exec_command_pipe(t_all *all, t_cmd *cmd)
+static int  wrong_pid(t_all *all, t_cmd **lst)
 {
-	pid_t		pid;
-	extern int	errno;
+        restore_fds(all);
+        return (ft_error((*lst)->name, "failed to fork", 13, all));
+}
 
-	errno = 0;
-	pipe(cmd->fd_pipe);
-	if ((pid = fork()) == -1)
-		return (ft_error(cmd->name, "failed to fork", 13, all));
-	if (pid == 0)
-	{
-		dup2(cmd->fd_pipe[1], 1);
-		close(cmd->fd_pipe[1]);
-		init_signals(all, 'c');
-		run_command_pipe(all, cmd);
-	}
-	else
-	{
-		mute_signals();
-		waitpid(pid, &all->res, 0);
-		close_pipe_fd(cmd);
-	}
-	all->exit_status = errno;
-	init_signals(all, 'p');
-	return (all->exit_status);
+int         exec_command_pipe(t_all *all, t_cmd **lst)
+{
+    int i;
+
+    i = 0;
+    while (*lst)
+    {
+    	if (!is_null_cmd(*lst) || (*lst)->redir->r[0] != '\0')
+    	{
+            if (redir_pipe(all, lst, &all->fdin, &all->fdout) != 0)
+                return (all->exit_status);
+			if ((*lst)->pipe == 1)
+			    pipe((*lst)->fd_pipe);
+            all->pid[i] = fork();
+            if (all->pid[i] < 0)
+                wrong_pid(all, lst);
+            if (all->pid[i] == 0)
+                child_process(all, lst, &all->fdout);
+            if (all->pid[i] > 0)
+                parent_process_pipe(all, lst, &all->fdout);
+			*lst = (*lst)->next;
+			i++;
+		}
+    }
+    pipe_wait_process(all, i);
+    return (all->exit_status);
 }

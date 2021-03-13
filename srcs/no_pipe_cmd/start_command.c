@@ -60,18 +60,3 @@ int			start_cmd(t_all *all, t_cmd *lst)
 	}
 	return (-1);
 }
-
-int			no_pipe(t_all *all, t_cmd *cmd)
-{
-	if (cmd->redir->r[0] != '\0')
-	{
-		if (init_redirect(all, cmd, 0) != 0)
-			return (all->exit_status);
-	}
-	else
-	{
-		if (exec_command(all, cmd) != 0)
-			return (all->exit_status);
-	}
-	return (all->exit_status);
-}

@@ -13,6 +13,8 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
+# define PID_SIZE 1024
+
 /*
 ** name = name of the variable
 ** value = value of the variable
@@ -74,10 +76,11 @@ typedef struct		s_all
 	int				pos;
 	int				res;
 	int				save_fd[2];
-	int             fd_in;
-	int             fd_out;
+    int             fdin;
+    int             fdout;
 	int				exit_status;
 	int				semicol;
+    pid_t           pid[PID_SIZE];
 }					t_all;
 
 #endif

@@ -22,6 +22,7 @@ SRCS = srcs/main.c \
 		srcs/redirect/redir_utils.c\
 		srcs/pipe/fd_utils.c\
 		srcs/pipe/init_pipe.c\
+		srcs/pipe/pipe_utils.c\
 		srcs/parser/utils.c \
 		srcs/parser/parser_variables.c \
 		srcs/parser/parser_string.c \
@@ -32,7 +33,7 @@ SRCS = srcs/main.c \
 		srcs/parser/syntax_errors.c \
 		srcs/parser/syntax_errors_utils.c \
 		srcs/parser/convert.c \
-		srcs/no_pipe_cmd/parser_cmd.c \
+		srcs/no_pipe_cmd/run_cmd.c \
 		srcs/no_pipe_cmd/start_command.c \
 		srcs/init/init.c \
 		srcs/general/variables.c \

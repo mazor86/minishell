@@ -21,10 +21,9 @@
 # include "../libft/libft.h"
 # include "struct.h"
 # include <errno.h>
+# include <stdio.h> //
 
 # define PROMPT "\x1b[36mmini_bash$ \x1b[0m"
-
-int				g_exit_s;
 
 /*
 ** General functions for reading input and processing arguments and variables
@@ -38,7 +37,7 @@ char			**convert_argv(t_cmd *lst);
 char			*get_full_cmd_name(t_all *all, t_cmd *lst);
 char			*get_var(t_env *my_env, char *var_name);
 int				get_next_line(int fd, char **line, t_all *all);
-int             dup2_closer(int fd, int std);
+int             dup2_closer(t_all *all, int fd, int std);
 
 /*
 ** Parcer functions
@@ -49,7 +48,7 @@ int				get_shielding(t_all *all, char **text);
 int				get_variables(t_all *all, char **text);
 int				get_strong_quotes(t_all *all, char **text);
 int				get_quotes(t_all *all, char **text);
-int				parser_cmd(t_all *all);
+int				run_cmd(t_all *all);
 int				start_cmd(t_all *all, t_cmd *lst);
 int				start_execve(t_all *all, t_cmd *lst);
 int				exec_command(t_all *all, t_cmd *cmd);
@@ -128,10 +127,17 @@ void			save_fds(t_all *all);
 void			restore_fds(t_all *all);
 int				init_redirect(t_all *all, t_cmd *cmd, int pipe);
 void			close_pipe_fd(t_cmd *cmd);
-int				exec_command_pipe(t_all *all, t_cmd *cmd);
+int exec_command_pipe(t_all *all, t_cmd **lst);
 void			clear_redir(t_redir *redir);
 int				check_redir(t_all *all, t_cmd *lst);
 int				count_redir(t_redir *redir);
+void			close_dup_fd(int red_in, int red_out, int n);
+int				open_file(char redir[2], char *argum);
+void			run_command_pipe(t_all *all, t_cmd *cmd);
+int		        redir_execute(t_all *all, t_cmd *lst, char redir, int *redir_type);
+int				redirections(t_all *all, t_cmd *lst, int *fd, char redir);
+int             redir_pipe(t_all *all, t_cmd **lst, int *fdin, int *fdout);
+void            pipe_wait_process(t_all *all, int pipes_len);
 
 /*
 ** Signals implementing functions
