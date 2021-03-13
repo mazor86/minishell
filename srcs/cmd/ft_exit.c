@@ -51,7 +51,8 @@ int		ft_exit(t_all *all, t_cmd *cmd)
 
 	n = arg_len(cmd);
 	ft_putstr_fd("exit\n", 1);
-	if (n > 1 || (check_digit(cmd->argv[0]) != 1 && cmd->argv[0][0] != '-'))
+	if (n > 1 || (check_digit(cmd->argv[0]) != 1 && cmd->argv[0][0] != '-')
+	|| (cmd->argv[0][0] == '-' && ft_isdigit(cmd->argv[0][1]) != 1))
 	{
 		if (check_digit(cmd->argv[0]) != 1)
 			ft_error("exit", "numeric argument required", 255, all);
