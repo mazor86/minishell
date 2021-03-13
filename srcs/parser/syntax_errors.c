@@ -105,7 +105,7 @@ int			check_syntax(t_all *all)
 		if ((flag = check_redir_err(&line)))
 			break ;
 		if ((flag = check_shielding(&line)))
-			break;
+			break ;
 		if (*line && line == temp)
 			line++;
 	}

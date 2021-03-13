@@ -75,7 +75,6 @@ static int	get_name(t_all *all, t_cmd *lst)
 ** @return 0 if good, otherwise -1
 */
 
-//TODO 33 lines
 static int	get_arg(t_all *all, t_cmd *lst, int *i)
 {
 	const char	spec[6] = "|; ><";
@@ -102,11 +101,11 @@ static int	get_arg(t_all *all, t_cmd *lst, int *i)
 ** @return 0 if good, otherwise -1
 */
 
-//TODO 31 lines
+//TODO 36 lines
 int			parser_string(t_all *all)
 {
 	t_cmd		*lst;
-	int 		i;
+	int			i;
 
 	while (all->line[all->pos])
 	{

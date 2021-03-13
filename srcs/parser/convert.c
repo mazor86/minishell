@@ -51,7 +51,6 @@ static void	*free_argv_local(char **split, char **name)
 ** @return pointer to an array of strings, otherwise NULL
 */
 
-//TODO 26 lines
 char		**deconvert_env(t_env **my_env)
 {
 	t_env	*temp;
@@ -68,11 +67,9 @@ char		**deconvert_env(t_env **my_env)
 	{
 		if (temp->standard != 0)
 		{
-			if (!(res[i] = ft_strdup(temp->name)))
-				return (free_array(res));
-			if (!(res[i] = ft_strjoin(res[i], "=")))
-				return (free_array(res));
-			if (!(res[i] = ft_strjoin(res[i], temp->value)))
+			if (!(res[i] = ft_strdup(temp->name)) ||
+				!(res[i] = ft_strjoin(res[i], "=")) ||
+				!(res[i] = ft_strjoin(res[i], temp->value)))
 				return (free_array(res));
 		}
 		i++;

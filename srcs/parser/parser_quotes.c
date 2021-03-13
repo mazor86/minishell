@@ -47,7 +47,8 @@ int		get_quotes(t_all *all, char **text)
 	all->pos++;
 	while (all->line[all->pos] && all->line[all->pos] != '\"')
 	{
-		if (all->line[all->pos] == '\\' && ft_strchr("$\"\\", all->line[all->pos + 1]))
+		if (all->line[all->pos] == '\\' &&
+		ft_strchr("$\"\\", all->line[all->pos + 1]))
 		{
 			if (get_shielding(all, text) == -1)
 				return (-1);

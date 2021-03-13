@@ -47,4 +47,3 @@ int			put_value(char *argum, t_env **temp)
 		return (2);
 	return (0);
 }
-

@@ -25,7 +25,7 @@ static void	clear(t_all *all)
 	all->res = 1;
 	all->semicol = 0;
 	all->fdin = -1;
-    all->fdout = -1;
+	all->fdout = -1;
 	ft_bzero(all->pid, PID_SIZE);
 }
 
@@ -54,26 +54,26 @@ static void	update_main(t_all *all)
 ** Puts the promt that signifies that you can enter a new command
 */
 
-void        write_promt(t_cmd *lst)
+void		write_promt(t_cmd *lst)
 {
-    int on_line;
-    int echo;
+	int on_line;
+	int echo;
 
-    on_line = 0;
-    echo = 1;
-    while (lst != NULL)
-    {
-        echo = strcmp(lst->name, "echo");
-        if (echo == 0)
-            break ;
-        lst = lst->next;
-    }
-    if (echo == 0)
-        if (lst != NULL && strcmp(lst->argv[0], "-n") == 0)
-            on_line = 1;
-    if (on_line == 0)
-        ft_putstr_fd("\b\b  \b\b", 1);
-    ft_putstr_fd(PROMPT, 1);
+	on_line = 0;
+	echo = 1;
+	while (lst != NULL)
+	{
+		echo = strcmp(lst->name, "echo");
+		if (echo == 0)
+			break ;
+		lst = lst->next;
+	}
+	if (echo == 0)
+		if (lst != NULL && strcmp(lst->argv[0], "-n") == 0)
+			on_line = 1;
+	if (on_line == 0)
+		ft_putstr_fd("\b\b  \b\b", 1);
+	ft_putstr_fd(PROMPT, 1);
 }
 
 /*
@@ -81,11 +81,11 @@ void        write_promt(t_cmd *lst)
 ** variables to list, init signals
 */
 
-void        init_main(t_all *all, char **env)
+void		init_main(t_all *all, char **env)
 {
-    clear(all);
-    convert_env(&all->my_env, env, all);
-    init_signals(all, 'p');
+	clear(all);
+	convert_env(&all->my_env, env, all);
+	init_signals(all, 'p');
 }
 
 /*
@@ -106,7 +106,7 @@ int			main(int args, char **argv, char **env)
 
 	(void)args;
 	(void)argv;
-    init_main(&all, env);
+	init_main(&all, env);
 	ft_putstr_fd(PROMPT, 1);
 	while (1)
 	{
@@ -120,10 +120,10 @@ int			main(int args, char **argv, char **env)
 				run_cmd(&all);
 			}
 			if (!all.semicol)
-			    write_promt(all.cmd);
+				write_promt(all.cmd);
 			update_main(&all);
 		}
 		else
-            write_promt(all.cmd);
+			write_promt(all.cmd);
 	}
 }

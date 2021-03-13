@@ -13,49 +13,16 @@
 #include "../../includes/minishell.h"
 
 /*
-** Clears the entire array of t_env structures
-**
-** @param **my_env
-*/
-
-void	del_one_env(t_env *my_env)
-{
-	if (my_env->name)
-	{
-		free(my_env->name);
-		my_env->name = NULL;
-	}
-	if (my_env->value)
-	{
-		free(my_env->value);
-		my_env->value = NULL;
-	}
-	my_env->standard = 0;
-}
-
-void	free_t_env(t_env **my_env)
-{
-	t_env	*temp;
-	t_env  *save;
-
-	if (my_env)
-	{
-		temp = *my_env;
-		while (temp)
-		{
-			save = temp->next;
-			del_one_env(temp);
-			free(temp);
-			temp = save;
-		}
-	}
-}
-
-/*
 ** Clears the entire t_cmd structure
 **
 ** @param **lst Pointer to sheet of structure t_cmd
 */
+
+void	free_null(char *ptr)
+{
+	free(ptr);
+	ptr = NULL;
+}
 
 void	clear_cmd(t_cmd **cmd_lst)
 {
@@ -66,14 +33,14 @@ void	clear_cmd(t_cmd **cmd_lst)
 	if (cmd_lst)
 	{
 		tmp = *cmd_lst;
-		while (tmp) {
+		while (tmp)
+		{
 			save = tmp->next;
 			i = -1;
-			if (tmp->name) {
-				free(tmp->name);
-				tmp->name = NULL;
-			}
-			if (tmp->argv) {
+			if (tmp->name)
+				free_null(tmp->name);
+			if (tmp->argv)
+			{
 				while (tmp->argv[++i])
 					free(tmp->argv[i]);
 			}
@@ -82,7 +49,7 @@ void	clear_cmd(t_cmd **cmd_lst)
 			free(tmp);
 			tmp = save;
 		}
-        *cmd_lst = NULL;
+		*cmd_lst = NULL;
 	}
 }
 

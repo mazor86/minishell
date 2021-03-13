@@ -57,7 +57,7 @@ int		trim_space_in_line(char **line)
 	return (space);
 }
 
-int 	check_shielding(char **line)
+int		check_shielding(char **line)
 {
 	if (**line == '\\')
 	{

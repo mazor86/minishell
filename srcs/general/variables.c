@@ -14,10 +14,10 @@
 
 char	*get_var(t_env *my_env, char *var_name)
 {
-	int 	flag;
+	int	flag;
 
-	while ((flag = ft_strncmp(my_env->name, var_name, ft_strlen(my_env->name) + 1)) != 0
-		&& my_env->next != NULL)
+	while ((flag = ft_strncmp(my_env->name, var_name,
+			ft_strlen(my_env->name) + 1)) != 0 && my_env->next != NULL)
 	{
 		my_env = my_env->next;
 	}
