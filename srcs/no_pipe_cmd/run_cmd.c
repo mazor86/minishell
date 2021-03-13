@@ -38,13 +38,13 @@ int			free_local(char **array_1, char **array_2, char **text, int ret)
 ** return: 0 if good, otherwise returns exit status of the failed command
 */
 
-static void	parent_process(int pid, t_all *all, t_cmd *lst)
+static void	parent_process(int pid, t_all *all)
 {
 	mute_signals();
 	waitpid(pid, &all->res, 0);
 	catch_signals(all);
 	implement_signals(all);
-	close_pipe_fd(lst);
+	init_signals(all, 'p');
 }
 
 static int	child_process(t_all *all, char **envp, char **argv, char *fullname)
@@ -87,8 +87,7 @@ int			start_execve(t_all *all, t_cmd *lst)
 			exit(ft_error(lst->name, strerror(errno), errno, all));
 		}
 		else
-			parent_process(pid, all, lst);
-		init_signals(all, 'p');
+			parent_process(pid, all);
 	}
 	return (free_local(envp, argv, &fullname, all->exit_status));
 }

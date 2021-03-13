@@ -95,6 +95,7 @@ add_executable(minishell_new
         srcs/parser/utils.c
         srcs/pipe/fd_utils.c
         srcs/pipe/init_pipe.c
+        srcs/pipe/pipe_utils.c
         srcs/redirect/redir_utils.c
         srcs/redirect/redirect.c
         srcs/signals/signals.c

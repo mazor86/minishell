@@ -2411,6 +2411,33 @@ srcs/pipe/init_pipe.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/pipe/init_pipe.c.s
 .PHONY : srcs/pipe/init_pipe.c.s
 
+srcs/pipe/pipe_utils.o: srcs/pipe/pipe_utils.c.o
+
+.PHONY : srcs/pipe/pipe_utils.o
+
+# target to build an object file
+srcs/pipe/pipe_utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/pipe/pipe_utils.c.o
+.PHONY : srcs/pipe/pipe_utils.c.o
+
+srcs/pipe/pipe_utils.i: srcs/pipe/pipe_utils.c.i
+
+.PHONY : srcs/pipe/pipe_utils.i
+
+# target to preprocess a source file
+srcs/pipe/pipe_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/pipe/pipe_utils.c.i
+.PHONY : srcs/pipe/pipe_utils.c.i
+
+srcs/pipe/pipe_utils.s: srcs/pipe/pipe_utils.c.s
+
+.PHONY : srcs/pipe/pipe_utils.s
+
+# target to generate assembly for a file
+srcs/pipe/pipe_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/pipe/pipe_utils.c.s
+.PHONY : srcs/pipe/pipe_utils.c.s
+
 srcs/redirect/redir_utils.o: srcs/redirect/redir_utils.c.o
 
 .PHONY : srcs/redirect/redir_utils.o
@@ -2780,6 +2807,9 @@ help:
 	@echo "... srcs/pipe/init_pipe.o"
 	@echo "... srcs/pipe/init_pipe.i"
 	@echo "... srcs/pipe/init_pipe.s"
+	@echo "... srcs/pipe/pipe_utils.o"
+	@echo "... srcs/pipe/pipe_utils.i"
+	@echo "... srcs/pipe/pipe_utils.s"
 	@echo "... srcs/redirect/redir_utils.o"
 	@echo "... srcs/redirect/redir_utils.i"
 	@echo "... srcs/redirect/redir_utils.s"

@@ -22,6 +22,7 @@ SRCS = srcs/main.c \
 		srcs/redirect/redir_utils.c\
 		srcs/pipe/fd_utils.c\
 		srcs/pipe/init_pipe.c\
+		srcs/pipe/pipe_utils.c\
 		srcs/parser/utils.c \
 		srcs/parser/parser_variables.c \
 		srcs/parser/parser_string.c \

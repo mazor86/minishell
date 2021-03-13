@@ -136,6 +136,8 @@ int				open_file(char redir[2], char *argum);
 void			run_command_pipe(t_all *all, t_cmd *cmd);
 int		        redir_execute(t_all *all, t_cmd *lst, char redir, int *redir_type);
 int				redirections(t_all *all, t_cmd *lst, int *fd, char redir);
+int             redir_pipe(t_all *all, t_cmd **lst, int *fdin, int *fdout);
+void            pipe_wait_process(t_all *all, int pipes_len);
 
 /*
 ** Signals implementing functions
