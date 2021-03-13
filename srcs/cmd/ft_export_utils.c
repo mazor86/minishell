@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 17:36:02 by tisabel           #+#    #+#             */
-/*   Updated: 2021/03/12 20:15:57 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/13 02:44:51 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			check_arg(char *argum)
 		{
 			if (argum[i] != '_' && ft_isdigit(argum[i]) == 0)
 				return (1);
-			if (ft_isdigit(argum[i]) == 0 && i == 0)
+			if (ft_isdigit(argum[i]) == 1 && i == 0)
 				return (1);
 		}
 		i++;
@@ -47,3 +47,4 @@ int			put_value(char *argum, t_env **temp)
 		return (2);
 	return (0);
 }
+
