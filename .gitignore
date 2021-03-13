@@ -1,3 +1,5 @@
-.git .idea
+.idea
 cmake-build-debug/*
-.*
+*.o
+CMakeLists.txt
+libft.a

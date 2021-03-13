@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is AppleClang, found in "/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/3.17.5/CompilerIdC/a.out"
+The C compiler identification is AppleClang, found in "/Users/tisabel/Documents/minishell_new/cmake-build-debug/CMakeFiles/3.17.5/CompilerIdC/a.out"
 
 Determining if the C compiler works passed with the following output:
 <<<<<<< HEAD
