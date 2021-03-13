@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /Users/tisabel/Documents/minishell_new/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/tisabel/Documents/minishell_new/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/tisabel/Documents/minishell_new/cmake-build-debug/CMakeFiles/minishell_new.dir
+=======
+/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mazor/projects/minishell/cmake-build-debug/CMakeFiles/minishell_new.dir
+>>>>>>> a30b7d2945f7c3c783390fe1dd935b6c1c57308b

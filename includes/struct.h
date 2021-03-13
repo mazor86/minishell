@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:38:46 by tisabel           #+#    #+#             */
-/*   Updated: 2021/01/25 19:48:20 by tisabel          ###   ########.fr       */
+/*   Updated: 2021/03/12 20:15:57 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,11 @@ typedef struct		s_all
 	int				pos;
 	int				res;
 	int				save_fd[2];
+<<<<<<< HEAD
     int             fdin;
     int             fdout;
+=======
+>>>>>>> a30b7d2945f7c3c783390fe1dd935b6c1c57308b
 	int				exit_status;
 	int				semicol;
     pid_t           pid[PID_SIZE];
