@@ -70,5 +70,7 @@ int			start_execve(t_all *all, t_cmd *lst)
 		else
 			parent_process(pid, all);
 	}
+	else
+		all->exit_status = 127;
 	return (free_local(envp, argv, &fullname, all->exit_status));
 }

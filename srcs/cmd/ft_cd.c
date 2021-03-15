@@ -12,6 +12,25 @@
 
 #include "../../includes/minishell.h"
 
+static int	change_path(t_all *all, char *var_name, char *new_value)
+{
+	t_env *temp;
+
+	temp = all->my_env;
+	while (temp)
+	{
+		if (ft_strcmp(temp->name, var_name) == 0)
+		{
+			free(temp->value);
+			if (!(temp->value = new_value))
+				return (ft_error("export", "out of memory", 12, all));
+			break ;
+		}
+		temp = temp->next;
+	}
+	return (0);
+}
+
 int		ft_cd(t_all *all, t_cmd *cmd)
 {
 	char *path;
@@ -26,6 +45,6 @@ int		ft_cd(t_all *all, t_cmd *cmd)
 	if (get_var(all->my_env, "OLDPWD") == NULL)
 		add_arg(all, "OLDPWD", &all->my_env);
 	change_env(all, "OLDPWD", get_var(all->my_env, "PWD"));
-	change_env(all, "PWD", getcwd(NULL, _PC_PATH_MAX));
+	change_path(all, "PWD", getcwd(NULL, _PC_PATH_MAX));
 	return (all->exit_status);
 }

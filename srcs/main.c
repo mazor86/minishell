@@ -26,6 +26,7 @@ static void	clear(t_all *all)
 	all->semicol = 0;
 	all->fdin = -1;
 	all->fdout = -1;
+	all->exit_status = 0;
 	ft_bzero(all->pid, PID_SIZE);
 }
 

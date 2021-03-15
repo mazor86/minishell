@@ -31,6 +31,7 @@ void	del_one_env(t_env *my_env)
 		my_env->value = NULL;
 	}
 	my_env->standard = 0;
+	free(my_env);
 }
 
 void	free_t_env(t_env **my_env)
@@ -45,7 +46,6 @@ void	free_t_env(t_env **my_env)
 		{
 			save = temp->next;
 			del_one_env(temp);
-			free(temp);
 			temp = save;
 		}
 	}

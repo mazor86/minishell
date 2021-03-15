@@ -24,7 +24,7 @@ static void	unlink_envs(t_env **begin, t_env *my_env)
 		temp->next = my_env->next;
 	}
 	else
-		*begin = temp->next;
+		*begin = my_env->next;
 }
 
 static void	ft_rm_element(t_all *all, char *name)
@@ -52,13 +52,10 @@ int			ft_unset(t_all *all, t_cmd *cmd)
 
 	i = 0;
 	all->exit_status = 0;
-	if (cmd->argv[0] != NULL)
+	while (cmd->argv[i] != NULL)
 	{
-		while (cmd->argv[i] != NULL)
-		{
-			ft_rm_element(all, cmd->argv[i]);
-			i++;
-		}
+		ft_rm_element(all, cmd->argv[i]);
+		i++;
 	}
 	return (all->exit_status);
 }

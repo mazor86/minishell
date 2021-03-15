@@ -18,6 +18,12 @@ void	save_fds(t_all *all)
 	all->save_fd[1] = dup(1);
 }
 
+int		close_dup2_closer(t_all *all, int fd, int std)
+{
+	close(std);
+	return (dup2_closer(all, fd, std));
+}
+
 int		dup2_closer(t_all *all, int fd, int std)
 {
 	if (dup2(fd, std) < 0)
@@ -31,20 +37,6 @@ int		dup2_closer(t_all *all, int fd, int std)
 
 void	restore_fds(t_all *all)
 {
-	{
-		dup2_closer(all, all->save_fd[0], 0);
-		dup2_closer(all, all->save_fd[1], 1);
-	}
-}
-
-void	close_pipe_fd(t_cmd *cmd)
-{
-	if (cmd->pipe == 1)
-	{
-		close(cmd->fd_pipe[1]);
-	}
-	if (cmd->prev && cmd->prev->pipe == 1)
-	{
-		close(cmd->prev->fd_pipe[0]);
-	}
+	close_dup2_closer(all, all->save_fd[0], 0);
+	close_dup2_closer(all, all->save_fd[1], 1);
 }

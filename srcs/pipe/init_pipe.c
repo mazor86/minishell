@@ -42,6 +42,7 @@ static int	parent_process_pipe(t_all *all, t_cmd **lst, int *fdout)
 		dup2_closer(all, (*lst)->fd_pipe[0], 0);
 	}
 	else
+		//restore_fds(all);
 		dup2(all->save_fd[0], 0);
 	if (*fdout >= 0)
 	{

@@ -133,12 +133,28 @@ int			run_cmd(t_all *all)
 		{
 			if (redirections(all, lst, &fdin, '<') == 0 &&
 			redirections(all, lst, &fdout, '>') == 0 &&
-			dup2_closer(all, fdin, 0) == 0 &&
-			dup2_closer(all, fdout, 1) == 0 &&
+			close_dup2_closer(all, fdin, 0) == 0 &&
+			close_dup2_closer(all, fdout, 1) == 0 &&
 			!is_null_cmd(lst))
+			{
 				exec_command(all, lst);
+			}
+			else
+			{
+				if (fdin >= 0)
+				{
+					close(fdin);
+					fdin = -1;
+				}
+				if (fdout >= 0)
+				{
+					close(fdout);
+					fdout = -1;
+				}
+			}
 			restore_fds(all);
 		}
+		//restore_fds(all);
 	}
 	return (all->exit_status);
 }

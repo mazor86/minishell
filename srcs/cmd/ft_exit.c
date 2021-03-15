@@ -50,6 +50,7 @@ int		ft_exit(t_all *all, t_cmd *cmd)
 	unsigned char	exit_status;
 
 	n = arg_len(cmd);
+	exit_status = all->exit_status;
 	ft_putstr_fd("exit\n", 1);
 	if (n > 1 || (check_digit(cmd->argv[0]) != 1 && cmd->argv[0][0] != '-')
 	|| (cmd->argv[0][0] == '-' && ft_isdigit(cmd->argv[0][1]) != 1))
@@ -61,12 +62,8 @@ int		ft_exit(t_all *all, t_cmd *cmd)
 		exit_status = (unsigned char)all->exit_status;
 	}
 	else
-	{
 		if (n == 1)
 			exit_status = (unsigned char)ft_atoi(cmd->argv[0]);
-		else
-			exit_status = (unsigned char)all->exit_status;
-	}
 	free_t_env(&all->my_env);
 	restore_fds(all);
 	clear_all(all);

@@ -37,6 +37,7 @@ char			*get_full_cmd_name(t_all *all, t_cmd *lst);
 char			*get_var(t_env *my_env, char *var_name);
 int				get_next_line(int fd, char **line, t_all *all);
 int				dup2_closer(t_all *all, int fd, int std);
+int				close_dup2_closer(t_all *all, int fd, int std);
 void			free_null(char *ptr);
 
 /*
