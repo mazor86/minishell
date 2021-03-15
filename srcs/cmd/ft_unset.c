@@ -12,29 +12,38 @@
 
 #include "../../includes/minishell.h"
 
-/*
-** j - number of element to remove.
-*/
+static void	unlink_envs(t_env **begin, t_env *my_env)
+{
+	t_env *temp;
+
+	temp = *begin;
+	if (*begin != my_env)
+	{
+		while (temp->next != my_env)
+			temp = temp->next;
+		temp->next = my_env->next;
+	}
+	else
+		*begin = temp->next;
+}
 
 static void	ft_rm_element(t_all *all, char *name)
 {
 	t_env *temp;
-	t_env **begin;
+	t_env *del;
 
-	begin = &all->my_env;
 	temp = all->my_env;
-	while (all->my_env)
+	while (temp)
 	{
-		if (ft_strcmp(all->my_env->name, name) == 0)
+		del = temp;
+		temp = temp->next;
+		if (ft_strcmp(del->name, name) == 0)
 		{
-			temp->next = temp->next->next;
-			del_one_env(all->my_env);
+			unlink_envs(&all->my_env, del);
+			del_one_env(del);
+			break ;
 		}
-		else
-			temp = all->my_env;
-		all->my_env = all->my_env->next;
 	}
-	all->my_env = *begin;
 }
 
 int			ft_unset(t_all *all, t_cmd *cmd)
