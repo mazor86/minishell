@@ -21,6 +21,7 @@
 # include "../libft/libft.h"
 # include "struct.h"
 # include <errno.h>
+# include <stdio.h> //
 
 # define PROMPT "\x1b[36mmini_bash$ \x1b[0m"
 
@@ -28,7 +29,6 @@
 ** General functions for reading input and processing arguments and variables
 */
 
-char			*ft_strcut(char *str, char c);
 int				check_digit(char *str);
 int				clear_all(t_all *all);
 char			**deconvert_env(t_env **env);

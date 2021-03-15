@@ -154,7 +154,6 @@ int			run_cmd(t_all *all)
 			}
 			restore_fds(all);
 		}
-		//restore_fds(all);
 	}
 	return (all->exit_status);
 }

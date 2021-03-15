@@ -20,12 +20,12 @@ static int	child_process(t_all *all, t_cmd **lst, int *fdout)
 		dup2_closer(all, (*lst)->fd_pipe[1], 1);
 		close((*lst)->fd_pipe[0]);
 	}
-	else
+	else {
 		dup2(all->save_fd[1], 1);
+	}
 	if (*fdout >= 0)
 	{
-		close(1);
-		dup2_closer(all, *fdout, 1);
+		close_dup2_closer(all, *fdout, 1);
 		*fdout = -1;
 	}
 	init_signals(all, 'c');
@@ -41,9 +41,9 @@ static int	parent_process_pipe(t_all *all, t_cmd **lst, int *fdout)
 		close((*lst)->fd_pipe[1]);
 		dup2_closer(all, (*lst)->fd_pipe[0], 0);
 	}
-	else
-		//restore_fds(all);
+	else {//restore_fds(all);
 		dup2(all->save_fd[0], 0);
+	}
 	if (*fdout >= 0)
 	{
 		close(*fdout);
@@ -69,8 +69,9 @@ int			exec_command_pipe(t_all *all, t_cmd **lst)
 		{
 			if (redir_pipe(all, lst, &all->fdin, &all->fdout) != 0)
 				return (all->exit_status);
-			if ((*lst)->pipe == 1)
+			if ((*lst)->pipe == 1) {
 				pipe((*lst)->fd_pipe);
+			}
 			all->pid[i] = fork();
 			if (all->pid[i] < 0)
 				wrong_pid(all, lst);

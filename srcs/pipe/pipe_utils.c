@@ -59,6 +59,7 @@ void	pipe_wait_process(t_all *all, int pipes_len)
 	catch_signals(all);
 	implement_signals(all);
 	init_signals(all, 'p');
+	restore_fds(all);
 }
 
 int		redir_pipe(t_all *all, t_cmd **lst, int *fdin, int *fdout)
@@ -74,8 +75,7 @@ int		redir_pipe(t_all *all, t_cmd **lst, int *fdin, int *fdout)
 	}
 	if (*fdin >= 0)
 	{
-		close(0);
-		dup2_closer(all, *fdin, 0);
+		close_dup2_closer(all, *fdin, 0);
 		*fdin = -1;
 	}
 	return (0);
