@@ -74,15 +74,16 @@ add_executable(minishell_new
         srcs/cmd/ft_unset.c
         srcs/cmd_utils/add_back_cmd.c
         srcs/cmd_utils/cmd_last.c
-        srcs/cmd_utils/cmd_len.c
         srcs/env/conv_env.c
         srcs/env/env_utils.c
         srcs/env/env_utils_2.c
+        srcs/env/env_free.c
         srcs/general/get_next_line.c
         srcs/general/variables.c
         srcs/init/init.c
         srcs/no_pipe_cmd/run_cmd.c
         srcs/no_pipe_cmd/start_command.c
+        srcs/no_pipe_cmd/start_execve_pipe.c
         srcs/parser/convert.c
         srcs/parser/parser_errors.c
         srcs/parser/parser_path.c

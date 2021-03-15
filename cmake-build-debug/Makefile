@@ -1817,33 +1817,6 @@ srcs/cmd_utils/cmd_last.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/cmd_utils/cmd_last.c.s
 .PHONY : srcs/cmd_utils/cmd_last.c.s
 
-srcs/cmd_utils/cmd_len.o: srcs/cmd_utils/cmd_len.c.o
-
-.PHONY : srcs/cmd_utils/cmd_len.o
-
-# target to build an object file
-srcs/cmd_utils/cmd_len.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/cmd_utils/cmd_len.c.o
-.PHONY : srcs/cmd_utils/cmd_len.c.o
-
-srcs/cmd_utils/cmd_len.i: srcs/cmd_utils/cmd_len.c.i
-
-.PHONY : srcs/cmd_utils/cmd_len.i
-
-# target to preprocess a source file
-srcs/cmd_utils/cmd_len.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/cmd_utils/cmd_len.c.i
-.PHONY : srcs/cmd_utils/cmd_len.c.i
-
-srcs/cmd_utils/cmd_len.s: srcs/cmd_utils/cmd_len.c.s
-
-.PHONY : srcs/cmd_utils/cmd_len.s
-
-# target to generate assembly for a file
-srcs/cmd_utils/cmd_len.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/cmd_utils/cmd_len.c.s
-.PHONY : srcs/cmd_utils/cmd_len.c.s
-
 srcs/env/conv_env.o: srcs/env/conv_env.c.o
 
 .PHONY : srcs/env/conv_env.o
@@ -1870,6 +1843,33 @@ srcs/env/conv_env.s: srcs/env/conv_env.c.s
 srcs/env/conv_env.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/env/conv_env.c.s
 .PHONY : srcs/env/conv_env.c.s
+
+srcs/env/env_free.o: srcs/env/env_free.c.o
+
+.PHONY : srcs/env/env_free.o
+
+# target to build an object file
+srcs/env/env_free.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/env/env_free.c.o
+.PHONY : srcs/env/env_free.c.o
+
+srcs/env/env_free.i: srcs/env/env_free.c.i
+
+.PHONY : srcs/env/env_free.i
+
+# target to preprocess a source file
+srcs/env/env_free.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/env/env_free.c.i
+.PHONY : srcs/env/env_free.c.i
+
+srcs/env/env_free.s: srcs/env/env_free.c.s
+
+.PHONY : srcs/env/env_free.s
+
+# target to generate assembly for a file
+srcs/env/env_free.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/env/env_free.c.s
+.PHONY : srcs/env/env_free.c.s
 
 srcs/env/env_utils.o: srcs/env/env_utils.c.o
 
@@ -2086,6 +2086,33 @@ srcs/no_pipe_cmd/start_command.s: srcs/no_pipe_cmd/start_command.c.s
 srcs/no_pipe_cmd/start_command.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/no_pipe_cmd/start_command.c.s
 .PHONY : srcs/no_pipe_cmd/start_command.c.s
+
+srcs/no_pipe_cmd/start_execve_pipe.o: srcs/no_pipe_cmd/start_execve_pipe.c.o
+
+.PHONY : srcs/no_pipe_cmd/start_execve_pipe.o
+
+# target to build an object file
+srcs/no_pipe_cmd/start_execve_pipe.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/no_pipe_cmd/start_execve_pipe.c.o
+.PHONY : srcs/no_pipe_cmd/start_execve_pipe.c.o
+
+srcs/no_pipe_cmd/start_execve_pipe.i: srcs/no_pipe_cmd/start_execve_pipe.c.i
+
+.PHONY : srcs/no_pipe_cmd/start_execve_pipe.i
+
+# target to preprocess a source file
+srcs/no_pipe_cmd/start_execve_pipe.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/no_pipe_cmd/start_execve_pipe.c.i
+.PHONY : srcs/no_pipe_cmd/start_execve_pipe.c.i
+
+srcs/no_pipe_cmd/start_execve_pipe.s: srcs/no_pipe_cmd/start_execve_pipe.c.s
+
+.PHONY : srcs/no_pipe_cmd/start_execve_pipe.s
+
+# target to generate assembly for a file
+srcs/no_pipe_cmd/start_execve_pipe.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minishell_new.dir/build.make CMakeFiles/minishell_new.dir/srcs/no_pipe_cmd/start_execve_pipe.c.s
+.PHONY : srcs/no_pipe_cmd/start_execve_pipe.c.s
 
 srcs/parser/convert.o: srcs/parser/convert.c.o
 
@@ -2741,12 +2768,12 @@ help:
 	@echo "... srcs/cmd_utils/cmd_last.o"
 	@echo "... srcs/cmd_utils/cmd_last.i"
 	@echo "... srcs/cmd_utils/cmd_last.s"
-	@echo "... srcs/cmd_utils/cmd_len.o"
-	@echo "... srcs/cmd_utils/cmd_len.i"
-	@echo "... srcs/cmd_utils/cmd_len.s"
 	@echo "... srcs/env/conv_env.o"
 	@echo "... srcs/env/conv_env.i"
 	@echo "... srcs/env/conv_env.s"
+	@echo "... srcs/env/env_free.o"
+	@echo "... srcs/env/env_free.i"
+	@echo "... srcs/env/env_free.s"
 	@echo "... srcs/env/env_utils.o"
 	@echo "... srcs/env/env_utils.i"
 	@echo "... srcs/env/env_utils.s"
@@ -2771,6 +2798,9 @@ help:
 	@echo "... srcs/no_pipe_cmd/start_command.o"
 	@echo "... srcs/no_pipe_cmd/start_command.i"
 	@echo "... srcs/no_pipe_cmd/start_command.s"
+	@echo "... srcs/no_pipe_cmd/start_execve_pipe.o"
+	@echo "... srcs/no_pipe_cmd/start_execve_pipe.i"
+	@echo "... srcs/no_pipe_cmd/start_execve_pipe.s"
 	@echo "... srcs/parser/convert.o"
 	@echo "... srcs/parser/convert.i"
 	@echo "... srcs/parser/convert.s"
