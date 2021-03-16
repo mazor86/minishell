@@ -6,11 +6,11 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 00:04:57 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/16 15:56:49 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 /*
 ** display the result of the last operation

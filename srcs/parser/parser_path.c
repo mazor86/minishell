@@ -6,11 +6,11 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:00:54 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 17:14:58 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/16 17:16:44 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 /*
 ** looks for a file in a directory

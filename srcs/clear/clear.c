@@ -6,11 +6,11 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 19:39:57 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/16 17:31:19 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 /*
 ** Clears the entire t_cmd structure

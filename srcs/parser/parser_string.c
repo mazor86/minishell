@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 /*
 ** gets strings when encountering special characters
@@ -109,6 +109,7 @@ int			parser_string(t_all *all)
 
 	while (all->line[all->pos])
 	{
+
 		i = 0;
 		if (all->line[all->pos] == ';')
 			all->pos++;

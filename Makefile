@@ -6,13 +6,13 @@
 #    By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/03 21:04:29 by mazor             #+#    #+#              #
-#    Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr        #
+#    Updated: 2021/03/16 17:40:00 by mazor            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-FLAGS = -g -Wall -Wextra -Werror -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -Iincludes/
 LIBFT = libft.a
 
 SRCS = srcs/main.c \
@@ -84,4 +84,4 @@ re: fclean all
 norminette:
 	@norminette $(SRCS) $(HEADER) libft/*.c
 
-.PHONY: all clean fclean bonus re
+.PHONY: all clean fclean bonus re norminette
