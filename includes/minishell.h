@@ -21,7 +21,6 @@
 # include "../libft/libft.h"
 # include "struct.h"
 # include <errno.h>
-# include <stdio.h> //
 
 # define PROMPT "\x1b[36mmini_bash$ \x1b[0m"
 

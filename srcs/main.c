@@ -99,8 +99,6 @@ void		init_main(t_all *all, char **env)
 ** if something went wrong
 */
 
-//TODO fix memory leaks
-//TODO fix Makefile (especially includes), check dependencies
 int			main(int args, char **argv, char **env)
 {
 	t_all	all;

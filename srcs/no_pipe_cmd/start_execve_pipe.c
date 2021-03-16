@@ -59,9 +59,7 @@ int			start_execve(t_all *all, t_cmd *lst)
 	if (envp && argv && fullname)
 	{
 		if ((pid = fork()) == -1)
-		{
 			ft_error(lst->name, "failed to fork", 13, all);
-		}
 		else if (pid == 0)
 		{
 			child_process(all, envp, argv, fullname);

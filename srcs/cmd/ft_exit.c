@@ -62,8 +62,10 @@ int		ft_exit(t_all *all, t_cmd *cmd)
 		exit_status = (unsigned char)all->exit_status;
 	}
 	else
+	{
 		if (n == 1)
 			exit_status = (unsigned char)ft_atoi(cmd->argv[0]);
+	}
 	free_t_env(&all->my_env);
 	restore_fds(all);
 	clear_all(all);
