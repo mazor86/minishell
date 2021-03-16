@@ -6,7 +6,7 @@
 #    By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/11 16:53:48 by mazor             #+#    #+#              #
-#    Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr        #
+#    Updated: 2021/03/16 21:52:06 by mazor            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,17 +31,19 @@ OBJ = ${SRCS:.c=.o}
 
 all: $(NAME)
 
-%.o: %.c
-	@gcc $(FLAGS) -c -o $@ $^
+%.o: %.c $(HEADER)
+	gcc $(FLAGS) -c -o $@ $<
 
-$(NAME): $(OBJ) $(HEADER)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
+$(NAME): $(OBJ)
+	@echo "compile libft..."
+	@ar -rcs $@ $?
 
 clean:
+	@echo "clean libft object files..."
 	@/bin/rm -f $(OBJ)
 
 fclean: clean
+	@echo "remove libft..."
 	@/bin/rm -f $(NAME)
 
 re: fclean all

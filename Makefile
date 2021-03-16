@@ -6,14 +6,14 @@
 #    By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/03 21:04:29 by mazor             #+#    #+#              #
-#    Updated: 2021/03/16 17:40:00 by mazor            ###   ########.fr        #
+#    Updated: 2021/03/16 21:58:55 by mazor            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
-
+CC = gcc -O2
 FLAGS = -Wall -Wextra -Werror -Iincludes/
-LIBFT = libft.a
+LIBFT = ./libft/libft.a
 
 SRCS = srcs/main.c \
 		srcs/signals/signals.c\
@@ -58,30 +58,35 @@ SRCS = srcs/main.c \
 
 OBJ = $(SRCS:.c=.o)
 
-HEADER = includes/minishell.h libft/libft.h
+HEADER = includes/minishell.h libft/libft.h includes/struct.h
 
-%.o: %.c
-	gcc $(FLAGS) -c -o $@ $^
+%.o: %.c $(HEADER)
+	$(CC) $(FLAGS) -c -o $@ $<
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
-	make -C libft
-	mv libft/$(LIBFT) .
-	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT)
+	@echo "compile minishell..."
+	@$(CC) $(FLAGS) -o $(NAME) $(OBJ) -L./libft -lft
+
+$(LIBFT): NONE
+	@make -C ./libft
 
 bonus: all
 
 clean:
-	rm -f $(OBJ)
-	make -C libft clean
+	@echo "clean minishell object files..."
+	@rm -f $(OBJ)
+	@make -C libft clean
 
 fclean: clean
-	rm -f $(NAME) $(LIBFT)
+	@echo "remove minishell"
+	@echo "remove libft.a"
+	@rm -f $(NAME) $(LIBFT)
 
 re: fclean all
 
 norminette:
 	@norminette $(SRCS) $(HEADER) libft/*.c
 
-.PHONY: all clean fclean bonus re norminette
+.PHONY: all clean fclean bonus re norminette NONE

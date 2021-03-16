@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/mini_sh.iml" filepath="$PROJECT_DIR$/.idea/mini_sh.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/minishell2.iml" filepath="$PROJECT_DIR$/.idea/minishell2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/minishell_new.iml" filepath="$PROJECT_DIR$/.idea/minishell_new.iml" />
     </modules>
