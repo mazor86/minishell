@@ -12,10 +12,30 @@
 
 #include "../../includes/minishell.h"
 
+int		set_env(char *env_i, t_env **temp)
+{
+	int	n;
+
+	if (ft_strchr(env_i, '='))
+	{
+		if (((*temp)->name = ft_strcut(env_i, '=')) == NULL)
+			return (-1);
+		n = ft_strfind(env_i, '=');
+		if (((*temp)->value = ft_strdup(&env_i[n])) == NULL)
+			return (-1);
+	}
+	else
+	{
+		if (((*temp)->name = ft_strdup(env_i)) == NULL)
+			return (-1);
+	}
+	(*temp)->standard = 1;
+	return (0);
+}
+
 int		convert_env(t_env **env_var, char **env, t_all *all)
 {
 	int		i;
-	int		n;
 	t_env	*temp;
 
 	i = 0;
@@ -24,15 +44,8 @@ int		convert_env(t_env **env_var, char **env, t_all *all)
 	*env_var = temp;
 	while (env[i] != NULL)
 	{
-		if (ft_strchr(env[i], '='))
-		{
-			temp->name = ft_strcut(env[i], '=');
-			n = ft_strfind(env[i], '=');
-			temp->value = ft_strdup(&env[i][n]);
-		}
-		else
-			temp->name = ft_strdup(env[i]);
-		temp->standard = 1;
+		if (set_env(env[i], &temp) != 0)
+			return (ft_error("unset", "out of memory", 12, all));
 		if (env[i + 1] == NULL)
 			temp->next = NULL;
 		else

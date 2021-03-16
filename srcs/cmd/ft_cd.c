@@ -37,14 +37,17 @@ int			ft_cd(t_all *all, t_cmd *cmd)
 	char	*old_path;
 
 	all->exit_status = 0;
-	path = cmd->argv[0][0] == '\0' ? get_var(all->my_env, "HOME")
-			: ft_strdup(cmd->argv[0]);
-	if (chdir(path) < 0)
-	{
-		ft_error("cd", "No such file or directory", 2, all);
-		free(path);
-		return (all->exit_status);
-	}
+	if (cmd->argv[0][0] == '\0')
+		path = get_var(all->my_env, "HOME");
+	else
+		path = ft_strdup(cmd->argv[0]);
+	if (path[0] != '\0')
+		if (chdir(path) < 0)
+		{
+			ft_error("cd", "No such file or directory", 2, all);
+			free(path);
+			return (all->exit_status);
+		}
 	old_path = get_var(all->my_env, "OLDPWD");
 	if (old_path[0] == '\0')
 		add_arg(all, "OLDPWD", &all->my_env);
