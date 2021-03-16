@@ -50,63 +50,18 @@ int			exec_command(t_all *all, t_cmd *cmd)
 	return (all->exit_status);
 }
 
-/*
-** select the last of the corresponding type redirections,
-** opening the files while it dont get to the last
-**
-** variables: redir_type - the fdin or fdout, redir - type of redirection
-** return: 0 if good, otherwise returns exit status of the failed command
-*/
-
-int			redir_execute(t_all *all, t_cmd *lst, char redir, int *redir_type)
+void		reset_in_out(int *fdin, int *fdout)
 {
-	int i;
-	int fd;
-
-	i = 0;
-	while (lst->redir[i].r[0] != '\0')
+	if (*fdin >= 0)
 	{
-		if (lst->redir[i].r[0] == redir)
-		{
-			fd = open_file(lst->redir[i].r, lst->redir[i].file);
-			if (*redir_type > 0)
-				close(*redir_type);
-			if (fd < 0)
-			{
-				restore_fds(all);
-				return (ft_error(lst->redir[i].file, strerror(2), 2, all));
-			}
-			*redir_type = fd;
-		}
-		i++;
+		close(*fdin);
+		*fdin = -1;
 	}
-	return (0);
-}
-
-/*
-** checks for redirections and applys to the corresponding
-** type of stream: input or output. If there are no redirections,
-** apply the saved stdin or stdout
-**
-** variables: fd - the fdin or fdout, redir - type of redirection
-** return: 0 if good, otherwise returns exit status of the failed command
-*/
-
-int			redirections(t_all *all, t_cmd *lst, int *fd, char redir)
-{
-	if (lst->redir->r[0] != '\0')
+	if (*fdout >= 0)
 	{
-		if (redir_execute(all, lst, redir, fd) != 0)
-			return (all->exit_status);
+		close(*fdout);
+		*fdout = -1;
 	}
-	if (*fd < 0)
-	{
-		if (redir == '<')
-			*fd = dup(all->save_fd[0]);
-		else
-			*fd = dup(all->save_fd[1]);
-	}
-	return (0);
 }
 
 /*
@@ -134,24 +89,10 @@ int			run_cmd(t_all *all)
 			if (redirections(all, lst, &fdin, '<') == 0 &&
 			redirections(all, lst, &fdout, '>') == 0 &&
 			close_dup2_closer(all, fdin, 0) == 0 &&
-			close_dup2_closer(all, fdout, 1) == 0 &&
-			!is_null_cmd(lst))
-			{
+			close_dup2_closer(all, fdout, 1) == 0 && !is_null_cmd(lst))
 				exec_command(all, lst);
-			}
 			else
-			{
-				if (fdin >= 0)
-				{
-					close(fdin);
-					fdin = -1;
-				}
-				if (fdout >= 0)
-				{
-					close(fdout);
-					fdout = -1;
-				}
-			}
+				reset_in_out(&fdin, &fdout);
 			restore_fds(all);
 		}
 	}
