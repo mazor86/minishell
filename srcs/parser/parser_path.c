@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:00:54 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/13 02:44:51 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/16 17:14:58 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,15 @@ char		*get_full_cmd_name(t_all *all, t_cmd *lst)
 	if (!(env = get_var(all->my_env, "PATH")))
 		return (NULL);
 	if (!(split = ft_split(env, ':')))
+	{
+		free(env);
 		return (NULL);
+	}
 	if (!(res = parse_split_local(split, all, lst)))
+	{
+		free(env);
 		return (free_array(split));
+	}
 	free_array(split);
 	free(env);
 	return (res);

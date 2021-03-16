@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/19 19:39:57 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/13 02:44:51 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,15 @@ void	*free_array(char **text)
 	int		i;
 
 	i = -1;
-	if (text && *text)
+	if (text)
 	{
-		while (text[++i])
+		if (*text)
 		{
-			free(text[i]);
-			text[i] = NULL;
+			while (text[++i])
+			{
+				free(text[i]);
+				text[i] = NULL;
+			}
 		}
 		free(text);
 		text = NULL;

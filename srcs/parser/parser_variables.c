@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 00:04:57 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/13 02:44:51 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,17 @@ static int	get_result(t_all *all, char **text)
 
 static int	set_env(t_all *all, char **text, char *var)
 {
-	if (join_str(text, get_var(all->my_env, var)) == -1)
+	char *temp;
+
+	temp = get_var(all->my_env, var);
+	if (!temp)
 		return (-1);
+	if (join_str(text, temp) == -1)
+	{
+		free(temp);
+		return (-1);
+	}
+	free(temp);
 	return (0);
 }
 

@@ -3,93 +3,92 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mazor <mazor@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:23:43 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/13 02:44:51 by mazor            ###   ########.fr       */
+/*   Created: 2020/05/12 23:01:39 by mazor             #+#    #+#             */
+/*   Updated: 2021/03/16 17:26:43 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	num_worlds(char const *s, char c)
+static size_t	calculate_str(const char *s, char c)
 {
-	int	i;
-	int	res;
+	size_t	num;
 
-	i = 0;
-	res = 0;
+	num = 0;
 	while (*s)
 	{
-		if (*s == c)
-			i = 0;
-		else if (i == 0)
-		{
-			i = 1;
-			res++;
-		}
+		while (*s && *s != c)
+			s++;
+		num++;
+		while (*s && *s == c)
+			s++;
+	}
+	return (num);
+}
+
+static size_t	len_word(const char *s, char c)
+{
+	size_t	len;
+
+	len = 0;
+	while (*s && *s != c)
+	{
 		s++;
+		len++;
 	}
-	return (res);
+	return (len);
 }
 
-static int	num_world(char const *s, char c, int i)
+static void		fill_word(char const **s, char c, char **split, size_t num)
 {
-	int	res;
-
-	res = 0;
-	while (s[i] != c && s[i])
-	{
-		res++;
-		i++;
-	}
-	return (res);
-}
-
-static char	**err(char **res, int j)
-{
-	while (j)
-	{
-		j--;
-		free((void *)res[j]);
-	}
-	free(res);
-	return (NULL);
-}
-
-static char	**set_worlds(char **res, char const *s, char c, int l)
-{
-	int	i;
-	int	j;
-	int	k;
+	size_t	i;
 
 	i = 0;
-	j = 0;
-	while (s[i] && l > j)
+	while (**s && **s != c)
 	{
-		k = 0;
-		while (s[i] == c)
-			i++;
-		if (!(res[j] = ft_calloc(num_world(s, c, i) + 1, sizeof(char))))
-			return (err(res, j));
-		while (s[i] && s[i] != c)
-			res[j][k++] = s[i++];
-		res[j][k] = '\0';
-		j++;
+		split[num][i++] = **s;
+		(*s)++;
 	}
-	res[j] = 0;
-	return (res);
+	split[num][i] = '\0';
+	while (**s && **s == c)
+		(*s)++;
 }
 
-char		**ft_split(char const *s, char c)
+static void		free_mem(char **split, size_t num)
 {
-	int		i;
-	char	**res;
+	while (num)
+		free(split[num--]);
+	free(split[num]);
+	free(split);
+	return ;
+}
+
+char			**ft_split(char const *s, char c)
+{
+	char	**split;
+	size_t	num;
+	size_t	len;
 
 	if (!s)
 		return (NULL);
-	i = num_worlds(s, c);
-	if (!(res = ft_calloc(i + 1, sizeof(char*))))
+	while (*s && *s == c)
+		s++;
+	num = calculate_str(s, c);
+	if (!(split = (char**)malloc(sizeof(char*) * (num + 1))))
 		return (NULL);
-	return (set_worlds(res, s, c, i));
+	split[num] = NULL;
+	num = 0;
+	while (*s)
+	{
+		len = len_word(s, c);
+		if (!(split[num] = (char*)malloc(sizeof(char) * (len + 1))))
+		{
+			free_mem(split, num);
+			return (NULL);
+		}
+		fill_word(&s, c, split, num++);
+	}
+	return (split);
 }
