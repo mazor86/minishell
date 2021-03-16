@@ -70,7 +70,7 @@ int		change_env(t_all *all, char *var_name, char *new_value)
 		if (ft_strcmp(temp->name, var_name) == 0)
 		{
 			free(temp->value);
-			if (!(temp->value = ft_strdup(new_value)))
+			if (!(temp->value = new_value))
 				return (ft_error("export", "out of memory", 12, all));
 			break ;
 		}

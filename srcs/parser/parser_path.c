@@ -97,5 +97,6 @@ char		*get_full_cmd_name(t_all *all, t_cmd *lst)
 	if (!(res = parse_split_local(split, all, lst)))
 		return (free_array(split));
 	free_array(split);
+	free(env);
 	return (res);
 }

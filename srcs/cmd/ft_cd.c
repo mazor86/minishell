@@ -34,17 +34,22 @@ static int	change_path(t_all *all, char *var_name, char *new_value)
 int		ft_cd(t_all *all, t_cmd *cmd)
 {
 	char *path;
+	char *old_path;
 
 	all->exit_status = 0;
-	path = cmd->argv[0][0] == '\0' ? get_var(all->my_env, "HOME") : cmd->argv[0];
+	path = cmd->argv[0][0] == '\0' ? get_var(all->my_env, "HOME") : ft_strdup(cmd->argv[0]);
 	if (chdir(path) < 0)
 	{
 		ft_error("cd", "No such file or directory", 2, all);
+		free(path);
 		return (all->exit_status);
 	}
-	if (get_var(all->my_env, "OLDPWD") == NULL)
+	old_path = get_var(all->my_env, "OLDPWD");
+	if (old_path[0] == '\0')
 		add_arg(all, "OLDPWD", &all->my_env);
 	change_env(all, "OLDPWD", get_var(all->my_env, "PWD"));
 	change_path(all, "PWD", getcwd(NULL, _PC_PATH_MAX));
+	free(path);
+	free(old_path);
 	return (all->exit_status);
 }

@@ -21,5 +21,5 @@ char	*get_var(t_env *my_env, char *var_name)
 	{
 		my_env = my_env->next;
 	}
-	return (flag != 0 ? ft_strdup("") : my_env->value);
+	return (flag != 0 ? ft_strdup("") : ft_strdup(my_env->value));
 }
