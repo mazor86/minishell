@@ -17,8 +17,8 @@ static int	child_process(t_all *all, t_cmd **lst, int *fdout)
 	close(1);
 	if ((*lst)->pipe == 1)
 	{
-		dup2_closer(all, (*lst)->fd_pipe[1], 1);
 		close((*lst)->fd_pipe[0]);
+		dup2_closer(all, (*lst)->fd_pipe[1], 1);
 	}
 	else
 		dup2(all->save_fd[1], 1);

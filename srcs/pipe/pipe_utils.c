@@ -46,11 +46,12 @@ void	pipe_wait_process(t_all *all, int pipes_len)
 
 	i = 0;
 	mute_signals();
-	while (i <= pipes_len)
+	while (i < pipes_len)
 	{
 		waitpid(all->pid[i], &all->res, 0);
 		i++;
 	}
+	i = 0;
 	while (all->pid[i] != 0 && i < PID_SIZE)
 	{
 		all->pid[i] = 0;

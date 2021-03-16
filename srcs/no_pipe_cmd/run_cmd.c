@@ -79,9 +79,9 @@ int			run_cmd(t_all *all)
 	lst = all->cmd;
 	fdin = -1;
 	fdout = -1;
-	save_fds(all);
-	if (!is_null_cmd(lst) || lst->redir->r[0] != '\0')
+	if (lst && (!is_null_cmd(lst) || lst->redir->r[0] != '\0'))
 	{
+		save_fds(all);
 		if (lst->pipe == 1)
 			exec_command_pipe(all, &lst);
 		else

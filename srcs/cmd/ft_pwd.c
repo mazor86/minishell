@@ -29,13 +29,10 @@ int		ft_pwd(t_all *all, t_cmd *cmd)
 	errno = 0;
 	if (ft_strcmp(cmd->argv[0], "") != 0)
 		ft_error("pwd", "wrong number of arguments", 21, all);
-	if ((pwd = get_var(all->my_env, "PWD")) == NULL &&
-	!(pwd = getcwd(NULL, _PC_PATH_MAX)))
+	if (!(pwd = getcwd(NULL, _PC_PATH_MAX)))
 		ft_error("pwd", strerror(errno), errno, all);
 	else
-	{
-		ft_putstr_fd(pwd, 1);
-		ft_putstr_fd("\n", 1);
-	}
+		ft_putendl_fd(pwd, 1);
+	free(pwd);
 	return (all->exit_status);
 }
