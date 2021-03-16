@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 21:35:01 by tisabel           #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/16 17:51:53 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,10 @@ int				ret_err(t_all *all, char *text);
 
 void			save_fds(t_all *all);
 void			restore_fds(t_all *all);
-int				init_redirect(t_all *all, t_cmd *cmd, int pipe);
-void			close_pipe_fd(t_cmd *cmd);
 int				exec_command_pipe(t_all *all, t_cmd **lst);
 void			clear_redir(t_redir *redir);
 int				check_redir(t_all *all, t_cmd *lst);
 int				count_redir(t_redir *redir);
-void			close_dup_fd(int red_in, int red_out, int n);
 int				open_file(char redir[2], char *argum);
 void			run_command_pipe(t_all *all, t_cmd *cmd);
 int				redir_execute(t_all *all, t_cmd *lst, char redir,

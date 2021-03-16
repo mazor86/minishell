@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:03:16 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/16 17:49:27 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,29 @@ static int	get_arg(t_all *all, t_cmd *lst, int *i)
 	return (0);
 }
 
+static int	get_tokens(t_all *all, t_cmd **lst)
+{
+	int			i;
+
+	i = 0;
+	if (all->line[all->pos] == ';')
+		all->pos++;
+	if (!(*lst = init_cmd()))
+		return (-1);
+	if (check_redir(all, *lst) == -1)
+		return (-1);
+	if (get_name(all, *lst) == -1)
+		return (-1);
+	while (all->line[all->pos] && !ft_strchr("|;", all->line[all->pos]))
+	{
+		if (check_redir(all, *lst) == -1)
+			return (-1);
+		if (get_arg(all, *lst, &i) == -1)
+			return (-1);
+	}
+	return (0);
+}
+
 /*
 ** Parses the string entered by the user
 **
@@ -101,31 +124,14 @@ static int	get_arg(t_all *all, t_cmd *lst, int *i)
 ** @return 0 if good, otherwise -1
 */
 
-//TODO 36 lines
 int			parser_string(t_all *all)
 {
 	t_cmd		*lst;
-	int			i;
 
 	while (all->line[all->pos])
 	{
-
-		i = 0;
-		if (all->line[all->pos] == ';')
-			all->pos++;
-		if (!(lst = init_cmd()))
+		if (get_tokens(all, &lst))
 			return (ft_error(NULL, "out of memory", 12, all));
-		if (check_redir(all, lst) == -1)
-			return (ft_error(NULL, "out of memory", 12, all));
-		if (get_name(all, lst) == -1)
-			return (ft_error(NULL, "out of memory", 12, all));
-		while (all->line[all->pos] && !ft_strchr("|;", all->line[all->pos]))
-		{
-			if (check_redir(all, lst) == -1)
-				return (ft_error(NULL, "out of memory", 12, all));
-			if (get_arg(all, lst, &i) == -1)
-				return (ft_error(NULL, "out of memory", 12, all));
-		}
 		if (all->line[all->pos] == '|')
 			lst->pipe = 1;
 		if (!(*(lst->name)))
