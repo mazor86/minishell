@@ -39,9 +39,9 @@ int		check_digit(char *str)
 /*
 ** executes the exit command
 **
-** @param *all general structure
-** @param *cmd command structure
-** @return exitstatus
+** param *all general structure
+** param *cmd command structure
+** return exitstatus
 */
 
 int		ft_exit(t_all *all, t_cmd *cmd)

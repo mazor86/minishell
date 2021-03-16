@@ -15,9 +15,9 @@
 /*
 ** looks for a file in a directory
 **
-** @param *path path to directory
-** @param *name file name
-** @return 1 if the file is found, otherwise 0
+** param *path path to directory
+** param *name file name
+** return 1 if the file is found, otherwise 0
 */
 
 static int	get_cd_local(char *path, char *name)
@@ -42,10 +42,10 @@ static int	get_cd_local(char *path, char *name)
 /*
 ** get full command path
 **
-** @param **split an array of path strings for the PATH variable
-** @param *all general structure
-** @param *lst command pointer
-** @return full file path, otherwise NULL
+** param **split an array of path strings for the PATH variable
+** param *all general structure
+** param *lst command pointer
+** return full file path, otherwise NULL
 */
 
 static char	*parse_split_local(char **split, t_all *all, t_cmd *lst)
@@ -77,9 +77,9 @@ static char	*parse_split_local(char **split, t_all *all, t_cmd *lst)
 /*
 ** get full command path
 **
-** @param *all general structure
-** @param *lst command pointer
-** @return full file path, otherwise NULL
+** param *all general structure
+** param *lst command pointer
+** return full file path, otherwise NULL
 */
 
 char		*get_full_cmd_name(t_all *all, t_cmd *lst)

@@ -15,7 +15,7 @@
 /*
 ** function pointers initialization
 **
-** @param **f a pointer to an array of functions
+** param **f a pointer to an array of functions
 */
 
 static void	init_f(int (**f)(t_all*, t_cmd*))
@@ -32,9 +32,9 @@ static void	init_f(int (**f)(t_all*, t_cmd*))
 /*
 ** launching its functions
 **
-** @param *all general structure
-** @param *lst command pointer
-** @return 1 if the command is executed, 0 if not executed, exitstatus
+** param *all general structure
+** param *lst command pointer
+** return 1 if the command is executed, 0 if not executed, exitstatus
 ** (errno number) in case of the error
 */
 

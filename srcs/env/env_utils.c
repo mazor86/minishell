@@ -15,7 +15,7 @@
 /*
 ** creates an enviroment variables structure
 **
-** @return env pointer, otherwise NULL
+** return env pointer, otherwise NULL
 */
 
 t_env	*init_env(void)

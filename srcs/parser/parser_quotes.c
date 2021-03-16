@@ -15,9 +15,9 @@
 /*
 ** gets a string inside strong quotes
 **
-** @param *all general structure
-** @param **text pointer to the string to which the result is written
-** @return 0 if good, otherwise -1
+** param *all general structure
+** param **text pointer to the string to which the result is written
+** return 0 if good, otherwise -1
 */
 
 int		get_strong_quotes(t_all *all, char **text)
@@ -37,9 +37,9 @@ int		get_strong_quotes(t_all *all, char **text)
 /*
 ** gets the string inside the loose quotes
 **
-** @param *all general structure
-** @param **text pointer to the string to which the result is written
-** @return 0 if good, otherwise -1
+** param *all general structure
+** param **text pointer to the string to which the result is written
+** return 0 if good, otherwise -1
 */
 
 int		get_quotes(t_all *all, char **text)

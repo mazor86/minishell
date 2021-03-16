@@ -27,7 +27,7 @@ static t_redir	*init_redir(void)
 /*
 ** creates a command structure
 **
-** @return command pointer, otherwise NULL
+** return command pointer, otherwise NULL
 */
 
 t_cmd			*init_cmd(void)
@@ -50,8 +50,8 @@ t_cmd			*init_cmd(void)
 /*
 ** checks that the command is empty
 **
-** @param *lst pointer to command structure
-** @return 1 if the command is empty, otherwise 0
+** param *lst pointer to command structure
+** return 1 if the command is empty, otherwise 0
 */
 
 int				is_null_cmd(t_cmd *lst)

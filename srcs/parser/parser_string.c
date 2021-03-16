@@ -15,9 +15,9 @@
 /*
 ** gets strings when encountering special characters
 **
-** @param *all general structure
-** @param **text pointer to the string to which the result is written
-** @return 1 if a special character is encountered, 0 if not, -1 error
+** param *all general structure
+** param **text pointer to the string to which the result is written
+** return 1 if a special character is encountered, 0 if not, -1 error
 */
 
 int			get_spec(t_all *all, char **text)
@@ -46,8 +46,8 @@ int			get_spec(t_all *all, char **text)
 /*
 ** gets the name of the command entered by the user
 **
-** @param *all general structure
-** @return 0 if good, otherwise -1
+** param *all general structure
+** return 0 if good, otherwise -1
 */
 
 static int	get_name(t_all *all, t_cmd *lst)
@@ -71,8 +71,8 @@ static int	get_name(t_all *all, t_cmd *lst)
 /*
 ** gets all the arguments entered by the user
 **
-** @param *all general structure
-** @return 0 if good, otherwise -1
+** param *all general structure
+** return 0 if good, otherwise -1
 */
 
 static int	get_arg(t_all *all, t_cmd *lst, int *i)
@@ -120,8 +120,8 @@ static int	get_tokens(t_all *all, t_cmd **lst)
 /*
 ** Parses the string entered by the user
 **
-** @param *all general structure
-** @return 0 if good, otherwise -1
+** param *all general structure
+** return 0 if good, otherwise -1
 */
 
 int			parser_string(t_all *all)

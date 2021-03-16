@@ -15,9 +15,9 @@
 /*
 ** displays an error
 **
-** @param *all general structure
-** @param *text error text
-** @return 1
+** param *all general structure
+** param *text error text
+** return 1
 */
 
 int			ret_err(t_all *all, char *text)
@@ -29,7 +29,7 @@ int			ret_err(t_all *all, char *text)
 /*
 ** Handles syntax errors
 **
-** @param *all general structure
-** @param *lst command pointer
-** @return 0 if no error was found, 1 error was found
+** param *all general structure
+** param *lst command pointer
+** return 0 if no error was found, 1 error was found
 */

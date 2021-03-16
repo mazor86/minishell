@@ -15,9 +15,9 @@
 /*
 ** display the result of the last operation
 **
-** @param *all general structure
-** @param **text pointer to the string to which the result is written
-** @return 1 if there was $?, If not 0, error -1
+** param *all general structure
+** param **text pointer to the string to which the result is written
+** return 1 if there was $?, If not 0, error -1
 */
 
 static int	get_result(t_all *all, char **text)
@@ -40,10 +40,10 @@ static int	get_result(t_all *all, char **text)
 /*
 ** Replaces text with the value of an environment variable
 **
-** @param *all general structure
-** @param **text pointer to the string to which the result is written
-** @param *var environment variable name
-** @return 0 if good, otherwise -1
+** param *all general structure
+** param **text pointer to the string to which the result is written
+** param *var environment variable name
+** return 0 if good, otherwise -1
 */
 
 static int	set_env(t_all *all, char **text, char *var)
@@ -65,9 +65,9 @@ static int	set_env(t_all *all, char **text, char *var)
 /*
 ** Replaces text with the value of an environment variable
 **
-** @param *all general structure
-** @param **text pointer to the string to which the result is written
-** @return 0 if good, otherwise -1
+** param *all general structure
+** param **text pointer to the string to which the result is written
+** return 0 if good, otherwise -1
 */
 
 int			get_variables(t_all *all, char **text)

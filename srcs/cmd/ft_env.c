@@ -15,9 +15,9 @@
 /*
 ** executes the env command
 **
-** @param *all general structure
-** @param *cmd command structure
-** @return 0
+** param *all general structure
+** param *cmd command structure
+** return 0
 */
 
 int		ft_env(t_all *all, t_cmd *cmd)

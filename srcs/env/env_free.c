@@ -15,7 +15,7 @@
 /*
 ** Clears the entire array of t_env structures
 **
-** @param **my_env
+** param **my_env
 */
 
 void	del_one_env(t_env *my_env)

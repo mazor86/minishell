@@ -15,10 +15,10 @@
 /*
 ** displays an error
 **
-** @param *name name command
-** @param *text error text
-** @param ret return
-** @return ret
+** param *name name command
+** param *text error text
+** param ret return
+** return ret
 */
 
 int		ft_error(char *name, char *text, int ret, t_all *all)

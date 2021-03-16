@@ -15,9 +15,9 @@
 /*
 ** append character to string
 **
-** @param **text pointer to string
-** @param c symbol
-** @return 0 if good, otherwise -1
+** param **text pointer to string
+** param c symbol
+** return 0 if good, otherwise -1
 */
 
 int		join_char(char **text, char c)
@@ -34,9 +34,9 @@ int		join_char(char **text, char c)
 /*
 ** join strings
 **
-** @param **text pointer to string
-** @param *s string
-** @return 0 if good, otherwise -1
+** param **text pointer to string
+** param *s string
+** return 0 if good, otherwise -1
 */
 
 int		join_str(char **text, char *s)
@@ -49,7 +49,7 @@ int		join_str(char **text, char *s)
 /*
 ** skip all spaces until a space is encountered
 **
-** @param *all general structure
+** param *all general structure
 */
 
 void	trim_space(t_all *all)
@@ -61,8 +61,8 @@ void	trim_space(t_all *all)
 /*
 ** re-malloc arguments and add 1 empty argument
 **
-** @param **argv array of argument strings
-** @return pointer to an array of strings, otherwise NULL
+** param **argv array of argument strings
+** return pointer to an array of strings, otherwise NULL
 */
 
 char	**remalloc_args(char **argv)
@@ -94,10 +94,10 @@ char	**remalloc_args(char **argv)
 /*
 ** re-malloc command arguments
 **
-** @param *all general structure
-** @param *spec special characters
-** @param *i pointer to string index
-** @return 0 if good, otherwise -1
+** param *all general structure
+** param *spec special characters
+** param *i pointer to string index
+** return 0 if good, otherwise -1
 */
 
 int		add_remalloc_argv(t_all *all, t_cmd *lst, int *i)

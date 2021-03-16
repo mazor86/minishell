@@ -15,9 +15,9 @@
 /*
 ** Produces shielding
 **
-** @param *all general structure
-** @param **text pointer to the string to which the result is written
-** @return 0 if good, otherwise -1
+** param *all general structure
+** param **text pointer to the string to which the result is written
+** return 0 if good, otherwise -1
 */
 
 int		get_shielding(t_all *all, char **text)

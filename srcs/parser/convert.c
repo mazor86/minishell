@@ -15,8 +15,8 @@
 /*
 ** gets command name from full path
 **
-** @param *lst command pointer
-** @return pointer to the command name, otherwise NULL
+** param *lst command pointer
+** return pointer to the command name, otherwise NULL
 */
 
 static char	*get_filename(t_cmd *lst)
@@ -31,9 +31,9 @@ static char	*get_filename(t_cmd *lst)
 /*
 ** clears strings
 **
-** @param **split array of strings
-** @param **name pointer to string
-** @return NULL
+** param **split array of strings
+** param **name pointer to string
+** return NULL
 */
 
 static void	*free_argv_local(char **split, char **name)
@@ -47,8 +47,8 @@ static void	*free_argv_local(char **split, char **name)
 /*
 ** converts a list of environment variables to an array of strings
 **
-** @param *all general structure
-** @return pointer to an array of strings, otherwise NULL
+** param *all general structure
+** return pointer to an array of strings, otherwise NULL
 */
 
 char		**deconvert_env(t_env **my_env)
@@ -82,8 +82,8 @@ char		**deconvert_env(t_env **my_env)
 /*
 ** converts command arguments to an array of strings
 **
-** @param *lst argument list
-** @return pointer to an array of strings, otherwise NULL
+** param *lst argument list
+** return pointer to an array of strings, otherwise NULL
 */
 
 char		**convert_argv(t_cmd *lst)

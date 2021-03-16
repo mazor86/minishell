@@ -15,7 +15,7 @@
 /*
 ** Clears the entire t_cmd structure
 **
-** @param **lst Pointer to sheet of structure t_cmd
+** param **lst Pointer to sheet of structure t_cmd
 */
 
 void	free_null(char *ptr)
@@ -56,7 +56,7 @@ void	clear_cmd(t_cmd **cmd_lst)
 /*
 ** Clears the entire t_all structure
 **
-** @param *all general structure
+** param *all general structure
 */
 
 int		clear_all(t_all *all)
@@ -69,7 +69,7 @@ int		clear_all(t_all *all)
 /*
 ** Clears an array of strings
 **
-** @param **text Pointer to array of strings
+** param **text Pointer to array of strings
 */
 
 void	*free_array(char **text)
