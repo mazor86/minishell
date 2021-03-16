@@ -36,7 +36,7 @@ int		ft_cd(t_all *all, t_cmd *cmd)
 	char *path;
 
 	all->exit_status = 0;
-	path = cmd->argv[0] == NULL ? get_var(all->my_env, "HOME") : cmd->argv[0];
+	path = cmd->argv[0][0] == '\0' ? get_var(all->my_env, "HOME") : cmd->argv[0];
 	if (chdir(path) < 0)
 	{
 		ft_error("cd", "No such file or directory", 2, all);
