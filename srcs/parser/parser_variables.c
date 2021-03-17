@@ -82,7 +82,7 @@ int			get_variables(t_all *all, char **text)
 		return (-1);
 	if (!res)
 	{
-		if (!ft_strchr(spec, all->line[all->pos]))
+		if (ft_isalnum(all->line[all->pos]) == 1)
 		{
 			while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos])) {
 				if (join_char(&var, all->line[all->pos]) == -1)
