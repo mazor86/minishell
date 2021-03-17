@@ -37,6 +37,7 @@ void	run_command_pipe(t_all *all, t_cmd *cmd)
 	res_cmd = start_cmd(all, cmd);
 	if (res_cmd < 0)
 		all->exit_status = execve_with_pipe(all, cmd);
+	restore_fds(all);
 	exit(all->exit_status);
 }
 
