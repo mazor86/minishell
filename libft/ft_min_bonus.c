@@ -6,11 +6,9 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/25 20:48:15 by tisabel           #+#    #+#             */
-/*   Updated: 2021/03/16 21:46:57 by mazor            ###   ########.fr       */
+/*   Updated: 2020/07/27 05:08:56 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_min(int one, int two)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:25:30 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Created: 2020/05/19 15:33:15 by tisabel           #+#    #+#             */
+/*   Updated: 2020/05/29 20:36:24 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,28 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*res;
+	char			*substr;
+	unsigned int	i;
+	size_t			len_s;
 
+	i = start;
+	len_s = 0;
 	if (!s)
 		return (NULL);
-	if (ft_strlen(s) < start)
-		len = 0;
-	if (!(res = malloc(sizeof(char) * (len + 1))))
+	while (s[len_s] != '\0')
+		len_s++;
+	if (start > len_s)
+		return (ft_strdup(""));
+	if (start + len > len_s)
+		len = len_s;
+	substr = (char*)malloc(sizeof(char) * (len + 1));
+	if (!substr)
 		return (NULL);
-	ft_strlcpy(res, (char *)&s[start], len + 1);
-	return (res);
+	while (i - start < len)
+	{
+		substr[i - start] = s[i];
+		i++;
+	}
+	substr[i - start] = '\0';
+	return (substr);
 }

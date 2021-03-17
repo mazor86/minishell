@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:17:52 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Created: 2020/05/20 23:02:59 by tisabel           #+#    #+#             */
+/*   Updated: 2020/05/29 22:13:52 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*res;
-	t_list	*i;
+	t_list	*new_lst;
+	t_list	*begin_new;
 
-	if (!lst || !f || !del)
+	if (!lst)
 		return (NULL);
-	if (!(i = ft_lstnew(f(lst->content))))
+	new_lst = ft_lstnew(f(lst->content));
+	if (!new_lst)
 		return (NULL);
-	res = i;
-	lst = lst->next;
+	begin_new = new_lst;
 	while (lst)
 	{
-		if (!(i = ft_lstnew(f(lst->content))))
+		if (lst->next != NULL)
 		{
-			ft_lstclear(&res, del);
-			return (NULL);
+			new_lst->next = ft_lstnew(f(lst->next->content));
+			if (new_lst->next == NULL)
+			{
+				ft_lstclear(&begin_new, del);
+				return (NULL);
+			}
+			new_lst = new_lst->next;
 		}
-		ft_lstadd_back(&res, i);
 		lst = lst->next;
 	}
-	return (res);
+	new_lst->next = NULL;
+	return (begin_new);
 }

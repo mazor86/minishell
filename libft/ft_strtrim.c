@@ -3,27 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:24:05 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Created: 2020/05/19 19:51:41 by tisabel           #+#    #+#             */
+/*   Updated: 2020/10/18 20:49:22 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+static int		ft_set_checker(const char c, char const *set)
 {
-	char	*res;
-	int		i;
+	unsigned int	trueth;
+	unsigned int	i;
 
-	if (!s1 || !set)
+	trueth = 0;
+	i = 0;
+	while (set[i] != '\0')
+	{
+		if (c == set[i])
+			trueth = 1;
+		i++;
+	}
+	return (trueth);
+}
+
+static int		ft_trim_size_counter(char const *s1, char const *set, int end)
+{
+	int				i;
+	unsigned int	len;
+
+	len = 0;
+	if (end == 1)
+	{
+		i = 0;
+		while (s1[i] != '\0' && ft_set_checker(s1[i], set) == 1)
+		{
+			len++;
+			i++;
+		}
+	}
+	else
+	{
+		i = ft_strlen(s1) - 1;
+		while (i >= 0 && ft_set_checker(s1[i], set) == 1)
+		{
+			len++;
+			i--;
+		}
+	}
+	return (len);
+}
+
+char			*ft_strtrim(char const *s1, char const *set)
+{
+	char			*trim_str;
+	unsigned int	i;
+	unsigned int	cut;
+	unsigned int	len;
+
+	i = 0;
+	if (!set || !s1)
 		return (NULL);
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	i = ft_strlen((char *)s1);
-	while (i && ft_strchr(set, s1[i]))
-		i--;
-	res = ft_substr(s1, 0, i + 1);
-	return (res);
+	cut = ft_trim_size_counter(s1, set, 1);
+	if (cut == ft_strlen(s1))
+		len = 0;
+	else
+		len = ft_strlen(s1) - (cut + ft_trim_size_counter(s1, set, 2));
+	trim_str = (char*)malloc(sizeof(char) * (len + 1));
+	if (!trim_str)
+		return (NULL);
+	while (i < len)
+	{
+		trim_str[i] = s1[i + cut];
+		i++;
+	}
+	trim_str[i] = '\0';
+	free((char*)s1);
+	return (trim_str);
 }

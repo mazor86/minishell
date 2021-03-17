@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:16:47 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Created: 2020/05/19 15:27:35 by tisabel           #+#    #+#             */
+/*   Updated: 2020/05/29 21:01:26 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
+	unsigned char	letter;
+	unsigned char	*ptr_s;
 	size_t			i;
-	unsigned char	*res;
 
 	i = 0;
-	res = (unsigned char *)s;
-	while (n > i)
+	ptr_s = (unsigned char*)s;
+	letter = (unsigned char)c;
+	while (i < n)
 	{
-		if (res[i] == (unsigned char)c)
-			return (&res[i]);
+		if (ptr_s[i] == letter)
+			return ((void*)ptr_s + i);
 		i++;
 	}
 	return (NULL);

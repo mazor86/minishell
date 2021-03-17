@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 17:20:37 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Created: 2020/05/14 15:14:49 by tisabel           #+#    #+#             */
+/*   Updated: 2020/10/16 22:51:09 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*res;
+	unsigned char	letter;
+	int				i;
 
-	res = 0;
-	while (*s)
-	{
-		if (*s == c)
-			res = (char *)s;
-		s++;
-	}
-	if (*s == '\0' && c == '\0')
-		return ((char *)s);
-	if (res)
-		return (res);
-	else
+	i = 0;
+	if (c < 0 || c > 255)
 		return (NULL);
+	letter = c;
+	while (s[i] != '\0')
+		i++;
+	while (i >= 0)
+	{
+		if (s[i] == letter)
+			return ((char*)&s[i]);
+		i--;
+	}
+	return (NULL);
 }

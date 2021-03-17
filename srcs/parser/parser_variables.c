@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/18 00:04:57 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:56:49 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/17 10:16:32 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ static int	set_env(t_all *all, char **text, char *var)
 	return (0);
 }
 
+static int	free_var(char **var)
+{
+	free(*var);
+	return (0);
+}
+
 /*
 ** Replaces text with the value of an environment variable
 **
@@ -84,7 +90,8 @@ int			get_variables(t_all *all, char **text)
 	{
 		if (ft_isalnum(all->line[all->pos]) == 1)
 		{
-			while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos])) {
+			while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
+			{
 				if (join_char(&var, all->line[all->pos]) == -1)
 					return (-1);
 				all->pos++;
@@ -95,6 +102,5 @@ int			get_variables(t_all *all, char **text)
 		else
 			return (join_char(text, '$'));
 	}
-	free(var);
-	return (0);
+	return (free_var(&var));
 }
