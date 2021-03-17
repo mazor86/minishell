@@ -6,7 +6,7 @@
 /*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:18:48 by tisabel           #+#    #+#             */
-/*   Updated: 2021/03/17 11:14:56 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/17 12:12:54 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int			start_execve(t_all *all, t_cmd *lst)
 		}
 		else
 			parent_process(pid, all);
-
 	}
 	else
 		all->exit_status = 127;
