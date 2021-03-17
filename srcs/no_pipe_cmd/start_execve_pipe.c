@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_execve_pipe.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:18:48 by tisabel           #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/17 11:14:56 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	parent_process(int pid, t_all *all)
 	mute_signals();
 	waitpid(pid, &all->res, 0);
 	catch_signals(all);
+	all->exit_status = all->res;
 	implement_signals(all);
 	init_signals(all, 'p');
 }
@@ -53,6 +54,7 @@ int			start_execve(t_all *all, t_cmd *lst)
 	char		**argv;
 
 	all->exit_status = 0;
+	errno = 0;
 	envp = deconvert_env(&all->my_env);
 	argv = convert_argv(lst);
 	fullname = get_full_cmd_name(all, lst);
@@ -67,6 +69,7 @@ int			start_execve(t_all *all, t_cmd *lst)
 		}
 		else
 			parent_process(pid, all);
+
 	}
 	else
 		all->exit_status = 127;

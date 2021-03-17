@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mazor <mazor@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 04:10:03 by tisabel           #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/17 11:20:22 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		execve_with_pipe(t_all *all, t_cmd *cmd)
 	char	**envp;
 
 	all->exit_status = 0;
+	errno = 0;
 	envp = deconvert_env(&all->my_env);
 	argv = convert_argv(cmd);
 	fullname = get_full_cmd_name(all, cmd);
@@ -50,6 +51,7 @@ void	pipe_wait_process(t_all *all, int pipes_len)
 	while (i < pipes_len)
 	{
 		waitpid(all->pid[i], &all->res, 0);
+		all->exit_status = WEXITSTATUS(all->res);
 		i++;
 	}
 	i = 0;
