@@ -82,14 +82,18 @@ int			get_variables(t_all *all, char **text)
 		return (-1);
 	if (!res)
 	{
-		while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos]))
+		if (!ft_strchr(spec, all->line[all->pos]))
 		{
-			if (join_char(&var, all->line[all->pos]) == -1)
+			while (all->line[all->pos] && !ft_strchr(spec, all->line[all->pos])) {
+				if (join_char(&var, all->line[all->pos]) == -1)
+					return (-1);
+				all->pos++;
+			}
+			if (set_env(all, text, var) == -1)
 				return (-1);
-			all->pos++;
 		}
-		if (set_env(all, text, var) == -1)
-			return (-1);
+		else
+			return (join_char(text, '$'));
 	}
 	free(var);
 	return (0);
