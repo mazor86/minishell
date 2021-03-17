@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:43:41 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/17 10:47:27 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ int		ft_pwd(t_all *all, t_cmd *cmd)
 	char		*pwd;
 	extern int	errno;
 
+	(void)cmd;
 	all->exit_status = 0;
 	errno = 0;
-	if (ft_strcmp(cmd->argv[0], "") != 0)
-		ft_error("pwd", "wrong number of arguments", 21, all);
 	if (!(pwd = getcwd(NULL, _PC_PATH_MAX)))
 		ft_error("pwd", strerror(errno), errno, all);
 	else
