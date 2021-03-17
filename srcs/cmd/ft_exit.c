@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 18:38:00 by mazor             #+#    #+#             */
-/*   Updated: 2021/03/16 15:44:09 by mazor            ###   ########.fr       */
+/*   Updated: 2021/03/17 10:38:39 by mazor            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		ft_exit(t_all *all, t_cmd *cmd)
 		if (check_digit(cmd->argv[0]) != 1)
 			ft_error("exit", "numeric argument required", 255, all);
 		else
-			ft_error("exit", "too many arguments", 100, all);
+			ft_error("exit", "too many arguments", 1, all);
 		exit_status = (unsigned char)all->exit_status;
 	}
 	else
